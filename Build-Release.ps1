@@ -75,7 +75,7 @@ $sourceFiles = @(
 foreach ($relativePath in $sourceFiles) {
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot $relativePath) -Destination (Join-Path $sourceStage $relativePath)
 }
-foreach ($relativePath in @('Assets', 'Examples', 'Private', 'Public', 'Templates', 'Tests')) {
+foreach ($relativePath in @('Assets', 'Docs', 'Examples', 'Private', 'Public', 'Templates', 'Tests')) {
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot $relativePath) -Destination $sourceStage -Recurse
 }
 
