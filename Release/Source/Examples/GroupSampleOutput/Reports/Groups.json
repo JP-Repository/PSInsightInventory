@@ -1,0 +1,348 @@
+﻿{
+  "meta": {
+    "moduleName": "PSInsightInventory",
+    "version": "1.0.0",
+    "inventoryId": "ADGroup",
+    "title": "Group Inventory",
+    "run": "52831087",
+    "dataSource": "Sample",
+    "scope": "Group objects in one explicit domain",
+    "forest": "example.test",
+    "connectionDomain": "example.test",
+    "sourceDC": "dc01.example.test",
+    "configurationNC": "CN=Configuration,DC=example,DC=test",
+    "started": "2026-10-30T13:08:00.3930570+05:30",
+    "generated": "2026-10-30T13:08:00.4066790+05:30",
+    "generatedDisplay": "30 Oct 2026, 13:08:00 +05:30",
+    "timeZone": "Asia/Calcutta",
+    "expectedQueries": 5,
+    "notice": "SAMPLE DATA. Fictional Group configuration; no infrastructure was contacted.",
+    "limitations": [
+      "One explicit domain only; local group metadata and direct member attribute links. External/child-domain references are retained but not dereferenced.",
+      "Direct linked-member counts exclude primaryGroupID membership. Counts are not effective membership, recursive expansion, access-token membership or unique people.",
+      "Ranged LDAP member reads retain complete per-group lists. A failed/incomplete range discards that group list; its count remains unknown rather than zero. Completed groups survive timeout.",
+      "Nested and parent links are derived only between groups in the selected-domain catalog using successful member lists. No recursive expansion or cycle traversal occurs; parent coverage can be incomplete.",
+      "Member types are reported object classes from pinned local lookups or the group catalog. Failed and excluded lookups retain raw DNs and unknown type. Local foreignSecurityPrincipal objects are not resolved to external accounts.",
+      "managedBy is a directory reference, not proof of business ownership or delegated rights. Successful reads cannot prove ACL-filtered visibility.",
+      "One bounded worker reads metadata then each group list, reusing member lookups. Large directories may need a higher timeout. No endpoint/partner queries, changes, privilege scores, recommendations or email occur."
+    ],
+    "timeoutSeconds": null
+  },
+  "sections": {
+    "groups": [
+      "Groups",
+      [
+        "Name",
+        "Group ID",
+        "SAM account name",
+        "SID",
+        "Scope",
+        "Category",
+        "Description",
+        "Managed by",
+        "Location DN",
+        "DN",
+        "Created",
+        "Changed",
+        "Direct linked members",
+        "Membership status"
+      ]
+    ],
+    "members": [
+      "Direct linked members",
+      [
+        "Name",
+        "Group ID",
+        "Group",
+        "Member DN",
+        "Member name",
+        "Member ID",
+        "Member SID",
+        "Member type",
+        "Resolution status"
+      ]
+    ],
+    "nested": [
+      "Nested group links",
+      [
+        "Name",
+        "Parent group ID",
+        "Parent group",
+        "Child group ID",
+        "Child group",
+        "Child DN"
+      ]
+    ],
+    "parents": [
+      "Parent group links",
+      [
+        "Name",
+        "Group ID",
+        "Group",
+        "Parent group ID",
+        "Parent group",
+        "Parent DN"
+      ]
+    ],
+    "objectQueries": [
+      "Member resolution",
+      [
+        "Name",
+        "Target",
+        "Status",
+        "Message"
+      ]
+    ],
+    "collection": [
+      "Collection coverage",
+      [
+        "Name",
+        "Target",
+        "Status",
+        "Record count",
+        "Collected at",
+        "Duration ms",
+        "Error ID",
+        "Message"
+      ]
+    ]
+  },
+  "data": {
+    "groups": [
+      {
+        "Name": "Application Access",
+        "Group ID": "00000000-0000-0000-0000-000000000001",
+        "SAM account name": "Application_Access",
+        "SID": "S-1-5-21-100-200-300-1100",
+        "Scope": "Global",
+        "Category": "Security",
+        "Description": "Fictional group",
+        "Managed by": null,
+        "Location DN": "OU=Groups,DC=example,DC=test",
+        "DN": "CN=Application Access,OU=Groups,DC=example,DC=test",
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Direct linked members": 3,
+        "Membership status": "Succeeded"
+      },
+      {
+        "Name": "Regional Staff",
+        "Group ID": "00000000-0000-0000-0000-000000000002",
+        "SAM account name": "Regional_Staff",
+        "SID": "S-1-5-21-100-200-300-1101",
+        "Scope": "Global",
+        "Category": "Security",
+        "Description": "Fictional group",
+        "Managed by": null,
+        "Location DN": "OU=Groups,DC=example,DC=test",
+        "DN": "CN=Regional Staff,OU=Groups,DC=example,DC=test",
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Direct linked members": 2,
+        "Membership status": "Succeeded"
+      },
+      {
+        "Name": "Empty Distribution",
+        "Group ID": "00000000-0000-0000-0000-000000000003",
+        "SAM account name": "Empty_Distribution",
+        "SID": "S-1-5-21-100-200-300-1102",
+        "Scope": "Universal",
+        "Category": "Distribution",
+        "Description": "Fictional group",
+        "Managed by": null,
+        "Location DN": "OU=Groups,DC=example,DC=test",
+        "DN": "CN=Empty Distribution,OU=Groups,DC=example,DC=test",
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Direct linked members": 0,
+        "Membership status": "Succeeded"
+      },
+      {
+        "Name": "Restricted Members",
+        "Group ID": "00000000-0000-0000-0000-000000000004",
+        "SAM account name": "Restricted_Members",
+        "SID": "S-1-5-21-100-200-300-1103",
+        "Scope": "Global",
+        "Category": "Security",
+        "Description": "Fictional group",
+        "Managed by": null,
+        "Location DN": "OU=Groups,DC=example,DC=test",
+        "DN": "CN=Restricted Members,OU=Groups,DC=example,DC=test",
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Direct linked members": null,
+        "Membership status": "Failed"
+      }
+    ],
+    "members": [
+      {
+        "Name": "Application Access / CN=Regional Staff,OU=Groups,DC=example,DC=test",
+        "Group ID": "00000000-0000-0000-0000-000000000001",
+        "Group": "Application Access",
+        "Member DN": "CN=Regional Staff,OU=Groups,DC=example,DC=test",
+        "Member name": "Regional Staff",
+        "Member ID": "00000000-0000-0000-0000-000000000002",
+        "Member SID": "S-1-5-21-100-200-300-1101",
+        "Member type": "group",
+        "Resolution status": "Succeeded"
+      },
+      {
+        "Name": "Application Access / CN=Alex,OU=Users,DC=example,DC=test",
+        "Group ID": "00000000-0000-0000-0000-000000000001",
+        "Group": "Application Access",
+        "Member DN": "CN=Alex,OU=Users,DC=example,DC=test",
+        "Member name": "Alex",
+        "Member ID": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        "Member SID": "S-1-5-21-100-200-300-1200",
+        "Member type": "user",
+        "Resolution status": "Succeeded"
+      },
+      {
+        "Name": "Application Access / CN=PC01,OU=Computers,DC=example,DC=test",
+        "Group ID": "00000000-0000-0000-0000-000000000001",
+        "Group": "Application Access",
+        "Member DN": "CN=PC01,OU=Computers,DC=example,DC=test",
+        "Member name": "PC01",
+        "Member ID": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Member SID": null,
+        "Member type": "computer",
+        "Resolution status": "Succeeded"
+      },
+      {
+        "Name": "Regional Staff / CN=S-1-5-21-999-888-777-1000,CN=ForeignSecurityPrincipals,DC=example,DC=test",
+        "Group ID": "00000000-0000-0000-0000-000000000002",
+        "Group": "Regional Staff",
+        "Member DN": "CN=S-1-5-21-999-888-777-1000,CN=ForeignSecurityPrincipals,DC=example,DC=test",
+        "Member name": "S-1-5-21-999-888-777-1000",
+        "Member ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+        "Member SID": "S-1-5-21-999-888-777-1000",
+        "Member type": "foreignSecurityPrincipal",
+        "Resolution status": "Succeeded"
+      },
+      {
+        "Name": "Regional Staff / CN=Partner Group,DC=child,DC=example,DC=test",
+        "Group ID": "00000000-0000-0000-0000-000000000002",
+        "Group": "Regional Staff",
+        "Member DN": "CN=Partner Group,DC=child,DC=example,DC=test",
+        "Member name": null,
+        "Member ID": null,
+        "Member SID": null,
+        "Member type": "Unknown",
+        "Resolution status": "NotAttempted"
+      }
+    ],
+    "nested": [
+      {
+        "Name": "Application Access → Regional Staff",
+        "Parent group ID": "00000000-0000-0000-0000-000000000001",
+        "Parent group": "Application Access",
+        "Child group ID": "00000000-0000-0000-0000-000000000002",
+        "Child group": "Regional Staff",
+        "Child DN": "CN=Regional Staff,OU=Groups,DC=example,DC=test"
+      }
+    ],
+    "parents": [
+      {
+        "Name": "Regional Staff ← Application Access",
+        "Group ID": "00000000-0000-0000-0000-000000000002",
+        "Group": "Regional Staff",
+        "Parent group ID": "00000000-0000-0000-0000-000000000001",
+        "Parent group": "Application Access",
+        "Parent DN": "CN=Application Access,OU=Groups,DC=example,DC=test"
+      }
+    ],
+    "objectQueries": [
+      {
+        "Name": "Application Access",
+        "Target": "CN=Regional Staff,OU=Groups,DC=example,DC=test",
+        "Status": "Succeeded",
+        "Message": "Fictional member lookup or external exclusion"
+      },
+      {
+        "Name": "Application Access",
+        "Target": "CN=Alex,OU=Users,DC=example,DC=test",
+        "Status": "Succeeded",
+        "Message": "Fictional member lookup or external exclusion"
+      },
+      {
+        "Name": "Application Access",
+        "Target": "CN=PC01,OU=Computers,DC=example,DC=test",
+        "Status": "Succeeded",
+        "Message": "Fictional member lookup or external exclusion"
+      },
+      {
+        "Name": "Regional Staff",
+        "Target": "CN=S-1-5-21-999-888-777-1000,CN=ForeignSecurityPrincipals,DC=example,DC=test",
+        "Status": "Succeeded",
+        "Message": "Fictional member lookup or external exclusion"
+      },
+      {
+        "Name": "Regional Staff",
+        "Target": "CN=Partner Group,DC=child,DC=example,DC=test",
+        "Status": "NotAttempted",
+        "Message": "Fictional member lookup or external exclusion"
+      }
+    ],
+    "collection": [
+      {
+        "Name": "Group enumeration",
+        "Target": "example.test",
+        "Status": "Succeeded",
+        "Record count": 4,
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Fictional metadata"
+      },
+      {
+        "Name": "Direct members: Application Access",
+        "Target": "CN=Application Access,OU=Groups,DC=example,DC=test",
+        "Status": "Succeeded",
+        "Record count": 3,
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Direct links; primary-group membership excluded"
+      },
+      {
+        "Name": "Direct members: Regional Staff",
+        "Target": "CN=Regional Staff,OU=Groups,DC=example,DC=test",
+        "Status": "Succeeded",
+        "Record count": 2,
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Direct links; primary-group membership excluded"
+      },
+      {
+        "Name": "Direct members: Empty Distribution",
+        "Target": "CN=Empty Distribution,OU=Groups,DC=example,DC=test",
+        "Status": "Succeeded",
+        "Record count": 0,
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Direct links; primary-group membership excluded"
+      },
+      {
+        "Name": "Direct members: Restricted Members",
+        "Target": "CN=Restricted Members,OU=Groups,DC=example,DC=test",
+        "Status": "Failed",
+        "Record count": 0,
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": "SampleDenied",
+        "Message": "Synthetic denied member list"
+      }
+    ]
+  },
+  "coverage": {
+    "groups": true,
+    "members": false,
+    "nested": false,
+    "parents": false,
+    "objectQueries": false,
+    "collection": true
+  },
+  "raw": {}
+}

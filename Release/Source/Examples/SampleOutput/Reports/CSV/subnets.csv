@@ -1,0 +1,13 @@
+"Name","Subnet","Mapped site","Description","Location","Site DN"
+"demo-dc01.example.test","192.0.2.0/26","North-Hub","Documentation address range; synthetic mapping",,
+"demo-dc02.example.test","192.0.2.0/26","North-Hub","Documentation address range; synthetic mapping",,
+"demo-dc03.example.test","192.0.2.0/26","North-Hub","Documentation address range; synthetic mapping",,
+"demo-dc04.example.test","192.0.2.64/26","East-Office","Documentation address range; synthetic mapping",,
+"demo-dc05.example.test","192.0.2.64/26","East-Office","Documentation address range; synthetic mapping",,
+"demo-dc06.example.test","192.0.2.64/26","East-Office","Documentation address range; synthetic mapping",,
+"demo-dc07.example.test","192.0.2.128/26","West-Office","Documentation address range; synthetic mapping",,
+"demo-dc08.example.test","192.0.2.128/26","West-Office","Documentation address range; synthetic mapping",,
+"demo-dc09.example.test","192.0.2.128/26","West-Office","Documentation address range; synthetic mapping",,
+"demo-dc10.example.test","192.0.2.192/26","South-Branch","Documentation address range; synthetic mapping",,
+"demo-dc11.example.test","192.0.2.192/26","South-Branch","Documentation address range; synthetic mapping",,
+"demo-dc12.example.test","192.0.2.192/26","South-Branch","Documentation address range; synthetic mapping",,

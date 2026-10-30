@@ -1,0 +1,984 @@
+﻿{
+  "meta": {
+    "moduleName": "PSInsightInventory",
+    "version": "1.0.0",
+    "inventoryId": "ADSitesAndServices",
+    "title": "Sites & Services Inventory",
+    "run": "5a3afbe1",
+    "dataSource": "Sample",
+    "scope": "Forest-wide Configuration partition",
+    "forest": "example.test",
+    "connectionDomain": "corp.example.test",
+    "sourceDC": "demo-dc01.corp.example.test",
+    "configurationNC": "CN=Configuration,DC=example,DC=test",
+    "started": "2026-10-30T13:07:59.4719460+05:30",
+    "generated": "2026-10-30T13:07:59.5521220+05:30",
+    "generatedDisplay": "30 Oct 2026, 13:07:59 +05:30",
+    "timeZone": "Asia/Calcutta",
+    "notice": "SAMPLE DATA. Fictional forest. No directory or server was contacted.",
+    "limitations": [
+      "Directory objects and settings, not server availability or replication health.",
+      "Successful queries cannot prove ACL-filtered object/attribute visibility. Null values can mean not set or not returned.",
+      "Stored schedules use UTC; they are not effective replication schedules. Transport options and combined paths can affect behavior.",
+      "DC objects are observed NTDS Settings objects beneath server objects, not a live DC census.",
+      "No WinRM, remote registry, service probes or infrastructure changes are used by this command."
+    ],
+    "timeoutSeconds": null
+  },
+  "sections": {
+    "sites": [
+      "Sites",
+      [
+        "Name",
+        "DC objects",
+        "Server objects",
+        "Subnets",
+        "Site links",
+        "Location",
+        "Description",
+        "ISTG DN",
+        "Site options raw",
+        "DN",
+        "Created",
+        "Changed"
+      ]
+    ],
+    "subnets": [
+      "Subnets",
+      [
+        "Name",
+        "Site",
+        "Assignment",
+        "Description",
+        "Location",
+        "Site DN",
+        "DN"
+      ]
+    ],
+    "links": [
+      "Site links",
+      [
+        "Name",
+        "Transport",
+        "Cost",
+        "Interval minutes",
+        "Sites",
+        "Member count",
+        "Options raw",
+        "Change notification",
+        "Two-way sync",
+        "Compression disabled",
+        "Schedule",
+        "DN"
+      ]
+    ],
+    "linkMembers": [
+      "Site link membership",
+      [
+        "Name",
+        "Site link",
+        "Site",
+        "Reference state",
+        "Site DN",
+        "Link DN"
+      ]
+    ],
+    "bridges": [
+      "Site link bridges",
+      [
+        "Name",
+        "Transport",
+        "Member links",
+        "Member count",
+        "Description",
+        "DN"
+      ]
+    ],
+    "bridgeMembers": [
+      "Bridge membership",
+      [
+        "Name",
+        "Bridge",
+        "Site link",
+        "Reference state",
+        "Link DN",
+        "Bridge DN"
+      ]
+    ],
+    "servers": [
+      "Directory servers",
+      [
+        "Name",
+        "Host name",
+        "Site",
+        "NTDS object present",
+        "Bridgehead transports",
+        "Server reference",
+        "DN"
+      ]
+    ],
+    "settings": [
+      "Site configuration",
+      [
+        "Name",
+        "Site",
+        "ISTG DN",
+        "Options raw",
+        "Preferred GC site DN",
+        "Schedule",
+        "Site DN",
+        "DN"
+      ]
+    ],
+    "transports": [
+      "Transports",
+      [
+        "Name",
+        "Options raw",
+        "Ignore schedules",
+        "Bridge all site links",
+        "Address attribute",
+        "DN"
+      ]
+    ],
+    "schedules": [
+      "Stored schedules",
+      [
+        "Name",
+        "Owner type",
+        "Parse status",
+        "Allowed hours UTC",
+        "Summary",
+        "Hourly masks UTC",
+        "Raw base64",
+        "DN"
+      ]
+    ],
+    "collection": [
+      "Collection ledger",
+      [
+        "Name",
+        "Status",
+        "Record count",
+        "Method",
+        "Collected at",
+        "Duration ms",
+        "Error ID",
+        "Message"
+      ]
+    ]
+  },
+  "data": {
+    "sites": [
+      {
+        "Name": "North-Hub",
+        "DC objects": 1,
+        "Server objects": 1,
+        "Subnets": 1,
+        "Site links": 2,
+        "Location": "Example region",
+        "Description": "Fictional North-Hub site",
+        "ISTG DN": "CN=NTDS Settings,CN=DEMO-DC01,CN=Servers,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Site options raw": "0",
+        "DN": "CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Created": "2025-01-01T05:30:00+05:30",
+        "Changed": "2026-10-29T15:30:00+05:30"
+      },
+      {
+        "Name": "East-Office",
+        "DC objects": 1,
+        "Server objects": 1,
+        "Subnets": 1,
+        "Site links": 2,
+        "Location": "Example region",
+        "Description": "Fictional East-Office site",
+        "ISTG DN": "CN=NTDS Settings,CN=DEMO-DC02,CN=Servers,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Site options raw": "0",
+        "DN": "CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Created": "2025-01-01T05:30:00+05:30",
+        "Changed": "2026-10-29T15:30:00+05:30"
+      },
+      {
+        "Name": "Recovery",
+        "DC objects": 1,
+        "Server objects": 1,
+        "Subnets": 1,
+        "Site links": 2,
+        "Location": "Example region",
+        "Description": "Fictional Recovery site",
+        "ISTG DN": "CN=NTDS Settings,CN=DEMO-DC03,CN=Servers,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Site options raw": "0",
+        "DN": "CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Created": "2025-01-01T05:30:00+05:30",
+        "Changed": "2026-10-29T15:30:00+05:30"
+      },
+      {
+        "Name": "Staging",
+        "DC objects": 0,
+        "Server objects": 0,
+        "Subnets": 0,
+        "Site links": 0,
+        "Location": "Example region",
+        "Description": "Fictional Staging site",
+        "ISTG DN": null,
+        "Site options raw": "16",
+        "DN": "CN=Staging,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Created": "2025-01-01T05:30:00+05:30",
+        "Changed": "2026-10-29T15:30:00+05:30"
+      }
+    ],
+    "subnets": [
+      {
+        "Name": "192.0.2.0/26",
+        "Site": "North-Hub",
+        "Assignment": "Assigned",
+        "Description": "Fictional subnet",
+        "Location": null,
+        "Site DN": "CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "DN": "CN=192.0.2.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "192.0.2.64/26",
+        "Site": "East-Office",
+        "Assignment": "Assigned",
+        "Description": "Fictional subnet",
+        "Location": null,
+        "Site DN": "CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "DN": "CN=192.0.2.64/26,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "192.0.2.128/26",
+        "Site": "Recovery",
+        "Assignment": "Assigned",
+        "Description": "Fictional subnet",
+        "Location": null,
+        "Site DN": "CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "DN": "CN=192.0.2.128/26,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "192.0.2.192/27",
+        "Site": null,
+        "Assignment": "Unassigned / no value returned",
+        "Description": "Fictional subnet",
+        "Location": null,
+        "Site DN": "",
+        "DN": "CN=192.0.2.192/27,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "198.51.100.0/24",
+        "Site": "CN=Missing-Site,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Assignment": "Unresolved reference",
+        "Description": "Fictional subnet",
+        "Location": null,
+        "Site DN": "CN=Missing-Site,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "DN": "CN=198.51.100.0/24,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "links": [
+      {
+        "Name": "HQ-East",
+        "Transport": "IP",
+        "Cost": "100",
+        "Interval minutes": "180",
+        "Sites": "North-Hub; East-Office",
+        "Member count": 2,
+        "Options raw": "1",
+        "Change notification": true,
+        "Two-way sync": false,
+        "Compression disabled": false,
+        "Schedule": "168 / 168 permitted hours per stored UTC week.",
+        "DN": "CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "HQ-Recovery",
+        "Transport": "IP",
+        "Cost": "200",
+        "Interval minutes": "180",
+        "Sites": "North-Hub; Recovery",
+        "Member count": 2,
+        "Options raw": "1",
+        "Change notification": true,
+        "Two-way sync": false,
+        "Compression disabled": false,
+        "Schedule": "No stored schedule returned; no availability inferred.",
+        "DN": "CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "East-Recovery",
+        "Transport": "IP",
+        "Cost": "300",
+        "Interval minutes": "180",
+        "Sites": "East-Office; Recovery",
+        "Member count": 2,
+        "Options raw": "1",
+        "Change notification": true,
+        "Two-way sync": false,
+        "Compression disabled": false,
+        "Schedule": "84 / 168 permitted hours per stored UTC week.",
+        "DN": "CN=East-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "linkMembers": [
+      {
+        "Name": "HQ-East → North-Hub",
+        "Site link": "HQ-East",
+        "Site": "North-Hub",
+        "Reference state": "Resolved",
+        "Site DN": "CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Link DN": "CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "HQ-East → East-Office",
+        "Site link": "HQ-East",
+        "Site": "East-Office",
+        "Reference state": "Resolved",
+        "Site DN": "CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Link DN": "CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "HQ-Recovery → North-Hub",
+        "Site link": "HQ-Recovery",
+        "Site": "North-Hub",
+        "Reference state": "Resolved",
+        "Site DN": "CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Link DN": "CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "HQ-Recovery → Recovery",
+        "Site link": "HQ-Recovery",
+        "Site": "Recovery",
+        "Reference state": "Resolved",
+        "Site DN": "CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Link DN": "CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "East-Recovery → East-Office",
+        "Site link": "East-Recovery",
+        "Site": "East-Office",
+        "Reference state": "Resolved",
+        "Site DN": "CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Link DN": "CN=East-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "East-Recovery → Recovery",
+        "Site link": "East-Recovery",
+        "Site": "Recovery",
+        "Reference state": "Resolved",
+        "Site DN": "CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Link DN": "CN=East-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "bridges": [
+      {
+        "Name": "Core-Bridge",
+        "Transport": "IP",
+        "Member links": "HQ-East; HQ-Recovery",
+        "Member count": 2,
+        "Description": "Explicit sample bridge",
+        "DN": "CN=Core-Bridge,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "bridgeMembers": [
+      {
+        "Name": "Core-Bridge → HQ-East",
+        "Bridge": "Core-Bridge",
+        "Site link": "HQ-East",
+        "Reference state": "Resolved",
+        "Link DN": "CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Bridge DN": "CN=Core-Bridge,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "Core-Bridge → HQ-Recovery",
+        "Bridge": "Core-Bridge",
+        "Site link": "HQ-Recovery",
+        "Reference state": "Resolved",
+        "Link DN": "CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Bridge DN": "CN=Core-Bridge,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "servers": [
+      {
+        "Name": "DEMO-DC01",
+        "Host name": "demo-dc01.example.test",
+        "Site": "North-Hub",
+        "NTDS object present": true,
+        "Bridgehead transports": "IP",
+        "Server reference": "CN=DEMO-DC01,OU=Domain Controllers,DC=example,DC=test",
+        "DN": "CN=DEMO-DC01,CN=Servers,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "DEMO-DC02",
+        "Host name": "demo-dc02.example.test",
+        "Site": "East-Office",
+        "NTDS object present": true,
+        "Bridgehead transports": "",
+        "Server reference": "CN=DEMO-DC02,OU=Domain Controllers,DC=example,DC=test",
+        "DN": "CN=DEMO-DC02,CN=Servers,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "DEMO-DC03",
+        "Host name": "demo-dc03.example.test",
+        "Site": "Recovery",
+        "NTDS object present": true,
+        "Bridgehead transports": "",
+        "Server reference": "CN=DEMO-DC03,OU=Domain Controllers,DC=example,DC=test",
+        "DN": "CN=DEMO-DC03,CN=Servers,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "settings": [
+      {
+        "Name": "North-Hub",
+        "Site": "North-Hub",
+        "ISTG DN": "CN=NTDS Settings,CN=DEMO-DC01,CN=Servers,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Options raw": "0",
+        "Preferred GC site DN": null,
+        "Schedule": "No stored schedule returned; no availability inferred.",
+        "Site DN": "CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "DN": "CN=NTDS Site Settings,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "East-Office",
+        "Site": "East-Office",
+        "ISTG DN": "CN=NTDS Settings,CN=DEMO-DC02,CN=Servers,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Options raw": "0",
+        "Preferred GC site DN": null,
+        "Schedule": "No stored schedule returned; no availability inferred.",
+        "Site DN": "CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "DN": "CN=NTDS Site Settings,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "Recovery",
+        "Site": "Recovery",
+        "ISTG DN": "CN=NTDS Settings,CN=DEMO-DC03,CN=Servers,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "Options raw": "0",
+        "Preferred GC site DN": null,
+        "Schedule": "No stored schedule returned; no availability inferred.",
+        "Site DN": "CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "DN": "CN=NTDS Site Settings,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "Staging",
+        "Site": "Staging",
+        "ISTG DN": null,
+        "Options raw": "16",
+        "Preferred GC site DN": null,
+        "Schedule": "No stored schedule returned; no availability inferred.",
+        "Site DN": "CN=Staging,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "DN": "CN=NTDS Site Settings,CN=Staging,CN=Sites,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "transports": [
+      {
+        "Name": "IP",
+        "Options raw": "0",
+        "Ignore schedules": false,
+        "Bridge all site links": true,
+        "Address attribute": "dNSHostName",
+        "DN": "CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "SMTP",
+        "Options raw": "2",
+        "Ignore schedules": false,
+        "Bridge all site links": false,
+        "Address attribute": "mailAddress",
+        "DN": "CN=SMTP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "schedules": [
+      {
+        "Name": "HQ-East",
+        "Owner type": "Site link",
+        "Parse status": "Parsed",
+        "Allowed hours UTC": 168.0,
+        "Summary": "168 / 168 permitted hours per stored UTC week.",
+        "Hourly masks UTC": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+        "Raw base64": "vAAAAAAAAAABAAAAAAAAABQAAAAPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8=",
+        "DN": "CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "HQ-Recovery",
+        "Owner type": "Site link",
+        "Parse status": "Not set or not returned",
+        "Allowed hours UTC": null,
+        "Summary": "No stored schedule returned; no availability inferred.",
+        "Hourly masks UTC": null,
+        "Raw base64": null,
+        "DN": "CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "East-Recovery",
+        "Owner type": "Site link",
+        "Parse status": "Parsed",
+        "Allowed hours UTC": 84.0,
+        "Summary": "84 / 168 permitted hours per stored UTC week.",
+        "Hourly masks UTC": "333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333",
+        "Raw base64": "vAAAAAAAAAABAAAAAAAAABQAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM=",
+        "DN": "CN=East-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "NTDS Site Settings",
+        "Owner type": "NTDS site settings",
+        "Parse status": "Not set or not returned",
+        "Allowed hours UTC": null,
+        "Summary": "No stored schedule returned; no availability inferred.",
+        "Hourly masks UTC": null,
+        "Raw base64": null,
+        "DN": "CN=NTDS Site Settings,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "NTDS Site Settings",
+        "Owner type": "NTDS site settings",
+        "Parse status": "Not set or not returned",
+        "Allowed hours UTC": null,
+        "Summary": "No stored schedule returned; no availability inferred.",
+        "Hourly masks UTC": null,
+        "Raw base64": null,
+        "DN": "CN=NTDS Site Settings,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "NTDS Site Settings",
+        "Owner type": "NTDS site settings",
+        "Parse status": "Not set or not returned",
+        "Allowed hours UTC": null,
+        "Summary": "No stored schedule returned; no availability inferred.",
+        "Hourly masks UTC": null,
+        "Raw base64": null,
+        "DN": "CN=NTDS Site Settings,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "NTDS Site Settings",
+        "Owner type": "NTDS site settings",
+        "Parse status": "Not set or not returned",
+        "Allowed hours UTC": null,
+        "Summary": "No stored schedule returned; no availability inferred.",
+        "Hourly masks UTC": null,
+        "Raw base64": null,
+        "DN": "CN=NTDS Site Settings,CN=Staging,CN=Sites,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "collection": [
+      {
+        "Name": "sites",
+        "Status": "Succeeded",
+        "Record count": 4,
+        "Method": "Synthetic fixture / Configuration partition",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Query completed; zero rows is a valid result."
+      },
+      {
+        "Name": "subnets",
+        "Status": "Succeeded",
+        "Record count": 5,
+        "Method": "Synthetic fixture / Configuration partition",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Query completed; zero rows is a valid result."
+      },
+      {
+        "Name": "links",
+        "Status": "Succeeded",
+        "Record count": 3,
+        "Method": "Synthetic fixture / Configuration partition",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Query completed; zero rows is a valid result."
+      },
+      {
+        "Name": "bridges",
+        "Status": "Succeeded",
+        "Record count": 1,
+        "Method": "Synthetic fixture / Configuration partition",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Query completed; zero rows is a valid result."
+      },
+      {
+        "Name": "servers",
+        "Status": "Succeeded",
+        "Record count": 3,
+        "Method": "Synthetic fixture / Configuration partition",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Query completed; zero rows is a valid result."
+      },
+      {
+        "Name": "settings",
+        "Status": "Succeeded",
+        "Record count": 4,
+        "Method": "Synthetic fixture / Configuration partition",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Query completed; zero rows is a valid result."
+      },
+      {
+        "Name": "transports",
+        "Status": "Succeeded",
+        "Record count": 2,
+        "Method": "Synthetic fixture / Configuration partition",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Query completed; zero rows is a valid result."
+      },
+      {
+        "Name": "ntds",
+        "Status": "Succeeded",
+        "Record count": 3,
+        "Method": "Synthetic fixture / Configuration partition",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Query completed; zero rows is a valid result."
+      }
+    ]
+  },
+  "coverage": {
+    "servers": true,
+    "ntds": true,
+    "transports": true,
+    "sites": true,
+    "bridges": true,
+    "links": true,
+    "subnets": true,
+    "settings": true
+  },
+  "raw": {
+    "servers": [
+      {
+        "Name": "DEMO-DC01",
+        "DistinguishedName": "CN=DEMO-DC01,CN=Servers,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "dNSHostName": [
+          "demo-dc01.example.test"
+        ],
+        "serverReference": [
+          "CN=DEMO-DC01,OU=Domain Controllers,DC=example,DC=test"
+        ],
+        "bridgeheadTransportList": [
+          "CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ]
+      },
+      {
+        "Name": "DEMO-DC02",
+        "DistinguishedName": "CN=DEMO-DC02,CN=Servers,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "dNSHostName": [
+          "demo-dc02.example.test"
+        ],
+        "serverReference": [
+          "CN=DEMO-DC02,OU=Domain Controllers,DC=example,DC=test"
+        ],
+        "bridgeheadTransportList": []
+      },
+      {
+        "Name": "DEMO-DC03",
+        "DistinguishedName": "CN=DEMO-DC03,CN=Servers,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "dNSHostName": [
+          "demo-dc03.example.test"
+        ],
+        "serverReference": [
+          "CN=DEMO-DC03,OU=Domain Controllers,DC=example,DC=test"
+        ],
+        "bridgeheadTransportList": []
+      }
+    ],
+    "ntds": [
+      {
+        "Name": "NTDS Settings",
+        "DistinguishedName": "CN=NTDS Settings,CN=DEMO-DC01,CN=Servers,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "objectGUID": [
+          "00000000-0000-0000-0000-000000000001"
+        ]
+      },
+      {
+        "Name": "NTDS Settings",
+        "DistinguishedName": "CN=NTDS Settings,CN=DEMO-DC02,CN=Servers,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "objectGUID": [
+          "00000000-0000-0000-0000-000000000002"
+        ]
+      },
+      {
+        "Name": "NTDS Settings",
+        "DistinguishedName": "CN=NTDS Settings,CN=DEMO-DC03,CN=Servers,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "objectGUID": [
+          "00000000-0000-0000-0000-000000000003"
+        ]
+      }
+    ],
+    "transports": [
+      {
+        "Name": "IP",
+        "DistinguishedName": "CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "options": [
+          "0"
+        ],
+        "transportAddressAttribute": [
+          "dNSHostName"
+        ]
+      },
+      {
+        "Name": "SMTP",
+        "DistinguishedName": "CN=SMTP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "options": [
+          "2"
+        ],
+        "transportAddressAttribute": [
+          "mailAddress"
+        ]
+      }
+    ],
+    "sites": [
+      {
+        "Name": "North-Hub",
+        "DistinguishedName": "CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "description": [
+          "Fictional North-Hub site"
+        ],
+        "location": [
+          "Example region"
+        ],
+        "whenCreated": [
+          "2025-01-01T05:30:00+05:30"
+        ],
+        "whenChanged": [
+          "2026-10-29T15:30:00+05:30"
+        ]
+      },
+      {
+        "Name": "East-Office",
+        "DistinguishedName": "CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "description": [
+          "Fictional East-Office site"
+        ],
+        "location": [
+          "Example region"
+        ],
+        "whenCreated": [
+          "2025-01-01T05:30:00+05:30"
+        ],
+        "whenChanged": [
+          "2026-10-29T15:30:00+05:30"
+        ]
+      },
+      {
+        "Name": "Recovery",
+        "DistinguishedName": "CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "description": [
+          "Fictional Recovery site"
+        ],
+        "location": [
+          "Example region"
+        ],
+        "whenCreated": [
+          "2025-01-01T05:30:00+05:30"
+        ],
+        "whenChanged": [
+          "2026-10-29T15:30:00+05:30"
+        ]
+      },
+      {
+        "Name": "Staging",
+        "DistinguishedName": "CN=Staging,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "description": [
+          "Fictional Staging site"
+        ],
+        "location": [
+          "Example region"
+        ],
+        "whenCreated": [
+          "2025-01-01T05:30:00+05:30"
+        ],
+        "whenChanged": [
+          "2026-10-29T15:30:00+05:30"
+        ]
+      }
+    ],
+    "bridges": [
+      {
+        "Name": "Core-Bridge",
+        "DistinguishedName": "CN=Core-Bridge,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "siteLinkList": [
+          "CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test",
+          "CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "description": [
+          "Explicit sample bridge"
+        ]
+      }
+    ],
+    "links": [
+      {
+        "Name": "HQ-East",
+        "DistinguishedName": "CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "cost": [
+          "100"
+        ],
+        "replInterval": [
+          "180"
+        ],
+        "siteList": [
+          "CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+          "CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "options": [
+          "1"
+        ],
+        "schedule": "vAAAAAAAAAABAAAAAAAAABQAAAAPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8=",
+        "description": [
+          "Sample site link"
+        ]
+      },
+      {
+        "Name": "HQ-Recovery",
+        "DistinguishedName": "CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "cost": [
+          "200"
+        ],
+        "replInterval": [
+          "180"
+        ],
+        "siteList": [
+          "CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+          "CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "options": [
+          "1"
+        ],
+        "schedule": null,
+        "description": [
+          "Sample site link"
+        ]
+      },
+      {
+        "Name": "East-Recovery",
+        "DistinguishedName": "CN=East-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "cost": [
+          "300"
+        ],
+        "replInterval": [
+          "180"
+        ],
+        "siteList": [
+          "CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+          "CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "options": [
+          "1"
+        ],
+        "schedule": "vAAAAAAAAAABAAAAAAAAABQAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM=",
+        "description": [
+          "Sample site link"
+        ]
+      }
+    ],
+    "subnets": [
+      {
+        "Name": "192.0.2.0/26",
+        "DistinguishedName": "CN=192.0.2.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "siteObject": [
+          "CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "description": [
+          "Fictional subnet"
+        ],
+        "location": []
+      },
+      {
+        "Name": "192.0.2.64/26",
+        "DistinguishedName": "CN=192.0.2.64/26,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "siteObject": [
+          "CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "description": [
+          "Fictional subnet"
+        ],
+        "location": []
+      },
+      {
+        "Name": "192.0.2.128/26",
+        "DistinguishedName": "CN=192.0.2.128/26,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "siteObject": [
+          "CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "description": [
+          "Fictional subnet"
+        ],
+        "location": []
+      },
+      {
+        "Name": "192.0.2.192/27",
+        "DistinguishedName": "CN=192.0.2.192/27,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "siteObject": [],
+        "description": [
+          "Fictional subnet"
+        ],
+        "location": []
+      },
+      {
+        "Name": "198.51.100.0/24",
+        "DistinguishedName": "CN=198.51.100.0/24,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "siteObject": [
+          "CN=Missing-Site,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "description": [
+          "Fictional subnet"
+        ],
+        "location": []
+      }
+    ],
+    "settings": [
+      {
+        "Name": "NTDS Site Settings",
+        "DistinguishedName": "CN=NTDS Site Settings,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "interSiteTopologyGenerator": [
+          "CN=NTDS Settings,CN=DEMO-DC01,CN=Servers,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "options": [
+          "0"
+        ],
+        "schedule": null,
+        "msDS-Preferred-GC-Site": []
+      },
+      {
+        "Name": "NTDS Site Settings",
+        "DistinguishedName": "CN=NTDS Site Settings,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "interSiteTopologyGenerator": [
+          "CN=NTDS Settings,CN=DEMO-DC02,CN=Servers,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "options": [
+          "0"
+        ],
+        "schedule": null,
+        "msDS-Preferred-GC-Site": []
+      },
+      {
+        "Name": "NTDS Site Settings",
+        "DistinguishedName": "CN=NTDS Site Settings,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "interSiteTopologyGenerator": [
+          "CN=NTDS Settings,CN=DEMO-DC03,CN=Servers,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test"
+        ],
+        "options": [
+          "0"
+        ],
+        "schedule": null,
+        "msDS-Preferred-GC-Site": []
+      },
+      {
+        "Name": "NTDS Site Settings",
+        "DistinguishedName": "CN=NTDS Site Settings,CN=Staging,CN=Sites,CN=Configuration,DC=example,DC=test",
+        "interSiteTopologyGenerator": [],
+        "options": [
+          "16"
+        ],
+        "schedule": null,
+        "msDS-Preferred-GC-Site": []
+      }
+    ]
+  }
+}

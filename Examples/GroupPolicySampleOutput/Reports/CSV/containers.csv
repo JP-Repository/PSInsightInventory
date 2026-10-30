@@ -1,0 +1,4 @@
+"Name","Type","DN","Block inheritance","Options raw","Link entries observed","Selected-domain links"
+"example.test","Domain","DC=example,DC=test","False","0","1","1"
+"Workstations","OU","OU=Workstations,DC=example,DC=test","False","0","1","1"
+"HQ","Site","CN=HQ,CN=Sites,CN=Configuration,DC=example,DC=test","False","0","1","1"

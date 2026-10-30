@@ -1,0 +1,3 @@
+"Name","Server","Forwarder","Order","Timeout seconds","Use root hints"
+"dc01.example.test","dc01.example.test","192.0.2.53","1","3","False"
+"dc02.example.test","dc02.example.test","192.0.2.53","1","3","False"

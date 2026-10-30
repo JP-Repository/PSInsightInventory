@@ -1,0 +1,4 @@
+"Name","Server","Adapter","DNS search order","Preferred DNS","Alternate DNS","Additional DNS"
+"dc01.example.test","dc01.example.test","Ethernet","192.0.2.10; 192.0.2.11; 192.0.2.12","192.0.2.10","192.0.2.11","192.0.2.12"
+"dc02.example.test","dc02.example.test","Ethernet","192.0.2.10; 192.0.2.11; 192.0.2.12","192.0.2.10","192.0.2.11","192.0.2.12"
+"dc03.example.test","dc03.example.test","Ethernet","192.0.2.10; 192.0.2.11; 192.0.2.12","192.0.2.10","192.0.2.11","192.0.2.12"

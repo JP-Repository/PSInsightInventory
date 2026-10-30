@@ -1,0 +1,3 @@
+"Name","Location DN","Users observed"
+"CN=Users,DC=example,DC=test","CN=Users,DC=example,DC=test","1"
+"OU=Employees,DC=example,DC=test","OU=Employees,DC=example,DC=test","4"

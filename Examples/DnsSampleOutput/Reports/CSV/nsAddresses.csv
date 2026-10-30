@@ -1,0 +1,5 @@
+"Name","Server","Zone","Name server","Address zone","Owner","Record type","Address","TTL"
+"dc01.example.test / example.test","dc01.example.test","example.test","dc01.example.test.","example.test","dc01","A","192.0.2.10","01:00:00"
+"dc01.example.test / _msdcs.example.test","dc01.example.test","_msdcs.example.test","dc01.example.test.","example.test","dc01","A","192.0.2.10","01:00:00"
+"dc02.example.test / example.test","dc02.example.test","example.test","dc01.example.test.","example.test","dc01","A","192.0.2.10","01:00:00"
+"dc02.example.test / _msdcs.example.test","dc02.example.test","_msdcs.example.test","dc01.example.test.","example.test","dc01","A","192.0.2.10","01:00:00"

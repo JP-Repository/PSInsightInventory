@@ -1,0 +1,187 @@
+{
+  "context": {
+    "Domain": "example.test",
+    "Server": "dc01.example.test",
+    "DomainDN": "DC=example,DC=test",
+    "Forest": "example.test",
+    "ConfigurationNC": "CN=Configuration,DC=example,DC=test"
+  },
+  "envelopes": [
+    {
+      "Kind": "Section",
+      "Key": "groups",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Id": "00000000-0000-0000-0000-000000000001",
+          "Name": "Application Access",
+          "DN": "CN=Application Access,OU=Groups,DC=example,DC=test",
+          "Sam": "Application_Access",
+          "Sid": "S-1-5-21-100-200-300-1100",
+          "Scope": "Global",
+          "Category": "Security",
+          "Description": "Fictional group",
+          "ManagedBy": null,
+          "Created": "2025-01-01T00:00:00Z",
+          "Changed": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Id": "00000000-0000-0000-0000-000000000002",
+          "Name": "Regional Staff",
+          "DN": "CN=Regional Staff,OU=Groups,DC=example,DC=test",
+          "Sam": "Regional_Staff",
+          "Sid": "S-1-5-21-100-200-300-1101",
+          "Scope": "Global",
+          "Category": "Security",
+          "Description": "Fictional group",
+          "ManagedBy": null,
+          "Created": "2025-01-01T00:00:00Z",
+          "Changed": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Id": "00000000-0000-0000-0000-000000000003",
+          "Name": "Empty Distribution",
+          "DN": "CN=Empty Distribution,OU=Groups,DC=example,DC=test",
+          "Sam": "Empty_Distribution",
+          "Sid": "S-1-5-21-100-200-300-1102",
+          "Scope": "Universal",
+          "Category": "Distribution",
+          "Description": "Fictional group",
+          "ManagedBy": null,
+          "Created": "2025-01-01T00:00:00Z",
+          "Changed": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Id": "00000000-0000-0000-0000-000000000004",
+          "Name": "Restricted Members",
+          "DN": "CN=Restricted Members,OU=Groups,DC=example,DC=test",
+          "Sam": "Restricted_Members",
+          "Sid": "S-1-5-21-100-200-300-1103",
+          "Scope": "Global",
+          "Category": "Security",
+          "Description": "Fictional group",
+          "ManagedBy": null,
+          "Created": "2025-01-01T00:00:00Z",
+          "Changed": "2026-10-30T00:00:00Z"
+        }
+      ],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Fictional metadata"
+    },
+    {
+      "Kind": "Section",
+      "Key": "members:00000000-0000-0000-0000-000000000001",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "DN": "CN=Regional Staff,OU=Groups,DC=example,DC=test",
+          "Name": "Regional Staff",
+          "Id": "00000000-0000-0000-0000-000000000002",
+          "Sid": "S-1-5-21-100-200-300-1101",
+          "Type": "group",
+          "Resolution": "Succeeded"
+        },
+        {
+          "DN": "CN=Alex,OU=Users,DC=example,DC=test",
+          "Name": "Alex",
+          "Id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "Sid": "S-1-5-21-100-200-300-1200",
+          "Type": "user",
+          "Resolution": "Succeeded"
+        },
+        {
+          "DN": "CN=PC01,OU=Computers,DC=example,DC=test",
+          "Name": "PC01",
+          "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+          "Sid": null,
+          "Type": "computer",
+          "Resolution": "Succeeded"
+        }
+      ],
+      "Lookups": [
+        {
+          "Target": "CN=Regional Staff,OU=Groups,DC=example,DC=test",
+          "Status": "Succeeded",
+          "Message": "Fictional member lookup or external exclusion"
+        },
+        {
+          "Target": "CN=Alex,OU=Users,DC=example,DC=test",
+          "Status": "Succeeded",
+          "Message": "Fictional member lookup or external exclusion"
+        },
+        {
+          "Target": "CN=PC01,OU=Computers,DC=example,DC=test",
+          "Status": "Succeeded",
+          "Message": "Fictional member lookup or external exclusion"
+        }
+      ],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Direct links; primary-group membership excluded"
+    },
+    {
+      "Kind": "Section",
+      "Key": "members:00000000-0000-0000-0000-000000000002",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "DN": "CN=S-1-5-21-999-888-777-1000,CN=ForeignSecurityPrincipals,DC=example,DC=test",
+          "Name": "S-1-5-21-999-888-777-1000",
+          "Id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+          "Sid": "S-1-5-21-999-888-777-1000",
+          "Type": "foreignSecurityPrincipal",
+          "Resolution": "Succeeded"
+        },
+        {
+          "DN": "CN=Partner Group,DC=child,DC=example,DC=test",
+          "Name": null,
+          "Id": null,
+          "Sid": null,
+          "Type": "Unknown",
+          "Resolution": "NotAttempted"
+        }
+      ],
+      "Lookups": [
+        {
+          "Target": "CN=S-1-5-21-999-888-777-1000,CN=ForeignSecurityPrincipals,DC=example,DC=test",
+          "Status": "Succeeded",
+          "Message": "Fictional member lookup or external exclusion"
+        },
+        {
+          "Target": "CN=Partner Group,DC=child,DC=example,DC=test",
+          "Status": "NotAttempted",
+          "Message": "Fictional member lookup or external exclusion"
+        }
+      ],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Direct links; primary-group membership excluded"
+    },
+    {
+      "Kind": "Section",
+      "Key": "members:00000000-0000-0000-0000-000000000003",
+      "Status": "Succeeded",
+      "Records": [],
+      "Lookups": [],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Direct links; primary-group membership excluded"
+    },
+    {
+      "Kind": "Section",
+      "Key": "members:00000000-0000-0000-0000-000000000004",
+      "Status": "Failed",
+      "Records": [],
+      "Lookups": [],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": "SampleDenied",
+      "ErrorMessage": "Synthetic denied member list"
+    }
+  ]
+}

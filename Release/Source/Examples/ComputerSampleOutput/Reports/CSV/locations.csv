@@ -1,0 +1,4 @@
+"Name","Location DN","Computers observed"
+"OU=Domain Controllers,DC=example,DC=test","OU=Domain Controllers,DC=example,DC=test","1"
+"OU=Servers,DC=example,DC=test","OU=Servers,DC=example,DC=test","4"
+"OU=Workstations,DC=example,DC=test","OU=Workstations,DC=example,DC=test","5"

@@ -1,0 +1,3 @@
+"Name","Server","Zone","Master servers","AD integrated","Directory partition","Timeout seconds","Use recursion"
+"dc01.example.test / partner.test","dc01.example.test","partner.test","198.51.100.53","True",,"5","False"
+"dc02.example.test / partner.test","dc02.example.test","partner.test","198.51.100.53","True",,"5","False"

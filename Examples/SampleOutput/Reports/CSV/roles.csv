@@ -1,0 +1,6 @@
+"Name","Role","Scope"
+"demo-dc01.example.test","SchemaMaster","Forest"
+"demo-dc01.example.test","DomainNamingMaster","Forest"
+"demo-dc01.example.test","PDCEmulator","example.test"
+"demo-dc02.example.test","RIDMaster","example.test"
+"demo-dc03.example.test","InfrastructureMaster","example.test"

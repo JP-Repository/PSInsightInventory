@@ -1,0 +1,2 @@
+"Name","Filter ID","Author","Description","Query definition raw","DN"
+"Workstations","aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa","EXAMPLE\Admin","Fictional filter","1;3;10;47;WQL;root\CIMv2;SELECT * FROM Win32_OperatingSystem WHERE ProductType = 1;","CN={aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa},CN=SOM,CN=WMIPolicy,CN=System,DC=example,DC=test"

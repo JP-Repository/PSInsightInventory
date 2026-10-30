@@ -1,0 +1,3 @@
+"Name","Server","Enabled","Additional timeout","Retry interval","Timeout","Secure response"
+"dc01.example.test","dc01.example.test","True","00:00:04","00:00:03","00:00:08",
+"dc02.example.test","dc02.example.test","True","00:00:04","00:00:03","00:00:08",

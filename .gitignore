@@ -1,0 +1,37 @@
+# Ad-hoc distribution output outside the versioned Release folder
+/dist/
+*.nupkg
+
+# Generated inventory output
+**/Reports/
+**/Logs/
+*.jsonl
+*.log
+
+# Keep the intentionally fictional documentation examples in source control.
+!/Examples/
+!/Examples/**
+/Examples/*/Logs/
+
+# Generated test output
+TestResults/
+Tests/*TestResults.json
+Tests/Offline-TestResults.json
+Tests/OfflineValidationResults.json
+Tests/MockDebug.json
+
+# Local credentials, certificates, and environment files
+.env
+.env.*
+*.clixml
+*.credential
+*.pfx
+*.p12
+*.key
+*.pem
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

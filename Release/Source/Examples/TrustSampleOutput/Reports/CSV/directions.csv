@@ -1,0 +1,6 @@
+"Name","Observed domain","Partner","Direction","Raw direction","Meaning","DN"
+"example.test / corp.example.test","example.test","corp.example.test","Bidirectional","3","Both directions are configured on this observed object.","CN=corp.example.test,CN=System,DC=example,DC=test"
+"example.test / partner.test","example.test","partner.test","Outbound","2","Observed domain trusts the partner (configured direction only).","CN=partner.test,CN=System,DC=example,DC=test"
+"example.test / legacy.test","example.test","legacy.test","Inbound","1","Partner trusts the observed domain (configured direction only).","CN=legacy.test,CN=System,DC=example,DC=test"
+"corp.example.test / example.test","corp.example.test","example.test","Bidirectional","3","Both directions are configured on this observed object.","CN=example.test,CN=System,DC=corp,DC=example,DC=test"
+"corp.example.test / realm.example","corp.example.test","realm.example","Disabled (0)","0","No trust-direction bits are set on this observed object.","CN=realm.example,CN=System,DC=corp,DC=example,DC=test"

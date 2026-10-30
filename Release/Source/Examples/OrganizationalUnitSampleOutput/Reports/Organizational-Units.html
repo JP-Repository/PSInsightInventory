@@ -1,0 +1,561 @@
+﻿<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>PSInsightInventory · Organizational Unit Inventory</title>
+<style>
+:root{--bg:#f3f6f8;--surface:#fff;--text:#172d3b;--muted:#637784;--line:#e2e9ed;--soft:#f8fafb;--accent:#087e80;--tint:#e5f4f1;--sidebar:#122c3b;--shadow:0 3px 14px #17384b06;--amber:#8d6112;--amberbg:#fff4d9;--radius:12px;color-scheme:light}
+:root[data-theme=dark]{--bg:#13202a;--surface:#1b2c38;--text:#e4eff4;--muted:#a5b8c4;--line:#314450;--soft:#203440;--accent:#79d6c6;--tint:#23443f;--sidebar:#0d202b;--shadow:none;--amber:#f1d295;--amberbg:#483c22;color-scheme:dark}
+[hidden]{display:none!important}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 'Segoe UI',Arial,sans-serif}button,input,select{font:inherit;color:inherit}button,a,summary{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;opacity:.4}a{color:var(--accent)}:focus-visible{outline:3px solid #60bfb2;outline-offset:3px}svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}button{border:0}.shell{display:grid;grid-template-columns:238px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--sidebar);color:#d5e3ea;position:sticky;top:0;height:100vh;padding:25px 15px 15px;display:flex;flex-direction:column;overflow:auto}.brand{display:flex;gap:10px;align-items:center;padding:0 9px 23px;color:#fff;font-size:14px;font-weight:650;letter-spacing:-.3px}.brandmark{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#56c6b3;color:#122c3b}.brand small{display:block;color:#9bb4c1;font-size:10px;letter-spacing:1.6px;font-weight:500;margin-top:1px}.group-label{font-size:9px;letter-spacing:1.5px;font-weight:700;color:#8da6b4;text-transform:uppercase;padding:13px 12px 4px}.navbtn{background:none;color:#bdced8;border-radius:7px;width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:8px 11px;font-size:12px;min-height:33px;margin:1px 0}.navbtn svg{width:16px;height:16px;color:#95b1bf}.navbtn:hover{background:#ffffff0c;color:#fff}.navbtn.active{background:#2a514f;color:#d5fff3}.navbtn.active svg{color:#8de0cc}.navcount{margin-left:auto;font-size:10px;color:#9bbac4}.navbtn.active .navcount{color:#b5e1d4}.sidefoot{margin-top:auto;padding:20px 11px 0;font-size:10px;color:#93adba}.sidefoot b{display:block;color:#c5d7de;font-size:11px;margin-bottom:3px}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#6dd3b3;margin-right:5px}.workspace{min-width:0}.topbar{height:67px;border-bottom:1px solid var(--line);background:var(--surface);display:flex;gap:12px;align-items:center;padding:0 34px}.crumb{font-size:12px;color:var(--muted)}.crumb b{color:var(--text);font-weight:600}.crumb span{margin:0 9px;color:#a1afb7}.spacer{flex:1}.pill{display:inline-flex;align-items:center;gap:5px;border-radius:5px;padding:4px 8px;background:var(--tint);color:var(--accent);font-size:10px;font-weight:650;white-space:nowrap}.pill.amber{background:var(--amberbg);color:var(--amber)}.iconbtn{width:33px;height:33px;display:inline-grid;place-items:center;background:var(--soft);border:1px solid var(--line);border-radius:7px}.topmeta{font-size:11px;color:var(--muted)}main{max-width:1700px;margin:auto;padding:29px 34px 20px}.pagehead{display:flex;align-items:flex-start;gap:15px;margin-bottom:22px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:1.6px;color:var(--accent);text-transform:uppercase;margin-bottom:6px}h1{font-size:28px;font-weight:650;letter-spacing:-.8px;line-height:1.2;margin:0 0 7px}p{margin:0;color:var(--muted)}.subtitle{font-size:12px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:7px;min-height:35px;padding:7px 12px;font-size:11px;font-weight:600;white-space:nowrap}.btn svg{width:15px;height:15px}.btn:hover{background:var(--soft)}.btn.primary{background:var(--accent);border-color:var(--accent);color:white}:root[data-theme=dark] .btn.primary{color:#0d2427}.notice{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--muted);background:var(--surface);border:1px dashed #bbcdd0;padding:10px 13px;border-radius:7px;margin-bottom:20px}.notice svg{width:15px;height:15px;color:var(--accent)}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}.metric{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:17px 18px;text-align:left;box-shadow:var(--shadow);color:var(--text)}button.metric:hover{border-color:var(--accent)}.metrichead{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:11px}.metrichead svg{color:var(--accent);background:var(--tint);width:27px;height:27px;padding:5px;border-radius:7px}.metricvalue{display:flex;align-items:baseline;gap:9px;margin-top:8px}.metricvalue strong{font-size:31px;line-height:1.1;font-weight:650;letter-spacing:-1px}.metricvalue small{font-size:10px;color:var(--muted)}.metricfoot{font-size:10px;color:var(--muted);margin-top:9px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0;overflow:hidden}.panelhead{padding:17px 19px 12px;display:flex;gap:10px;align-items:center}h2{font-size:13px;line-height:1.4;font-weight:650;margin:0}.panelhead p{font-size:10px;margin-top:3px}.overviewgrid{display:grid;grid-template-columns:1.1fr 1fr .9fr;gap:16px;margin-bottom:22px}.dist{padding:2px 19px 19px}.barrow{display:grid;grid-template-columns:125px 1fr 24px;align-items:center;gap:10px;margin:13px 0 0;font-size:10px}.track{background:var(--soft);height:7px;border-radius:9px;overflow:hidden}.fill{height:100%;border-radius:9px;background:#399f96}.barrow:nth-child(2) .fill{background:#6e9fc1}.barrow:nth-child(3) .fill{background:#b3c6d0}.barrow b{text-align:right}.coverage{display:flex;align-items:center;gap:18px;padding:3px 19px 20px}.ring{width:86px;height:86px;border-radius:50%;background:conic-gradient(#399f96 0deg var(--angle),var(--line) var(--angle) 360deg);display:grid;place-items:center;flex-shrink:0}.ringin{width:68px;height:68px;background:var(--surface);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}.ringin b{font-size:21px;letter-spacing:-.5px}.ringin small{font-size:8px;color:var(--muted)}.legend{font-size:10px;color:var(--muted)}.legend div{margin:6px 0}.legend b{color:var(--text);margin-right:4px}.legend a{display:block;margin-top:8px;font-size:10px}.toolbar{display:flex;align-items:center;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--soft);flex-wrap:wrap}.searchbox{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-width:230px;max-width:340px;flex:1}.searchbox svg{width:15px;height:15px;color:var(--muted)}.searchbox input{width:100%;min-width:0;border:0;background:transparent;outline:0;font-size:11px}.toolbar select{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:7px 24px 7px 9px;font-size:11px;max-width:180px}.textbtn{background:transparent;color:var(--accent);font-size:10px;padding:6px}.columnmenu{position:relative}.columnmenu summary{list-style:none}.columnmenu summary::-webkit-details-marker{display:none}.columnoptions{position:absolute;z-index:8;right:0;top:40px;background:var(--surface);border:1px solid var(--line);box-shadow:0 10px 35px #0002;width:220px;padding:12px;border-radius:9px;max-height:350px;overflow:auto}.columnoptions label{display:flex;gap:7px;align-items:center;font-size:11px;padding:5px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px;white-space:nowrap}th{text-align:left;font-size:9px;letter-spacing:.5px;color:var(--muted);font-weight:600;background:var(--soft);border-bottom:1px solid var(--line);padding:11px 16px}th button{font-size:inherit;letter-spacing:inherit;text-transform:uppercase;font-weight:inherit;display:flex;align-items:center;gap:5px;background:none;padding:0;color:inherit}td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--text);max-width:440px;overflow:hidden;text-overflow:ellipsis}tbody tr:hover{background:var(--soft)}tbody tr:last-child td{border-bottom:0}.dclink{display:flex;align-items:center;gap:9px;color:var(--accent);background:none;padding:0;font-size:11px;font-weight:600}.servericon{display:grid;place-items:center;border-radius:6px;background:var(--tint);color:var(--accent);width:28px;height:28px}.servericon svg{width:15px;height:15px}.domaincell{font-size:10px;color:var(--muted)}.tag{display:inline-block;padding:3px 7px;border-radius:5px;background:var(--soft);color:var(--muted);font-size:9px}.tag.teal{background:var(--tint);color:var(--accent)}.tag.amber{background:var(--amberbg);color:var(--amber)}.tfoot{display:flex;align-items:center;gap:7px;padding:12px 18px;border-top:1px solid var(--line);font-size:10px;color:var(--muted)}.tfoot .btn{min-height:27px;padding:3px 8px;font-size:10px}.empty{padding:42px;text-align:center;color:var(--muted)}.empty b{display:block;margin-bottom:5px;color:var(--text)}.footer{display:flex;gap:15px;align-items:center;padding:18px 0 0;font-size:9px;color:var(--muted);flex-wrap:wrap}.footer span:last-child{margin-left:auto}.detailhero{display:flex;align-items:center;gap:17px;margin:15px 0 22px}.detailhero .servericon{width:60px;height:60px;border-radius:13px}.detailhero .servericon svg{width:30px;height:30px}.detailhero h1{font-size:26px}.detailtabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:20px;overflow:auto}.detailtabs button{background:none;padding:11px 13px;font-size:11px;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent}.detailtabs button.active{color:var(--accent);border-color:var(--accent);font-weight:650}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.props{display:grid;grid-template-columns:150px 1fr;gap:11px;padding:16px 19px;margin:0;font-size:11px}.props dt{color:var(--muted)}.props dd{margin:0;overflow-wrap:anywhere}.detailsection{margin-bottom:18px}.detailsection table{white-space:normal}.detailsection td{overflow-wrap:anywhere}.detailnote{padding:13px 18px;font-size:11px;color:var(--amber);background:var(--amberbg);border-radius:7px;margin-bottom:18px}.mobilemenu{display:none}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--sidebar);color:white;padding:10px 20px;border-radius:8px;box-shadow:0 6px 25px #0003;font-size:12px;z-index:30}.toast:empty{display:none}.skip{position:absolute;top:-80px;left:260px;z-index:50;background:var(--surface);padding:10px}.skip:focus{top:5px}noscript table{white-space:normal}noscript th,noscript td{padding:10px}
+.categorycoverage{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding:7px 18px;font-size:10px;color:var(--muted)}@media(min-height:1000px){.navbtn{padding-top:10px;padding-bottom:10px}.group-label{padding-top:20px}}
+@media(max-width:1250px){main{padding:24px}.topbar{padding:0 24px}.overviewgrid{grid-template-columns:1fr 1fr}.overviewgrid>.panel:last-child{grid-column:1/-1}.coverage{padding-top:6px}.topmeta{display:none}.cards{gap:10px}.metric{padding:14px}}
+@media(max-width:900px){.shell{grid-template-columns:200px minmax(0,1fr)}.sidebar{padding-left:9px;padding-right:9px}.brand{font-size:12px;gap:8px;padding-left:4px;padding-right:4px}.navbtn{font-size:11px}.overviewgrid{grid-template-columns:1fr}.overviewgrid>.panel:last-child{grid-column:auto}.cards{grid-template-columns:1fr 1fr}.pagehead{flex-wrap:wrap}.detailgrid{grid-template-columns:1fr}.crumb{font-size:10px}.topbar{padding:0 18px}main{padding:22px 18px}.barrow{grid-template-columns:125px 1fr 24px}}
+@media(max-width:650px){.shell{display:block}.sidebar{display:none;position:fixed;width:235px;z-index:20}.shell.menuopen .sidebar{display:flex;box-shadow:10px 0 40px #0005}.mobilemenu{display:inline-grid}.topbar{height:58px;gap:8px;padding:0 14px}.crumb{flex:1}.topbar>.spacer{display:none}.topbar>.pill{display:none}main{padding:20px 14px}h1{font-size:24px}.pagehead{gap:10px}.pagehead .spacer{display:none}.pagehead>.btn{margin-left:auto}.notice{align-items:flex-start}.toolbar{padding:11px;gap:7px}.searchbox{min-width:100%;max-width:none}.toolbar select{max-width:calc(50% - 5px);flex:1}.toolbar .spacer{display:none}.metricvalue strong{font-size:27px}.metrichead{font-size:10px}.metricfoot{font-size:9px}.detailtabs button{padding:10px}.props{grid-template-columns:115px 1fr}.footer span:last-child{margin-left:0}.detailhero{gap:12px}.detailhero h1{font-size:23px}.tfoot{flex-wrap:wrap}.columnoptions{right:auto;left:0}}
+@media print{.sidebar,.topbar,.toolbar,.btn,.detailtabs,.notice,.tfoot,.toast{display:none!important}.shell{display:block}body{background:white;color:#111}main{padding:0}.cards{break-inside:avoid}.panel{box-shadow:none;overflow:visible}.tablewrap{overflow:visible}table{white-space:normal}td{max-width:none}.footer{display:block}}
+/* JP monogram styling reused from PSInsightExpl 0.6.0. */
+.brandmark{width:31px;height:33px;border-radius:8px;background:#9177db;color:white;display:grid;place-items:center;position:relative;font-size:22px;flex:none;font-size:15px;font-weight:750;letter-spacing:-.7px;line-height:1}
+@media(max-width:720px){.brandmark{width:30px;height:32px}}
+
+</style></head><body>
+<noscript><h1>JP | PSInsightInventory - Organizational Unit Inventory</h1><p>SAMPLE DATA. Fictional Organizational Unit configuration; no infrastructure was contacted.</p><p>Scope: Organizational units in one explicit domain</p><h2>Organizational units</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>OU ID</th><th>DN</th><th>Parent DN</th><th>Canonical path</th><th>Description</th><th>Managed by</th><th>Protected from accidental deletion</th><th>Created</th><th>Changed</th></tr></thead><tbody><tr><td>Corporate</td><td>11111111-1111-1111-1111-111111111111</td><td>OU=Corporate,DC=example,DC=test</td><td>DC=example,DC=test</td><td>example.test/Corporate</td><td>Fictional OU</td><td></td><td>True</td><td>01/01/2026 00:00:00</td><td>10/30/2026 00:00:00</td></tr><tr><td>Workstations</td><td>22222222-2222-2222-2222-222222222222</td><td>OU=Workstations,OU=Corporate,DC=example,DC=test</td><td>OU=Corporate,DC=example,DC=test</td><td>example.test/Corporate/Workstations</td><td>Fictional OU</td><td></td><td>True</td><td>01/01/2026 00:00:00</td><td>10/30/2026 00:00:00</td></tr><tr><td>Empty OU</td><td>33333333-3333-3333-3333-333333333333</td><td>OU=Empty OU,DC=example,DC=test</td><td>DC=example,DC=test</td><td>example.test/Empty OU</td><td>Fictional OU</td><td></td><td>False</td><td>01/01/2026 00:00:00</td><td>10/30/2026 00:00:00</td></tr></tbody></table></div><h2>Object counts</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>OU ID</th><th>DN</th><th>Direct users</th><th>Descendant users</th><th>Direct computers</th><th>Descendant computers</th><th>Direct groups</th><th>Descendant groups</th><th>Direct OUs</th><th>Descendant OUs</th><th>Count status</th></tr></thead><tbody><tr><td>Corporate</td><td>11111111-1111-1111-1111-111111111111</td><td>OU=Corporate,DC=example,DC=test</td><td>2</td><td>3</td><td>0</td><td>4</td><td>1</td><td>1</td><td>1</td><td>1</td><td>Collected</td></tr><tr><td>Workstations</td><td>22222222-2222-2222-2222-222222222222</td><td>OU=Workstations,OU=Corporate,DC=example,DC=test</td><td>0</td><td>1</td><td>4</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Collected</td></tr><tr><td>Empty OU</td><td>33333333-3333-3333-3333-333333333333</td><td>OU=Empty OU,DC=example,DC=test</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Collected</td></tr></tbody></table></div><h2>Direct GPO links</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>OU ID</th><th>OU DN</th><th>GPO ID</th><th>GPO DN</th><th>Link order</th><th>Enabled</th><th>Enforced</th><th>Options raw</th></tr></thead><tbody><tr><td>Corporate</td><td>11111111-1111-1111-1111-111111111111</td><td>OU=Corporate,DC=example,DC=test</td><td>aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa</td><td>CN={aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa},CN=Policies,CN=System,DC=example,DC=test</td><td>1</td><td>True</td><td>False</td><td>0</td></tr><tr><td>Workstations</td><td>22222222-2222-2222-2222-222222222222</td><td>OU=Workstations,OU=Corporate,DC=example,DC=test</td><td>aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa</td><td>CN={aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa},CN=Policies,CN=System,DC=example,DC=test</td><td>1</td><td>True</td><td>False</td><td>0</td></tr></tbody></table></div><h2>Inheritance configuration</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>OU ID</th><th>DN</th><th>Block GPO inheritance</th><th>GPO options raw</th><th>DACL inheritance protected</th></tr></thead><tbody><tr><td>Corporate</td><td>11111111-1111-1111-1111-111111111111</td><td>OU=Corporate,DC=example,DC=test</td><td>False</td><td>0</td><td>False</td></tr><tr><td>Workstations</td><td>22222222-2222-2222-2222-222222222222</td><td>OU=Workstations,OU=Corporate,DC=example,DC=test</td><td>True</td><td>1</td><td></td></tr><tr><td>Empty OU</td><td>33333333-3333-3333-3333-333333333333</td><td>OU=Empty OU,DC=example,DC=test</td><td>False</td><td>0</td><td>False</td></tr></tbody></table></div><h2>Delegation ACEs</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>OU ID</th><th>OU DN</th><th>Trustee SID</th><th>Access type</th><th>AD rights</th><th>Object type GUID</th><th>Inherited object type GUID</th><th>Inheritance type</th><th>Inherited</th><th>Inheritance flags</th><th>Propagation flags</th></tr></thead><tbody><tr><td>Corporate</td><td>11111111-1111-1111-1111-111111111111</td><td>OU=Corporate,DC=example,DC=test</td><td>S-1-5-21-100-200-300-1100</td><td>Allow</td><td>ReadProperty</td><td>00000000-0000-0000-0000-000000000000</td><td>00000000-0000-0000-0000-000000000000</td><td>All</td><td>False</td><td>ContainerInherit</td><td>None</td></tr><tr><td>Corporate</td><td>11111111-1111-1111-1111-111111111111</td><td>OU=Corporate,DC=example,DC=test</td><td>S-1-5-21-100-200-300-1100</td><td>Allow</td><td>ReadProperty</td><td>00000000-0000-0000-0000-000000000000</td><td>00000000-0000-0000-0000-000000000000</td><td>All</td><td>True</td><td>ContainerInherit</td><td>None</td></tr><tr><td>Empty OU</td><td>33333333-3333-3333-3333-333333333333</td><td>OU=Empty OU,DC=example,DC=test</td><td>S-1-5-21-100-200-300-1100</td><td>Allow</td><td>ReadProperty</td><td>00000000-0000-0000-0000-000000000000</td><td>00000000-0000-0000-0000-000000000000</td><td>All</td><td>False</td><td>ContainerInherit</td><td>None</td></tr><tr><td>Empty OU</td><td>33333333-3333-3333-3333-333333333333</td><td>OU=Empty OU,DC=example,DC=test</td><td>S-1-5-21-100-200-300-1100</td><td>Allow</td><td>ReadProperty</td><td>00000000-0000-0000-0000-000000000000</td><td>00000000-0000-0000-0000-000000000000</td><td>All</td><td>True</td><td>ContainerInherit</td><td>None</td></tr></tbody></table></div><h2>OU collection</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>OU ID</th><th>Target</th><th>Operation</th><th>Status</th><th>Record count</th><th>Duration ms</th><th>Error ID</th><th>Message</th><th>Collected at</th></tr></thead><tbody><tr><td>Corporate</td><td>11111111-1111-1111-1111-111111111111</td><td>OU=Corporate,DC=example,DC=test</td><td>GPO links</td><td>Succeeded</td><td>1</td><td>1</td><td></td><td>Collected</td><td>10/30/2026 00:00:00</td></tr><tr><td>Corporate</td><td>11111111-1111-1111-1111-111111111111</td><td>OU=Corporate,DC=example,DC=test</td><td>DACL</td><td>Succeeded</td><td>2</td><td>1</td><td></td><td>Collected</td><td>10/30/2026 00:00:00</td></tr><tr><td>Workstations</td><td>22222222-2222-2222-2222-222222222222</td><td>OU=Workstations,OU=Corporate,DC=example,DC=test</td><td>GPO links</td><td>Succeeded</td><td>1</td><td>1</td><td></td><td>Collected</td><td>10/30/2026 00:00:00</td></tr><tr><td>Workstations</td><td>22222222-2222-2222-2222-222222222222</td><td>OU=Workstations,OU=Corporate,DC=example,DC=test</td><td>DACL</td><td>Failed</td><td>0</td><td>1</td><td>SampleDenied</td><td>Synthetic DACL access denial</td><td>10/30/2026 00:00:00</td></tr><tr><td>Empty OU</td><td>33333333-3333-3333-3333-333333333333</td><td>OU=Empty OU,DC=example,DC=test</td><td>GPO links</td><td>Succeeded</td><td>0</td><td>1</td><td></td><td>Collected</td><td>10/30/2026 00:00:00</td></tr><tr><td>Empty OU</td><td>33333333-3333-3333-3333-333333333333</td><td>OU=Empty OU,DC=example,DC=test</td><td>DACL</td><td>Succeeded</td><td>2</td><td>1</td><td></td><td>Collected</td><td>10/30/2026 00:00:00</td></tr></tbody></table></div><h2>Category collection</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Status</th><th>Record count</th><th>Method</th><th>Collected at</th><th>Duration ms</th><th>Error ID</th><th>Message</th></tr></thead><tbody><tr><td>Organizational units</td><td>Succeeded</td><td>3</td><td>Pinned DC / ADWS and LDAP DACL reads</td><td>10/30/2026 00:00:00</td><td>1</td><td></td><td>Collected</td></tr><tr><td>Object counts</td><td>Succeeded</td><td>3</td><td>Pinned DC / ADWS and LDAP DACL reads</td><td>10/30/2026 00:00:00</td><td>1</td><td></td><td>Collected</td></tr><tr><td>Direct GPO links</td><td>Succeeded</td><td>2</td><td>Pinned DC / ADWS and LDAP DACL reads</td><td>10/30/2026 00:00:00</td><td>1</td><td></td><td>Collected</td></tr><tr><td>Inheritance configuration</td><td>Partial</td><td>3</td><td>Pinned DC / ADWS and LDAP DACL reads</td><td>10/30/2026 00:00:00</td><td>1</td><td></td><td>One DACL read failed; available rows retained.</td></tr><tr><td>Delegation ACEs</td><td>Partial</td><td>4</td><td>Pinned DC / ADWS and LDAP DACL reads</td><td>10/30/2026 00:00:00</td><td>1</td><td></td><td>One DACL read failed; available rows retained.</td></tr><tr><td>OU collection</td><td>Succeeded</td><td>6</td><td>Pinned DC / ADWS and LDAP DACL reads</td><td>10/30/2026 00:00:00</td><td>1</td><td></td><td>Collected</td></tr></tbody></table></div></noscript>
+<div class="shell" id="shell" hidden><a class="skip" href="#main">Skip to inventory</a><aside class="sidebar" aria-label="Inventory navigation"><div class="brand"><span class="brandmark" id="brandicon" aria-hidden="true">JP</span><div>PSInsightInventory<small>DIRECTORY INVENTORY</small></div></div><nav id="nav"></nav><div class="sidefoot"><b><span class="dot"></span>Offline snapshot</b><span id="scopefoot"></span></div></aside><div class="workspace"><header class="topbar"><button class="iconbtn mobilemenu" id="menu" aria-label="Toggle navigation" aria-expanded="false"></button><div class="crumb">Forest inventory <span>/</span> <b id="crumb">Overview</b></div><div class="spacer"></div><span class="topmeta" id="generated"></span><span class="pill" id="sourcebadge"></span><button class="iconbtn" id="theme" aria-label="Switch to dark theme"></button></header><main id="main" tabindex="-1"></main></div></div><div class="toast" role="status" id="toast"></div>
+<script id="snapshot" type="application/json">{
+  "meta": {
+    "moduleName": "PSInsightInventory",
+    "version": "1.0.0",
+    "inventoryId": "ADOrganizationalUnit",
+    "title": "Organizational Unit Inventory",
+    "run": "863f9983",
+    "dataSource": "Sample",
+    "scope": "Organizational units in one explicit domain",
+    "forest": "example.test",
+    "connectionDomain": "example.test",
+    "sourceDC": "dc01.example.test",
+    "configurationNC": "CN=Configuration,DC=example,DC=test",
+    "started": "2026-10-30T13:08:00.2271120+05:30",
+    "generated": "2026-10-30T13:08:00.2549080+05:30",
+    "generatedDisplay": "30 Oct 2026, 13:08:00 +05:30",
+    "timeZone": "Asia/Calcutta",
+    "expectedQueries": 6,
+    "notice": "SAMPLE DATA. Fictional Organizational Unit configuration; no infrastructure was contacted.",
+    "limitations": [
+      "One explicit domain only; no child-domain enumeration or non-OU container inventory. Hierarchy uses returned DNs and GUIDs.",
+      "Direct counts are one level below the OU. Descendant counts include all depths and exclude the OU itself; descendant totals overlap between ancestors and must not be summed across OUs.",
+      "Counts use a single domain scan with minimum object properties. Computers are not double-counted as users. Contacts, service-account classes and other object types are excluded. Object identities are not exported.",
+      "A failed or timed-out count scan produces unknown counts, not zero. Successful reads cannot prove ACL-filtered object visibility.",
+      "Direct GPO links include stored references, including cross-domain GPO references. GPO names/targets are not queried; inherited policy and resultant-set-of-policy are not computed.",
+      "Delegation shows reported allow/deny DACL ACEs with SIDs, object GUIDs and inheritance flags. No trustee/schema resolution, group expansion or effective-access assessment is performed.",
+      "GPO inheritance blocking and DACL inheritance protection are separate fields. Missing provider properties and failed DACL reads remain null.",
+      "Collection is bounded by one overall worker budget. Completed categories survive timeout; unfinished category rows may not be available. No AD/GPO/ACL changes, remediation, scores, recommendations or email occur."
+    ],
+    "timeoutSeconds": null
+  },
+  "sections": {
+    "ous": [
+      "Organizational units",
+      [
+        "Name",
+        "OU ID",
+        "DN",
+        "Parent DN",
+        "Canonical path",
+        "Description",
+        "Managed by",
+        "Protected from accidental deletion",
+        "Created",
+        "Changed"
+      ]
+    ],
+    "counts": [
+      "Object counts",
+      [
+        "Name",
+        "OU ID",
+        "DN",
+        "Direct users",
+        "Descendant users",
+        "Direct computers",
+        "Descendant computers",
+        "Direct groups",
+        "Descendant groups",
+        "Direct OUs",
+        "Descendant OUs",
+        "Count status"
+      ]
+    ],
+    "links": [
+      "Direct GPO links",
+      [
+        "Name",
+        "OU ID",
+        "OU DN",
+        "GPO ID",
+        "GPO DN",
+        "Link order",
+        "Enabled",
+        "Enforced",
+        "Options raw"
+      ]
+    ],
+    "inheritance": [
+      "Inheritance configuration",
+      [
+        "Name",
+        "OU ID",
+        "DN",
+        "Block GPO inheritance",
+        "GPO options raw",
+        "DACL inheritance protected"
+      ]
+    ],
+    "delegations": [
+      "Delegation ACEs",
+      [
+        "Name",
+        "OU ID",
+        "OU DN",
+        "Trustee SID",
+        "Access type",
+        "AD rights",
+        "Object type GUID",
+        "Inherited object type GUID",
+        "Inheritance type",
+        "Inherited",
+        "Inheritance flags",
+        "Propagation flags"
+      ]
+    ],
+    "objectQueries": [
+      "OU collection",
+      [
+        "Name",
+        "OU ID",
+        "Target",
+        "Operation",
+        "Status",
+        "Record count",
+        "Duration ms",
+        "Error ID",
+        "Message",
+        "Collected at"
+      ]
+    ],
+    "collection": [
+      "Category collection",
+      [
+        "Name",
+        "Status",
+        "Record count",
+        "Method",
+        "Collected at",
+        "Duration ms",
+        "Error ID",
+        "Message"
+      ]
+    ]
+  },
+  "data": {
+    "ous": [
+      {
+        "Name": "Corporate",
+        "OU ID": "11111111-1111-1111-1111-111111111111",
+        "DN": "OU=Corporate,DC=example,DC=test",
+        "Parent DN": "DC=example,DC=test",
+        "Canonical path": "example.test/Corporate",
+        "Description": "Fictional OU",
+        "Managed by": null,
+        "Protected from accidental deletion": true,
+        "Created": "2026-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z"
+      },
+      {
+        "Name": "Workstations",
+        "OU ID": "22222222-2222-2222-2222-222222222222",
+        "DN": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+        "Parent DN": "OU=Corporate,DC=example,DC=test",
+        "Canonical path": "example.test/Corporate/Workstations",
+        "Description": "Fictional OU",
+        "Managed by": null,
+        "Protected from accidental deletion": true,
+        "Created": "2026-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z"
+      },
+      {
+        "Name": "Empty OU",
+        "OU ID": "33333333-3333-3333-3333-333333333333",
+        "DN": "OU=Empty OU,DC=example,DC=test",
+        "Parent DN": "DC=example,DC=test",
+        "Canonical path": "example.test/Empty OU",
+        "Description": "Fictional OU",
+        "Managed by": null,
+        "Protected from accidental deletion": false,
+        "Created": "2026-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z"
+      }
+    ],
+    "counts": [
+      {
+        "Name": "Corporate",
+        "OU ID": "11111111-1111-1111-1111-111111111111",
+        "DN": "OU=Corporate,DC=example,DC=test",
+        "Direct users": 2,
+        "Descendant users": 3,
+        "Direct computers": 0,
+        "Descendant computers": 4,
+        "Direct groups": 1,
+        "Descendant groups": 1,
+        "Direct OUs": 1,
+        "Descendant OUs": 1,
+        "Count status": "Collected"
+      },
+      {
+        "Name": "Workstations",
+        "OU ID": "22222222-2222-2222-2222-222222222222",
+        "DN": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+        "Direct users": 0,
+        "Descendant users": 1,
+        "Direct computers": 4,
+        "Descendant computers": 4,
+        "Direct groups": 0,
+        "Descendant groups": 0,
+        "Direct OUs": 0,
+        "Descendant OUs": 0,
+        "Count status": "Collected"
+      },
+      {
+        "Name": "Empty OU",
+        "OU ID": "33333333-3333-3333-3333-333333333333",
+        "DN": "OU=Empty OU,DC=example,DC=test",
+        "Direct users": 0,
+        "Descendant users": 0,
+        "Direct computers": 0,
+        "Descendant computers": 0,
+        "Direct groups": 0,
+        "Descendant groups": 0,
+        "Direct OUs": 0,
+        "Descendant OUs": 0,
+        "Count status": "Collected"
+      }
+    ],
+    "links": [
+      {
+        "Name": "Corporate",
+        "OU ID": "11111111-1111-1111-1111-111111111111",
+        "OU DN": "OU=Corporate,DC=example,DC=test",
+        "GPO ID": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        "GPO DN": "CN={aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa},CN=Policies,CN=System,DC=example,DC=test",
+        "Link order": 1,
+        "Enabled": true,
+        "Enforced": false,
+        "Options raw": 0
+      },
+      {
+        "Name": "Workstations",
+        "OU ID": "22222222-2222-2222-2222-222222222222",
+        "OU DN": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+        "GPO ID": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        "GPO DN": "CN={aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa},CN=Policies,CN=System,DC=example,DC=test",
+        "Link order": 1,
+        "Enabled": true,
+        "Enforced": false,
+        "Options raw": 0
+      }
+    ],
+    "inheritance": [
+      {
+        "Name": "Corporate",
+        "OU ID": "11111111-1111-1111-1111-111111111111",
+        "DN": "OU=Corporate,DC=example,DC=test",
+        "Block GPO inheritance": false,
+        "GPO options raw": 0,
+        "DACL inheritance protected": false
+      },
+      {
+        "Name": "Workstations",
+        "OU ID": "22222222-2222-2222-2222-222222222222",
+        "DN": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+        "Block GPO inheritance": true,
+        "GPO options raw": 1,
+        "DACL inheritance protected": null
+      },
+      {
+        "Name": "Empty OU",
+        "OU ID": "33333333-3333-3333-3333-333333333333",
+        "DN": "OU=Empty OU,DC=example,DC=test",
+        "Block GPO inheritance": false,
+        "GPO options raw": 0,
+        "DACL inheritance protected": false
+      }
+    ],
+    "delegations": [
+      {
+        "Name": "Corporate",
+        "OU ID": "11111111-1111-1111-1111-111111111111",
+        "OU DN": "OU=Corporate,DC=example,DC=test",
+        "Trustee SID": "S-1-5-21-100-200-300-1100",
+        "Access type": "Allow",
+        "AD rights": "ReadProperty",
+        "Object type GUID": "00000000-0000-0000-0000-000000000000",
+        "Inherited object type GUID": "00000000-0000-0000-0000-000000000000",
+        "Inheritance type": "All",
+        "Inherited": false,
+        "Inheritance flags": "ContainerInherit",
+        "Propagation flags": "None"
+      },
+      {
+        "Name": "Corporate",
+        "OU ID": "11111111-1111-1111-1111-111111111111",
+        "OU DN": "OU=Corporate,DC=example,DC=test",
+        "Trustee SID": "S-1-5-21-100-200-300-1100",
+        "Access type": "Allow",
+        "AD rights": "ReadProperty",
+        "Object type GUID": "00000000-0000-0000-0000-000000000000",
+        "Inherited object type GUID": "00000000-0000-0000-0000-000000000000",
+        "Inheritance type": "All",
+        "Inherited": true,
+        "Inheritance flags": "ContainerInherit",
+        "Propagation flags": "None"
+      },
+      {
+        "Name": "Empty OU",
+        "OU ID": "33333333-3333-3333-3333-333333333333",
+        "OU DN": "OU=Empty OU,DC=example,DC=test",
+        "Trustee SID": "S-1-5-21-100-200-300-1100",
+        "Access type": "Allow",
+        "AD rights": "ReadProperty",
+        "Object type GUID": "00000000-0000-0000-0000-000000000000",
+        "Inherited object type GUID": "00000000-0000-0000-0000-000000000000",
+        "Inheritance type": "All",
+        "Inherited": false,
+        "Inheritance flags": "ContainerInherit",
+        "Propagation flags": "None"
+      },
+      {
+        "Name": "Empty OU",
+        "OU ID": "33333333-3333-3333-3333-333333333333",
+        "OU DN": "OU=Empty OU,DC=example,DC=test",
+        "Trustee SID": "S-1-5-21-100-200-300-1100",
+        "Access type": "Allow",
+        "AD rights": "ReadProperty",
+        "Object type GUID": "00000000-0000-0000-0000-000000000000",
+        "Inherited object type GUID": "00000000-0000-0000-0000-000000000000",
+        "Inheritance type": "All",
+        "Inherited": true,
+        "Inheritance flags": "ContainerInherit",
+        "Propagation flags": "None"
+      }
+    ],
+    "objectQueries": [
+      {
+        "Name": "Corporate",
+        "OU ID": "11111111-1111-1111-1111-111111111111",
+        "Target": "OU=Corporate,DC=example,DC=test",
+        "Operation": "GPO links",
+        "Status": "Succeeded",
+        "Record count": 1,
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Collected",
+        "Collected at": "2026-10-30T00:00:00Z"
+      },
+      {
+        "Name": "Corporate",
+        "OU ID": "11111111-1111-1111-1111-111111111111",
+        "Target": "OU=Corporate,DC=example,DC=test",
+        "Operation": "DACL",
+        "Status": "Succeeded",
+        "Record count": 2,
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Collected",
+        "Collected at": "2026-10-30T00:00:00Z"
+      },
+      {
+        "Name": "Workstations",
+        "OU ID": "22222222-2222-2222-2222-222222222222",
+        "Target": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+        "Operation": "GPO links",
+        "Status": "Succeeded",
+        "Record count": 1,
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Collected",
+        "Collected at": "2026-10-30T00:00:00Z"
+      },
+      {
+        "Name": "Workstations",
+        "OU ID": "22222222-2222-2222-2222-222222222222",
+        "Target": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+        "Operation": "DACL",
+        "Status": "Failed",
+        "Record count": 0,
+        "Duration ms": 1,
+        "Error ID": "SampleDenied",
+        "Message": "Synthetic DACL access denial",
+        "Collected at": "2026-10-30T00:00:00Z"
+      },
+      {
+        "Name": "Empty OU",
+        "OU ID": "33333333-3333-3333-3333-333333333333",
+        "Target": "OU=Empty OU,DC=example,DC=test",
+        "Operation": "GPO links",
+        "Status": "Succeeded",
+        "Record count": 0,
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Collected",
+        "Collected at": "2026-10-30T00:00:00Z"
+      },
+      {
+        "Name": "Empty OU",
+        "OU ID": "33333333-3333-3333-3333-333333333333",
+        "Target": "OU=Empty OU,DC=example,DC=test",
+        "Operation": "DACL",
+        "Status": "Succeeded",
+        "Record count": 2,
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Collected",
+        "Collected at": "2026-10-30T00:00:00Z"
+      }
+    ],
+    "collection": [
+      {
+        "Name": "Organizational units",
+        "Status": "Succeeded",
+        "Record count": 3,
+        "Method": "Pinned DC / ADWS and LDAP DACL reads",
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Collected"
+      },
+      {
+        "Name": "Object counts",
+        "Status": "Succeeded",
+        "Record count": 3,
+        "Method": "Pinned DC / ADWS and LDAP DACL reads",
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Collected"
+      },
+      {
+        "Name": "Direct GPO links",
+        "Status": "Succeeded",
+        "Record count": 2,
+        "Method": "Pinned DC / ADWS and LDAP DACL reads",
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Collected"
+      },
+      {
+        "Name": "Inheritance configuration",
+        "Status": "Partial",
+        "Record count": 3,
+        "Method": "Pinned DC / ADWS and LDAP DACL reads",
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "One DACL read failed; available rows retained."
+      },
+      {
+        "Name": "Delegation ACEs",
+        "Status": "Partial",
+        "Record count": 4,
+        "Method": "Pinned DC / ADWS and LDAP DACL reads",
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "One DACL read failed; available rows retained."
+      },
+      {
+        "Name": "OU collection",
+        "Status": "Succeeded",
+        "Record count": 6,
+        "Method": "Pinned DC / ADWS and LDAP DACL reads",
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Collected"
+      }
+    ]
+  },
+  "coverage": {
+    "ous": true,
+    "counts": true,
+    "links": true,
+    "inheritance": false,
+    "delegations": false,
+    "objectQueries": true,
+    "collection": true
+  },
+  "raw": {}
+}</script>
+<script>
+
+
+'use strict';
+const P=JSON.parse(document.getElementById('snapshot').textContent),D=P.data,S=P.sections,M=P.meta,C=P.coverage;
+const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const state={key:'ous',overview:true,query:'',mode:'',page:1,size:10,sort:'Name',desc:false,detail:null,hidden:{}};
+const icons={grid:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',search:'M10 3a7 7 0 1 0 0 14a7 7 0 1 0 0-14M15 15l6 6',menu:'M4 6h16M4 12h16M4 18h16',moon:'M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11',sun:'M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2',download:'M12 3v12M7 10l5 5 5-5M4 16v5h16v-5',info:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18M12 11v6M12 7h.01'};
+const icon=k=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${icons[k]||icons.grid}"/></svg>`;
+function available(k){return !!C[k];}
+function count(k){return available(k)?D[k].length:'Unknown';}
+function nav(){const items=[['overview','Inventory overview'],...Object.entries(S).map(([k,v])=>[k,v[0]])];$('#nav').innerHTML='<div class="group-label">OU configuration</div>'+items.map(([k,l])=>`<button class="navbtn ${(!state.detail&&(k==='overview'?state.overview:!state.overview&&state.key===k))?'active':''}" data-section="${k}">${icon('grid')}<span>${esc(l)}</span><span class="navcount">${k==='overview'?'':count(k)}</span></button>`).join('');}
+function fmt(v){return v===null||v===undefined?'<span class="tag">Unknown / not returned</span>':v===true?'<span class="tag teal">Yes</span>':v===false?'<span class="tag">No</span>':esc(v);}
+function footer(){return `<footer class="footer"><span>JP · PSInsightInventory ${esc(M.version)}</span><span>Run ${esc(M.run)}</span><span>${esc(M.generatedDisplay)} · ${esc(M.dataSource)} · Selected domain</span></footer>`;}
+function rows(){let r=D[state.key].map((record,index)=>({record,index})).filter(({record:r})=>(!state.query||Object.values(r).some(v=>String(v??'').toLowerCase().includes(state.query.toLowerCase())))&&(!state.mode||(state.mode==='empty'?r['DC objects']===0:state.mode==='unassigned'?String(r.Assignment).startsWith('Unassigned'):state.mode==='gaps'?r.Status!=='Succeeded':true)));return r.sort((a,b)=>String(a.record[state.sort]??'').localeCompare(String(b.record[state.sort]??''),undefined,{numeric:true})*(state.desc?-1:1));}
+function cell(c,v,k,index){if(c==='Name'&&k!=='collection')return `<button class="dclink" data-object="${k}:${index}">${esc(v)} →</button>`;if(c==='Status')return `<span class="tag ${v==='Succeeded'?'teal':'amber'}">${esc(v)}</span>`;return `<span title="${esc(v??'Not set or not returned')}">${fmt(v)}</span>`;}
+function table(k,list,sortable=false){const cols=S[k][1].filter(c=>!sortable||!(state.hidden[k]||[]).includes(c));return `<div class="tablewrap"><table><thead><tr>${cols.map(c=>`<th>${sortable?`<button data-sort="${esc(c)}">${esc(c)} ${state.sort===c?state.desc?'↓':'↑':'↕'}</button>`:esc(c)}</th>`).join('')}</tr></thead><tbody>${list.map(({record:r,index:i})=>`<tr>${cols.map(c=>`<td>${cell(c,r[c],k,i)}</td>`).join('')}</tr>`).join('')}</tbody></table>${list.length?'':`<div class="empty"><b>${available(k)?'No matching records':'Collection unavailable or incomplete'}</b>${available(k)?'Zero rows can be valid. Review filters and Collection.':'A failed query does not establish that no objects exist.'}</div>`}</div>`;}
+function grid(){const all=rows(),pages=Math.max(1,Math.ceil(all.length/state.size));state.page=Math.min(state.page,pages);const start=(state.page-1)*state.size;return table(state.key,all.slice(start,start+state.size),true)+`<div class="tfoot"><span role="status">${all.length?start+1:0}–${Math.min(start+state.size,all.length)} of ${all.length} rows</span><span class="spacer"></span><span>Page ${state.page} of ${pages}</span><button class="btn" data-action="prev" ${state.page===1?'disabled':''}>Previous</button><button class="btn" data-action="next" ${state.page===pages?'disabled':''}>Next</button></div>`;}
+function cards(){return `<div class="cards">${[['OUs observed',D.ous.length,'Hierarchy from returned domain objects','ous'],['Counted OUs',D.counts.filter(r=>r['Count status']==='Collected').length,'Direct and descendant totals kept separate','counts'],['ACEs observed',D.delegations.length,'Reported rows; not unique delegations','delegations'],['Incomplete categories',D.collection.filter(r=>r.Status!=='Succeeded').length,'Inspect per-OU outcomes','collection']].map(([l,n,note,k])=>`<button class="metric" data-section="${k}"><span class="metrichead">${l}${icon('grid')}</span><span class="metricvalue"><strong>${n}</strong></span><div class="metricfoot">${note}</div></button>`).join('')}</div>`;}
+function hierarchy(){const byDN=new Map(D.ous.map((r,i)=>[r.DN.toLowerCase(),i])),children=new Map(),roots=[];D.ous.forEach((r,i)=>{const p=byDN.get(String(r['Parent DN']??'').toLowerCase());if(p===undefined)roots.push(i);else{if(!children.has(p))children.set(p,[]);children.get(p).push(i);}});const seen=new Set();const node=(i,depth)=>{if(seen.has(i)||depth>100)return '';seen.add(i);const r=D.ous[i],kids=children.get(i)||[],button=`<button class="textbtn" data-object="ous:${i}">${esc(r.Name)}</button>`;return `<li>${kids.length?`<details open><summary>${button}<span class="tag">${kids.length} child OUs observed</span></summary><ul>${kids.map(x=>node(x,depth+1)).join('')}</ul></details>`:button}</li>`;};return `<section class="panel" style="margin-bottom:20px"><div class="panelhead"><h2>OU hierarchy</h2><p>Expand branches or select an OU. Missing parents are shown at the top level.</p></div><div style="padding:0 18px 16px;overflow:auto;max-height:440px"><ul aria-label="OU hierarchy">${roots.map(i=>node(i,0)).join('')}${D.ous.map((_,i)=>seen.has(i)?'':node(i,0)).join('')}</ul></div></section>`;}
+function controls(){return `<div class="toolbar"><label class="searchbox">${icon('search')}<input id="query" type="search" aria-label="Search inventory" placeholder="Search ${esc(S[state.key][0].toLowerCase())}…" value="${esc(state.query)}"></label>${['sites','subnets','collection'].includes(state.key)?`<select id="mode" aria-label="Filter records"><option value="">All records</option><option value="${state.key==='sites'?'empty':state.key==='subnets'?'unassigned':'gaps'}" ${state.mode?'selected':''}>${state.key==='sites'?'Without DC objects':state.key==='subnets'?'Unassigned values':'Unavailable queries'}</option></select>`:''}<button class="textbtn" data-action="reset">Reset</button><span class="spacer"></span><details class="columnmenu"><summary class="btn">Columns</summary><div class="columnoptions">${S[state.key][1].map((c,i)=>`<label><input type="checkbox" data-col="${esc(c)}" ${!(state.hidden[state.key]||[]).includes(c)?'checked':''} ${i===0?'disabled':''}>${esc(c)}</label>`).join('')}</div></details><button class="btn" data-action="csv">${icon('download')}Filtered CSV</button></div>`;}
+function scheduleView(s){if(!s||s['Parse status']!=='Parsed')return `<div class="detailnote">${esc(s?.Summary||'No schedule evidence available.')}</div>`;const masks=s['Hourly masks UTC'],days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];return `<section class="panel detailsection"><div class="panelhead"><div><h2>Stored weekly schedule · UTC</h2><p>${esc(s.Summary)} Each cell is one UTC hour; intensity shows permitted quarter count.</p></div></div><div class="tablewrap"><table><thead><tr><th>UTC</th>${Array.from({length:24},(_,i)=>`<th>${String(i).padStart(2,'0')}</th>`).join('')}</tr></thead><tbody>${days.map((d,i)=>`<tr><th>${d}</th>${Array.from({length:24},(_,h)=>{const n=parseInt(masks[i*24+h],16),q=[1,2,4,8].filter(b=>n&b).length;return `<td style="padding:8px;text-align:center;background:color-mix(in srgb,var(--accent) ${q*19}%,var(--surface))" title="${d} ${h}:00 UTC · ${q}/4 quarters allowed · raw mask 0x${n.toString(16)}">${q}/4</td>`;}).join('')}</tr>`).join('')}</tbody></table></div><div class="dist"><p style="font-size:10px">Stored schedule only. Transport ignore-schedule settings and combined paths can change effective behavior. Raw masks are retained without converting them to local time.</p></div></section>`;}
+const sameDN=(a,b)=>String(a??'').toLowerCase()===String(b??'').toLowerCase();
+function related(k,predicate){const list=D[k].map((r,index)=>({record:r,index})).filter(x=>predicate(x.record));return `<section class="panel detailsection"><div class="panelhead"><h2>${esc(S[k][0])}</h2><span class="spacer"></span><span class="tag">${list.length} observed rows</span></div>${table(k,list)}</section>`;}
+function detail(){const {key:k,index:i}=state.detail,r=D[k][i];$('#crumb').textContent=r.Name;let content=`<button class="textbtn" data-action="back">← Back to ${esc(S[state.key][0])}</button><div class="detailhero"><span class="brandmark">JP</span><div><div class="eyebrow">${esc(S[k][0])} / Configuration</div><h1>${esc(r.Name)}</h1><p class="subtitle">${esc(M.connectionDomain)} · Selected domain inventory</p></div></div><section class="panel detailsection"><div class="panelhead"><h2>Object properties</h2></div><dl class="props">${S[k][1].map(c=>`<dt>${esc(c)}</dt><dd>${fmt(r[c])}</dd>`).join('')}</dl></section>`;
+ if(k==='ous'){content+=related('ous',x=>String(x['Parent DN']??'').toLowerCase()===r.DN.toLowerCase());for(const key of ['counts','links','inheritance','delegations','objectQueries'])content+=related(key,x=>x['OU ID']===r['OU ID']);}
+ if(k!=='ous'&&r['OU ID'])content+=related('ous',x=>x['OU ID']===r['OU ID']);
+ $('#main').innerHTML=content+footer();}
+function render(){nav();if(state.detail){detail();return;}$('#crumb').textContent=state.overview?'Organizational Unit Inventory':S[state.key][0];const success=D.collection.filter(r=>['Succeeded','NotApplicable'].includes(r.Status)).length;$('#main').innerHTML=`<div class="pagehead"><div><div class="eyebrow">Domain / OU configuration</div><h1>${state.overview?'Organizational Unit Inventory':esc(S[state.key][0])}</h1><p class="subtitle">OU hierarchy, object counts and delegation · fixed snapshot</p></div><span class="spacer"></span><button class="btn primary" data-action="json">${icon('download')}Export snapshot</button></div><div class="notice">${icon('info')}<span><b>${esc(M.dataSource)} · Selected domain scope.</b> ${esc(M.notice)} ${success}/${M.expectedQueries} categories collected. Counts describe observed configurations, not service health.</span></div>${state.overview?cards()+hierarchy()+`<section class="panel" style="margin-bottom:20px"><div class="panelhead"><h2>Collection scope</h2></div><dl class="props">${[['Domain',M.connectionDomain],['Source DC',M.sourceDC],['Counts','Direct versus all descendants; OU itself excluded'],['Delegation','Reported DACL ACEs; no effective-access verdict']].map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl></section>`:''}<section class="panel"><div class="panelhead"><div><h2>${esc(S[state.key][0])}</h2><p>${state.key==='collection'?'Independent categories; inspect OU collection for per-OU link and DACL outcomes.':state.key==='servers'?'Directory server and NTDS objects; no endpoint availability probe.':'Select an object name for its properties and related records.'}</p></div><span class="spacer"></span><span class="tag ${available(state.key)?'':'amber'}">${available(state.key)?'Source collected':'Source unavailable / partial'}</span></div>${controls()}<div id="gridbody">${grid()}</div></section><section class="panel" style="margin-top:20px"><div class="panelhead"><h2>Interpretation</h2></div><div class="dist"><ul style="font-size:11px;color:var(--muted)">${M.limitations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></section>${footer()}`;}
+function navigate(k,mode=''){state.key=k==='overview'?'ous':k;state.overview=k==='overview';state.query='';state.mode=mode;state.page=1;state.sort='Name';state.desc=false;state.detail=null;$('#shell').classList.remove('menuopen');$('#menu').setAttribute('aria-expanded','false');render();window.scrollTo(0,0);}
+function download(name,text,type){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);$('#toast').textContent='Exported '+name;setTimeout(()=>$('#toast').textContent='',3000);}
+function csvText(list,cols){const q=v=>'"'+String(/^[=+@\-\t\r\n]/.test(String(v??''))?"'"+v:v??'').replace(/"/g,'""')+'"';return '\ufeff'+[cols.map(q).join(','),...list.map(({record:r})=>cols.map(c=>q(r[c])).join(','))].join('\r\n');}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-section],[data-object],[data-action],[data-sort]');if(!t)return;if(t.dataset.section){navigate(t.dataset.section,t.dataset.mode||'');return;}if(t.dataset.object){const [key,index]=t.dataset.object.split(':');state.detail={key,index:Number(index)};render();window.scrollTo(0,0);return;}if(t.dataset.sort){state.desc=state.sort===t.dataset.sort?!state.desc:false;state.sort=t.dataset.sort;$('#gridbody').innerHTML=grid();return;}switch(t.dataset.action){case'back':state.detail=null;render();break;case'reset':state.query='';state.mode='';state.page=1;render();break;case'prev':state.page--;$('#gridbody').innerHTML=grid();break;case'next':state.page++;$('#gridbody').innerHTML=grid();break;case'csv':download('OU-'+state.key+'-filtered.csv',csvText(rows(),S[state.key][1]),'text/csv;charset=utf-8');break;case'json':download('Organizational-Units-Snapshot.json',JSON.stringify(P,null,2),'application/json');break;}});
+document.addEventListener('input',e=>{if(e.target.id==='query'){state.query=e.target.value;state.page=1;$('#gridbody').innerHTML=grid();}});
+document.addEventListener('change',e=>{if(e.target.id==='mode'){state.mode=e.target.value;state.page=1;$('#gridbody').innerHTML=grid();}if(e.target.dataset.col){const c=e.target.dataset.col;state.hidden[state.key]=e.target.checked?(state.hidden[state.key]||[]).filter(x=>x!==c):[...(state.hidden[state.key]||[]),c];$('#gridbody').innerHTML=grid();}});
+$('#theme').innerHTML=icon('moon');$('#theme').onclick=()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';$('#theme').innerHTML=icon(dark?'sun':'moon');$('#theme').setAttribute('aria-label','Switch to '+(dark?'light':'dark')+' theme');};
+$('#menu').innerHTML=icon('menu');$('#menu').onclick=()=>{const on=$('#shell').classList.toggle('menuopen');$('#menu').setAttribute('aria-expanded',String(on));};document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#shell').classList.remove('menuopen');$('#menu').setAttribute('aria-expanded','false');document.querySelectorAll('details[open]').forEach(x=>x.open=false);}});
+$('#scopefoot').textContent=M.connectionDomain+' · selected domain · v'+M.version;$('#generated').textContent=M.generatedDisplay;$('#sourcebadge').textContent=M.dataSource==='Sample'?'SAMPLE DATA':'LIVE SNAPSHOT';$('#shell').hidden=false;render();
+
+
+
+</script><style>
+.psi-help-about{position:fixed;right:18px;bottom:18px;z-index:40;color:var(--text);font:12px/1.5 'Segoe UI',Arial,sans-serif}
+.psi-help-about>summary{list-style:none;cursor:pointer;border:1px solid var(--line);border-radius:7px;background:var(--surface);box-shadow:var(--shadow);color:var(--accent);font-weight:650;padding:8px 12px}
+.psi-help-about>summary::-webkit-details-marker{display:none}
+.psi-help-about[open]>summary{border-radius:7px 7px 0 0}
+.psi-help-about section{position:absolute;right:0;bottom:100%;width:min(360px,calc(100vw - 28px));border:1px solid var(--line);border-radius:9px 9px 0 9px;background:var(--surface);box-shadow:0 12px 40px #0003;padding:18px}
+.psi-help-about h2{margin:0 0 4px;font-size:16px}.psi-help-about p{margin:0 0 12px;color:var(--muted)}
+.psi-help-about dl{margin:0}.psi-help-about dl div{display:grid;grid-template-columns:96px 1fr;gap:8px;padding:6px 0;border-top:1px solid var(--line)}
+.psi-help-about dt{color:var(--muted)}.psi-help-about dd{margin:0;overflow-wrap:anywhere}.psi-help-about a{color:var(--accent)}
+.psi-help-about .psi-license{margin:12px 0 0;font-size:10px}
+@media(max-width:650px){.psi-help-about{right:12px;bottom:12px}.psi-help-about section{width:calc(100vw - 24px)}}
+@media print{.psi-help-about{display:none!important}}
+</style>
+<details class="psi-help-about" id="psi-help-about">
+  <summary>Help &amp; About</summary>
+  <section aria-label="Help and About">
+    <h2>PSInsightInventory 1.0.0</h2>
+    <p>Read-only Active Directory inventory with offline JP-branded reporting.</p>
+    <dl>
+      <div><dt>Author</dt><dd><a href="https://www.linkedin.com/in/jonathan-preetham" target="_blank" rel="noopener noreferrer">Jonathan Preetham</a></dd></div>
+      <div><dt>Repository</dt><dd><a href="https://github.com/JP-Repository/PSInsightInventory" target="_blank" rel="noopener noreferrer">GitHub repository</a></dd></div>
+      <div><dt>Support</dt><dd><a href="mailto:Jonathan.Preetham@outlook.com">Jonathan.Preetham@outlook.com</a></dd></div>
+      <div><dt>Documentation</dt><dd><a href="https://github.com/JP-Repository/PSInsightInventory" target="_blank" rel="noopener noreferrer">Project documentation</a></dd></div>
+    </dl>
+    <p class="psi-license">Copyright © 2026 Jonathan Preetham · MIT License</p>
+  </section>
+</details>
+</body></html>

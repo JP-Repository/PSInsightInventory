@@ -1,0 +1,4 @@
+"Name","Scope","Functional level","Query status"
+"example.test","Forest","Windows2016Forest","Succeeded"
+"example.test","Domain","Windows2016Domain","Succeeded"
+"corp.example.test","Domain","Windows2016Domain","Succeeded"

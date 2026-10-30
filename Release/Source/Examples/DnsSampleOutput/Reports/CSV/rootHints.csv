@@ -1,0 +1,3 @@
+"Name","Server","Name server","Addresses"
+"dc01.example.test","dc01.example.test","root.example.test.","192.0.2.100"
+"dc02.example.test","dc02.example.test","root.example.test.","192.0.2.100"

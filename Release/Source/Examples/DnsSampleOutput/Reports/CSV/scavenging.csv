@@ -1,0 +1,3 @@
+"Name","Server","Enabled","Interval","Default no-refresh interval","Default refresh interval","Last scavenge time"
+"dc01.example.test","dc01.example.test","False","7.00:00:00","7.00:00:00","7.00:00:00",
+"dc02.example.test","dc02.example.test","False","7.00:00:00","7.00:00:00","7.00:00:00",

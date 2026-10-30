@@ -1,0 +1,439 @@
+﻿{
+  "meta": {
+    "moduleName": "PSInsightInventory",
+    "version": "1.0.0",
+    "inventoryId": "ADUser",
+    "title": "User Inventory",
+    "run": "53e539a7",
+    "dataSource": "Sample",
+    "scope": "User objects in one explicit domain",
+    "forest": "example.test",
+    "connectionDomain": "example.test",
+    "sourceDC": "dc01.example.test",
+    "configurationNC": "CN=Configuration,DC=example,DC=test",
+    "started": "2026-10-30T13:08:00.4465750+05:30",
+    "generated": "2026-10-30T13:08:00.4600080+05:30",
+    "generatedDisplay": "30 Oct 2026, 13:08:00 +05:30",
+    "timeZone": "Asia/Calcutta",
+    "expectedQueries": 1,
+    "notice": "SAMPLE DATA. Fictional User configuration; no infrastructure was contacted.",
+    "limitations": [
+      "One explicit domain; user objects only. No child-domain enumeration, manager/group target lookups or endpoint connections.",
+      "Names, profile fields, flags and timestamps are reported directory values and can be missing or outdated. Empty and unknown summary values remain distinguishable.",
+      "Last logon timestamp is replicated and approximate, not exact last sign-in or a stale-account finding. Zero/missing timestamps remain null. Account expiration is separate from password expiration.",
+      "Group links use memberOf values returned by Get-ADUser. They exclude primary group and recursive membership; no claim of complete forest-wide membership, independent backlink range validation or effective access is made.",
+      "Primary group SID is derived from a valid account-domain SID and primaryGroupID. It is a reference, not a resolved or verified group object.",
+      "Manager and group DNs are retained without dereferencing external targets. managed profile attributes do not prove organizational ownership or employment status.",
+      "Summaries reconcile to observed user objects and use exact returned values. ACL-filtered objects/attributes may not be visible; successful reads do not prove complete visibility.",
+      "No inactivity threshold, privilege analysis, recommendation, password/secret export, modification, remediation or email occurs."
+    ],
+    "timeoutSeconds": null
+  },
+  "sections": {
+    "users": [
+      "Users",
+      [
+        "Name",
+        "User ID",
+        "SAM account name",
+        "UPN",
+        "Email",
+        "Enabled",
+        "Department",
+        "Title",
+        "Company",
+        "Manager DN",
+        "Location DN",
+        "DN",
+        "Created",
+        "Changed",
+        "Password last set",
+        "Account expires",
+        "Last logon timestamp (replicated)",
+        "Direct group links observed"
+      ]
+    ],
+    "flags": [
+      "Reported account flags",
+      [
+        "Name",
+        "User ID",
+        "Password never expires",
+        "Password not required",
+        "Cannot change password",
+        "Smartcard required",
+        "Account not delegated",
+        "Trusted for delegation",
+        "Trusted to authenticate for delegation"
+      ]
+    ],
+    "memberships": [
+      "Reported direct group links",
+      [
+        "Name",
+        "User ID",
+        "User",
+        "Group DN"
+      ]
+    ],
+    "primaryGroups": [
+      "Primary group references",
+      [
+        "Name",
+        "User ID",
+        "User SID",
+        "Primary group RID",
+        "Derived primary group SID"
+      ]
+    ],
+    "departments": [
+      "Departments",
+      [
+        "Name",
+        "Department",
+        "Users observed"
+      ]
+    ],
+    "companies": [
+      "Companies",
+      [
+        "Name",
+        "Company",
+        "Users observed"
+      ]
+    ],
+    "locations": [
+      "Directory locations",
+      [
+        "Name",
+        "Location DN",
+        "Users observed"
+      ]
+    ],
+    "statuses": [
+      "Enabled status",
+      [
+        "Name",
+        "Enabled",
+        "Users observed"
+      ]
+    ],
+    "collection": [
+      "Collection coverage",
+      [
+        "Name",
+        "Status",
+        "Record count",
+        "Method",
+        "Collected at",
+        "Duration ms",
+        "Error ID",
+        "Message"
+      ]
+    ]
+  },
+  "data": {
+    "users": [
+      {
+        "Name": "Alex",
+        "User ID": "00000000-0000-0000-0000-000000000001",
+        "SAM account name": "alex",
+        "UPN": "alex@example.test",
+        "Email": "alex@example.test",
+        "Enabled": true,
+        "Department": "IT",
+        "Title": "Specialist",
+        "Company": "Example Ltd",
+        "Manager DN": "CN=Morgan,OU=Employees,DC=example,DC=test",
+        "Location DN": "OU=Employees,DC=example,DC=test",
+        "DN": "CN=Alex,OU=Employees,DC=example,DC=test",
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Account expires": null,
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "Direct group links observed": 1
+      },
+      {
+        "Name": "Morgan",
+        "User ID": "00000000-0000-0000-0000-000000000002",
+        "SAM account name": "morgan",
+        "UPN": "morgan@example.test",
+        "Email": "morgan@example.test",
+        "Enabled": true,
+        "Department": "IT",
+        "Title": "Specialist",
+        "Company": "Example Ltd",
+        "Manager DN": null,
+        "Location DN": "OU=Employees,DC=example,DC=test",
+        "DN": "CN=Morgan,OU=Employees,DC=example,DC=test",
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Account expires": null,
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "Direct group links observed": 1
+      },
+      {
+        "Name": "Sam",
+        "User ID": "00000000-0000-0000-0000-000000000003",
+        "SAM account name": "sam",
+        "UPN": "sam@example.test",
+        "Email": "sam@example.test",
+        "Enabled": false,
+        "Department": "Finance",
+        "Title": "Specialist",
+        "Company": "Example Ltd",
+        "Manager DN": null,
+        "Location DN": "OU=Employees,DC=example,DC=test",
+        "DN": "CN=Sam,OU=Employees,DC=example,DC=test",
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Account expires": null,
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "Direct group links observed": 0
+      },
+      {
+        "Name": "Lee",
+        "User ID": "00000000-0000-0000-0000-000000000004",
+        "SAM account name": "lee",
+        "UPN": "lee@example.test",
+        "Email": "lee@example.test",
+        "Enabled": true,
+        "Department": null,
+        "Title": "Specialist",
+        "Company": null,
+        "Manager DN": null,
+        "Location DN": "CN=Users,DC=example,DC=test",
+        "DN": "CN=Lee,CN=Users,DC=example,DC=test",
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Account expires": null,
+        "Last logon timestamp (replicated)": null,
+        "Direct group links observed": 0
+      },
+      {
+        "Name": "Robin",
+        "User ID": "00000000-0000-0000-0000-000000000005",
+        "SAM account name": "robin",
+        "UPN": "robin@example.test",
+        "Email": "robin@example.test",
+        "Enabled": null,
+        "Department": "",
+        "Title": "Specialist",
+        "Company": "Partner Ltd",
+        "Manager DN": null,
+        "Location DN": "OU=Employees,DC=example,DC=test",
+        "DN": "CN=Robin,OU=Employees,DC=example,DC=test",
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Account expires": "2027-01-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "Direct group links observed": 0
+      }
+    ],
+    "flags": [
+      {
+        "Name": "Alex",
+        "User ID": "00000000-0000-0000-0000-000000000001",
+        "Password never expires": false,
+        "Password not required": false,
+        "Cannot change password": false,
+        "Smartcard required": false,
+        "Account not delegated": false,
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false
+      },
+      {
+        "Name": "Morgan",
+        "User ID": "00000000-0000-0000-0000-000000000002",
+        "Password never expires": false,
+        "Password not required": false,
+        "Cannot change password": false,
+        "Smartcard required": true,
+        "Account not delegated": false,
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false
+      },
+      {
+        "Name": "Sam",
+        "User ID": "00000000-0000-0000-0000-000000000003",
+        "Password never expires": false,
+        "Password not required": false,
+        "Cannot change password": false,
+        "Smartcard required": false,
+        "Account not delegated": false,
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false
+      },
+      {
+        "Name": "Lee",
+        "User ID": "00000000-0000-0000-0000-000000000004",
+        "Password never expires": false,
+        "Password not required": false,
+        "Cannot change password": false,
+        "Smartcard required": false,
+        "Account not delegated": false,
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false
+      },
+      {
+        "Name": "Robin",
+        "User ID": "00000000-0000-0000-0000-000000000005",
+        "Password never expires": false,
+        "Password not required": false,
+        "Cannot change password": false,
+        "Smartcard required": false,
+        "Account not delegated": false,
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false
+      }
+    ],
+    "memberships": [
+      {
+        "Name": "Alex / CN=App Users,OU=Groups,DC=example,DC=test",
+        "User ID": "00000000-0000-0000-0000-000000000001",
+        "User": "Alex",
+        "Group DN": "CN=App Users,OU=Groups,DC=example,DC=test"
+      },
+      {
+        "Name": "Morgan / CN=App Users,OU=Groups,DC=example,DC=test",
+        "User ID": "00000000-0000-0000-0000-000000000002",
+        "User": "Morgan",
+        "Group DN": "CN=App Users,OU=Groups,DC=example,DC=test"
+      }
+    ],
+    "primaryGroups": [
+      {
+        "Name": "Alex",
+        "User ID": "00000000-0000-0000-0000-000000000001",
+        "User SID": "S-1-5-21-100-200-300-1100",
+        "Primary group RID": 513,
+        "Derived primary group SID": "S-1-5-21-100-200-300-513"
+      },
+      {
+        "Name": "Morgan",
+        "User ID": "00000000-0000-0000-0000-000000000002",
+        "User SID": "S-1-5-21-100-200-300-1101",
+        "Primary group RID": 513,
+        "Derived primary group SID": "S-1-5-21-100-200-300-513"
+      },
+      {
+        "Name": "Sam",
+        "User ID": "00000000-0000-0000-0000-000000000003",
+        "User SID": "S-1-5-21-100-200-300-1102",
+        "Primary group RID": 513,
+        "Derived primary group SID": "S-1-5-21-100-200-300-513"
+      },
+      {
+        "Name": "Lee",
+        "User ID": "00000000-0000-0000-0000-000000000004",
+        "User SID": "S-1-5-21-100-200-300-1103",
+        "Primary group RID": 513,
+        "Derived primary group SID": "S-1-5-21-100-200-300-513"
+      },
+      {
+        "Name": "Robin",
+        "User ID": "00000000-0000-0000-0000-000000000005",
+        "User SID": "S-1-5-21-100-200-300-1104",
+        "Primary group RID": 513,
+        "Derived primary group SID": "S-1-5-21-100-200-300-513"
+      }
+    ],
+    "departments": [
+      {
+        "Name": "Empty reported value",
+        "Department": "",
+        "Users observed": 1
+      },
+      {
+        "Name": "Finance",
+        "Department": "Finance",
+        "Users observed": 1
+      },
+      {
+        "Name": "IT",
+        "Department": "IT",
+        "Users observed": 2
+      },
+      {
+        "Name": "Unknown / not returned",
+        "Department": null,
+        "Users observed": 1
+      }
+    ],
+    "companies": [
+      {
+        "Name": "Example Ltd",
+        "Company": "Example Ltd",
+        "Users observed": 3
+      },
+      {
+        "Name": "Partner Ltd",
+        "Company": "Partner Ltd",
+        "Users observed": 1
+      },
+      {
+        "Name": "Unknown / not returned",
+        "Company": null,
+        "Users observed": 1
+      }
+    ],
+    "locations": [
+      {
+        "Name": "CN=Users,DC=example,DC=test",
+        "Location DN": "CN=Users,DC=example,DC=test",
+        "Users observed": 1
+      },
+      {
+        "Name": "OU=Employees,DC=example,DC=test",
+        "Location DN": "OU=Employees,DC=example,DC=test",
+        "Users observed": 4
+      }
+    ],
+    "statuses": [
+      {
+        "Name": "False",
+        "Enabled": false,
+        "Users observed": 1
+      },
+      {
+        "Name": "True",
+        "Enabled": true,
+        "Users observed": 3
+      },
+      {
+        "Name": "Unknown / not returned",
+        "Enabled": null,
+        "Users observed": 1
+      }
+    ],
+    "collection": [
+      {
+        "Name": "Domain user enumeration",
+        "Status": "Succeeded",
+        "Record count": 5,
+        "Method": "ADWS / pinned domain DC",
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Fictional user inventory"
+      }
+    ]
+  },
+  "coverage": {
+    "users": true,
+    "flags": true,
+    "memberships": true,
+    "primaryGroups": true,
+    "departments": true,
+    "companies": true,
+    "locations": true,
+    "statuses": true,
+    "collection": true
+  },
+  "raw": {}
+}

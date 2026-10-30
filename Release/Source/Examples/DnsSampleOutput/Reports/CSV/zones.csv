@@ -1,0 +1,7 @@
+"Name","Server","Zone","Type","AD integrated","Directory partition","Dynamic updates","Reverse lookup","Paused","Shutdown","Zone file"
+"dc01.example.test / example.test","dc01.example.test","example.test","Primary","True",,"Secure","False","False","False",
+"dc01.example.test / _msdcs.example.test","dc01.example.test","_msdcs.example.test","Primary","True",,"Secure","False","False","False",
+"dc01.example.test / partner.test","dc01.example.test","partner.test","Forwarder","True",,"Secure","False","False","False",
+"dc02.example.test / example.test","dc02.example.test","example.test","Primary","True",,"Secure","False","False","False",
+"dc02.example.test / _msdcs.example.test","dc02.example.test","_msdcs.example.test","Primary","True",,"Secure","False","False","False",
+"dc02.example.test / partner.test","dc02.example.test","partner.test","Forwarder","True",,"Secure","False","False","False",

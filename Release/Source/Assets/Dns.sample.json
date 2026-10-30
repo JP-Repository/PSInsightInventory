@@ -1,0 +1,1348 @@
+{
+  "domain": "example.test",
+  "envelopes": [
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "dcs",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Domain": "example.test",
+          "Site": "HQ",
+          "OS": "Windows Server 2022",
+          "Inventory": "Pending",
+          "Zones observed": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "role",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "DNS role present": true,
+          "Service state": "Running"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "client",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Adapter": "Ethernet",
+          "DNS search order": "192.0.2.10; 192.0.2.11; 192.0.2.12",
+          "Preferred DNS": "192.0.2.10",
+          "Alternate DNS": "192.0.2.11",
+          "Additional DNS": "192.0.2.12"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "forwarders",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Forwarder": "192.0.2.53",
+          "Order": 1,
+          "Timeout seconds": 3,
+          "Use root hints": false
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "recursion",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Enabled": true,
+          "Additional timeout": "00:00:04",
+          "Retry interval": "00:00:03",
+          "Timeout": "00:00:08",
+          "Secure response": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "scavenging",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Enabled": false,
+          "Interval": "7.00:00:00",
+          "Default no-refresh interval": "7.00:00:00",
+          "Default refresh interval": "7.00:00:00",
+          "Last scavenge time": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "rootHints",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Name server": "root.example.test.",
+          "Addresses": "192.0.2.100"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "zones",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Type": "Primary",
+          "AD integrated": true,
+          "Dynamic updates": "Secure",
+          "Reverse lookup": false,
+          "Paused": false,
+          "Shutdown": false
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Type": "Primary",
+          "AD integrated": true,
+          "Dynamic updates": "Secure",
+          "Reverse lookup": false,
+          "Paused": false,
+          "Shutdown": false
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "partner.test",
+          "Type": "Forwarder",
+          "AD integrated": true,
+          "Dynamic updates": "Secure",
+          "Reverse lookup": false,
+          "Paused": false,
+          "Shutdown": false
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "conditional",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Zone": "partner.test",
+          "Master servers": "198.51.100.53",
+          "AD integrated": true,
+          "Timeout seconds": 5,
+          "Use recursion": false
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "aging",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Aging enabled": true,
+          "No-refresh interval": "7.00:00:00",
+          "Refresh interval": "7.00:00:00"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Aging enabled": true,
+          "No-refresh interval": "7.00:00:00",
+          "Refresh interval": "7.00:00:00"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "delegations",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Child zone": "branch",
+          "Name servers": "ns.branch.example.test",
+          "IP addresses": "192.0.2.30"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "scopes",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Scope": "example.test",
+          "File name": null
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Scope": "_msdcs.example.test",
+          "File name": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "zoneQueries",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Operation": "aging",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "aging",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "partner.test",
+          "Operation": "aging",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Excluded non-Primary zone",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Operation": "delegations",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "delegations",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "partner.test",
+          "Operation": "delegations",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Excluded non-Primary zone",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Operation": "scopes",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "scopes",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "partner.test",
+          "Operation": "scopes",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Excluded non-Primary zone",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Operation": "nameServers",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Selected zone query or excluded type",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "nameServers",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Selected zone query or excluded type",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "partner.test",
+          "Operation": "nameServers",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Selected zone query or excluded type",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Operation": "NS address A",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Operation": "NS address AAAA",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Operation": "NS address selection",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "NS address A",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "NS address AAAA",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "NS address selection",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "dcs",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Domain": "example.test",
+          "Site": "Branch",
+          "OS": "Windows Server 2022",
+          "Inventory": "Pending",
+          "Zones observed": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "role",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "DNS role present": true,
+          "Service state": "Running"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "client",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Adapter": "Ethernet",
+          "DNS search order": "192.0.2.10; 192.0.2.11; 192.0.2.12",
+          "Preferred DNS": "192.0.2.10",
+          "Alternate DNS": "192.0.2.11",
+          "Additional DNS": "192.0.2.12"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "forwarders",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Forwarder": "192.0.2.53",
+          "Order": 1,
+          "Timeout seconds": 3,
+          "Use root hints": false
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "recursion",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Enabled": true,
+          "Additional timeout": "00:00:04",
+          "Retry interval": "00:00:03",
+          "Timeout": "00:00:08",
+          "Secure response": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "scavenging",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Enabled": false,
+          "Interval": "7.00:00:00",
+          "Default no-refresh interval": "7.00:00:00",
+          "Default refresh interval": "7.00:00:00",
+          "Last scavenge time": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "rootHints",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Name server": "root.example.test.",
+          "Addresses": "192.0.2.100"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "zones",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Type": "Primary",
+          "AD integrated": true,
+          "Dynamic updates": "Secure",
+          "Reverse lookup": false,
+          "Paused": false,
+          "Shutdown": false
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Type": "Primary",
+          "AD integrated": true,
+          "Dynamic updates": "Secure",
+          "Reverse lookup": false,
+          "Paused": false,
+          "Shutdown": false
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "partner.test",
+          "Type": "Forwarder",
+          "AD integrated": true,
+          "Dynamic updates": "Secure",
+          "Reverse lookup": false,
+          "Paused": false,
+          "Shutdown": false
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "conditional",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Zone": "partner.test",
+          "Master servers": "198.51.100.53",
+          "AD integrated": true,
+          "Timeout seconds": 5,
+          "Use recursion": false
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "aging",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Aging enabled": true,
+          "No-refresh interval": "7.00:00:00",
+          "Refresh interval": "7.00:00:00"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Aging enabled": true,
+          "No-refresh interval": "7.00:00:00",
+          "Refresh interval": "7.00:00:00"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "delegations",
+      "Status": "Partial",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Child zone": "branch",
+          "Name servers": "ns.branch.example.test",
+          "IP addresses": "192.0.2.30"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": "SampleDenied",
+      "ErrorMessage": "One zone query failed; successful rows retained"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "scopes",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Scope": "example.test",
+          "File name": null
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Scope": "_msdcs.example.test",
+          "File name": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "zoneQueries",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Operation": "aging",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "aging",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "partner.test",
+          "Operation": "aging",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Excluded non-Primary zone",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Operation": "delegations",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "delegations",
+          "Status": "Failed",
+          "Duration ms": 1,
+          "Error ID": "SampleDenied",
+          "Message": "Synthetic denied zone",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "partner.test",
+          "Operation": "delegations",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Excluded non-Primary zone",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Operation": "scopes",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "scopes",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Query completed",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "partner.test",
+          "Operation": "scopes",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Excluded non-Primary zone",
+          "Collected at": "2026-10-29T10:00:01Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Operation": "nameServers",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Selected zone query or excluded type",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "nameServers",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Selected zone query or excluded type",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "partner.test",
+          "Operation": "nameServers",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Selected zone query or excluded type",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Operation": "NS address A",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Operation": "NS address AAAA",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Operation": "NS address selection",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "NS address A",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "NS address AAAA",
+          "Status": "Succeeded",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Operation": "NS address selection",
+          "Status": "NotAttempted",
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Stored address query or external target exclusion",
+          "Collected at": "2026-10-30T00:00:00Z"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "dcs",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc03.example.test",
+          "Domain": "example.test",
+          "Site": "Branch",
+          "OS": "Windows Server 2022",
+          "Inventory": "Pending",
+          "Zones observed": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "role",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc03.example.test",
+          "DNS role present": false,
+          "Service state": "Not installed"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "client",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc03.example.test",
+          "Adapter": "Ethernet",
+          "DNS search order": "192.0.2.10; 192.0.2.11; 192.0.2.12",
+          "Preferred DNS": "192.0.2.10",
+          "Alternate DNS": "192.0.2.11",
+          "Additional DNS": "192.0.2.12"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "forwarders",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "recursion",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "scavenging",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "rootHints",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "zones",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "conditional",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "aging",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "delegations",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "scopes",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "zoneQueries",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "nameServers",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Owner": "@",
+          "Name server": "dc01.example.test.",
+          "TTL": "01:00:00",
+          "Timestamp": null
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Owner": "branch",
+          "Name server": "ns.external.test.",
+          "TTL": "01:00:00",
+          "Timestamp": null
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Owner": "@",
+          "Name server": "dc01.example.test.",
+          "TTL": "01:00:00",
+          "Timestamp": null
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Owner": "branch",
+          "Name server": "ns.external.test.",
+          "TTL": "01:00:00",
+          "Timestamp": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc01.example.test",
+      "Key": "nsAddresses",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc01.example.test",
+          "Zone": "example.test",
+          "Name server": "dc01.example.test.",
+          "Address zone": "example.test",
+          "Owner": "dc01",
+          "Record type": "A",
+          "Address": "192.0.2.10",
+          "TTL": "01:00:00"
+        },
+        {
+          "Name": "dc01.example.test",
+          "Zone": "_msdcs.example.test",
+          "Name server": "dc01.example.test.",
+          "Address zone": "example.test",
+          "Owner": "dc01",
+          "Record type": "A",
+          "Address": "192.0.2.10",
+          "TTL": "01:00:00"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "nameServers",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Owner": "@",
+          "Name server": "dc01.example.test.",
+          "TTL": "01:00:00",
+          "Timestamp": null
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Owner": "branch",
+          "Name server": "ns.external.test.",
+          "TTL": "01:00:00",
+          "Timestamp": null
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Owner": "@",
+          "Name server": "dc01.example.test.",
+          "TTL": "01:00:00",
+          "Timestamp": null
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Owner": "branch",
+          "Name server": "ns.external.test.",
+          "TTL": "01:00:00",
+          "Timestamp": null
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc02.example.test",
+      "Key": "nsAddresses",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "dc02.example.test",
+          "Zone": "example.test",
+          "Name server": "dc01.example.test.",
+          "Address zone": "example.test",
+          "Owner": "dc01",
+          "Record type": "A",
+          "Address": "192.0.2.10",
+          "TTL": "01:00:00"
+        },
+        {
+          "Name": "dc02.example.test",
+          "Zone": "_msdcs.example.test",
+          "Name server": "dc01.example.test.",
+          "Address zone": "example.test",
+          "Owner": "dc01",
+          "Record type": "A",
+          "Address": "192.0.2.10",
+          "TTL": "01:00:00"
+        }
+      ],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": ""
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "nameServers",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    },
+    {
+      "Kind": "Section",
+      "Target": "dc03.example.test",
+      "Key": "nsAddresses",
+      "Status": "NotApplicable",
+      "Records": [],
+      "Method": "Offline fixture",
+      "StartedAt": "2026-10-29T10:00:00Z",
+      "CollectedAt": "2026-10-29T10:00:01Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "DNS role absent"
+    }
+  ]
+}

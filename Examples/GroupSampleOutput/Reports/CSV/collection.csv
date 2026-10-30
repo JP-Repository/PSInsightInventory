@@ -1,0 +1,6 @@
+"Name","Target","Status","Record count","Collected at","Duration ms","Error ID","Message"
+"Group enumeration","example.test","Succeeded","4","30/10/2026 12:00:00 AM","1",,"Fictional metadata"
+"Direct members: Application Access","CN=Application Access,OU=Groups,DC=example,DC=test","Succeeded","3","30/10/2026 12:00:00 AM","1",,"Direct links; primary-group membership excluded"
+"Direct members: Regional Staff","CN=Regional Staff,OU=Groups,DC=example,DC=test","Succeeded","2","30/10/2026 12:00:00 AM","1",,"Direct links; primary-group membership excluded"
+"Direct members: Empty Distribution","CN=Empty Distribution,OU=Groups,DC=example,DC=test","Succeeded","0","30/10/2026 12:00:00 AM","1",,"Direct links; primary-group membership excluded"
+"Direct members: Restricted Members","CN=Restricted Members,OU=Groups,DC=example,DC=test","Failed","0","30/10/2026 12:00:00 AM","1","SampleDenied","Synthetic denied member list"

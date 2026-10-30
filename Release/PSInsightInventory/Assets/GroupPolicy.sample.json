@@ -1,0 +1,410 @@
+{
+  "context": {
+    "Domain": "example.test",
+    "Server": "dc01.example.test",
+    "DomainDN": "DC=example,DC=test",
+    "ConfigurationNC": "CN=Configuration,DC=example,DC=test",
+    "Forest": "example.test"
+  },
+  "envelopes": [
+    {
+      "Kind": "Section",
+      "Key": "gpos",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Default Domain Policy",
+          "GPO ID": "11111111-1111-1111-1111-111111111111",
+          "Domain": "example.test",
+          "Owner": "EXAMPLE\\Domain Admins",
+          "Status": "AllSettingsEnabled",
+          "Created": "2026-01-01T00:00:00Z",
+          "Changed": "2026-10-29T10:00:00Z",
+          "Description": "Fictional sample GPO"
+        },
+        {
+          "Name": "Workstation Configuration",
+          "GPO ID": "22222222-2222-2222-2222-222222222222",
+          "Domain": "example.test",
+          "Owner": "EXAMPLE\\Domain Admins",
+          "Status": "AllSettingsEnabled",
+          "Created": "2026-01-01T00:00:00Z",
+          "Changed": "2026-10-29T10:00:00Z",
+          "Description": "Fictional sample GPO"
+        },
+        {
+          "Name": "Application Settings",
+          "GPO ID": "33333333-3333-3333-3333-333333333333",
+          "Domain": "example.test",
+          "Owner": "EXAMPLE\\Domain Admins",
+          "Status": "AllSettingsEnabled",
+          "Created": "2026-01-01T00:00:00Z",
+          "Changed": "2026-10-29T10:00:00Z",
+          "Description": "Fictional sample GPO"
+        }
+      ],
+      "CollectedAt": "2026-10-29T10:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "versions",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Default Domain Policy",
+          "GPO ID": "11111111-1111-1111-1111-111111111111",
+          "User AD version": 2,
+          "User SYSVOL version": 2,
+          "Computer AD version": 6,
+          "Computer SYSVOL version": 6
+        },
+        {
+          "Name": "Workstation Configuration",
+          "GPO ID": "22222222-2222-2222-2222-222222222222",
+          "User AD version": 2,
+          "User SYSVOL version": 2,
+          "Computer AD version": 6,
+          "Computer SYSVOL version": 6
+        },
+        {
+          "Name": "Application Settings",
+          "GPO ID": "33333333-3333-3333-3333-333333333333",
+          "User AD version": 2,
+          "User SYSVOL version": 2,
+          "Computer AD version": 6,
+          "Computer SYSVOL version": 6
+        }
+      ],
+      "CollectedAt": "2026-10-29T10:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "containers",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "example.test",
+          "Type": "Domain",
+          "DN": "DC=example,DC=test",
+          "Block inheritance": false,
+          "Options raw": 0,
+          "Link entries observed": 1,
+          "Selected-domain links": 1
+        },
+        {
+          "Name": "Workstations",
+          "Type": "OU",
+          "DN": "OU=Workstations,DC=example,DC=test",
+          "Block inheritance": false,
+          "Options raw": 0,
+          "Link entries observed": 1,
+          "Selected-domain links": 1
+        },
+        {
+          "Name": "HQ",
+          "Type": "Site",
+          "DN": "CN=HQ,CN=Sites,CN=Configuration,DC=example,DC=test",
+          "Block inheritance": false,
+          "Options raw": 0,
+          "Link entries observed": 1,
+          "Selected-domain links": 1
+        }
+      ],
+      "CollectedAt": "2026-10-29T10:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "links",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "example.test / 11111111-1111-1111-1111-111111111111",
+          "GPO ID": "11111111-1111-1111-1111-111111111111",
+          "Container": "example.test",
+          "Container type": "Domain",
+          "Container DN": "DC=example,DC=test",
+          "GPO DN": "CN={11111111-1111-1111-1111-111111111111},CN=Policies,CN=System,DC=example,DC=test",
+          "Link order": 1,
+          "Enabled": true,
+          "Enforced": false,
+          "Options raw": 0
+        },
+        {
+          "Name": "Workstations / 22222222-2222-2222-2222-222222222222",
+          "GPO ID": "22222222-2222-2222-2222-222222222222",
+          "Container": "Workstations",
+          "Container type": "OU",
+          "Container DN": "OU=Workstations,DC=example,DC=test",
+          "GPO DN": "CN={22222222-2222-2222-2222-222222222222},CN=Policies,CN=System,DC=example,DC=test",
+          "Link order": 1,
+          "Enabled": true,
+          "Enforced": false,
+          "Options raw": 0
+        },
+        {
+          "Name": "HQ / 22222222-2222-2222-2222-222222222222",
+          "GPO ID": "22222222-2222-2222-2222-222222222222",
+          "Container": "HQ",
+          "Container type": "Site",
+          "Container DN": "CN=HQ,CN=Sites,CN=Configuration,DC=example,DC=test",
+          "GPO DN": "CN={22222222-2222-2222-2222-222222222222},CN=Policies,CN=System,DC=example,DC=test",
+          "Link order": 1,
+          "Enabled": true,
+          "Enforced": false,
+          "Options raw": 0
+        }
+      ],
+      "CollectedAt": "2026-10-29T10:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "permissions",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Default Domain Policy",
+          "GPO ID": "11111111-1111-1111-1111-111111111111",
+          "Trustee": "Authenticated Users",
+          "Trustee domain": "NT AUTHORITY",
+          "Trustee SID": "S-1-5-11",
+          "Trustee type": "WellKnownGroup",
+          "Permission": "GpoApply",
+          "Inherited": false
+        },
+        {
+          "Name": "Workstation Configuration",
+          "GPO ID": "22222222-2222-2222-2222-222222222222",
+          "Trustee": "Authenticated Users",
+          "Trustee domain": "NT AUTHORITY",
+          "Trustee SID": "S-1-5-11",
+          "Trustee type": "WellKnownGroup",
+          "Permission": "GpoApply",
+          "Inherited": false
+        },
+        {
+          "Name": "Application Settings",
+          "GPO ID": "33333333-3333-3333-3333-333333333333",
+          "Trustee": "Authenticated Users",
+          "Trustee domain": "NT AUTHORITY",
+          "Trustee SID": "S-1-5-11",
+          "Trustee type": "WellKnownGroup",
+          "Permission": "GpoApply",
+          "Inherited": false
+        }
+      ],
+      "CollectedAt": "2026-10-29T10:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "wmiFilters",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Workstations",
+          "Filter ID": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "Author": "EXAMPLE\\Admin",
+          "Description": "Fictional filter",
+          "Query definition raw": "1;3;10;47;WQL;root\\CIMv2;SELECT * FROM Win32_OperatingSystem WHERE ProductType = 1;",
+          "DN": "CN={aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa},CN=SOM,CN=WMIPolicy,CN=System,DC=example,DC=test"
+        }
+      ],
+      "CollectedAt": "2026-10-29T10:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "wmiReferences",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Default Domain Policy",
+          "GPO ID": "11111111-1111-1111-1111-111111111111",
+          "Filter reference raw": null,
+          "Filter ID": null,
+          "Filter domain": null
+        },
+        {
+          "Name": "Workstation Configuration",
+          "GPO ID": "22222222-2222-2222-2222-222222222222",
+          "Filter reference raw": "[example.test;{aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa};0]",
+          "Filter ID": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "Filter domain": "example.test"
+        },
+        {
+          "Name": "Application Settings",
+          "GPO ID": "33333333-3333-3333-3333-333333333333",
+          "Filter reference raw": null,
+          "Filter ID": null,
+          "Filter domain": null
+        }
+      ],
+      "CollectedAt": "2026-10-29T10:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "settings",
+      "Status": "Partial",
+      "Records": [
+        {
+          "Name": "Default Domain Policy",
+          "GPO ID": "11111111-1111-1111-1111-111111111111",
+          "Side": "Computer",
+          "Extension": "Registry",
+          "Setting types": "Policy",
+          "Top-level setting nodes": 2
+        },
+        {
+          "Name": "Workstation Configuration",
+          "GPO ID": "22222222-2222-2222-2222-222222222222",
+          "Side": "Computer",
+          "Extension": "Registry",
+          "Setting types": "Policy",
+          "Top-level setting nodes": 2
+        }
+      ],
+      "CollectedAt": "2026-10-29T10:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "One GPO query failed; successful results retained."
+    },
+    {
+      "Kind": "Section",
+      "Key": "objectQueries",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Default Domain Policy",
+          "GPO ID": "11111111-1111-1111-1111-111111111111",
+          "Target": "11111111-1111-1111-1111-111111111111",
+          "Operation": "permissions",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-29T10:00:00Z"
+        },
+        {
+          "Name": "Default Domain Policy",
+          "GPO ID": "11111111-1111-1111-1111-111111111111",
+          "Target": "11111111-1111-1111-1111-111111111111",
+          "Operation": "settings",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-29T10:00:00Z"
+        },
+        {
+          "Name": "Workstation Configuration",
+          "GPO ID": "22222222-2222-2222-2222-222222222222",
+          "Target": "22222222-2222-2222-2222-222222222222",
+          "Operation": "permissions",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-29T10:00:00Z"
+        },
+        {
+          "Name": "Workstation Configuration",
+          "GPO ID": "22222222-2222-2222-2222-222222222222",
+          "Target": "22222222-2222-2222-2222-222222222222",
+          "Operation": "settings",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-29T10:00:00Z"
+        },
+        {
+          "Name": "Application Settings",
+          "GPO ID": "33333333-3333-3333-3333-333333333333",
+          "Target": "33333333-3333-3333-3333-333333333333",
+          "Operation": "permissions",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-29T10:00:00Z"
+        },
+        {
+          "Name": "Application Settings",
+          "GPO ID": "33333333-3333-3333-3333-333333333333",
+          "Target": "33333333-3333-3333-3333-333333333333",
+          "Operation": "settings",
+          "Status": "Failed",
+          "Record count": 0,
+          "Duration ms": 1,
+          "Error ID": "SampleDenied",
+          "Message": "Synthetic XML report denial",
+          "Collected at": "2026-10-29T10:00:00Z"
+        },
+        {
+          "Name": "Domain link containers",
+          "GPO ID": null,
+          "Target": "Domain",
+          "Operation": "Link container source",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-29T10:00:00Z"
+        },
+        {
+          "Name": "OU link containers",
+          "GPO ID": null,
+          "Target": "OU",
+          "Operation": "Link container source",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-29T10:00:00Z"
+        },
+        {
+          "Name": "Site link containers",
+          "GPO ID": null,
+          "Target": "Site",
+          "Operation": "Link container source",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-29T10:00:00Z"
+        }
+      ],
+      "CollectedAt": "2026-10-29T10:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    }
+  ]
+}

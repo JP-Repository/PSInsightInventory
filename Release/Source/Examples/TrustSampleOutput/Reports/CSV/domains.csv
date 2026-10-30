@@ -1,0 +1,3 @@
+"Name","Source DC","Query status","Observed TDO records","Collected at"
+"example.test","dc01.example.test","Succeeded","3","29/10/2026 3:30:00 PM"
+"corp.example.test","dc01.corp.example.test","Succeeded","2","29/10/2026 3:30:00 PM"

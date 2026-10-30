@@ -1,0 +1,851 @@
+﻿{
+  "meta": {
+    "moduleName": "PSInsightInventory",
+    "version": "1.0.0",
+    "inventoryId": "ADForest",
+    "title": "Forest & Domain Inventory",
+    "run": "bbe9ca95",
+    "dataSource": "Sample",
+    "scope": "Forest-wide metadata and member domains",
+    "forest": "example.test",
+    "connectionDomain": "corp.example.test",
+    "sourceDC": "dc01.corp.example.test",
+    "configurationNC": "CN=Configuration,DC=example,DC=test",
+    "started": "2026-10-30T13:07:59.6368860+05:30",
+    "generated": "2026-10-30T13:07:59.6807110+05:30",
+    "generatedDisplay": "30 Oct 2026, 13:07:59 +05:30",
+    "timeZone": "Asia/Calcutta",
+    "expectedQueries": 6,
+    "domainCount": 2,
+    "domainDetailsCollected": 2,
+    "policiesCollected": 2,
+    "notice": "SAMPLE DATA. Fictional forest. No infrastructure was contacted.",
+    "limitations": [
+      "Functional levels and role owners are configuration values, not compatibility or health assessments.",
+      "Forest membership references remain visible even when a member-domain query fails; unavailable values remain unknown.",
+      "Hosted naming contexts are observed on the selected DCs; partition references are read separately from Configuration.",
+      "Only configured additional UPN/SPN suffix lists are shown; they are not a census of suffixes used by accounts.",
+      "Default domain password policies are inventory only. Fine-grained policies and user-effective password policies are not evaluated.",
+      "Successful reads cannot prove ACL-filtered attribute/object visibility. Server references do not prove endpoint availability.",
+      "No WinRM, object changes, trust enumeration, password/hash retrieval or email is performed."
+    ],
+    "timeoutSeconds": null
+  },
+  "sections": {
+    "forest": [
+      "Forest",
+      [
+        "Name",
+        "Root domain",
+        "Functional level",
+        "Domain references",
+        "Schema master",
+        "Domain naming master",
+        "Application partitions",
+        "Sites"
+      ]
+    ],
+    "domains": [
+      "Domains",
+      [
+        "Name",
+        "Query status",
+        "Source DC",
+        "NetBIOS name",
+        "Functional level",
+        "Parent domain",
+        "Children",
+        "SID",
+        "GUID",
+        "DN",
+        "Last logon replication interval"
+      ]
+    ],
+    "hierarchy": [
+      "Domain hierarchy",
+      [
+        "Name",
+        "Forest root",
+        "Parent domain",
+        "Children",
+        "Query status",
+        "DN"
+      ]
+    ],
+    "levels": [
+      "Functional levels",
+      [
+        "Name",
+        "Scope",
+        "Functional level",
+        "Query status"
+      ]
+    ],
+    "fsmo": [
+      "FSMO owners",
+      [
+        "Name",
+        "Scope",
+        "Domain / forest",
+        "Role",
+        "Owner",
+        "Query status"
+      ]
+    ],
+    "suffixes": [
+      "Configured suffixes",
+      [
+        "Name",
+        "Type",
+        "Forest"
+      ]
+    ],
+    "partitions": [
+      "Partition references",
+      [
+        "Name",
+        "Naming context",
+        "DNS root",
+        "NetBIOS name",
+        "Enabled",
+        "System flags raw",
+        "Writable replica DNs",
+        "Read-only replica DNs",
+        "DN"
+      ]
+    ],
+    "contexts": [
+      "Hosted naming contexts",
+      [
+        "Name",
+        "Source DC",
+        "Connection domain",
+        "Observation scope"
+      ]
+    ],
+    "containers": [
+      "Default containers",
+      [
+        "Name",
+        "Domain",
+        "Container property",
+        "DN"
+      ]
+    ],
+    "servers": [
+      "Directory server references",
+      [
+        "Name",
+        "Domain / forest",
+        "Source property"
+      ]
+    ],
+    "policies": [
+      "Default domain password policies",
+      [
+        "Name",
+        "Query status",
+        "Source DC",
+        "Minimum length",
+        "Password history",
+        "Complexity",
+        "Reversible encryption",
+        "Minimum age",
+        "Maximum age",
+        "Lockout threshold",
+        "Lockout duration",
+        "Lockout observation window",
+        "DN"
+      ]
+    ],
+    "collection": [
+      "Collection ledger",
+      [
+        "Name",
+        "Target",
+        "Source DC",
+        "Status",
+        "Record count",
+        "Method",
+        "Collected at",
+        "Duration ms",
+        "Error ID",
+        "Message"
+      ]
+    ]
+  },
+  "data": {
+    "forest": [
+      {
+        "Name": "example.test",
+        "Root domain": "example.test",
+        "Functional level": "Windows2016Forest",
+        "Domain references": 2,
+        "Schema master": "dc01.example.test",
+        "Domain naming master": "dc01.example.test",
+        "Application partitions": "DC=ForestDnsZones,DC=example,DC=test",
+        "Sites": "North-Hub; East-Office"
+      }
+    ],
+    "domains": [
+      {
+        "Name": "example.test",
+        "Query status": "Succeeded",
+        "Source DC": "dc01.example.test",
+        "NetBIOS name": "EXAMPLE",
+        "Functional level": "Windows2016Domain",
+        "Parent domain": null,
+        "Children": "corp.example.test",
+        "SID": "S-1-5-21-111-222-333",
+        "GUID": "00000000-0000-0000-0000-000000000001",
+        "DN": "DC=example,DC=test",
+        "Last logon replication interval": null
+      },
+      {
+        "Name": "corp.example.test",
+        "Query status": "Succeeded",
+        "Source DC": "dc01.corp.example.test",
+        "NetBIOS name": "CORP",
+        "Functional level": "Windows2016Domain",
+        "Parent domain": "example.test",
+        "Children": "",
+        "SID": "S-1-5-21-111-222-334",
+        "GUID": "00000000-0000-0000-0000-000000000002",
+        "DN": "DC=corp,DC=example,DC=test",
+        "Last logon replication interval": null
+      }
+    ],
+    "hierarchy": [
+      {
+        "Name": "example.test",
+        "Forest root": true,
+        "Parent domain": null,
+        "Children": "corp.example.test",
+        "Query status": "Succeeded",
+        "DN": "DC=example,DC=test"
+      },
+      {
+        "Name": "corp.example.test",
+        "Forest root": false,
+        "Parent domain": "example.test",
+        "Children": "",
+        "Query status": "Succeeded",
+        "DN": "DC=corp,DC=example,DC=test"
+      }
+    ],
+    "levels": [
+      {
+        "Name": "example.test",
+        "Scope": "Forest",
+        "Functional level": "Windows2016Forest",
+        "Query status": "Succeeded"
+      },
+      {
+        "Name": "example.test",
+        "Scope": "Domain",
+        "Functional level": "Windows2016Domain",
+        "Query status": "Succeeded"
+      },
+      {
+        "Name": "corp.example.test",
+        "Scope": "Domain",
+        "Functional level": "Windows2016Domain",
+        "Query status": "Succeeded"
+      }
+    ],
+    "fsmo": [
+      {
+        "Name": "example.test / SchemaMaster",
+        "Scope": "Forest",
+        "Domain / forest": "example.test",
+        "Role": "SchemaMaster",
+        "Owner": "dc01.example.test",
+        "Query status": "Succeeded"
+      },
+      {
+        "Name": "example.test / DomainNamingMaster",
+        "Scope": "Forest",
+        "Domain / forest": "example.test",
+        "Role": "DomainNamingMaster",
+        "Owner": "dc01.example.test",
+        "Query status": "Succeeded"
+      },
+      {
+        "Name": "example.test / PDCEmulator",
+        "Scope": "Domain",
+        "Domain / forest": "example.test",
+        "Role": "PDCEmulator",
+        "Owner": "dc01.example.test",
+        "Query status": "Succeeded"
+      },
+      {
+        "Name": "example.test / RIDMaster",
+        "Scope": "Domain",
+        "Domain / forest": "example.test",
+        "Role": "RIDMaster",
+        "Owner": "dc01.example.test",
+        "Query status": "Succeeded"
+      },
+      {
+        "Name": "example.test / InfrastructureMaster",
+        "Scope": "Domain",
+        "Domain / forest": "example.test",
+        "Role": "InfrastructureMaster",
+        "Owner": "dc01.example.test",
+        "Query status": "Succeeded"
+      },
+      {
+        "Name": "corp.example.test / PDCEmulator",
+        "Scope": "Domain",
+        "Domain / forest": "corp.example.test",
+        "Role": "PDCEmulator",
+        "Owner": "dc01.corp.example.test",
+        "Query status": "Succeeded"
+      },
+      {
+        "Name": "corp.example.test / RIDMaster",
+        "Scope": "Domain",
+        "Domain / forest": "corp.example.test",
+        "Role": "RIDMaster",
+        "Owner": "dc01.corp.example.test",
+        "Query status": "Succeeded"
+      },
+      {
+        "Name": "corp.example.test / InfrastructureMaster",
+        "Scope": "Domain",
+        "Domain / forest": "corp.example.test",
+        "Role": "InfrastructureMaster",
+        "Owner": "dc01.corp.example.test",
+        "Query status": "Succeeded"
+      }
+    ],
+    "suffixes": [
+      {
+        "Name": "example.org",
+        "Type": "Configured UPN suffix",
+        "Forest": "example.test"
+      },
+      {
+        "Name": "services.example.org",
+        "Type": "Configured SPN suffix",
+        "Forest": "example.test"
+      }
+    ],
+    "partitions": [
+      {
+        "Name": "Partition-1",
+        "Naming context": "CN=Configuration,DC=example,DC=test",
+        "DNS root": null,
+        "NetBIOS name": null,
+        "Enabled": true,
+        "System flags raw": "1",
+        "Writable replica DNs": "",
+        "Read-only replica DNs": "",
+        "DN": "CN=Partition-1,CN=Partitions,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "Partition-2",
+        "Naming context": "CN=Schema,CN=Configuration,DC=example,DC=test",
+        "DNS root": null,
+        "NetBIOS name": null,
+        "Enabled": true,
+        "System flags raw": "1",
+        "Writable replica DNs": "",
+        "Read-only replica DNs": "",
+        "DN": "CN=Partition-2,CN=Partitions,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "Partition-3",
+        "Naming context": "DC=example,DC=test",
+        "DNS root": "example.test",
+        "NetBIOS name": "EXAMPLE",
+        "Enabled": true,
+        "System flags raw": "3",
+        "Writable replica DNs": "",
+        "Read-only replica DNs": "",
+        "DN": "CN=Partition-3,CN=Partitions,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "Partition-4",
+        "Naming context": "DC=corp,DC=example,DC=test",
+        "DNS root": "corp.example.test",
+        "NetBIOS name": "CORP",
+        "Enabled": true,
+        "System flags raw": "3",
+        "Writable replica DNs": "",
+        "Read-only replica DNs": "",
+        "DN": "CN=Partition-4,CN=Partitions,CN=Configuration,DC=example,DC=test"
+      },
+      {
+        "Name": "Partition-5",
+        "Naming context": "DC=ForestDnsZones,DC=example,DC=test",
+        "DNS root": null,
+        "NetBIOS name": null,
+        "Enabled": true,
+        "System flags raw": "1",
+        "Writable replica DNs": "",
+        "Read-only replica DNs": "",
+        "DN": "CN=Partition-5,CN=Partitions,CN=Configuration,DC=example,DC=test"
+      }
+    ],
+    "contexts": [
+      {
+        "Name": "DC=corp,DC=example,DC=test",
+        "Source DC": "dc01.corp.example.test",
+        "Connection domain": "corp.example.test",
+        "Observation scope": "Naming contexts hosted by this observed DC only"
+      },
+      {
+        "Name": "CN=Configuration,DC=example,DC=test",
+        "Source DC": "dc01.corp.example.test",
+        "Connection domain": "corp.example.test",
+        "Observation scope": "Naming contexts hosted by this observed DC only"
+      },
+      {
+        "Name": "CN=Schema,CN=Configuration,DC=example,DC=test",
+        "Source DC": "dc01.corp.example.test",
+        "Connection domain": "corp.example.test",
+        "Observation scope": "Naming contexts hosted by this observed DC only"
+      },
+      {
+        "Name": "DC=example,DC=test",
+        "Source DC": "dc01.example.test",
+        "Connection domain": "example.test",
+        "Observation scope": "Naming contexts hosted by this observed DC only"
+      },
+      {
+        "Name": "CN=Configuration,DC=example,DC=test",
+        "Source DC": "dc01.example.test",
+        "Connection domain": "example.test",
+        "Observation scope": "Naming contexts hosted by this observed DC only"
+      },
+      {
+        "Name": "CN=Schema,CN=Configuration,DC=example,DC=test",
+        "Source DC": "dc01.example.test",
+        "Connection domain": "example.test",
+        "Observation scope": "Naming contexts hosted by this observed DC only"
+      }
+    ],
+    "containers": [
+      {
+        "Name": "example.test / ComputersContainer",
+        "Domain": "example.test",
+        "Container property": "ComputersContainer",
+        "DN": "CN=Computers,DC=example,DC=test"
+      },
+      {
+        "Name": "example.test / UsersContainer",
+        "Domain": "example.test",
+        "Container property": "UsersContainer",
+        "DN": "CN=Users,DC=example,DC=test"
+      },
+      {
+        "Name": "example.test / DomainControllersContainer",
+        "Domain": "example.test",
+        "Container property": "DomainControllersContainer",
+        "DN": "OU=Domain Controllers,DC=example,DC=test"
+      },
+      {
+        "Name": "example.test / DeletedObjectsContainer",
+        "Domain": "example.test",
+        "Container property": "DeletedObjectsContainer",
+        "DN": "CN=Deleted Objects,DC=example,DC=test"
+      },
+      {
+        "Name": "example.test / LostAndFoundContainer",
+        "Domain": "example.test",
+        "Container property": "LostAndFoundContainer",
+        "DN": "CN=LostAndFound,DC=example,DC=test"
+      },
+      {
+        "Name": "example.test / SystemsContainer",
+        "Domain": "example.test",
+        "Container property": "SystemsContainer",
+        "DN": "CN=System,DC=example,DC=test"
+      },
+      {
+        "Name": "corp.example.test / ComputersContainer",
+        "Domain": "corp.example.test",
+        "Container property": "ComputersContainer",
+        "DN": "CN=Computers,DC=corp,DC=example,DC=test"
+      },
+      {
+        "Name": "corp.example.test / UsersContainer",
+        "Domain": "corp.example.test",
+        "Container property": "UsersContainer",
+        "DN": "CN=Users,DC=corp,DC=example,DC=test"
+      },
+      {
+        "Name": "corp.example.test / DomainControllersContainer",
+        "Domain": "corp.example.test",
+        "Container property": "DomainControllersContainer",
+        "DN": "OU=Domain Controllers,DC=corp,DC=example,DC=test"
+      },
+      {
+        "Name": "corp.example.test / DeletedObjectsContainer",
+        "Domain": "corp.example.test",
+        "Container property": "DeletedObjectsContainer",
+        "DN": "CN=Deleted Objects,DC=corp,DC=example,DC=test"
+      },
+      {
+        "Name": "corp.example.test / LostAndFoundContainer",
+        "Domain": "corp.example.test",
+        "Container property": "LostAndFoundContainer",
+        "DN": "CN=LostAndFound,DC=corp,DC=example,DC=test"
+      },
+      {
+        "Name": "corp.example.test / SystemsContainer",
+        "Domain": "corp.example.test",
+        "Container property": "SystemsContainer",
+        "DN": "CN=System,DC=corp,DC=example,DC=test"
+      }
+    ],
+    "servers": [
+      {
+        "Name": "dc01.example.test",
+        "Domain / forest": "example.test",
+        "Source property": "Get-ADForest.GlobalCatalogs"
+      },
+      {
+        "Name": "dc01.corp.example.test",
+        "Domain / forest": "example.test",
+        "Source property": "Get-ADForest.GlobalCatalogs"
+      },
+      {
+        "Name": "dc01.example.test",
+        "Domain / forest": "example.test",
+        "Source property": "Get-ADDomain.ReplicaDirectoryServers"
+      },
+      {
+        "Name": "dc01.corp.example.test",
+        "Domain / forest": "corp.example.test",
+        "Source property": "Get-ADDomain.ReplicaDirectoryServers"
+      }
+    ],
+    "policies": [
+      {
+        "Name": "example.test",
+        "Query status": "Succeeded",
+        "Source DC": "dc01.example.test",
+        "Minimum length": "14",
+        "Password history": "24",
+        "Complexity": true,
+        "Reversible encryption": false,
+        "Minimum age": "1.00:00:00",
+        "Maximum age": "42.00:00:00",
+        "Lockout threshold": "5",
+        "Lockout duration": "00:30:00",
+        "Lockout observation window": "00:30:00",
+        "DN": "DC=example,DC=test"
+      },
+      {
+        "Name": "corp.example.test",
+        "Query status": "Succeeded",
+        "Source DC": "dc01.corp.example.test",
+        "Minimum length": "14",
+        "Password history": "24",
+        "Complexity": true,
+        "Reversible encryption": false,
+        "Minimum age": "1.00:00:00",
+        "Maximum age": "42.00:00:00",
+        "Lockout threshold": "5",
+        "Lockout duration": "00:30:00",
+        "Lockout observation window": "00:30:00",
+        "DN": "DC=corp,DC=example,DC=test"
+      }
+    ],
+    "collection": [
+      {
+        "Name": "forest",
+        "Target": "example.test",
+        "Source DC": "dc01.corp.example.test",
+        "Status": "Succeeded",
+        "Record count": 1,
+        "Method": "Synthetic fixture",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Read completed; returned values are configuration inventory."
+      },
+      {
+        "Name": "partitions",
+        "Target": "example.test",
+        "Source DC": "dc01.corp.example.test",
+        "Status": "Succeeded",
+        "Record count": 5,
+        "Method": "Synthetic fixture",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Read completed; returned values are configuration inventory."
+      },
+      {
+        "Name": "domain:example.test",
+        "Target": "example.test",
+        "Source DC": "dc01.example.test",
+        "Status": "Succeeded",
+        "Record count": 1,
+        "Method": "Synthetic fixture",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Read completed; returned values are configuration inventory."
+      },
+      {
+        "Name": "policy:example.test",
+        "Target": "example.test",
+        "Source DC": "dc01.example.test",
+        "Status": "Succeeded",
+        "Record count": 1,
+        "Method": "Synthetic fixture",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Read completed; returned values are configuration inventory."
+      },
+      {
+        "Name": "domain:corp.example.test",
+        "Target": "corp.example.test",
+        "Source DC": "dc01.corp.example.test",
+        "Status": "Succeeded",
+        "Record count": 1,
+        "Method": "Synthetic fixture",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Read completed; returned values are configuration inventory."
+      },
+      {
+        "Name": "policy:corp.example.test",
+        "Target": "corp.example.test",
+        "Source DC": "dc01.corp.example.test",
+        "Status": "Succeeded",
+        "Record count": 1,
+        "Method": "Synthetic fixture",
+        "Collected at": "2026-10-29T15:30:00+05:30",
+        "Duration ms": 0,
+        "Error ID": null,
+        "Message": "Read completed; returned values are configuration inventory."
+      }
+    ]
+  },
+  "coverage": {
+    "forest": true,
+    "domains": true,
+    "hierarchy": true,
+    "levels": true,
+    "fsmo": true,
+    "suffixes": true,
+    "partitions": true,
+    "contexts": true,
+    "containers": true,
+    "servers": true,
+    "policies": true,
+    "collection": true
+  },
+  "raw": {
+    "domain:corp.example.test": [
+      {
+        "Domain": {
+          "DNSRoot": "corp.example.test",
+          "Name": "CORP",
+          "NetBIOSName": "CORP",
+          "DomainSID": "S-1-5-21-111-222-334",
+          "ObjectGUID": "00000000-0000-0000-0000-000000000002",
+          "DistinguishedName": "DC=corp,DC=example,DC=test",
+          "Forest": "example.test",
+          "DomainMode": "Windows2016Domain",
+          "ParentDomain": "example.test",
+          "ChildDomains": [],
+          "PDCEmulator": "dc01.corp.example.test",
+          "RIDMaster": "dc01.corp.example.test",
+          "InfrastructureMaster": "dc01.corp.example.test",
+          "ComputersContainer": "CN=Computers,DC=corp,DC=example,DC=test",
+          "UsersContainer": "CN=Users,DC=corp,DC=example,DC=test",
+          "DomainControllersContainer": "OU=Domain Controllers,DC=corp,DC=example,DC=test",
+          "DeletedObjectsContainer": "CN=Deleted Objects,DC=corp,DC=example,DC=test",
+          "LostAndFoundContainer": "CN=LostAndFound,DC=corp,DC=example,DC=test",
+          "SystemsContainer": "CN=System,DC=corp,DC=example,DC=test",
+          "AllowedDNSSuffixes": [],
+          "ReplicaDirectoryServers": [
+            "dc01.corp.example.test"
+          ],
+          "ReadOnlyReplicaDirectoryServers": [],
+          "LastLogonReplicationInterval": null
+        },
+        "Root": {
+          "dnsHostName": "dc01.corp.example.test",
+          "configurationNamingContext": "CN=Configuration,DC=example,DC=test",
+          "schemaNamingContext": "CN=Schema,CN=Configuration,DC=example,DC=test",
+          "defaultNamingContext": "DC=corp,DC=example,DC=test",
+          "rootDomainNamingContext": "DC=example,DC=test",
+          "namingContexts": [
+            "DC=corp,DC=example,DC=test",
+            "CN=Configuration,DC=example,DC=test",
+            "CN=Schema,CN=Configuration,DC=example,DC=test"
+          ]
+        }
+      }
+    ],
+    "policy:corp.example.test": [
+      {
+        "DistinguishedName": "DC=corp,DC=example,DC=test",
+        "ComplexityEnabled": true,
+        "ReversibleEncryptionEnabled": false,
+        "MinPasswordLength": "14",
+        "PasswordHistoryCount": "24",
+        "MinPasswordAge": "1.00:00:00",
+        "MaxPasswordAge": "42.00:00:00",
+        "LockoutThreshold": "5",
+        "LockoutDuration": "00:30:00",
+        "LockoutObservationWindow": "00:30:00"
+      }
+    ],
+    "policy:example.test": [
+      {
+        "DistinguishedName": "DC=example,DC=test",
+        "ComplexityEnabled": true,
+        "ReversibleEncryptionEnabled": false,
+        "MinPasswordLength": "14",
+        "PasswordHistoryCount": "24",
+        "MinPasswordAge": "1.00:00:00",
+        "MaxPasswordAge": "42.00:00:00",
+        "LockoutThreshold": "5",
+        "LockoutDuration": "00:30:00",
+        "LockoutObservationWindow": "00:30:00"
+      }
+    ],
+    "partitions": [
+      {
+        "Name": "Partition-1",
+        "DistinguishedName": "CN=Partition-1,CN=Partitions,CN=Configuration,DC=example,DC=test",
+        "nCName": "CN=Configuration,DC=example,DC=test",
+        "dnsRoot": null,
+        "nETBIOSName": null,
+        "systemFlags": "1",
+        "enabled": true,
+        "msDS-NC-Replica-Locations": [],
+        "msDS-NC-RO-Replica-Locations": []
+      },
+      {
+        "Name": "Partition-2",
+        "DistinguishedName": "CN=Partition-2,CN=Partitions,CN=Configuration,DC=example,DC=test",
+        "nCName": "CN=Schema,CN=Configuration,DC=example,DC=test",
+        "dnsRoot": null,
+        "nETBIOSName": null,
+        "systemFlags": "1",
+        "enabled": true,
+        "msDS-NC-Replica-Locations": [],
+        "msDS-NC-RO-Replica-Locations": []
+      },
+      {
+        "Name": "Partition-3",
+        "DistinguishedName": "CN=Partition-3,CN=Partitions,CN=Configuration,DC=example,DC=test",
+        "nCName": "DC=example,DC=test",
+        "dnsRoot": "example.test",
+        "nETBIOSName": "EXAMPLE",
+        "systemFlags": "3",
+        "enabled": true,
+        "msDS-NC-Replica-Locations": [],
+        "msDS-NC-RO-Replica-Locations": []
+      },
+      {
+        "Name": "Partition-4",
+        "DistinguishedName": "CN=Partition-4,CN=Partitions,CN=Configuration,DC=example,DC=test",
+        "nCName": "DC=corp,DC=example,DC=test",
+        "dnsRoot": "corp.example.test",
+        "nETBIOSName": "CORP",
+        "systemFlags": "3",
+        "enabled": true,
+        "msDS-NC-Replica-Locations": [],
+        "msDS-NC-RO-Replica-Locations": []
+      },
+      {
+        "Name": "Partition-5",
+        "DistinguishedName": "CN=Partition-5,CN=Partitions,CN=Configuration,DC=example,DC=test",
+        "nCName": "DC=ForestDnsZones,DC=example,DC=test",
+        "dnsRoot": null,
+        "nETBIOSName": null,
+        "systemFlags": "1",
+        "enabled": true,
+        "msDS-NC-Replica-Locations": [],
+        "msDS-NC-RO-Replica-Locations": []
+      }
+    ],
+    "forest": [
+      {
+        "Name": "example.test",
+        "RootDomain": "example.test",
+        "ForestMode": "Windows2016Forest",
+        "Domains": [
+          "example.test",
+          "corp.example.test"
+        ],
+        "UPNSuffixes": [
+          "example.org"
+        ],
+        "SPNSuffixes": [
+          "services.example.org"
+        ],
+        "SchemaMaster": "dc01.example.test",
+        "DomainNamingMaster": "dc01.example.test",
+        "GlobalCatalogs": [
+          "dc01.example.test",
+          "dc01.corp.example.test"
+        ],
+        "ApplicationPartitions": [
+          "DC=ForestDnsZones,DC=example,DC=test"
+        ],
+        "Sites": [
+          "North-Hub",
+          "East-Office"
+        ]
+      }
+    ],
+    "domain:example.test": [
+      {
+        "Domain": {
+          "DNSRoot": "example.test",
+          "Name": "EXAMPLE",
+          "NetBIOSName": "EXAMPLE",
+          "DomainSID": "S-1-5-21-111-222-333",
+          "ObjectGUID": "00000000-0000-0000-0000-000000000001",
+          "DistinguishedName": "DC=example,DC=test",
+          "Forest": "example.test",
+          "DomainMode": "Windows2016Domain",
+          "ParentDomain": null,
+          "ChildDomains": [
+            "corp.example.test"
+          ],
+          "PDCEmulator": "dc01.example.test",
+          "RIDMaster": "dc01.example.test",
+          "InfrastructureMaster": "dc01.example.test",
+          "ComputersContainer": "CN=Computers,DC=example,DC=test",
+          "UsersContainer": "CN=Users,DC=example,DC=test",
+          "DomainControllersContainer": "OU=Domain Controllers,DC=example,DC=test",
+          "DeletedObjectsContainer": "CN=Deleted Objects,DC=example,DC=test",
+          "LostAndFoundContainer": "CN=LostAndFound,DC=example,DC=test",
+          "SystemsContainer": "CN=System,DC=example,DC=test",
+          "AllowedDNSSuffixes": [],
+          "ReplicaDirectoryServers": [
+            "dc01.example.test"
+          ],
+          "ReadOnlyReplicaDirectoryServers": [],
+          "LastLogonReplicationInterval": null
+        },
+        "Root": {
+          "dnsHostName": "dc01.example.test",
+          "configurationNamingContext": "CN=Configuration,DC=example,DC=test",
+          "schemaNamingContext": "CN=Schema,CN=Configuration,DC=example,DC=test",
+          "defaultNamingContext": "DC=example,DC=test",
+          "rootDomainNamingContext": "DC=example,DC=test",
+          "namingContexts": [
+            "DC=example,DC=test",
+            "CN=Configuration,DC=example,DC=test",
+            "CN=Schema,CN=Configuration,DC=example,DC=test"
+          ]
+        }
+      }
+    ]
+  }
+}

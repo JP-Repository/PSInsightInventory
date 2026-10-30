@@ -1,0 +1,6 @@
+"Name","Target","Status","Message"
+"Application Access","CN=Regional Staff,OU=Groups,DC=example,DC=test","Succeeded","Fictional member lookup or external exclusion"
+"Application Access","CN=Alex,OU=Users,DC=example,DC=test","Succeeded","Fictional member lookup or external exclusion"
+"Application Access","CN=PC01,OU=Computers,DC=example,DC=test","Succeeded","Fictional member lookup or external exclusion"
+"Regional Staff","CN=S-1-5-21-999-888-777-1000,CN=ForeignSecurityPrincipals,DC=example,DC=test","Succeeded","Fictional member lookup or external exclusion"
+"Regional Staff","CN=Partner Group,DC=child,DC=example,DC=test","NotAttempted","Fictional member lookup or external exclusion"

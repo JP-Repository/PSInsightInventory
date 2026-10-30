@@ -1,0 +1,5 @@
+"Name","Server","Zone","Aging enabled","No-refresh interval","Refresh interval","Scavenge servers","Available for scavenging"
+"dc01.example.test / example.test","dc01.example.test","example.test","True","7.00:00:00","7.00:00:00",,
+"dc01.example.test / _msdcs.example.test","dc01.example.test","_msdcs.example.test","True","7.00:00:00","7.00:00:00",,
+"dc02.example.test / example.test","dc02.example.test","example.test","True","7.00:00:00","7.00:00:00",,
+"dc02.example.test / _msdcs.example.test","dc02.example.test","_msdcs.example.test","True","7.00:00:00","7.00:00:00",,

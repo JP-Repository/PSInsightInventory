@@ -1,0 +1,329 @@
+{
+  "context": {
+    "Domain": "example.test",
+    "Server": "dc01.example.test",
+    "DomainDN": "DC=example,DC=test",
+    "Forest": "example.test",
+    "ConfigurationNC": "CN=Configuration,DC=example,DC=test"
+  },
+  "envelopes": [
+    {
+      "Kind": "Section",
+      "Key": "ous",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Corporate",
+          "OU ID": "11111111-1111-1111-1111-111111111111",
+          "DN": "OU=Corporate,DC=example,DC=test",
+          "Parent DN": "DC=example,DC=test",
+          "Canonical path": "example.test/Corporate",
+          "Description": "Fictional OU",
+          "Managed by": null,
+          "Protected from accidental deletion": true,
+          "Created": "2026-01-01T00:00:00Z",
+          "Changed": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "Workstations",
+          "OU ID": "22222222-2222-2222-2222-222222222222",
+          "DN": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+          "Parent DN": "OU=Corporate,DC=example,DC=test",
+          "Canonical path": "example.test/Corporate/Workstations",
+          "Description": "Fictional OU",
+          "Managed by": null,
+          "Protected from accidental deletion": true,
+          "Created": "2026-01-01T00:00:00Z",
+          "Changed": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "Empty OU",
+          "OU ID": "33333333-3333-3333-3333-333333333333",
+          "DN": "OU=Empty OU,DC=example,DC=test",
+          "Parent DN": "DC=example,DC=test",
+          "Canonical path": "example.test/Empty OU",
+          "Description": "Fictional OU",
+          "Managed by": null,
+          "Protected from accidental deletion": false,
+          "Created": "2026-01-01T00:00:00Z",
+          "Changed": "2026-10-30T00:00:00Z"
+        }
+      ],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "counts",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Corporate",
+          "OU ID": "11111111-1111-1111-1111-111111111111",
+          "DN": "OU=Corporate,DC=example,DC=test",
+          "Direct users": 2,
+          "Descendant users": 3,
+          "Direct computers": 0,
+          "Descendant computers": 4,
+          "Direct groups": 1,
+          "Descendant groups": 1,
+          "Direct OUs": 1,
+          "Descendant OUs": 1,
+          "Count status": "Collected"
+        },
+        {
+          "Name": "Workstations",
+          "OU ID": "22222222-2222-2222-2222-222222222222",
+          "DN": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+          "Direct users": 0,
+          "Descendant users": 1,
+          "Direct computers": 4,
+          "Descendant computers": 4,
+          "Direct groups": 0,
+          "Descendant groups": 0,
+          "Direct OUs": 0,
+          "Descendant OUs": 0,
+          "Count status": "Collected"
+        },
+        {
+          "Name": "Empty OU",
+          "OU ID": "33333333-3333-3333-3333-333333333333",
+          "DN": "OU=Empty OU,DC=example,DC=test",
+          "Direct users": 0,
+          "Descendant users": 0,
+          "Direct computers": 0,
+          "Descendant computers": 0,
+          "Direct groups": 0,
+          "Descendant groups": 0,
+          "Direct OUs": 0,
+          "Descendant OUs": 0,
+          "Count status": "Collected"
+        }
+      ],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "links",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Corporate",
+          "OU ID": "11111111-1111-1111-1111-111111111111",
+          "OU DN": "OU=Corporate,DC=example,DC=test",
+          "GPO ID": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "GPO DN": "CN={aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa},CN=Policies,CN=System,DC=example,DC=test",
+          "Link order": 1,
+          "Enabled": true,
+          "Enforced": false,
+          "Options raw": 0
+        },
+        {
+          "Name": "Workstations",
+          "OU ID": "22222222-2222-2222-2222-222222222222",
+          "OU DN": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+          "GPO ID": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "GPO DN": "CN={aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa},CN=Policies,CN=System,DC=example,DC=test",
+          "Link order": 1,
+          "Enabled": true,
+          "Enforced": false,
+          "Options raw": 0
+        }
+      ],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    },
+    {
+      "Kind": "Section",
+      "Key": "inheritance",
+      "Status": "Partial",
+      "Records": [
+        {
+          "Name": "Corporate",
+          "OU ID": "11111111-1111-1111-1111-111111111111",
+          "DN": "OU=Corporate,DC=example,DC=test",
+          "Block GPO inheritance": false,
+          "GPO options raw": 0,
+          "DACL inheritance protected": false
+        },
+        {
+          "Name": "Workstations",
+          "OU ID": "22222222-2222-2222-2222-222222222222",
+          "DN": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+          "Block GPO inheritance": true,
+          "GPO options raw": 1,
+          "DACL inheritance protected": null
+        },
+        {
+          "Name": "Empty OU",
+          "OU ID": "33333333-3333-3333-3333-333333333333",
+          "DN": "OU=Empty OU,DC=example,DC=test",
+          "Block GPO inheritance": false,
+          "GPO options raw": 0,
+          "DACL inheritance protected": false
+        }
+      ],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "One DACL read failed; available rows retained."
+    },
+    {
+      "Kind": "Section",
+      "Key": "delegations",
+      "Status": "Partial",
+      "Records": [
+        {
+          "Name": "Corporate",
+          "OU ID": "11111111-1111-1111-1111-111111111111",
+          "OU DN": "OU=Corporate,DC=example,DC=test",
+          "Trustee SID": "S-1-5-21-100-200-300-1100",
+          "Access type": "Allow",
+          "AD rights": "ReadProperty",
+          "Object type GUID": "00000000-0000-0000-0000-000000000000",
+          "Inherited object type GUID": "00000000-0000-0000-0000-000000000000",
+          "Inheritance type": "All",
+          "Inherited": false,
+          "Inheritance flags": "ContainerInherit",
+          "Propagation flags": "None"
+        },
+        {
+          "Name": "Corporate",
+          "OU ID": "11111111-1111-1111-1111-111111111111",
+          "OU DN": "OU=Corporate,DC=example,DC=test",
+          "Trustee SID": "S-1-5-21-100-200-300-1100",
+          "Access type": "Allow",
+          "AD rights": "ReadProperty",
+          "Object type GUID": "00000000-0000-0000-0000-000000000000",
+          "Inherited object type GUID": "00000000-0000-0000-0000-000000000000",
+          "Inheritance type": "All",
+          "Inherited": true,
+          "Inheritance flags": "ContainerInherit",
+          "Propagation flags": "None"
+        },
+        {
+          "Name": "Empty OU",
+          "OU ID": "33333333-3333-3333-3333-333333333333",
+          "OU DN": "OU=Empty OU,DC=example,DC=test",
+          "Trustee SID": "S-1-5-21-100-200-300-1100",
+          "Access type": "Allow",
+          "AD rights": "ReadProperty",
+          "Object type GUID": "00000000-0000-0000-0000-000000000000",
+          "Inherited object type GUID": "00000000-0000-0000-0000-000000000000",
+          "Inheritance type": "All",
+          "Inherited": false,
+          "Inheritance flags": "ContainerInherit",
+          "Propagation flags": "None"
+        },
+        {
+          "Name": "Empty OU",
+          "OU ID": "33333333-3333-3333-3333-333333333333",
+          "OU DN": "OU=Empty OU,DC=example,DC=test",
+          "Trustee SID": "S-1-5-21-100-200-300-1100",
+          "Access type": "Allow",
+          "AD rights": "ReadProperty",
+          "Object type GUID": "00000000-0000-0000-0000-000000000000",
+          "Inherited object type GUID": "00000000-0000-0000-0000-000000000000",
+          "Inheritance type": "All",
+          "Inherited": true,
+          "Inheritance flags": "ContainerInherit",
+          "Propagation flags": "None"
+        }
+      ],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "One DACL read failed; available rows retained."
+    },
+    {
+      "Kind": "Section",
+      "Key": "objectQueries",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Corporate",
+          "OU ID": "11111111-1111-1111-1111-111111111111",
+          "Target": "OU=Corporate,DC=example,DC=test",
+          "Operation": "GPO links",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "Corporate",
+          "OU ID": "11111111-1111-1111-1111-111111111111",
+          "Target": "OU=Corporate,DC=example,DC=test",
+          "Operation": "DACL",
+          "Status": "Succeeded",
+          "Record count": 2,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "Workstations",
+          "OU ID": "22222222-2222-2222-2222-222222222222",
+          "Target": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+          "Operation": "GPO links",
+          "Status": "Succeeded",
+          "Record count": 1,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "Workstations",
+          "OU ID": "22222222-2222-2222-2222-222222222222",
+          "Target": "OU=Workstations,OU=Corporate,DC=example,DC=test",
+          "Operation": "DACL",
+          "Status": "Failed",
+          "Record count": 0,
+          "Duration ms": 1,
+          "Error ID": "SampleDenied",
+          "Message": "Synthetic DACL access denial",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "Empty OU",
+          "OU ID": "33333333-3333-3333-3333-333333333333",
+          "Target": "OU=Empty OU,DC=example,DC=test",
+          "Operation": "GPO links",
+          "Status": "Succeeded",
+          "Record count": 0,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "Name": "Empty OU",
+          "OU ID": "33333333-3333-3333-3333-333333333333",
+          "Target": "OU=Empty OU,DC=example,DC=test",
+          "Operation": "DACL",
+          "Status": "Succeeded",
+          "Record count": 2,
+          "Duration ms": 1,
+          "Error ID": null,
+          "Message": "Collected",
+          "Collected at": "2026-10-30T00:00:00Z"
+        }
+      ],
+      "CollectedAt": "2026-10-30T00:00:00Z",
+      "DurationMs": 1,
+      "ErrorId": null,
+      "ErrorMessage": "Collected"
+    }
+  ]
+}

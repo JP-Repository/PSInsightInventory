@@ -1,0 +1,6 @@
+"Name","User ID","Password never expires","Password not required","Cannot change password","Smartcard required","Account not delegated","Trusted for delegation","Trusted to authenticate for delegation"
+"Alex","00000000-0000-0000-0000-000000000001","False","False","False","False","False","False","False"
+"Morgan","00000000-0000-0000-0000-000000000002","False","False","False","True","False","False","False"
+"Sam","00000000-0000-0000-0000-000000000003","False","False","False","False","False","False","False"
+"Lee","00000000-0000-0000-0000-000000000004","False","False","False","False","False","False","False"
+"Robin","00000000-0000-0000-0000-000000000005","False","False","False","False","False","False","False"

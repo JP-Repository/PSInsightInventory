@@ -1,0 +1,7 @@
+"Name","Status","Record count","Method","Collected at","Duration ms","Error ID","Message"
+"Organizational units","Succeeded","3","Pinned DC / ADWS and LDAP DACL reads","30/10/2026 12:00:00 AM","1",,"Collected"
+"Object counts","Succeeded","3","Pinned DC / ADWS and LDAP DACL reads","30/10/2026 12:00:00 AM","1",,"Collected"
+"Direct GPO links","Succeeded","2","Pinned DC / ADWS and LDAP DACL reads","30/10/2026 12:00:00 AM","1",,"Collected"
+"Inheritance configuration","Partial","3","Pinned DC / ADWS and LDAP DACL reads","30/10/2026 12:00:00 AM","1",,"One DACL read failed; available rows retained."
+"Delegation ACEs","Partial","4","Pinned DC / ADWS and LDAP DACL reads","30/10/2026 12:00:00 AM","1",,"One DACL read failed; available rows retained."
+"OU collection","Succeeded","6","Pinned DC / ADWS and LDAP DACL reads","30/10/2026 12:00:00 AM","1",,"Collected"

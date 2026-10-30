@@ -1,0 +1,9 @@
+"Name","Server","Zone","Owner","Name server","TTL","Timestamp"
+"dc01.example.test / example.test","dc01.example.test","example.test","'@","dc01.example.test.","01:00:00",
+"dc01.example.test / example.test","dc01.example.test","example.test","branch","ns.external.test.","01:00:00",
+"dc01.example.test / _msdcs.example.test","dc01.example.test","_msdcs.example.test","'@","dc01.example.test.","01:00:00",
+"dc01.example.test / _msdcs.example.test","dc01.example.test","_msdcs.example.test","branch","ns.external.test.","01:00:00",
+"dc02.example.test / example.test","dc02.example.test","example.test","'@","dc01.example.test.","01:00:00",
+"dc02.example.test / example.test","dc02.example.test","example.test","branch","ns.external.test.","01:00:00",
+"dc02.example.test / _msdcs.example.test","dc02.example.test","_msdcs.example.test","'@","dc01.example.test.","01:00:00",
+"dc02.example.test / _msdcs.example.test","dc02.example.test","_msdcs.example.test","branch","ns.external.test.","01:00:00",

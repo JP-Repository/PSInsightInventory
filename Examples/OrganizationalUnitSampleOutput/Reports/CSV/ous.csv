@@ -1,0 +1,4 @@
+"Name","OU ID","DN","Parent DN","Canonical path","Description","Managed by","Protected from accidental deletion","Created","Changed"
+"Corporate","11111111-1111-1111-1111-111111111111","OU=Corporate,DC=example,DC=test","DC=example,DC=test","example.test/Corporate","Fictional OU",,"True","01/01/2026 12:00:00 AM","30/10/2026 12:00:00 AM"
+"Workstations","22222222-2222-2222-2222-222222222222","OU=Workstations,OU=Corporate,DC=example,DC=test","OU=Corporate,DC=example,DC=test","example.test/Corporate/Workstations","Fictional OU",,"True","01/01/2026 12:00:00 AM","30/10/2026 12:00:00 AM"
+"Empty OU","33333333-3333-3333-3333-333333333333","OU=Empty OU,DC=example,DC=test","DC=example,DC=test","example.test/Empty OU","Fictional OU",,"False","01/01/2026 12:00:00 AM","30/10/2026 12:00:00 AM"

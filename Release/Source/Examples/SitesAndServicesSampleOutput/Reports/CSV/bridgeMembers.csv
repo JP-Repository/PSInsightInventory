@@ -1,0 +1,3 @@
+"Name","Bridge","Site link","Reference state","Link DN","Bridge DN"
+"Core-Bridge → HQ-East","Core-Bridge","HQ-East","Resolved","CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test","CN=Core-Bridge,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+"Core-Bridge → HQ-Recovery","Core-Bridge","HQ-Recovery","Resolved","CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test","CN=Core-Bridge,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"

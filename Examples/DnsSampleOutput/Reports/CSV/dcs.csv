@@ -1,0 +1,4 @@
+"Name","Server","Domain","Site","OS","Inventory","Zones observed"
+"dc01.example.test","dc01.example.test","example.test","HQ","Windows Server 2022","Complete","3"
+"dc02.example.test","dc02.example.test","example.test","Branch","Windows Server 2022","Partial","3"
+"dc03.example.test","dc03.example.test","example.test","Branch","Windows Server 2022","Complete",

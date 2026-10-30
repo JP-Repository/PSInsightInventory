@@ -1,0 +1,7 @@
+"Name","Source DC","Connection domain","Observation scope"
+"DC=corp,DC=example,DC=test","dc01.corp.example.test","corp.example.test","Naming contexts hosted by this observed DC only"
+"CN=Configuration,DC=example,DC=test","dc01.corp.example.test","corp.example.test","Naming contexts hosted by this observed DC only"
+"CN=Schema,CN=Configuration,DC=example,DC=test","dc01.corp.example.test","corp.example.test","Naming contexts hosted by this observed DC only"
+"DC=example,DC=test","dc01.example.test","example.test","Naming contexts hosted by this observed DC only"
+"CN=Configuration,DC=example,DC=test","dc01.example.test","example.test","Naming contexts hosted by this observed DC only"
+"CN=Schema,CN=Configuration,DC=example,DC=test","dc01.example.test","example.test","Naming contexts hosted by this observed DC only"

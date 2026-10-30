@@ -1,0 +1,13 @@
+"Name","Domain","Site","IPv4","OS","GC","Type","Inventory","OS version","IPv6"
+"demo-dc01.example.test","example.test","North-Hub","192.0.2.10","Windows Server 2022","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc02.example.test","example.test","North-Hub","192.0.2.11","Windows Server 2022","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc03.example.test","example.test","North-Hub","192.0.2.12","Windows Server 2019","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc04.example.test","example.test","East-Office","192.0.2.74","Windows Server 2022","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc05.example.test","example.test","East-Office","192.0.2.75","Windows Server 2022","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc06.example.test","example.test","East-Office","192.0.2.76","Windows Server 2019","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc07.example.test","example.test","West-Office","192.0.2.138","Windows Server 2022","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc08.example.test","example.test","West-Office","192.0.2.139","Windows Server 2022","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc09.example.test","example.test","West-Office","192.0.2.140","Windows Server 2019","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc10.example.test","example.test","South-Branch","192.0.2.202","Windows Server 2022","Yes","Writable","Complete","10.0 (sample)",
+"demo-dc11.example.test","example.test","South-Branch","192.0.2.203","Windows Server 2022","Yes","Writable","Partial","10.0 (sample)",
+"demo-dc12.example.test","example.test","South-Branch","192.0.2.204","Windows Server 2022","No","RODC","Partial","10.0 (sample)",

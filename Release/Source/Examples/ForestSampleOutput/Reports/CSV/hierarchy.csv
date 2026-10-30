@@ -1,0 +1,3 @@
+"Name","Forest root","Parent domain","Children","Query status","DN"
+"example.test","True",,"corp.example.test","Succeeded","DC=example,DC=test"
+"corp.example.test","False","example.test","","Succeeded","DC=corp,DC=example,DC=test"

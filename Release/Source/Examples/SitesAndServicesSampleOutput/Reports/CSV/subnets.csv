@@ -1,0 +1,6 @@
+"Name","Site","Assignment","Description","Location","Site DN","DN"
+"192.0.2.0/26","North-Hub","Assigned","Fictional subnet",,"CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test","CN=192.0.2.0/26,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"
+"192.0.2.64/26","East-Office","Assigned","Fictional subnet",,"CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test","CN=192.0.2.64/26,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"
+"192.0.2.128/26","Recovery","Assigned","Fictional subnet",,"CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test","CN=192.0.2.128/26,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"
+"192.0.2.192/27",,"Unassigned / no value returned","Fictional subnet",,"","CN=192.0.2.192/27,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"
+"198.51.100.0/24","CN=Missing-Site,CN=Sites,CN=Configuration,DC=example,DC=test","Unresolved reference","Fictional subnet",,"CN=Missing-Site,CN=Sites,CN=Configuration,DC=example,DC=test","CN=198.51.100.0/24,CN=Subnets,CN=Sites,CN=Configuration,DC=example,DC=test"

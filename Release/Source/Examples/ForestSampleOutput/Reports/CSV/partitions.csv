@@ -1,0 +1,6 @@
+"Name","Naming context","DNS root","NetBIOS name","Enabled","System flags raw","Writable replica DNs","Read-only replica DNs","DN"
+"Partition-1","CN=Configuration,DC=example,DC=test",,,"True","1","","","CN=Partition-1,CN=Partitions,CN=Configuration,DC=example,DC=test"
+"Partition-2","CN=Schema,CN=Configuration,DC=example,DC=test",,,"True","1","","","CN=Partition-2,CN=Partitions,CN=Configuration,DC=example,DC=test"
+"Partition-3","DC=example,DC=test","example.test","EXAMPLE","True","3","","","CN=Partition-3,CN=Partitions,CN=Configuration,DC=example,DC=test"
+"Partition-4","DC=corp,DC=example,DC=test","corp.example.test","CORP","True","3","","","CN=Partition-4,CN=Partitions,CN=Configuration,DC=example,DC=test"
+"Partition-5","DC=ForestDnsZones,DC=example,DC=test",,,"True","1","","","CN=Partition-5,CN=Partitions,CN=Configuration,DC=example,DC=test"

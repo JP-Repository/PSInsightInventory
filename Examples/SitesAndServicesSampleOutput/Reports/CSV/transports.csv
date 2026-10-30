@@ -1,0 +1,3 @@
+"Name","Options raw","Ignore schedules","Bridge all site links","Address attribute","DN"
+"IP","0","False","True","dNSHostName","CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+"SMTP","2","False","False","mailAddress","CN=SMTP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"

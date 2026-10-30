@@ -1,0 +1,7 @@
+"Name","Target","Source DC","Status","Record count","Method","Collected at","Duration ms","Error ID","Message"
+"forest","example.test","dc01.corp.example.test","Succeeded","1","Synthetic fixture","29/10/2026 3:30:00 PM","0",,"Read completed; returned values are configuration inventory."
+"partitions","example.test","dc01.corp.example.test","Succeeded","5","Synthetic fixture","29/10/2026 3:30:00 PM","0",,"Read completed; returned values are configuration inventory."
+"domain:example.test","example.test","dc01.example.test","Succeeded","1","Synthetic fixture","29/10/2026 3:30:00 PM","0",,"Read completed; returned values are configuration inventory."
+"policy:example.test","example.test","dc01.example.test","Succeeded","1","Synthetic fixture","29/10/2026 3:30:00 PM","0",,"Read completed; returned values are configuration inventory."
+"domain:corp.example.test","corp.example.test","dc01.corp.example.test","Succeeded","1","Synthetic fixture","29/10/2026 3:30:00 PM","0",,"Read completed; returned values are configuration inventory."
+"policy:corp.example.test","corp.example.test","dc01.corp.example.test","Succeeded","1","Synthetic fixture","29/10/2026 3:30:00 PM","0",,"Read completed; returned values are configuration inventory."

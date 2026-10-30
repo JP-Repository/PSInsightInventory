@@ -1,0 +1,27 @@
+<style>
+.psi-help-about{position:fixed;right:18px;bottom:18px;z-index:40;color:var(--text);font:12px/1.5 'Segoe UI',Arial,sans-serif}
+.psi-help-about>summary{list-style:none;cursor:pointer;border:1px solid var(--line);border-radius:7px;background:var(--surface);box-shadow:var(--shadow);color:var(--accent);font-weight:650;padding:8px 12px}
+.psi-help-about>summary::-webkit-details-marker{display:none}
+.psi-help-about[open]>summary{border-radius:7px 7px 0 0}
+.psi-help-about section{position:absolute;right:0;bottom:100%;width:min(360px,calc(100vw - 28px));border:1px solid var(--line);border-radius:9px 9px 0 9px;background:var(--surface);box-shadow:0 12px 40px #0003;padding:18px}
+.psi-help-about h2{margin:0 0 4px;font-size:16px}.psi-help-about p{margin:0 0 12px;color:var(--muted)}
+.psi-help-about dl{margin:0}.psi-help-about dl div{display:grid;grid-template-columns:96px 1fr;gap:8px;padding:6px 0;border-top:1px solid var(--line)}
+.psi-help-about dt{color:var(--muted)}.psi-help-about dd{margin:0;overflow-wrap:anywhere}.psi-help-about a{color:var(--accent)}
+.psi-help-about .psi-license{margin:12px 0 0;font-size:10px}
+@media(max-width:650px){.psi-help-about{right:12px;bottom:12px}.psi-help-about section{width:calc(100vw - 24px)}}
+@media print{.psi-help-about{display:none!important}}
+</style>
+<details class="psi-help-about" id="psi-help-about">
+  <summary>Help &amp; About</summary>
+  <section aria-label="Help and About">
+    <h2>PSInsightInventory {{MODULE_VERSION}}</h2>
+    <p>Read-only Active Directory inventory with offline JP-branded reporting.</p>
+    <dl>
+      <div><dt>Author</dt><dd><a href="https://www.linkedin.com/in/jonathan-preetham" target="_blank" rel="noopener noreferrer">Jonathan Preetham</a></dd></div>
+      <div><dt>Repository</dt><dd><a href="https://github.com/JP-Repository/PSInsightInventory" target="_blank" rel="noopener noreferrer">GitHub repository</a></dd></div>
+      <div><dt>Support</dt><dd><a href="mailto:Jonathan.Preetham@outlook.com">Jonathan.Preetham@outlook.com</a></dd></div>
+      <div><dt>Documentation</dt><dd><a href="https://github.com/JP-Repository/PSInsightInventory" target="_blank" rel="noopener noreferrer">Project documentation</a></dd></div>
+    </dl>
+    <p class="psi-license">Copyright © 2026 Jonathan Preetham · MIT License</p>
+  </section>
+</details>

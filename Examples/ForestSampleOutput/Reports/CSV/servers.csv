@@ -1,0 +1,5 @@
+"Name","Domain / forest","Source property"
+"dc01.example.test","example.test","Get-ADForest.GlobalCatalogs"
+"dc01.corp.example.test","example.test","Get-ADForest.GlobalCatalogs"
+"dc01.example.test","example.test","Get-ADDomain.ReplicaDirectoryServers"
+"dc01.corp.example.test","corp.example.test","Get-ADDomain.ReplicaDirectoryServers"

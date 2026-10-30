@@ -1,0 +1,3 @@
+/* JP monogram styling reused from PSInsightExpl 0.6.0. */
+.brandmark{width:31px;height:33px;border-radius:8px;background:#9177db;color:white;display:grid;place-items:center;position:relative;font-size:22px;flex:none;font-size:15px;font-weight:750;letter-spacing:-.7px;line-height:1}
+@media(max-width:720px){.brandmark{width:30px;height:32px}}

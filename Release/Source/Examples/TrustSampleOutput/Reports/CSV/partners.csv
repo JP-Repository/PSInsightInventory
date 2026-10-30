@@ -1,0 +1,6 @@
+"Name","Observed TDO records","Observed local domains","Observed directions"
+"corp.example.test","1","example.test","Bidirectional"
+"example.test","1","corp.example.test","Bidirectional"
+"legacy.test","1","example.test","Inbound"
+"partner.test","1","example.test","Outbound"
+"realm.example","1","corp.example.test","Disabled (0)"

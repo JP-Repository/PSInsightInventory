@@ -1,0 +1,2 @@
+"Name","Transport","Member links","Member count","Description","DN"
+"Core-Bridge","IP","HQ-East; HQ-Recovery","2","Explicit sample bridge","CN=Core-Bridge,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"

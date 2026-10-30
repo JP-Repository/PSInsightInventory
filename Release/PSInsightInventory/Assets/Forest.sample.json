@@ -1,0 +1,302 @@
+{
+  "context": {
+    "Forest": "example.test",
+    "RootDomain": "example.test",
+    "Domain": "corp.example.test",
+    "Server": "dc01.corp.example.test",
+    "Domains": [
+      "example.test",
+      "corp.example.test"
+    ],
+    "ConfigurationNC": "CN=Configuration,DC=example,DC=test",
+    "Root": {
+      "dnsHostName": "dc01.corp.example.test",
+      "configurationNamingContext": "CN=Configuration,DC=example,DC=test",
+      "schemaNamingContext": "CN=Schema,CN=Configuration,DC=example,DC=test",
+      "defaultNamingContext": "DC=corp,DC=example,DC=test",
+      "rootDomainNamingContext": "DC=example,DC=test",
+      "namingContexts": [
+        "DC=corp,DC=example,DC=test",
+        "CN=Configuration,DC=example,DC=test",
+        "CN=Schema,CN=Configuration,DC=example,DC=test"
+      ]
+    }
+  },
+  "envelopes": [
+    {
+      "Kind": "Section",
+      "Key": "forest",
+      "Target": "example.test",
+      "SourceDC": "dc01.corp.example.test",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "example.test",
+          "RootDomain": "example.test",
+          "ForestMode": "Windows2016Forest",
+          "Domains": [
+            "example.test",
+            "corp.example.test"
+          ],
+          "UPNSuffixes": [
+            "example.org"
+          ],
+          "SPNSuffixes": [
+            "services.example.org"
+          ],
+          "SchemaMaster": "dc01.example.test",
+          "DomainNamingMaster": "dc01.example.test",
+          "GlobalCatalogs": [
+            "dc01.example.test",
+            "dc01.corp.example.test"
+          ],
+          "ApplicationPartitions": [
+            "DC=ForestDnsZones,DC=example,DC=test"
+          ],
+          "Sites": [
+            "North-Hub",
+            "East-Office"
+          ]
+        }
+      ],
+      "Method": "Synthetic fixture",
+      "CollectedAt": "2026-10-29T10:00:00+00:00",
+      "DurationMs": 0,
+      "ErrorId": null,
+      "ErrorMessage": null
+    },
+    {
+      "Kind": "Section",
+      "Key": "partitions",
+      "Target": "example.test",
+      "SourceDC": "dc01.corp.example.test",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Name": "Partition-1",
+          "DistinguishedName": "CN=Partition-1,CN=Partitions,CN=Configuration,DC=example,DC=test",
+          "nCName": "CN=Configuration,DC=example,DC=test",
+          "dnsRoot": null,
+          "nETBIOSName": null,
+          "systemFlags": "1",
+          "enabled": true,
+          "msDS-NC-Replica-Locations": [],
+          "msDS-NC-RO-Replica-Locations": []
+        },
+        {
+          "Name": "Partition-2",
+          "DistinguishedName": "CN=Partition-2,CN=Partitions,CN=Configuration,DC=example,DC=test",
+          "nCName": "CN=Schema,CN=Configuration,DC=example,DC=test",
+          "dnsRoot": null,
+          "nETBIOSName": null,
+          "systemFlags": "1",
+          "enabled": true,
+          "msDS-NC-Replica-Locations": [],
+          "msDS-NC-RO-Replica-Locations": []
+        },
+        {
+          "Name": "Partition-3",
+          "DistinguishedName": "CN=Partition-3,CN=Partitions,CN=Configuration,DC=example,DC=test",
+          "nCName": "DC=example,DC=test",
+          "dnsRoot": "example.test",
+          "nETBIOSName": "EXAMPLE",
+          "systemFlags": "3",
+          "enabled": true,
+          "msDS-NC-Replica-Locations": [],
+          "msDS-NC-RO-Replica-Locations": []
+        },
+        {
+          "Name": "Partition-4",
+          "DistinguishedName": "CN=Partition-4,CN=Partitions,CN=Configuration,DC=example,DC=test",
+          "nCName": "DC=corp,DC=example,DC=test",
+          "dnsRoot": "corp.example.test",
+          "nETBIOSName": "CORP",
+          "systemFlags": "3",
+          "enabled": true,
+          "msDS-NC-Replica-Locations": [],
+          "msDS-NC-RO-Replica-Locations": []
+        },
+        {
+          "Name": "Partition-5",
+          "DistinguishedName": "CN=Partition-5,CN=Partitions,CN=Configuration,DC=example,DC=test",
+          "nCName": "DC=ForestDnsZones,DC=example,DC=test",
+          "dnsRoot": null,
+          "nETBIOSName": null,
+          "systemFlags": "1",
+          "enabled": true,
+          "msDS-NC-Replica-Locations": [],
+          "msDS-NC-RO-Replica-Locations": []
+        }
+      ],
+      "Method": "Synthetic fixture",
+      "CollectedAt": "2026-10-29T10:00:00+00:00",
+      "DurationMs": 0,
+      "ErrorId": null,
+      "ErrorMessage": null
+    },
+    {
+      "Kind": "Section",
+      "Key": "domain:example.test",
+      "Target": "example.test",
+      "SourceDC": "dc01.example.test",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Domain": {
+            "DNSRoot": "example.test",
+            "Name": "EXAMPLE",
+            "NetBIOSName": "EXAMPLE",
+            "DomainSID": "S-1-5-21-111-222-333",
+            "ObjectGUID": "00000000-0000-0000-0000-000000000001",
+            "DistinguishedName": "DC=example,DC=test",
+            "Forest": "example.test",
+            "DomainMode": "Windows2016Domain",
+            "ParentDomain": null,
+            "ChildDomains": [
+              "corp.example.test"
+            ],
+            "PDCEmulator": "dc01.example.test",
+            "RIDMaster": "dc01.example.test",
+            "InfrastructureMaster": "dc01.example.test",
+            "ComputersContainer": "CN=Computers,DC=example,DC=test",
+            "UsersContainer": "CN=Users,DC=example,DC=test",
+            "DomainControllersContainer": "OU=Domain Controllers,DC=example,DC=test",
+            "DeletedObjectsContainer": "CN=Deleted Objects,DC=example,DC=test",
+            "LostAndFoundContainer": "CN=LostAndFound,DC=example,DC=test",
+            "SystemsContainer": "CN=System,DC=example,DC=test",
+            "AllowedDNSSuffixes": [],
+            "ReplicaDirectoryServers": [
+              "dc01.example.test"
+            ],
+            "ReadOnlyReplicaDirectoryServers": [],
+            "LastLogonReplicationInterval": null
+          },
+          "Root": {
+            "dnsHostName": "dc01.example.test",
+            "configurationNamingContext": "CN=Configuration,DC=example,DC=test",
+            "schemaNamingContext": "CN=Schema,CN=Configuration,DC=example,DC=test",
+            "defaultNamingContext": "DC=example,DC=test",
+            "rootDomainNamingContext": "DC=example,DC=test",
+            "namingContexts": [
+              "DC=example,DC=test",
+              "CN=Configuration,DC=example,DC=test",
+              "CN=Schema,CN=Configuration,DC=example,DC=test"
+            ]
+          }
+        }
+      ],
+      "Method": "Synthetic fixture",
+      "CollectedAt": "2026-10-29T10:00:00+00:00",
+      "DurationMs": 0,
+      "ErrorId": null,
+      "ErrorMessage": null
+    },
+    {
+      "Kind": "Section",
+      "Key": "policy:example.test",
+      "Target": "example.test",
+      "SourceDC": "dc01.example.test",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "DistinguishedName": "DC=example,DC=test",
+          "ComplexityEnabled": true,
+          "ReversibleEncryptionEnabled": false,
+          "MinPasswordLength": "14",
+          "PasswordHistoryCount": "24",
+          "MinPasswordAge": "1.00:00:00",
+          "MaxPasswordAge": "42.00:00:00",
+          "LockoutThreshold": "5",
+          "LockoutDuration": "00:30:00",
+          "LockoutObservationWindow": "00:30:00"
+        }
+      ],
+      "Method": "Synthetic fixture",
+      "CollectedAt": "2026-10-29T10:00:00+00:00",
+      "DurationMs": 0,
+      "ErrorId": null,
+      "ErrorMessage": null
+    },
+    {
+      "Kind": "Section",
+      "Key": "domain:corp.example.test",
+      "Target": "corp.example.test",
+      "SourceDC": "dc01.corp.example.test",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "Domain": {
+            "DNSRoot": "corp.example.test",
+            "Name": "CORP",
+            "NetBIOSName": "CORP",
+            "DomainSID": "S-1-5-21-111-222-334",
+            "ObjectGUID": "00000000-0000-0000-0000-000000000002",
+            "DistinguishedName": "DC=corp,DC=example,DC=test",
+            "Forest": "example.test",
+            "DomainMode": "Windows2016Domain",
+            "ParentDomain": "example.test",
+            "ChildDomains": [],
+            "PDCEmulator": "dc01.corp.example.test",
+            "RIDMaster": "dc01.corp.example.test",
+            "InfrastructureMaster": "dc01.corp.example.test",
+            "ComputersContainer": "CN=Computers,DC=corp,DC=example,DC=test",
+            "UsersContainer": "CN=Users,DC=corp,DC=example,DC=test",
+            "DomainControllersContainer": "OU=Domain Controllers,DC=corp,DC=example,DC=test",
+            "DeletedObjectsContainer": "CN=Deleted Objects,DC=corp,DC=example,DC=test",
+            "LostAndFoundContainer": "CN=LostAndFound,DC=corp,DC=example,DC=test",
+            "SystemsContainer": "CN=System,DC=corp,DC=example,DC=test",
+            "AllowedDNSSuffixes": [],
+            "ReplicaDirectoryServers": [
+              "dc01.corp.example.test"
+            ],
+            "ReadOnlyReplicaDirectoryServers": [],
+            "LastLogonReplicationInterval": null
+          },
+          "Root": {
+            "dnsHostName": "dc01.corp.example.test",
+            "configurationNamingContext": "CN=Configuration,DC=example,DC=test",
+            "schemaNamingContext": "CN=Schema,CN=Configuration,DC=example,DC=test",
+            "defaultNamingContext": "DC=corp,DC=example,DC=test",
+            "rootDomainNamingContext": "DC=example,DC=test",
+            "namingContexts": [
+              "DC=corp,DC=example,DC=test",
+              "CN=Configuration,DC=example,DC=test",
+              "CN=Schema,CN=Configuration,DC=example,DC=test"
+            ]
+          }
+        }
+      ],
+      "Method": "Synthetic fixture",
+      "CollectedAt": "2026-10-29T10:00:00+00:00",
+      "DurationMs": 0,
+      "ErrorId": null,
+      "ErrorMessage": null
+    },
+    {
+      "Kind": "Section",
+      "Key": "policy:corp.example.test",
+      "Target": "corp.example.test",
+      "SourceDC": "dc01.corp.example.test",
+      "Status": "Succeeded",
+      "Records": [
+        {
+          "DistinguishedName": "DC=corp,DC=example,DC=test",
+          "ComplexityEnabled": true,
+          "ReversibleEncryptionEnabled": false,
+          "MinPasswordLength": "14",
+          "PasswordHistoryCount": "24",
+          "MinPasswordAge": "1.00:00:00",
+          "MaxPasswordAge": "42.00:00:00",
+          "LockoutThreshold": "5",
+          "LockoutDuration": "00:30:00",
+          "LockoutObservationWindow": "00:30:00"
+        }
+      ],
+      "Method": "Synthetic fixture",
+      "CollectedAt": "2026-10-29T10:00:00+00:00",
+      "DurationMs": 0,
+      "ErrorId": null,
+      "ErrorMessage": null
+    }
+  ]
+}

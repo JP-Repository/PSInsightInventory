@@ -1,0 +1,4 @@
+"Name","Transport","Cost","Interval minutes","Sites","Member count","Options raw","Change notification","Two-way sync","Compression disabled","Schedule","DN"
+"HQ-East","IP","100","180","North-Hub; East-Office","2","1","True","False","False","168 / 168 permitted hours per stored UTC week.","CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+"HQ-Recovery","IP","200","180","North-Hub; Recovery","2","1","True","False","False","No stored schedule returned; no availability inferred.","CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+"East-Recovery","IP","300","180","East-Office; Recovery","2","1","True","False","False","84 / 168 permitted hours per stored UTC week.","CN=East-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"

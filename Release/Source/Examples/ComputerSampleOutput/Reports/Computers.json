@@ -1,0 +1,612 @@
+﻿{
+  "meta": {
+    "moduleName": "PSInsightInventory",
+    "version": "1.0.0",
+    "inventoryId": "ADComputer",
+    "title": "Computer Inventory",
+    "run": "f2c690c4",
+    "dataSource": "Sample",
+    "scope": "Computer objects in one explicit domain",
+    "forest": "example.test",
+    "connectionDomain": "example.test",
+    "sourceDC": "dc01.example.test",
+    "configurationNC": "CN=Configuration,DC=example,DC=test",
+    "started": "2026-10-30T13:08:00.2918660+05:30",
+    "generated": "2026-10-30T13:08:00.3216340+05:30",
+    "generatedDisplay": "30 Oct 2026, 13:08:00 +05:30",
+    "timeZone": "Asia/Calcutta",
+    "expectedQueries": 1,
+    "notice": "SAMPLE DATA. Fictional Computer configuration; no infrastructure was contacted.",
+    "limitations": [
+      "One explicit domain; computer objects only. Child domains and endpoints are not enumerated or contacted.",
+      "OS, version/build, service pack and timestamps are reported directory attributes and may be missing or outdated. No installed KB, exact patch level, uptime or online status is collected.",
+      "OS family and server release are labels derived conservatively from the reported OS name. Unknown/unclassified values remain separate; build numbers are parsed only from recognizable reported version formats.",
+      "Last logon timestamp is replicated and approximate. It does not identify the signed-in user, exact last logon or a stale-device finding. Zero/missing values remain null.",
+      "DC role uses returned userAccountControl and primaryGroupID indicators. This is reported directory configuration, not an availability probe.",
+      "Locations are immediate parent DNs, including CN containers. Counts are returned computer objects rather than a complete device population. ACL-filtered objects may not be visible.",
+      "SPNs and delegation flags/targets are reported configuration. RBCD descriptor presence is recorded without exporting its binary content or claiming effective permissions; missing descriptors remain unknown.",
+      "No device-health verdict, stale-device recommendation, endpoint connection, remediation, change, credential export or email occurs."
+    ],
+    "timeoutSeconds": null
+  },
+  "sections": {
+    "computers": [
+      "Computers",
+      [
+        "Name",
+        "Computer ID",
+        "DNS hostname",
+        "Domain",
+        "OS reported",
+        "OS family",
+        "Server release",
+        "Version reported",
+        "Build reported",
+        "Service pack reported",
+        "Enabled",
+        "DC role reported",
+        "Location DN",
+        "DN",
+        "Managed by",
+        "Created",
+        "Changed",
+        "Password last set",
+        "Last logon timestamp (replicated)",
+        "User account control raw",
+        "Primary group ID"
+      ]
+    ],
+    "osSummary": [
+      "OS breakdown",
+      [
+        "Name",
+        "OS family",
+        "OS reported",
+        "Server release",
+        "Version reported",
+        "Build reported",
+        "Computers observed"
+      ]
+    ],
+    "locations": [
+      "Directory locations",
+      [
+        "Name",
+        "Location DN",
+        "Computers observed"
+      ]
+    ],
+    "spns": [
+      "Reported SPNs",
+      [
+        "Name",
+        "Computer ID",
+        "SPN"
+      ]
+    ],
+    "delegation": [
+      "Delegation attributes",
+      [
+        "Name",
+        "Computer ID",
+        "Trusted for delegation",
+        "Trusted to authenticate for delegation",
+        "Account not delegated",
+        "Allowed target SPN",
+        "RBCD descriptor present"
+      ]
+    ],
+    "collection": [
+      "Collection coverage",
+      [
+        "Name",
+        "Status",
+        "Record count",
+        "Method",
+        "Collected at",
+        "Duration ms",
+        "Error ID",
+        "Message"
+      ]
+    ]
+  },
+  "data": {
+    "computers": [
+      {
+        "Name": "PC01",
+        "Computer ID": "00000000-0000-0000-0000-000000000001",
+        "DNS hostname": "pc01.example.test",
+        "Domain": "example.test",
+        "OS reported": "Windows Server 2016 Standard",
+        "OS family": "Windows Server",
+        "Server release": "2016",
+        "Version reported": "10.0 (14393)",
+        "Build reported": "14393",
+        "Service pack reported": null,
+        "Enabled": true,
+        "DC role reported": "Domain controller",
+        "Location DN": "OU=Domain Controllers,DC=example,DC=test",
+        "DN": "CN=PC01,OU=Domain Controllers,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "User account control raw": 8192,
+        "Primary group ID": 516
+      },
+      {
+        "Name": "PC02",
+        "Computer ID": "00000000-0000-0000-0000-000000000002",
+        "DNS hostname": "pc02.example.test",
+        "Domain": "example.test",
+        "OS reported": "Windows Server 2019 Standard",
+        "OS family": "Windows Server",
+        "Server release": "2019",
+        "Version reported": "10.0 (17763)",
+        "Build reported": "17763",
+        "Service pack reported": null,
+        "Enabled": true,
+        "DC role reported": "Other computer",
+        "Location DN": "OU=Servers,DC=example,DC=test",
+        "DN": "CN=PC02,OU=Servers,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "User account control raw": 4096,
+        "Primary group ID": 515
+      },
+      {
+        "Name": "PC03",
+        "Computer ID": "00000000-0000-0000-0000-000000000003",
+        "DNS hostname": "pc03.example.test",
+        "Domain": "example.test",
+        "OS reported": "Windows Server 2022 Standard",
+        "OS family": "Windows Server",
+        "Server release": "2022",
+        "Version reported": "10.0 (20348)",
+        "Build reported": "20348",
+        "Service pack reported": null,
+        "Enabled": true,
+        "DC role reported": "Other computer",
+        "Location DN": "OU=Servers,DC=example,DC=test",
+        "DN": "CN=PC03,OU=Servers,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "User account control raw": 4096,
+        "Primary group ID": 515
+      },
+      {
+        "Name": "PC04",
+        "Computer ID": "00000000-0000-0000-0000-000000000004",
+        "DNS hostname": "pc04.example.test",
+        "Domain": "example.test",
+        "OS reported": "Windows Server 2025 Standard",
+        "OS family": "Windows Server",
+        "Server release": "2025",
+        "Version reported": "10.0 (26100)",
+        "Build reported": "26100",
+        "Service pack reported": null,
+        "Enabled": true,
+        "DC role reported": "Other computer",
+        "Location DN": "OU=Servers,DC=example,DC=test",
+        "DN": "CN=PC04,OU=Servers,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "User account control raw": 4096,
+        "Primary group ID": 515
+      },
+      {
+        "Name": "PC05",
+        "Computer ID": "00000000-0000-0000-0000-000000000005",
+        "DNS hostname": "pc05.example.test",
+        "Domain": "example.test",
+        "OS reported": "Windows 11 Enterprise",
+        "OS family": "Windows client",
+        "Server release": null,
+        "Version reported": "10.0 (22631)",
+        "Build reported": "22631",
+        "Service pack reported": null,
+        "Enabled": true,
+        "DC role reported": "Other computer",
+        "Location DN": "OU=Workstations,DC=example,DC=test",
+        "DN": "CN=PC05,OU=Workstations,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "User account control raw": 4096,
+        "Primary group ID": 515
+      },
+      {
+        "Name": "PC06",
+        "Computer ID": "00000000-0000-0000-0000-000000000006",
+        "DNS hostname": "pc06.example.test",
+        "Domain": "example.test",
+        "OS reported": "Windows 10 Enterprise",
+        "OS family": "Windows client",
+        "Server release": null,
+        "Version reported": "10.0 (19045)",
+        "Build reported": "19045",
+        "Service pack reported": null,
+        "Enabled": false,
+        "DC role reported": "Other computer",
+        "Location DN": "OU=Workstations,DC=example,DC=test",
+        "DN": "CN=PC06,OU=Workstations,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "User account control raw": 4096,
+        "Primary group ID": 515
+      },
+      {
+        "Name": "PC07",
+        "Computer ID": "00000000-0000-0000-0000-000000000007",
+        "DNS hostname": "pc07.example.test",
+        "Domain": "example.test",
+        "OS reported": "Ubuntu Linux",
+        "OS family": "Other / unclassified",
+        "Server release": null,
+        "Version reported": "22.04",
+        "Build reported": null,
+        "Service pack reported": null,
+        "Enabled": true,
+        "DC role reported": "Other computer",
+        "Location DN": "OU=Workstations,DC=example,DC=test",
+        "DN": "CN=PC07,OU=Workstations,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "User account control raw": 4096,
+        "Primary group ID": 515
+      },
+      {
+        "Name": "PC08",
+        "Computer ID": "00000000-0000-0000-0000-000000000008",
+        "DNS hostname": "pc08.example.test",
+        "Domain": "example.test",
+        "OS reported": null,
+        "OS family": "Unknown",
+        "Server release": null,
+        "Version reported": null,
+        "Build reported": null,
+        "Service pack reported": null,
+        "Enabled": true,
+        "DC role reported": "Other computer",
+        "Location DN": "OU=Workstations,DC=example,DC=test",
+        "DN": "CN=PC08,OU=Workstations,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": null,
+        "User account control raw": 4096,
+        "Primary group ID": 515
+      },
+      {
+        "Name": "PC09",
+        "Computer ID": "00000000-0000-0000-0000-000000000009",
+        "DNS hostname": "pc09.example.test",
+        "Domain": "example.test",
+        "OS reported": "Windows Server 2012 R2 Standard",
+        "OS family": "Windows Server",
+        "Server release": "2012 R2",
+        "Version reported": "6.3 (9600)",
+        "Build reported": "9600",
+        "Service pack reported": null,
+        "Enabled": true,
+        "DC role reported": "Other computer",
+        "Location DN": "OU=Servers,DC=example,DC=test",
+        "DN": "CN=PC09,OU=Servers,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "User account control raw": 4096,
+        "Primary group ID": 515
+      },
+      {
+        "Name": "PC10",
+        "Computer ID": "00000000-0000-0000-0000-000000000010",
+        "DNS hostname": "pc10.example.test",
+        "Domain": "example.test",
+        "OS reported": "Windows 11 Enterprise",
+        "OS family": "Windows client",
+        "Server release": null,
+        "Version reported": "10.0 (22631)",
+        "Build reported": "22631",
+        "Service pack reported": null,
+        "Enabled": true,
+        "DC role reported": "Other computer",
+        "Location DN": "OU=Workstations,DC=example,DC=test",
+        "DN": "CN=PC10,OU=Workstations,DC=example,DC=test",
+        "Managed by": null,
+        "Created": "2025-01-01T00:00:00Z",
+        "Changed": "2026-10-30T00:00:00Z",
+        "Password last set": "2026-10-01T00:00:00Z",
+        "Last logon timestamp (replicated)": "2026-10-25T00:00:00Z",
+        "User account control raw": 4096,
+        "Primary group ID": 515
+      }
+    ],
+    "osSummary": [
+      {
+        "Name": "Ubuntu Linux",
+        "OS family": "Other / unclassified",
+        "OS reported": "Ubuntu Linux",
+        "Server release": null,
+        "Version reported": "22.04",
+        "Build reported": null,
+        "Computers observed": 1
+      },
+      {
+        "Name": "Unknown OS",
+        "OS family": "Unknown",
+        "OS reported": null,
+        "Server release": null,
+        "Version reported": null,
+        "Build reported": null,
+        "Computers observed": 1
+      },
+      {
+        "Name": "Windows 10 Enterprise",
+        "OS family": "Windows client",
+        "OS reported": "Windows 10 Enterprise",
+        "Server release": null,
+        "Version reported": "10.0 (19045)",
+        "Build reported": "19045",
+        "Computers observed": 1
+      },
+      {
+        "Name": "Windows 11 Enterprise",
+        "OS family": "Windows client",
+        "OS reported": "Windows 11 Enterprise",
+        "Server release": null,
+        "Version reported": "10.0 (22631)",
+        "Build reported": "22631",
+        "Computers observed": 2
+      },
+      {
+        "Name": "Windows Server 2012 R2 Standard",
+        "OS family": "Windows Server",
+        "OS reported": "Windows Server 2012 R2 Standard",
+        "Server release": "2012 R2",
+        "Version reported": "6.3 (9600)",
+        "Build reported": "9600",
+        "Computers observed": 1
+      },
+      {
+        "Name": "Windows Server 2016 Standard",
+        "OS family": "Windows Server",
+        "OS reported": "Windows Server 2016 Standard",
+        "Server release": "2016",
+        "Version reported": "10.0 (14393)",
+        "Build reported": "14393",
+        "Computers observed": 1
+      },
+      {
+        "Name": "Windows Server 2019 Standard",
+        "OS family": "Windows Server",
+        "OS reported": "Windows Server 2019 Standard",
+        "Server release": "2019",
+        "Version reported": "10.0 (17763)",
+        "Build reported": "17763",
+        "Computers observed": 1
+      },
+      {
+        "Name": "Windows Server 2022 Standard",
+        "OS family": "Windows Server",
+        "OS reported": "Windows Server 2022 Standard",
+        "Server release": "2022",
+        "Version reported": "10.0 (20348)",
+        "Build reported": "20348",
+        "Computers observed": 1
+      },
+      {
+        "Name": "Windows Server 2025 Standard",
+        "OS family": "Windows Server",
+        "OS reported": "Windows Server 2025 Standard",
+        "Server release": "2025",
+        "Version reported": "10.0 (26100)",
+        "Build reported": "26100",
+        "Computers observed": 1
+      }
+    ],
+    "locations": [
+      {
+        "Name": "OU=Domain Controllers,DC=example,DC=test",
+        "Location DN": "OU=Domain Controllers,DC=example,DC=test",
+        "Computers observed": 1
+      },
+      {
+        "Name": "OU=Servers,DC=example,DC=test",
+        "Location DN": "OU=Servers,DC=example,DC=test",
+        "Computers observed": 4
+      },
+      {
+        "Name": "OU=Workstations,DC=example,DC=test",
+        "Location DN": "OU=Workstations,DC=example,DC=test",
+        "Computers observed": 5
+      }
+    ],
+    "spns": [
+      {
+        "Name": "PC01",
+        "Computer ID": "00000000-0000-0000-0000-000000000001",
+        "SPN": "HOST/pc01.example.test"
+      },
+      {
+        "Name": "PC02",
+        "Computer ID": "00000000-0000-0000-0000-000000000002",
+        "SPN": "HOST/pc02.example.test"
+      },
+      {
+        "Name": "PC03",
+        "Computer ID": "00000000-0000-0000-0000-000000000003",
+        "SPN": "HOST/pc03.example.test"
+      },
+      {
+        "Name": "PC04",
+        "Computer ID": "00000000-0000-0000-0000-000000000004",
+        "SPN": "HOST/pc04.example.test"
+      },
+      {
+        "Name": "PC05",
+        "Computer ID": "00000000-0000-0000-0000-000000000005",
+        "SPN": "HOST/pc05.example.test"
+      },
+      {
+        "Name": "PC06",
+        "Computer ID": "00000000-0000-0000-0000-000000000006",
+        "SPN": "HOST/pc06.example.test"
+      },
+      {
+        "Name": "PC07",
+        "Computer ID": "00000000-0000-0000-0000-000000000007",
+        "SPN": "HOST/pc07.example.test"
+      },
+      {
+        "Name": "PC08",
+        "Computer ID": "00000000-0000-0000-0000-000000000008",
+        "SPN": "HOST/pc08.example.test"
+      },
+      {
+        "Name": "PC09",
+        "Computer ID": "00000000-0000-0000-0000-000000000009",
+        "SPN": "HOST/pc09.example.test"
+      },
+      {
+        "Name": "PC10",
+        "Computer ID": "00000000-0000-0000-0000-000000000010",
+        "SPN": "HOST/pc10.example.test"
+      }
+    ],
+    "delegation": [
+      {
+        "Name": "PC01",
+        "Computer ID": "00000000-0000-0000-0000-000000000001",
+        "Trusted for delegation": true,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": null,
+        "RBCD descriptor present": null
+      },
+      {
+        "Name": "PC02",
+        "Computer ID": "00000000-0000-0000-0000-000000000002",
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": "cifs/files.example.test",
+        "RBCD descriptor present": null
+      },
+      {
+        "Name": "PC03",
+        "Computer ID": "00000000-0000-0000-0000-000000000003",
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": null,
+        "RBCD descriptor present": true
+      },
+      {
+        "Name": "PC04",
+        "Computer ID": "00000000-0000-0000-0000-000000000004",
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": null,
+        "RBCD descriptor present": null
+      },
+      {
+        "Name": "PC05",
+        "Computer ID": "00000000-0000-0000-0000-000000000005",
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": null,
+        "RBCD descriptor present": null
+      },
+      {
+        "Name": "PC06",
+        "Computer ID": "00000000-0000-0000-0000-000000000006",
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": null,
+        "RBCD descriptor present": null
+      },
+      {
+        "Name": "PC07",
+        "Computer ID": "00000000-0000-0000-0000-000000000007",
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": null,
+        "RBCD descriptor present": null
+      },
+      {
+        "Name": "PC08",
+        "Computer ID": "00000000-0000-0000-0000-000000000008",
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": null,
+        "RBCD descriptor present": null
+      },
+      {
+        "Name": "PC09",
+        "Computer ID": "00000000-0000-0000-0000-000000000009",
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": null,
+        "RBCD descriptor present": null
+      },
+      {
+        "Name": "PC10",
+        "Computer ID": "00000000-0000-0000-0000-000000000010",
+        "Trusted for delegation": false,
+        "Trusted to authenticate for delegation": false,
+        "Account not delegated": false,
+        "Allowed target SPN": null,
+        "RBCD descriptor present": null
+      }
+    ],
+    "collection": [
+      {
+        "Name": "Domain computer enumeration",
+        "Status": "Succeeded",
+        "Record count": 10,
+        "Method": "ADWS / pinned domain DC",
+        "Collected at": "2026-10-30T00:00:00Z",
+        "Duration ms": 1,
+        "Error ID": null,
+        "Message": "Fictional directory computer inventory"
+      }
+    ]
+  },
+  "coverage": {
+    "computers": true,
+    "osSummary": true,
+    "locations": true,
+    "spns": true,
+    "delegation": true,
+    "collection": true
+  },
+  "raw": {}
+}

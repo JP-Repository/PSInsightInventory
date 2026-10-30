@@ -1,0 +1,5 @@
+"Name","DC objects","Server objects","Subnets","Site links","Location","Description","ISTG DN","Site options raw","DN","Created","Changed"
+"North-Hub","1","1","1","2","Example region","Fictional North-Hub site","CN=NTDS Settings,CN=DEMO-DC01,CN=Servers,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test","0","CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test","01/01/2025 5:30:00 AM","29/10/2026 3:30:00 PM"
+"East-Office","1","1","1","2","Example region","Fictional East-Office site","CN=NTDS Settings,CN=DEMO-DC02,CN=Servers,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test","0","CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test","01/01/2025 5:30:00 AM","29/10/2026 3:30:00 PM"
+"Recovery","1","1","1","2","Example region","Fictional Recovery site","CN=NTDS Settings,CN=DEMO-DC03,CN=Servers,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test","0","CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test","01/01/2025 5:30:00 AM","29/10/2026 3:30:00 PM"
+"Staging","0","0","0","0","Example region","Fictional Staging site",,"16","CN=Staging,CN=Sites,CN=Configuration,DC=example,DC=test","01/01/2025 5:30:00 AM","29/10/2026 3:30:00 PM"

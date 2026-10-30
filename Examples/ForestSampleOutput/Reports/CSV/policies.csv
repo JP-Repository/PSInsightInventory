@@ -1,0 +1,3 @@
+"Name","Query status","Source DC","Minimum length","Password history","Complexity","Reversible encryption","Minimum age","Maximum age","Lockout threshold","Lockout duration","Lockout observation window","DN"
+"example.test","Succeeded","dc01.example.test","14","24","True","False","1.00:00:00","42.00:00:00","5","00:30:00","00:30:00","DC=example,DC=test"
+"corp.example.test","Succeeded","dc01.corp.example.test","14","24","True","False","1.00:00:00","42.00:00:00","5","00:30:00","00:30:00","DC=corp,DC=example,DC=test"

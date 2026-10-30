@@ -1,0 +1,3 @@
+"Name","Server","Zone","Child zone","Name servers","IP addresses"
+"dc01.example.test / example.test","dc01.example.test","example.test","branch","ns.branch.example.test","192.0.2.30"
+"dc02.example.test / example.test","dc02.example.test","example.test","branch","ns.branch.example.test","192.0.2.30"

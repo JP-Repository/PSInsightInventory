@@ -1,0 +1,11 @@
+"Name","Computer ID","Trusted for delegation","Trusted to authenticate for delegation","Account not delegated","Allowed target SPN","RBCD descriptor present"
+"PC01","00000000-0000-0000-0000-000000000001","True","False","False",,
+"PC02","00000000-0000-0000-0000-000000000002","False","False","False","cifs/files.example.test",
+"PC03","00000000-0000-0000-0000-000000000003","False","False","False",,"True"
+"PC04","00000000-0000-0000-0000-000000000004","False","False","False",,
+"PC05","00000000-0000-0000-0000-000000000005","False","False","False",,
+"PC06","00000000-0000-0000-0000-000000000006","False","False","False",,
+"PC07","00000000-0000-0000-0000-000000000007","False","False","False",,
+"PC08","00000000-0000-0000-0000-000000000008","False","False","False",,
+"PC09","00000000-0000-0000-0000-000000000009","False","False","False",,
+"PC10","00000000-0000-0000-0000-000000000010","False","False","False",,

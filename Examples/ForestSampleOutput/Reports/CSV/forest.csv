@@ -1,0 +1,2 @@
+"Name","Root domain","Functional level","Domain references","Schema master","Domain naming master","Application partitions","Sites"
+"example.test","example.test","Windows2016Forest","2","dc01.example.test","dc01.example.test","DC=ForestDnsZones,DC=example,DC=test","North-Hub; East-Office"

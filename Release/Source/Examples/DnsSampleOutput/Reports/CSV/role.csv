@@ -1,0 +1,4 @@
+"Name","Server","DNS role present","Service state"
+"dc01.example.test","dc01.example.test","True","Running"
+"dc02.example.test","dc02.example.test","True","Running"
+"dc03.example.test","dc03.example.test","False","Not installed"

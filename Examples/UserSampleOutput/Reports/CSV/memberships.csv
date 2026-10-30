@@ -1,0 +1,3 @@
+"Name","User ID","User","Group DN"
+"Alex / CN=App Users,OU=Groups,DC=example,DC=test","00000000-0000-0000-0000-000000000001","Alex","CN=App Users,OU=Groups,DC=example,DC=test"
+"Morgan / CN=App Users,OU=Groups,DC=example,DC=test","00000000-0000-0000-0000-000000000002","Morgan","CN=App Users,OU=Groups,DC=example,DC=test"

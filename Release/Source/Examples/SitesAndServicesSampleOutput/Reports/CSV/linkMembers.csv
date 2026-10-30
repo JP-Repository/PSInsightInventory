@@ -1,0 +1,7 @@
+"Name","Site link","Site","Reference state","Site DN","Link DN"
+"HQ-East → North-Hub","HQ-East","North-Hub","Resolved","CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test","CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+"HQ-East → East-Office","HQ-East","East-Office","Resolved","CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test","CN=HQ-East,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+"HQ-Recovery → North-Hub","HQ-Recovery","North-Hub","Resolved","CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test","CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+"HQ-Recovery → Recovery","HQ-Recovery","Recovery","Resolved","CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test","CN=HQ-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+"East-Recovery → East-Office","East-Recovery","East-Office","Resolved","CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test","CN=East-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"
+"East-Recovery → Recovery","East-Recovery","Recovery","Resolved","CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test","CN=East-Recovery,CN=IP,CN=Inter-Site Transports,CN=Sites,CN=Configuration,DC=example,DC=test"

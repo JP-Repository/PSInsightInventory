@@ -1,0 +1,2 @@
+"Name","Group ID","Group","Parent group ID","Parent group","Parent DN"
+"Regional Staff ← Application Access","00000000-0000-0000-0000-000000000002","Regional Staff","00000000-0000-0000-0000-000000000001","Application Access","CN=Application Access,OU=Groups,DC=example,DC=test"

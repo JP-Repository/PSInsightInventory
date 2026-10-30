@@ -1,0 +1,4 @@
+"Name","Host name","Site","NTDS object present","Bridgehead transports","Server reference","DN"
+"DEMO-DC01","demo-dc01.example.test","North-Hub","True","IP","CN=DEMO-DC01,OU=Domain Controllers,DC=example,DC=test","CN=DEMO-DC01,CN=Servers,CN=North-Hub,CN=Sites,CN=Configuration,DC=example,DC=test"
+"DEMO-DC02","demo-dc02.example.test","East-Office","True","","CN=DEMO-DC02,OU=Domain Controllers,DC=example,DC=test","CN=DEMO-DC02,CN=Servers,CN=East-Office,CN=Sites,CN=Configuration,DC=example,DC=test"
+"DEMO-DC03","demo-dc03.example.test","Recovery","True","","CN=DEMO-DC03,OU=Domain Controllers,DC=example,DC=test","CN=DEMO-DC03,CN=Servers,CN=Recovery,CN=Sites,CN=Configuration,DC=example,DC=test"

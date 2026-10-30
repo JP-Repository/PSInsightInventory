@@ -1,0 +1,3 @@
+"Name","Query status","Source DC","NetBIOS name","Functional level","Parent domain","Children","SID","GUID","DN","Last logon replication interval"
+"example.test","Succeeded","dc01.example.test","EXAMPLE","Windows2016Domain",,"corp.example.test","S-1-5-21-111-222-333","00000000-0000-0000-0000-000000000001","DC=example,DC=test",
+"corp.example.test","Succeeded","dc01.corp.example.test","CORP","Windows2016Domain","example.test","","S-1-5-21-111-222-334","00000000-0000-0000-0000-000000000002","DC=corp,DC=example,DC=test",
