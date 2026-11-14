@@ -1,8 +1,20 @@
-# PSInsightInventory 1.0.0
+# PSInsightInventory 2.0.0
 
-PSInsightInventory 1.0.0 is the first public release of the existing read-only Active Directory inventory module.
+PSInsightInventory 2.0.0 is the second public release of the read-only Active Directory inventory module. It retains the existing ten inventories and introduces a shared interactive offline dashboard across every report.
 
-## Included inventories
+## Highlights
+
+- Shared JP-branded dashboard with focused navigation, light and dark themes, filtering, sorting, pagination and record details.
+- Browser CSV and JSON exports while retaining the existing on-disk HTML, JSON, CSV and JSONL outputs.
+- Section-specific icons, compact embedded data and bounded static fallback tables.
+- Improved controller progress and final complete/partial summaries.
+- Improved group membership collection and forest relationship evidence while preserving explicit unknown and partial outcomes.
+- Date-only output names with numbered run folders for same-day reruns.
+- Fixed user summary generation when optional directory attributes serialize without a value.
+
+## Preserved scope
+
+The release still provides exactly these ten read-only inventories:
 
 - Domain controller infrastructure
 - Sites & Services
@@ -15,17 +27,8 @@ PSInsightInventory 1.0.0 is the first public release of the existing read-only A
 - Groups
 - Users
 
-No collectors or inventory categories were added for this release. Existing scope, output schemas, failure/unknown semantics, console banner and progress, `-Quiet`, and JP-branded HTML behavior are preserved.
-
-## Release preparation
-
-- Reconciled manifest, catalog, snapshot, result, help, and documentation versions at 1.0.0.
-- Added comprehensive prerequisites, installation, command, demo, output, permission, limitation, and troubleshooting documentation.
-- Added Help & About links for Jonathan Preetham, the repository, support, and documentation to every HTML report; these links are not printed in the console banner.
-- Replaced organization-like examples with reserved `example.test` names and removed generated example logs containing old build paths.
-- Added allowlisted GitHub source, GitHub ZIP, and PowerShell Gallery staging plus SHA-256 verification.
-- Retained the MIT license and Windows PowerShell 5.1 target.
+No collector or inventory category was added. The module continues to target Windows PowerShell 5.1, exports the same 11 public commands, preserves `-Quiet`, and performs no remediation or configuration changes.
 
 ## Validation boundaries
 
-Offline fixtures and mocked-provider checks validate parsing, module exports, demo generation, report/export behavior, collection contracts, Help & About links, and package contents. They do not validate a live Active Directory environment, WinRM/DNS provider access, native Windows PowerShell 5.1 host behavior, or visual browser behavior. See `VALIDATION.md` for the exact results run for this release.
+All 579 module/source checks and 28 clean-package checks passed on PowerShell 7.6.8 on macOS, for 607 offline checks in total. Native Windows PowerShell 5.1, live Active Directory collection and native Windows browser validation were unavailable and are not claimed. See `VALIDATION.md` for details.

@@ -1,60 +1,31 @@
-# Validation — PSInsightInventory 1.0.0
+# PSInsightInventory validation
 
-Release validation was run on 30 October 2026 with PowerShell 7.6.8 on macOS.
+## Version 2.0.0
 
-## Completed offline checks
+On 12 November 2026, all 579 module/source checks and 28 clean-package checks passed in PowerShell 7.6.8 on macOS, for 607 offline checks in total. Coverage included missing user attributes when the serializer emits nothing for null, date-only filenames, preservation of reports on same-day reruns, package allowlisting, metadata, checksums and all ten fictional demo pipelines. Windows PowerShell 5.1, live Active Directory collection and native Windows browser validation were unavailable and are not claimed.
 
-All 13 offline suites passed: **592 checks total**.
+The actual fictional Domain Controller, Sites & Services and User dashboards were rendered at 1440×1000 in headless Google Chrome and visually reviewed. The User dashboard was also reviewed at a 480×1000 responsive viewport; a narrow-screen minimum-width rule is included for smaller devices. Automated JavaScript checks exercise theme switching and report interactions, but native Edge/Chrome review on Windows remains pending.
 
-| Suite | Checks |
-|---|---:|
-| Module, parser, manifest, exports, and public command behavior | 85 |
-| Domain controller inventory engine | 74 |
-| Sites & Services | 53 |
-| Forest & Domain | 41 |
-| Trust | 32 |
-| DNS | 53 |
-| Group Policy | 44 |
-| Organizational Unit | 39 |
-| Computer | 42 |
-| Group | 37 |
-| User | 42 |
-| Console display and `-Quiet` | 24 |
-| Release package | 26 |
+## Version 1.1.3
 
-`Test-ModuleManifest` also completed successfully and returned:
+All 574 offline PowerShell checks and all ten demo dashboard checks passed. The live-entry regression check uses a mocked discovery job for Infrastructure and DNS, with and without Quiet. Windows PowerShell 5.1 and live AD collection were unavailable.
 
-- Name: `PSInsightInventory`
-- Version: `1.0.0`
-- Author: `Jonathan Preetham`
-- PowerShell version: `5.1`
-- Exported functions: 11 (catalog plus ten inventory commands)
-- Required modules at import: 0
 
-The tests used fictional fixtures and mocked providers. They generated all ten demo reports and verified existing schemas, failure/unknown semantics, CSV/JSON agreement, static fallbacks, embedded JP branding, console stream isolation, `-Quiet`, and worker cleanup. Release tests additionally verified Help & About links in all ten packaged reports, absence of those links from the console banner, the GitHub source stage, Gallery module stage, ZIP layout, SHA-256 checksum, and exclusion of generated/sensitive paths.
+## Version 1.1.2
 
-The tests and their generated output were isolated in a temporary directory. No live AD, DNS, Group Policy, WinRM, domain controller, trust partner, or endpoint was contacted.
+All 573 offline PowerShell checks passed on PowerShell 7.4.6 for Linux. Console checks exercised the repository banner, native progress records, controller coverage summary and Quiet. All ten regenerated demo reports passed data and JavaScript interaction checks. Windows PowerShell 5.1 and a live Active Directory domain were unavailable.
 
-## Not validated in this environment
+For version 1.1.1, all ten demo reports were regenerated. The dashboard checks verified that each sidebar section renders an inline SVG and avoids the generic list fallback. Forest and Group also passed checks for distinct icons on every section. Visual browser review remains pending.
 
-The following checks were **not run** and must not be reported as passed:
+## Version 1.1.0
 
-- Native Windows PowerShell 5.1 import and execution
-- Live Active Directory provider collection
-- Live DNS and Group Policy provider collection
-- Live WinRM/Kerberos collection from a domain controller
-- ISE, Windows Terminal, scheduled-task, or other Windows host rendering
-- Manual visual/browser review and browser-initiated CSV/JSON downloads
-- PowerShell Gallery publication/install round trip
+The build uses the available module source archive and preserves the manifest GUID and eleven public commands.
 
-PowerShell 7.6.8 parser, fixture, and mocked-provider success does not replace native Windows PowerShell 5.1 or live-environment validation.
+- **568 PowerShell checks passed** on PowerShell 7.4.6 for Linux. The suite covers module parsing and exports, all ten sample inventories, collector mocks, cancellation, encoding and console output. The Group suite includes a single scoped identity scan and separate unknown membership counts. The Forest suite verifies unique server counts, relationship provenance and missing parent handling.
+- All ten public inventory commands regenerated their fictional HTML, CSV, JSON and JSONL examples. HTML data and section schemas match the on-disk JSON.
+- JavaScript execution checks with simulated DOM elements passed on all ten generated reports. These checks exercised section navigation, coverage filtering, record details, search, theme switching and export content. The browser could not launch in the validation environment. Actual desktop and mobile rendering and browser downloads remain to be validated.
+- Reusing the previous partial group snapshot as a size comparison, compact JSON with successful resolution duplicates removed was about 25 MiB. The old HTML was about 96 MiB. This comparison does not measure live collection speed or size for a fully collected snapshot.
 
-## Scope and safety findings
+Native Windows PowerShell 5.1 and live Active Directory were unavailable. Validate paged LDAP collection, range continuation, identity resolution, AD permissions and forest relationships on Windows before release.
 
-- No collectors or inventory categories were added.
-- Collection remains read-only; mutating AD/DNS/GPO cmdlets and remediation behavior are not present.
-- The ten inventory commands, console banner, progress display, `-Quiet`, report layouts, output schemas, and JP branding are preserved.
-- Organization-like examples were replaced with reserved `example.test` names.
-- Old generated example logs containing internal build paths were removed.
-- The publishable module package excludes examples, tests, reports, logs, test output, source-control metadata, build tooling, archives, credentials, certificate/key files, and publishing tokens.
-- Author, repository, support, and documentation links are confined to HTML Help & About and documentation; the console banner contains no URLs or contact details.
+The redesigned group report distinguishes zero direct links from unavailable membership. Its coverage denominator excludes metadata enumeration and identity resolution. Successful member resolution status remains on the member rows. The separate resolution dataset lists exceptions. The forest report merges server references by name, retaining directory roles and reference sources. Parent relationships use directory evidence.

@@ -35,13 +35,13 @@ Optional WinRM port. Defaults to 5985 for HTTP or 5986 with -UseSSL when omitted
 .PARAMETER Open
 Open the generated HTML using the local default application after export.
 .EXAMPLE
-Invoke-ADInfrastructureInventory -SampleData -OutputPath C:\Temp\Reports -Open
+.\Get-DCInventory.ps1 -SampleData -OutputPath C:\Temp\Reports -Open
 .EXAMPLE
-Invoke-ADInfrastructureInventory -Domain ad.example.test -Open
+.\Get-DCInventory.ps1 -Domain child.example.test -Open
 .EXAMPLE
-Invoke-ADInfrastructureInventory -Domain example.test -ComputerName dc01.example.test -SkipRemote
+.\Get-DCInventory.ps1 -Domain example.test -ComputerName DEMO-DC01 -SkipRemote
 .NOTES
-Version 1.0.0. Target: Windows PowerShell 5.1. No health verdict, email or remediation.
+Version 2.0.0. Target: Windows PowerShell 5.1. No health verdict, email or remediation.
 #>
 [CmdletBinding(DefaultParameterSetName='Live')]
 param(
@@ -62,7 +62,7 @@ param(
 )
 Set-StrictMode -Version 2.0
 $ErrorActionPreference='Stop'
-$script:DCInvVersion='1.0.0'
+$script:DCInvVersion='2.0.0'
 $script:DCInvModuleRoot=Split-Path -Parent $PSScriptRoot
 $script:DCInvRunId=[guid]::NewGuid().ToString('N').Substring(0,8)
 $script:DCInvStarted=[datetimeoffset]::Now
@@ -185,7 +185,10 @@ function Invoke-DCInvDiscovery([string]$RequestedDomain,[pscredential]$Discovery
 }
 
 function Invoke-DCInvWorkers([object[]]$Controllers,[scriptblock]$Worker,[string]$RemoteText,$Settings,[pscredential]$WorkerCredential){
-    if(Get-Command Update-PSIInventoryDisplay -ErrorAction SilentlyContinue){Update-PSIInventoryDisplay -Total ($Controllers.Count*@($script:DCInvSections.Keys|Where-Object{$_ -ne 'collection'}).Count)}
+    $hasDisplay = Get-Command Update-PSIInventoryDisplay -ErrorAction SilentlyContinue
+    if($hasDisplay){
+        Update-PSIInventoryDisplay -Stage 'Collecting domain controller inventory' -ControllerTotal $Controllers.Count -ControllersProcessed 0 -Force
+    }
     $pending=New-Object 'System.Collections.Generic.Queue[object]'
     foreach($controller in $Controllers){$pending.Enqueue($controller)}
     $active=New-Object System.Collections.ArrayList;$finishedCount=0
@@ -223,10 +226,13 @@ function Invoke-DCInvWorkers([object[]]$Controllers,[scriptblock]$Worker,[string
                     }
                     Remove-Job -Job $item.Job -Force -ErrorAction SilentlyContinue
                     [void]$active.Remove($item);$finishedCount++
-                    if(-not (Get-Command Test-PSIInventoryQuiet -ErrorAction SilentlyContinue) -or -not (Test-PSIInventoryQuiet)){Write-Information "[$finishedCount/$($Controllers.Count)] Inventory collection finished: $($item.Controller.HostName)" -InformationAction Continue}
+                    if(-not $hasDisplay){Write-Information "[$finishedCount/$($Controllers.Count)] Inventory collection finished: $($item.Controller.HostName)" -InformationAction Continue}
                 }
             }
-            if(Get-Command Update-PSIInventoryDisplay -ErrorAction SilentlyContinue){Update-PSIInventoryDisplay}else{Write-Progress -Activity 'Read-only DC inventory' -Status "$finishedCount of $($Controllers.Count) controllers finished; $($active.Count) active" -PercentComplete (100*$finishedCount/$Controllers.Count)}
+            if($hasDisplay){
+                $currentTarget = if($active.Count -gt 0){$active[0].Controller.HostName}else{$target}
+                Update-PSIInventoryDisplay -ControllersProcessed $finishedCount -Target $currentTarget -Force:($finishedCount -eq $Controllers.Count)
+            }else{Write-Progress -Activity 'Read-only DC inventory' -Status "$finishedCount of $($Controllers.Count) controllers finished; $($active.Count) active" -PercentComplete (100*$finishedCount/$Controllers.Count)}
             if($active.Count -gt 0){Start-Sleep -Milliseconds 200}
         }
     }
@@ -269,21 +275,18 @@ function Get-DCInvFallback($Payload){
 # Each invocation executes in its own script scope. Importing the module does not collect data.
 . (Join-Path $PSScriptRoot 'Collectors/RemoteCollector.ps1')
 . (Join-Path $PSScriptRoot 'Collectors/TargetWorker.ps1')
-function Get-DCInvTemplate {
-    $templatePath=Join-Path $script:DCInvModuleRoot 'Templates/InventoryConsole.html'
-    $brandPath=Join-Path $script:DCInvModuleRoot 'Assets/JP.brand.css'
-    return [IO.File]::ReadAllText($templatePath).Replace('/*JP_BRAND_CSS*/',[IO.File]::ReadAllText($brandPath))
-}
+. (Join-Path $PSScriptRoot 'Sites/Helpers.ps1')
+. (Join-Path $PSScriptRoot 'Sites/Export.ps1')
 function Get-DCInvSample {
     $samplePath=Join-Path $script:DCInvModuleRoot 'Assets/DCInventory.sample.json'
     return ([IO.File]::ReadAllText($samplePath) | ConvertFrom-Json)
 }
 
-$runName='PSInsightInventory_'+$script:DCInvStarted.ToString('yyyyMMdd_HHmmss_fff')+'_'+$script:DCInvRunId
-$runFolder=Join-Path $OutputPath $runName
+$date=$script:DCInvStarted.ToString('yyyy-MM-dd',[cultureinfo]::InvariantCulture)
+$runFolder=New-PSIInventoryRunFolder $OutputPath ('PSInsightInventory_Infrastructure_'+$date)
 $reportFolder=Join-Path $runFolder 'Reports';$logFolder=Join-Path $runFolder 'Logs';$csvFolder=Join-Path $reportFolder 'CSV'
 $null=New-Item -ItemType Directory -Path $csvFolder,$logFolder -Force -ErrorAction Stop
-$script:DCInvLogPath=Join-Path $logFolder ('PSInsightInventory_'+$script:DCInvStarted.ToString('yyyyMMdd_HHmmss')+'.jsonl')
+$script:DCInvLogPath=Join-Path $logFolder ('PSInsightInventory_'+$date+'.jsonl')
 try{
     Write-DCInvLog 'Information' 'Run' '' 'Start' 'Started' ('Version '+$script:DCInvVersion+'; SampleData='+[bool]$SampleData+'; Domain='+$Domain+'; Throttle='+$ThrottleLimit+'; SkipRemote='+[bool]$SkipRemote)
     $source=if($SampleData){'Sample'}else{'Live'}
@@ -349,14 +352,15 @@ try{
         }
         sections=$script:DCInvSections;data=$data
     }
-    $json=$payload | ConvertTo-Json -Depth 20
-    $embedded=$json.Replace('&','\u0026').Replace('<','\u003c').Replace('>','\u003e').Replace([string][char]0x2028,'\u2028').Replace([string][char]0x2029,'\u2029')
-    $html=(Get-DCInvTemplate).Replace('/*DATA*/',$embedded).Replace('<!--FALLBACK-->',(Get-DCInvFallback $payload))
-    $about=[IO.File]::ReadAllText((Join-Path $script:DCInvModuleRoot 'Assets/HelpAbout.html')).Replace('{{MODULE_VERSION}}',[net.webutility]::HtmlEncode($script:DCInvVersion))
-    $html=$html.Replace('</body>',$about+'</body>')
-    if($html.Contains('/*DATA*/') -or $html.Contains('<!--FALLBACK-->') -or $html.Contains('{{MODULE_VERSION}}')){throw 'Unresolved report template placeholder.'}
+    $json=$payload | ConvertTo-Json -Depth 20 -Compress
+    $sectionCoverage=[ordered]@{}
+    foreach($key in $script:DCInvSections.Keys){
+        $sectionCoverage[$key]=@($data.collection | Where-Object{$_.'Check ID' -eq $key -and $_.Status -notin @('Succeeded','NotApplicable')}).Count -eq 0
+    }
+    $reportBaseName='DC-Inventory_'+$date
+    $html=New-PSIInventoryDashboard $payload.meta $payload.sections $payload.data $sectionCoverage $script:DCInvModuleRoot $reportBaseName
     if(Get-Command Update-PSIInventoryDisplay -ErrorAction SilentlyContinue){Complete-PSIInventoryCollectionDisplay -Collection $script:DCInvData.collection.ToArray();Update-PSIInventoryDisplay -Stage 'Saving reports' -Force}
-    $htmlPath=Join-Path $reportFolder 'DC-Inventory.html';$jsonPath=Join-Path $reportFolder 'DC-Inventory.json'
+    $htmlPath=Join-Path $reportFolder ($reportBaseName+'.html');$jsonPath=Join-Path $reportFolder ($reportBaseName+'.json')
     $utf8=New-Object System.Text.UTF8Encoding($true)
     [System.IO.File]::WriteAllText($htmlPath,$html,$utf8);[System.IO.File]::WriteAllText($jsonPath,$json,$utf8)
     foreach($key in $script:DCInvSections.Keys){Export-DCInvCsv $key (Join-Path $csvFolder ($key+'.csv'))}

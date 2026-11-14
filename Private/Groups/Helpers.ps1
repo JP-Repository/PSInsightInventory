@@ -12,6 +12,39 @@ function Get-PSIGroupQuerySchema {[ordered]@{groups=@('Groups');collection=@('Co
 function Get-PSIGroupValue($o,[string]$p){if($null -ne $o -and $null -ne $o.PSObject.Properties[$p]){return $o.$p};return $null}
 function Get-PSIGroupParentDN([string]$DN){$escaped=$false;for($i=0;$i -lt $DN.Length;$i++){if($escaped){$escaped=$false;continue};if($DN[$i] -eq '\'){$escaped=$true;continue};if($DN[$i] -eq ','){return $DN.Substring($i+1)}};return $null}
 function Get-PSIGroupDomainDN([string]$DN){$part=$DN;while($part -and $part -notmatch '^(?i)DC='){$part=Get-PSIGroupParentDN $part};return $part}
+function Get-PSIGroupRangeResult($Properties){
+ $ranged=@($Properties.PropertyNames|Where-Object{[string]$_ -like 'member;range=*'})
+ $attribute=if($ranged.Count){$ranged}else{@($Properties.PropertyNames|Where-Object{[string]$_ -eq 'member'})}
+ $attribute=@($attribute|Where-Object{$_})
+ if($attribute.Count -gt 1){throw 'Multiple member ranges returned.'}
+ if(-not $attribute.Count){return [pscustomobject]@{Attribute=$null;Values=@()}}
+ [pscustomobject]@{Attribute=[string]$attribute[0];Values=@($Properties[[string]$attribute[0]]|ForEach-Object{[string]$_})}
+}
+function Get-PSIGroupFirstRanges([string]$Server,[string]$DomainDN){
+ $entry=$null;$search=$null;$results=$null;$ranges=@{}
+ try{
+  $entry=New-Object DirectoryServices.DirectoryEntry(('LDAP://'+$Server+'/'+$DomainDN.Replace('/','\/')))
+  $search=New-Object DirectoryServices.DirectorySearcher($entry)
+  $search.ReferralChasing=[DirectoryServices.ReferralChasingOption]::None
+  $search.SearchScope=[DirectoryServices.SearchScope]::Subtree
+  $search.PageSize=500
+  $search.Filter='(objectCategory=group)'
+  [void]$search.PropertiesToLoad.Add('distinguishedName')
+  [void]$search.PropertiesToLoad.Add('member;range=0-*')
+  $results=$search.FindAll()
+  foreach($result in $results){
+   $dn=[string]$result.Properties['distinguishedname'][0]
+   if(-not $dn -or (Get-PSIGroupDomainDN $dn) -ine $DomainDN){continue}
+   if($ranges.ContainsKey($dn)){throw 'Duplicate group in LDAP membership search.'}
+   $ranges[$dn]=Get-PSIGroupRangeResult $result.Properties
+  }
+  $ranges
+ }finally{
+  if($null -ne $results){$results.Dispose()}
+  if($null -ne $search){$search.Dispose()}
+  if($null -ne $entry){$entry.Dispose()}
+ }
+}
 function Read-PSIGroupRange([string]$Server,[string]$DN,[int]$Start){
  $entry=$null;$search=$null
  try{
@@ -20,17 +53,13 @@ function Read-PSIGroupRange([string]$Server,[string]$DN,[int]$Start){
   $search.ReferralChasing=[DirectoryServices.ReferralChasingOption]::None;$search.SearchScope=[DirectoryServices.SearchScope]::Base;$search.Filter='(objectClass=group)'
   $null=$search.PropertiesToLoad.Add(('member;range='+$Start+'-*'))
   $result=$search.FindOne();if($null -eq $result){throw 'Group base search returned no object.'}
-  $ranged=@($result.Properties.PropertyNames|Where-Object{[string]$_ -like 'member;range=*'})
-  $attribute=@();if($ranged.Count){$attribute=@($ranged)}else{$attribute=@($result.Properties.PropertyNames|Where-Object{[string]$_ -eq 'member'})}
-  if($attribute.Count -gt 1){throw 'Multiple member ranges returned.'}
-  if(-not $attribute.Count){return [pscustomobject]@{Attribute=$null;Values=@()}}
-  [pscustomobject]@{Attribute=[string]$attribute[0];Values=@($result.Properties[$attribute[0]]|ForEach-Object{[string]$_})}
+  Get-PSIGroupRangeResult $result.Properties
  }finally{if($null -ne $search){$search.Dispose()};if($null -ne $entry){$entry.Dispose()}}
 }
-function Get-PSIGroupMemberDNs([string]$Server,[string]$DN){
+function Get-PSIGroupMemberDNs([string]$Server,[string]$DN,$FirstRange){
  $start=0;$seen=@{};$values=New-Object collections.ArrayList
  do{
-  $range=Read-PSIGroupRange $Server $DN $start
+  $range=if($start -eq 0 -and $null -ne $FirstRange){$FirstRange}else{Read-PSIGroupRange $Server $DN $start}
   if(-not $range.Attribute){if($start -ne 0){throw 'Missing continuation range.'};break}
   foreach($value in @($range.Values)){if([string]::IsNullOrEmpty($value) -or $seen.ContainsKey([string]$value)){throw 'Empty/duplicate member reference.'};$seen[[string]$value]=$true;[void]$values.Add([string]$value)}
   if($range.Attribute -ieq 'member'){if($start -ne 0){throw 'Unexpected un-ranged continuation.'};break}
@@ -47,7 +76,7 @@ function ConvertTo-PSIGroupModel($Context,[object[]]$Envelopes,[string]$MissingS
  foreach($k in $schema.Keys){$data[$k]=New-Object collections.ArrayList;$coverage[$k]=$true}
  foreach($e in $Envelopes){if($byKey.ContainsKey([string]$e.Key) -or $e.Status -notin @('Succeeded','Failed','TimedOut')){throw 'Duplicate/invalid group outcome.'};$byKey[[string]$e.Key]=$e}
  if(-not $byKey.ContainsKey('groups')){throw 'Missing group enumeration outcome.'};$enumeration=$byKey.groups;$groupByDN=@{};$groupIds=@{}
- function Add-Ledger($e,[string]$Name,[string]$Target,[int]$Count){[void]$data.collection.Add([pscustomobject]@{Name=$Name;Target=$Target;Status=$e.Status;'Record count'=$Count;'Collected at'=$e.CollectedAt;'Duration ms'=$e.DurationMs;'Error ID'=$e.ErrorId;Message=$e.ErrorMessage})}
+ function Add-Ledger($e,[string]$Name,[string]$Target,$Count){[void]$data.collection.Add([pscustomobject]@{Name=$Name;Target=$Target;Status=$e.Status;'Record count'=if($e.Status -eq 'Succeeded'){$Count}else{$null};'Collected at'=$e.CollectedAt;'Duration ms'=$e.DurationMs;'Error ID'=$e.ErrorId;Message=$e.ErrorMessage})}
  if($enumeration.Status -eq 'Succeeded'){
   foreach($g in $enumeration.Records){$id=([guid]$g.Id).ToString();if($groupIds.ContainsKey($id) -or $groupByDN.ContainsKey([string]$g.DN) -or (Get-PSIGroupDomainDN $g.DN) -ine $Context.DomainDN){throw 'Duplicate/out-of-domain group.'};$groupIds[$id]=$true;$groupByDN[[string]$g.DN]=$g
    [void]$data.groups.Add([pscustomobject]@{Name=$g.Name;'Group ID'=$id;'SAM account name'=$g.Sam;SID=$g.Sid;Scope=$g.Scope;Category=$g.Category;Description=$g.Description;'Managed by'=$g.ManagedBy;'Location DN'=Get-PSIGroupParentDN $g.DN;DN=$g.DN;Created=$g.Created;Changed=$g.Changed;'Direct linked members'=$null;'Membership status'='Unknown'})
@@ -63,9 +92,11 @@ function ConvertTo-PSIGroupModel($Context,[object[]]$Envelopes,[string]$MissingS
     [void]$data.members.Add([pscustomobject]@{Name=$g.Name+' / '+$member.DN;'Group ID'=$g.'Group ID';Group=$g.Name;'Member DN'=$member.DN;'Member name'=$member.Name;'Member ID'=$member.Id;'Member SID'=$member.Sid;'Member type'=$member.Type;'Resolution status'=$member.Resolution})
     if($groupByDN.ContainsKey([string]$member.DN)){$child=$groupByDN[[string]$member.DN];[void]$data.nested.Add([pscustomobject]@{Name=$g.Name+' → '+$child.Name;'Parent group ID'=$g.'Group ID';'Parent group'=$g.Name;'Child group ID'=$child.Id;'Child group'=$child.Name;'Child DN'=$child.DN});[void]$data.parents.Add([pscustomobject]@{Name=$child.Name+' ← '+$g.Name;'Group ID'=$child.Id;Group=$child.Name;'Parent group ID'=$g.'Group ID';'Parent group'=$g.Name;'Parent DN'=$g.DN})}
    }
-   foreach($lookup in @($e.Lookups)){[void]$data.objectQueries.Add([pscustomobject]@{Name=$g.Name;Target=$lookup.Target;Status=$lookup.Status;Message=$lookup.Message});if($lookup.Status -eq 'Failed'){$coverage.objectQueries=$false}}
+   # Successful resolutions are already represented on member rows. Retain
+   # only exceptions here to avoid duplicating every membership in the HTML.
+   foreach($lookup in @($e.Lookups|Where-Object{$_.Status -ne 'Succeeded'})){[void]$data.objectQueries.Add([pscustomobject]@{Name=$g.Name;Target=$lookup.Target;Status=$lookup.Status;Message=$lookup.Message});if($lookup.Status -eq 'Failed'){$coverage.objectQueries=$false}}
   }else{foreach($k in @('members','nested','parents','objectQueries')){$coverage[$k]=$false}}
-  Add-Ledger $e ('Direct members: '+$g.Name) $g.DN $(if($e.Status -eq 'Succeeded'){@($e.Records).Count}else{0})
+  Add-Ledger $e ('Direct members: '+$g.Name) $g.DN $g.'Direct linked members'
  }
  foreach($key in $byKey.Keys){if($key -ne 'groups' -and ($key -notlike 'members:*' -or -not $groupIds.ContainsKey($key.Substring(8)))){throw "Unexpected group outcome: $key"}}
  $arrays=[ordered]@{};foreach($k in $schema.Keys){$arrays[$k]=@($data[$k].ToArray())}

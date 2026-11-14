@@ -17,13 +17,13 @@ Set-StrictMode -Version 2.0
 
 $manifestPath = Join-Path $PSScriptRoot 'PSInsightInventory.psd1'
 $manifest = Test-ModuleManifest -Path $manifestPath -ErrorAction Stop
-if ($manifest.Name -ne 'PSInsightInventory' -or $manifest.Version -ne [version]'1.0.0') {
-    throw 'Release build requires the PSInsightInventory 1.0.0 manifest.'
+if ($manifest.Name -ne 'PSInsightInventory' -or $manifest.Version -ne [version]'2.0.0') {
+    throw 'Release build requires the PSInsightInventory 2.0.0 manifest.'
 }
 
 $moduleStage = Join-Path $OutputPath 'PSInsightInventory'
 $sourceStage = Join-Path $OutputPath 'Source'
-$zipPath = Join-Path $OutputPath 'PSInsightInventory-1.0.0.zip'
+$zipPath = Join-Path $OutputPath 'PSInsightInventory-2.0.0.zip'
 $checksumPath = $zipPath + '.sha256'
 
 foreach ($stage in @($moduleStage, $sourceStage)) {

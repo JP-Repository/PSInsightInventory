@@ -3,7 +3,7 @@
 ```powershell
 Import-Module .\PSInsightInventory\PSInsightInventory.psd1 -Force
 Invoke-ADForestInventory -Demo -Open
-Invoke-ADForestInventory -Domain ad.example.test -Open
+Invoke-ADForestInventory -Domain child.example.test -Open
 ```
 
 ## Scope
@@ -48,7 +48,7 @@ Default overall worker budget is 180 seconds, including discovery and all domain
 
 The expected query denominator is **2 + 2 × member-domain count**: forest metadata, partition references, domain metadata per domain, and default policy per domain. The fictional two-domain sample has six outcomes. Domain discovery is needed to pin/verify each domain endpoint; failure produces explicit domain and policy outcomes rather than querying an unverified endpoint.
 
-Each run creates a unique `PSInsightInventory_Forest_<timestamp>_<RunId>` folder under C:\Temp\Reports, or the selected parent. Reports include offline HTML, JSON, twelve CSV datasets and structured JSONL logs. JSON retains raw property bags and original strings; CSV neutralizes formula-leading strings. All datasets keep headers when empty. Import and demo mode do not contact AD.
+Each run creates a unique `PSInsightInventory_Forest_<yyyy-MM-dd>[_NN]` folder under C:\Temp\Reports, or the selected parent. Reports include offline HTML, JSON, twelve CSV datasets and structured JSONL logs. JSON retains raw property bags and original strings; CSV neutralizes formula-leading strings. All datasets keep headers when empty. Import and demo mode do not contact AD.
 
 Search, sorting, pagination, column selection, themes and CSV/JSON exports are available offline. Static tables remain readable without JavaScript. Snapshot JSON includes all data; filtered CSV includes all matching rows and schema columns, regardless of pagination or hidden columns.
 

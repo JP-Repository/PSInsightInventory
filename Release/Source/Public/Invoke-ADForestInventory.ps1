@@ -26,7 +26,7 @@ Open the saved HTML locally.
 .EXAMPLE
 Invoke-ADForestInventory -Demo -Open
 .EXAMPLE
-Invoke-ADForestInventory -Domain ad.example.test -Open
+Invoke-ADForestInventory -Domain child.example.test -Open
 .EXAMPLE
 Invoke-ADForestInventory -Domain example.test -Credential (Get-Credential) -TimeoutSeconds 300 -Open
 #>

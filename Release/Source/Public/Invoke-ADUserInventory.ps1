@@ -23,7 +23,7 @@ Open the generated HTML locally.
 .EXAMPLE
 Invoke-ADUserInventory -Demo -Open
 .EXAMPLE
-Invoke-ADUserInventory -Domain ad.example.test -Open
+Invoke-ADUserInventory -Domain child.example.test -Open
 .EXAMPLE
 Invoke-ADUserInventory -Domain example.test -TimeoutSeconds 1200 -OutputPath C:\Temp\Reports -Open
 #>

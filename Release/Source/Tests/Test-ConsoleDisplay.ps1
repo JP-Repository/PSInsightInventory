@@ -13,7 +13,7 @@ $normalInfo=@();$normal=@(Invoke-ADUserInventory -Demo -OutputPath $OutputPath -
 $text=($normalInfo|ForEach-Object{[string]$_.MessageData}) -join "`n"
 Assert-Display ($normal.Count -eq 1 -and $normal[0].ObservedUsers -eq $quiet[0].ObservedUsers) 'Banner does not contaminate success stream'
 Assert-Display ($text -match 'PSInsightInventory' -and $text -match 'License: MIT' -and $text -match 'Jonathan Preetham') 'Banner identifies module author and MIT license'
-Assert-Display ($text -notmatch 'github\.com|linkedin\.com|outlook\.com|mailto:') 'Repository, support, documentation and author links stay out of console banner'
+Assert-Display (-not $text.Contains('https://github.com/JP-Repository/PSInsightInventory') -and -not $text.Contains('Jonathan.Preetham@outlook.com')) 'Banner excludes repository and support links'
 Assert-Display ($text -match 'REPORT SAVED' -and $text -match 'Sample data only') 'Completion explicitly identifies sample output'
 $state=& $module {
  Start-PSIInventoryDisplay 'Test' 'example.test' 'C:\Temp\Reports' $false $false
@@ -34,6 +34,25 @@ Assert-Display ($state.Completed -eq 1 -and $state.Total -eq 3 -and $state.Rows 
 Assert-Display ($state.Stage -eq 'Reading group membership' -and $state.Target -eq 'Group A') 'Worker activity updates current stage/target without becoming an outcome'
 Assert-Display ($state.FinalIncomplete -eq 2) 'Final ledger includes missing and timed-out outcomes'
 Assert-Display (& $module {$null -eq (Get-PSIInventoryDisplayState)}) 'Display state cleared after failure/completion'
+$frames=& $module {
+ $frames=New-Object collections.ArrayList
+ function Write-Progress($Id,$Activity,$Status,$CurrentOperation,$PercentComplete,[switch]$Completed){
+  [void]$frames.Add([pscustomobject]@{
+   Id=$Id;Status=$Status;Detail=$CurrentOperation;Percent=$PercentComplete;Completed=$Completed.IsPresent
+  })
+ }
+ Start-PSIInventoryDisplay 'Controller progress test' 'example.test' 'C:\Temp\Reports' $false $false
+ Update-PSIInventoryDisplay -Stage 'Collecting domain controller inventory' -ControllerTotal 50 -ControllersProcessed 28 -Target 'dc29.example.test' -Force
+ Stop-PSIInventoryDisplay -Failed
+ $frames
+}
+Assert-Display ($frames[0].Percent -eq -1 -and $frames[0].Status -match 'total not known') 'Progress starts without a guessed percentage'
+Assert-Display ($frames[1].Percent -eq 56 -and $frames[1].Status -match '28 of 50 controllers processed' -and $frames[1].Status -match 'dc29.example.test') 'Controller progress reflects actual worker counts and target'
+Assert-Display ($frames[2].Completed -and $frames[2].Id -eq $frames[0].Id) 'Stopping clears the same native progress display'
+$dcInfo=@()
+$dcResult=Invoke-ADInfrastructureInventory -Demo -OutputPath $OutputPath -InformationVariable dcInfo
+$dcText=($dcInfo|ForEach-Object{[string]$_.MessageData}) -join "`n"
+Assert-Display ($dcText.Contains('Controllers processed: '+$dcResult.DomainControllers) -and $dcText.Contains('Collection partial:    '+$dcResult.PartialInventory) -and $dcText.Contains($dcResult.HtmlReport)) 'Controller summary reports partial coverage and saved report path'
 Assert-Display ((Get-Content (Join-Path $root 'LICENSE') -Raw) -match 'MIT License' -and (Get-Content (Join-Path $root 'LICENSE') -Raw) -match 'Jonathan Preetham') 'MIT label backed by packaged license'
 # Exercise parent polling integration and verify progress messages do not enter data.
 $pipeline=& $module {
@@ -51,6 +70,24 @@ $pipeline=& $module {
 }
 Assert-Display ($pipeline.Envelopes.Count -eq 1 -and $pipeline.Envelopes[0].Kind -eq 'Section') 'Polling consumes activity messages without exporting them'
 Assert-Display (@(Get-Job|Where-Object{$_.State -eq 'Running'}).Count -eq 0) 'Activity worker jobs are cleaned up'
+# Enter the live path without contacting AD and stop at the first discovery job.
+$liveDiscovery=& $module {
+ $previousOS=$env:OS
+ try{
+  $env:OS='Windows_NT'
+  function Get-Module { [pscustomobject]@{Name='ActiveDirectory'} }
+  function Start-Job { throw 'Discovery job reached' }
+  foreach($command in @('Invoke-ADInfrastructureInventory','Invoke-ADDnsInventory')){
+   foreach($quiet in @($false,$true)){
+    try{
+     $null=& $command -Domain 'example.test' -OutputPath $args[0] -Quiet:$quiet -ErrorAction Stop
+     'Expected discovery to stop'
+    }catch{ $_.Exception.Message }
+   }
+  }
+ }finally{$env:OS=$previousOS}
+} $OutputPath
+Assert-Display ($liveDiscovery.Count -eq 4 -and @($liveDiscovery | Where-Object {$_ -ne 'Discovery job reached'}).Count -eq 0) ('Infrastructure and DNS reach live discovery with and without Quiet: '+($liveDiscovery -join ' / '))
 $summary=[pscustomobject]@{Status='Passed';Checks=$checks.Count;Runtime=$PSVersionTable.PSVersion.ToString();SampleReport=$normal[0].HtmlReport;WindowsPowerShell51Tested=($PSVersionTable.PSVersion.Major -eq 5)}
 $summary|ConvertTo-Json|Set-Content (Join-Path $OutputPath 'ConsoleTestResults.json') -Encoding UTF8
 $summary

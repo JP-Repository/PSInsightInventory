@@ -3,7 +3,7 @@
 ```powershell
 Import-Module .\PSInsightInventory\PSInsightInventory.psd1 -Force
 Invoke-ADTrustInventory -Demo -Open
-Invoke-ADTrustInventory -Domain ad.example.test -Open
+Invoke-ADTrustInventory -Domain child.example.test -Open
 ```
 
 ## Collection scope
@@ -54,7 +54,7 @@ Nulls mean not returned/not available; false remains a reported false value. Kno
 
 An explicit property whitelist is requested and retained. No Properties * request or trust-authentication secret-attribute read is used. Unexpected fields in returned objects are not serialized. Domain SIDs, trust names and configuration properties are inventory data; passwords and trust authentication secrets are not exported.
 
-Each run creates a unique `PSInsightInventory_Trusts_<timestamp>_<RunId>` folder under C:\Temp\Reports, with offline HTML, JSON, six CSV datasets and JSONL logs. The HTML embeds the JP mark and all assets. Static tables remain available without JavaScript. JSON retains safe raw observations; CSV neutralizes formula-leading strings. Browser CSV includes all filtered rows and schema columns across pages; snapshot JSON includes the full captured data.
+Each run creates a unique `PSInsightInventory_Trusts_<yyyy-MM-dd>[_NN]` folder under C:\Temp\Reports, with offline HTML, JSON, six CSV datasets and JSONL logs. The HTML embeds the JP mark and all assets. Static tables remain available without JavaScript. JSON retains safe raw observations; CSV neutralizes formula-leading strings. Browser CSV includes all filtered rows and schema columns across pages; snapshot JSON includes the full captured data.
 
 Demo mode uses fictional fixtures and makes no infrastructure requests. Live Windows PowerShell 5.1 execution, live directory behavior and visual browser/download review remain pending; see VALIDATION.md.
 

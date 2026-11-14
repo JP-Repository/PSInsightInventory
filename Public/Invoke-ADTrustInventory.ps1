@@ -26,7 +26,7 @@ Open the saved HTML locally.
 .EXAMPLE
 Invoke-ADTrustInventory -Demo -Open
 .EXAMPLE
-Invoke-ADTrustInventory -Domain ad.example.test -Open
+Invoke-ADTrustInventory -Domain child.example.test -Open
 .EXAMPLE
 Invoke-ADTrustInventory -Domain example.test -Credential (Get-Credential) -TimeoutSeconds 300 -Open
 #>

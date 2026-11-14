@@ -99,7 +99,7 @@ function Invoke-WorkerFixture {
     function Get-ADReplicationSite {param($Identity,$Server,$Credential,$ErrorAction) [pscustomobject]@{DistinguishedName='CN=SiteA,CN=Sites,CN=Configuration,DC=example,DC=test'}}
     function Get-ADReplicationSubnet {param($Filter,$Properties,$Server,$Credential,$ErrorAction)
         if($Server -ne 'dc01.example.test'){throw 'Wrong AD server'}
-        [pscustomobject]@{Name='192.1.0.0/24';Site='CN=SiteA,CN=Sites,CN=Configuration,DC=example,DC=test';Description='Fixture';Location='Test'}
+        [pscustomobject]@{Name='192.1.1.1/24';Site='CN=SiteA,CN=Sites,CN=Configuration,DC=example,DC=test';Description='Fixture';Location='Test'}
         [pscustomobject]@{Name='198.51.100.0/24';Site='CN=Other,CN=Sites,CN=Configuration,DC=example,DC=test';Description='Other';Location='Test'}
     }
     function Get-ADReplicationPartnerMetadata {param($Target,$EnumerationServer,$Partition,$PartnerType,$Credential,$ErrorAction)

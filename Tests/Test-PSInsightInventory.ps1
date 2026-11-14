@@ -8,13 +8,17 @@ $manifestPath=Join-Path $moduleRoot 'PSInsightInventory.psd1'
 $null=New-Item -ItemType Directory -Path $OutputPath -Force
 $checks=New-Object System.Collections.ArrayList
 function Assert-Module([bool]$Condition,[string]$Name){if(-not $Condition){throw "FAILED: $Name"};[void]$checks.Add($Name);Write-Host "PASS $Name"}
-foreach($file in Get-ChildItem -LiteralPath $moduleRoot -Recurse -File | Where-Object{$_.Extension -in @('.ps1','.psm1','.psd1')}){
+foreach($file in Get-ChildItem -LiteralPath $moduleRoot -Recurse -File | Where-Object{
+    $_.Extension -in @('.ps1','.psm1','.psd1') -and
+    $_.FullName -notlike ((Join-Path $moduleRoot 'Release') + [IO.Path]::DirectorySeparatorChar + '*') -and
+    $_.FullName -notlike ((Join-Path $moduleRoot '.git') + [IO.Path]::DirectorySeparatorChar + '*')
+}){
     $parseErrors=$null
     $null=[System.Management.Automation.Language.Parser]::ParseFile($file.FullName,[ref]$null,[ref]$parseErrors)
     Assert-Module ($parseErrors.Count -eq 0) ('Parser: '+$file.Name)
 }
 $manifest=Test-ModuleManifest -Path $manifestPath -ErrorAction Stop
-Assert-Module ($manifest.Name -eq 'PSInsightInventory' -and $manifest.Version -eq [version]'1.0.0') 'Manifest identifies PSInsightInventory 1.0.0'
+Assert-Module ($manifest.Name -eq 'PSInsightInventory' -and $manifest.Version -eq [version]'2.0.0') 'Manifest identifies PSInsightInventory 2.0.0'
 Assert-Module ($manifest.RequiredModules.Count -eq 0) 'No PSInsightExpl, PSInsightHTML or AD dependency during import'
 $adBefore=@(Get-Module -Name ActiveDirectory).Count
 $preferenceBefore=$ErrorActionPreference
@@ -32,11 +36,16 @@ $public=Get-Command Invoke-ADInfrastructureInventory
 Assert-Module ($public.Parameters.SampleData.Aliases -contains 'Demo') 'Demo alias is available for SampleData'
 $one=Invoke-ADInfrastructureInventory -SampleData -OutputPath $OutputPath
 $two=Invoke-ADInfrastructureInventory -Demo -OutputPath $OutputPath
-Assert-Module ($one.ModuleName -eq 'PSInsightInventory' -and $one.ModuleVersion -eq '1.0.0') 'Run result identifies module/version'
+Assert-Module ($one.ModuleName -eq 'PSInsightInventory' -and $one.ModuleVersion -eq '2.0.0') 'Run result identifies module/version'
 Assert-Module ($one.OutputFolder -ne $two.OutputFolder) 'Public command creates independent run directories'
+Assert-Module ((Split-Path $one.OutputFolder -Leaf) -match '^PSInsightInventory_Infrastructure_\d{4}-\d{2}-\d{2}(_\d{2,})?$' -and
+ (Split-Path $one.HtmlReport -Leaf) -match '^DC-Inventory_\d{4}-\d{2}-\d{2}\.html$' -and
+ (Split-Path $one.JsonSnapshot -Leaf) -match '^DC-Inventory_\d{4}-\d{2}-\d{2}\.json$' -and
+ (Split-Path $one.LogFile -Leaf) -match '^PSInsightInventory_\d{4}-\d{2}-\d{2}\.jsonl$') 'Run folder, report, snapshot and log names use a date without time'
+Assert-Module ((Test-Path -LiteralPath $one.HtmlReport) -and (Test-Path -LiteralPath $two.HtmlReport)) 'Same-day reruns retain both reports'
 Assert-Module ($one.CompleteInventory -eq 10 -and $one.PartialInventory -eq 2 -and $two.DomainControllers -eq 12) 'Both sample switches run the existing collector pipeline'
 $snapshot=Get-Content -LiteralPath $two.JsonSnapshot -Raw | ConvertFrom-Json
-Assert-Module ($snapshot.meta.moduleName -eq 'PSInsightInventory' -and $snapshot.meta.version -eq '1.0.0') 'Snapshot identifies module/version'
+Assert-Module ($snapshot.meta.moduleName -eq 'PSInsightInventory' -and $snapshot.meta.version -eq '2.0.0') 'Snapshot identifies module/version'
 Assert-Module ($snapshot.data.collection.Count -eq 180) 'Repeated module invocations do not accumulate previous run records'
 Assert-Module ($snapshot.meta.dataSource -eq 'Sample') 'Sample report stays explicitly labeled'
 $html=Get-Content -LiteralPath $two.HtmlReport -Raw

@@ -7,7 +7,7 @@ Import-Module .\PSInsightInventory\PSInsightInventory.psd1 -Force
 Get-PSInsightInventory
 Get-Help Invoke-ADUserInventory -Examples
 Invoke-ADUserInventory -Demo -Open
-Invoke-ADUserInventory -Domain ad.example.test -Open
+Invoke-ADUserInventory -Domain child.example.test -Open
 Invoke-ADUserInventory -Domain example.test -TimeoutSeconds 1200 -OutputPath C:\Temp\Reports -Open
 ```
 

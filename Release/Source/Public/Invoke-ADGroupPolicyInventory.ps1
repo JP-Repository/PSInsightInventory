@@ -23,7 +23,7 @@ Open the generated HTML locally.
 .EXAMPLE
 Invoke-ADGroupPolicyInventory -Demo -Open
 .EXAMPLE
-Invoke-ADGroupPolicyInventory -Domain ad.example.test -Open
+Invoke-ADGroupPolicyInventory -Domain child.example.test -Open
 .EXAMPLE
 Invoke-ADGroupPolicyInventory -Domain example.test -TimeoutSeconds 600 -OutputPath C:\Temp\Reports -Open
 #>

@@ -34,14 +34,17 @@ WinRM connection-open budget; default 15 seconds.
 Use an existing WinRM HTTPS endpoint with normal certificate validation.
 .PARAMETER Port
 Optional approved WinRM port; zero uses the default for the chosen transport.
+.PARAMETER Quiet
+Suppress the console banner, heartbeat, progress and completion display.
+Warnings/errors and structured report output are retained.
 .PARAMETER Open
 Open the saved report locally.
 .EXAMPLE
 Invoke-ADDnsInventory -Demo -Open
 .EXAMPLE
-Invoke-ADDnsInventory -Domain ad.example.test -Open
+Invoke-ADDnsInventory -Domain child.example.test -Open
 .EXAMPLE
-Invoke-ADDnsInventory -Domain ad.example.test -ComputerName dc01.example.test -Open
+Invoke-ADDnsInventory -Domain child.example.test -ComputerName DEMO-DC01 -Open
 #>
 [CmdletBinding(DefaultParameterSetName='Live')]
 param(

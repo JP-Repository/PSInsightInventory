@@ -35,8 +35,8 @@
     [pscustomobject]@{Kind='Context';Forest=[string]$forest.Name;RootDomain=[string]$forest.RootDomain;Domain=$Domain;Server=$source;Domains=$names;ConfigurationNC=[string]$root.configurationNamingContext;Root=(Bag $root $rootProperties)}
     Emit 'forest' $forest.Name $source {Bag $forest $forestProperties}
     Emit 'partitions' $forest.Name $source {
-        Get-ADObject -SearchBase ('CN=Partitions,'+[string]$root.configurationNamingContext) -SearchScope OneLevel -LDAPFilter '(objectClass=crossRef)' -Properties nCName,dnsRoot,nETBIOSName,systemFlags,enabled,msDS-NC-Replica-Locations,msDS-NC-RO-Replica-Locations @seed | ForEach-Object{
-            Bag $_ @('Name','DistinguishedName','nCName','dnsRoot','nETBIOSName','systemFlags','enabled','msDS-NC-Replica-Locations','msDS-NC-RO-Replica-Locations')
+        Get-ADObject -SearchBase ('CN=Partitions,'+[string]$root.configurationNamingContext) -SearchScope OneLevel -LDAPFilter '(objectClass=crossRef)' -Properties nCName,dnsRoot,nETBIOSName,systemFlags,enabled,trustParent,msDS-NC-Replica-Locations,msDS-NC-RO-Replica-Locations @seed | ForEach-Object{
+            Bag $_ @('Name','DistinguishedName','nCName','dnsRoot','nETBIOSName','systemFlags','enabled','trustParent','msDS-NC-Replica-Locations','msDS-NC-RO-Replica-Locations')
         }
     }
     foreach($name in $names){

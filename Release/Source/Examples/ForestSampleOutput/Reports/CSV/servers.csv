@@ -1,5 +1,3 @@
-"Name","Domain / forest","Source property"
-"dc01.example.test","example.test","Get-ADForest.GlobalCatalogs"
-"dc01.corp.example.test","example.test","Get-ADForest.GlobalCatalogs"
-"dc01.example.test","example.test","Get-ADDomain.ReplicaDirectoryServers"
-"dc01.corp.example.test","corp.example.test","Get-ADDomain.ReplicaDirectoryServers"
+"Name","Domain","Directory roles","Reference sources","Reference count"
+"dc01.example.test","example.test","Global Catalog; Writable DC","Get-ADForest.GlobalCatalogs; Get-ADDomain.ReplicaDirectoryServers","2"
+"dc01.corp.example.test","corp.example.test","Global Catalog; Writable DC","Get-ADForest.GlobalCatalogs; Get-ADDomain.ReplicaDirectoryServers","2"

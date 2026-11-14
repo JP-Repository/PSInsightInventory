@@ -26,21 +26,17 @@ The module stage must not contain `Examples`, `Tests`, `Reports`, `Logs`, test o
 
 ## 2. Publish source to GitHub
 
-The repository already has a `main` branch with an initial README and the same MIT license. Preserve that commit history by working from a clean clone after approval:
+The 2.0.0 release candidate is prepared in a clean clone of the public repository. Review and stage that existing working tree rather than copying files over another checkout:
 
 ```powershell
-$repository = 'https://github.com/JP-Repository/PSInsightInventory.git'
-$clone = Join-Path ([IO.Path]::GetTempPath()) 'PSInsightInventory-publish'
-git clone $repository $clone
-Get-ChildItem -LiteralPath $build.SourceStage -Force |
-    Copy-Item -Destination $clone -Recurse -Force
-git -C $clone status --short
-git -C $clone diff --check
-git -C $clone add --all
-git -C $clone diff --cached --stat
-git -C $clone diff --cached --check
-git -C $clone commit -m 'Release PSInsightInventory 1.0.0'
-git -C $clone push origin main
+git status --short
+git diff --check
+git add --all
+git add --force Release/PSInsightInventory-2.0.0.zip
+git diff --cached --stat
+git diff --cached --check
+git commit -m 'Release PSInsightInventory 2.0.0'
+git push origin main
 ```
 
 Do not proceed if the staged diff contains generated output, credentials, tokens, unexpected environment names, or unrelated files.
@@ -48,18 +44,18 @@ Do not proceed if the staged diff contains generated output, credentials, tokens
 Create and push the release tag only after the main-branch push succeeds:
 
 ```powershell
-git -C $clone tag -a v1.0.0 -m 'PSInsightInventory 1.0.0'
-git -C $clone push origin v1.0.0
+git tag -a v2.0.0 -m 'PSInsightInventory 2.0.0'
+git push origin v2.0.0
 ```
 
 Create the GitHub release and attach the clean module ZIP and checksum:
 
 ```powershell
-gh release create v1.0.0 `
+gh release create v2.0.0 `
     $build.GitHubZip `
     $build.ChecksumFile `
     --repo JP-Repository/PSInsightInventory `
-    --title 'PSInsightInventory 1.0.0' `
+    --title 'PSInsightInventory 2.0.0' `
     --notes-file (Join-Path $build.SourceStage 'RELEASE-NOTES.md')
 ```
 
@@ -67,7 +63,7 @@ Verify the release page, asset names, checksum, source archive, README links, an
 
 ## 3. Publish to PowerShell Gallery
 
-First confirm that 1.0.0 is not already published:
+First confirm that 2.0.0 is not already published:
 
 ```powershell
 Find-Module -Name PSInsightInventory -Repository PSGallery -AllVersions
@@ -99,10 +95,10 @@ Never place the API key in the manifest, repository, build output, environment f
 Verify the published package in a fresh temporary module path:
 
 ```powershell
-Find-Module -Name PSInsightInventory -RequiredVersion 1.0.0 -Repository PSGallery
+Find-Module -Name PSInsightInventory -RequiredVersion 2.0.0 -Repository PSGallery
 $verifyPath = Join-Path ([IO.Path]::GetTempPath()) 'PSInsightInventory-gallery-verify'
-Save-Module -Name PSInsightInventory -RequiredVersion 1.0.0 -Repository PSGallery -Path $verifyPath
-Test-ModuleManifest -Path (Join-Path $verifyPath 'PSInsightInventory\1.0.0\PSInsightInventory.psd1')
+Save-Module -Name PSInsightInventory -RequiredVersion 2.0.0 -Repository PSGallery -Path $verifyPath
+Test-ModuleManifest -Path (Join-Path $verifyPath 'PSInsightInventory\2.0.0\PSInsightInventory.psd1')
 ```
 
 Record the GitHub release URL and Gallery package URL after both are live. Do not claim native Windows PowerShell 5.1 or live AD validation unless those checks were actually performed.

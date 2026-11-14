@@ -48,5 +48,6 @@ function ConvertFrom-PSISchedule($Value,[string]$Name,[string]$OwnerType,[string
     [pscustomobject][ordered]@{Name=$Name;'Owner type'=$OwnerType;'Parse status'=$status;'Allowed hours UTC'=$hours;Summary=$summary;'Hourly masks UTC'=$masks;'Raw base64'=$raw;DN=$DN}
 }
 function ConvertTo-PSISafeJson($Value){
-    ($Value | ConvertTo-Json -Depth 30).Replace('&','\u0026').Replace('<','\u003c').Replace('>','\u003e').Replace([string][char]0x2028,'\u2028').Replace([string][char]0x2029,'\u2029')
+    # Compact embedded JSON keeps enterprise reports practical in a browser.
+    ($Value | ConvertTo-Json -Depth 30 -Compress).Replace('&','\u0026').Replace('<','\u003c').Replace('>','\u003e').Replace([string][char]0x2028,'\u2028').Replace([string][char]0x2029,'\u2029')
 }

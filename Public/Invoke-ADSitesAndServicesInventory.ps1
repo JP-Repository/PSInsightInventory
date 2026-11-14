@@ -26,7 +26,7 @@ Open the generated HTML locally after saving.
 .EXAMPLE
 Invoke-ADSitesAndServicesInventory -Demo -Open
 .EXAMPLE
-Invoke-ADSitesAndServicesInventory -Domain ad.example.test -Open
+Invoke-ADSitesAndServicesInventory -Domain child.example.test -Open
 .EXAMPLE
 Invoke-ADSitesAndServicesInventory -Domain example.test -Credential (Get-Credential) -TimeoutSeconds 180 -Open
 #>

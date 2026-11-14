@@ -101,7 +101,10 @@ function Invoke-DCInvDiscovery([string]$RequestedDomain,[pscredential]$Discovery
 
 
 function Invoke-DCInvWorkers([object[]]$Controllers,[scriptblock]$Worker,[string]$RemoteText,$Settings,[pscredential]$WorkerCredential){
-    if(Get-Command Update-PSIInventoryDisplay -ErrorAction SilentlyContinue){Update-PSIInventoryDisplay -Total ($Controllers.Count*@($script:DCInvSections.Keys|Where-Object{$_ -ne 'collection'}).Count)}
+    $hasDisplay = Get-Command Update-PSIInventoryDisplay -ErrorAction SilentlyContinue
+    if($hasDisplay){
+        Update-PSIInventoryDisplay -Stage 'Collecting DNS configuration' -ControllerTotal $Controllers.Count -ControllersProcessed 0 -Force
+    }
     $pending=New-Object 'System.Collections.Generic.Queue[object]'
     foreach($controller in $Controllers){$pending.Enqueue($controller)}
     $active=New-Object System.Collections.ArrayList;$finishedCount=0
@@ -139,10 +142,13 @@ function Invoke-DCInvWorkers([object[]]$Controllers,[scriptblock]$Worker,[string
                     }
                     Remove-Job -Job $item.Job -Force -ErrorAction SilentlyContinue
                     [void]$active.Remove($item);$finishedCount++
-                    if(-not (Get-Command Test-PSIInventoryQuiet -ErrorAction SilentlyContinue) -or -not (Test-PSIInventoryQuiet)){Write-Information "[$finishedCount/$($Controllers.Count)] Inventory collection finished: $($item.Controller.HostName)" -InformationAction Continue}
+                    if(-not $hasDisplay){Write-Information "[$finishedCount/$($Controllers.Count)] Inventory collection finished: $($item.Controller.HostName)" -InformationAction Continue}
                 }
             }
-            if(Get-Command Update-PSIInventoryDisplay -ErrorAction SilentlyContinue){Update-PSIInventoryDisplay}else{Write-Progress -Activity 'Read-only DC inventory' -Status "$finishedCount of $($Controllers.Count) controllers finished; $($active.Count) active" -PercentComplete (100*$finishedCount/$Controllers.Count)}
+            if($hasDisplay){
+                $currentTarget = if($active.Count -gt 0){$active[0].Controller.HostName}else{$target}
+                Update-PSIInventoryDisplay -ControllersProcessed $finishedCount -Target $currentTarget -Force:($finishedCount -eq $Controllers.Count)
+            }else{Write-Progress -Activity 'Read-only DC inventory' -Status "$finishedCount of $($Controllers.Count) controllers finished; $($active.Count) active" -PercentComplete (100*$finishedCount/$Controllers.Count)}
             if($active.Count -gt 0){Start-Sleep -Milliseconds 200}
         }
     }

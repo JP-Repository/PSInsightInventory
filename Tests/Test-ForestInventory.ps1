@@ -11,11 +11,13 @@ Assert-Forest (@(Get-PSInsightInventory).Count -eq 10) 'Catalog includes all inv
 Assert-Forest (@((Get-Help Invoke-ADForestInventory -Examples).examples.example).Count -eq 3) 'Forest command provides examples'
 $result=Invoke-ADForestInventory -Demo -OutputPath $OutputPath
 $p=Get-Content -LiteralPath $result.JsonSnapshot -Raw|ConvertFrom-Json
-Assert-Forest ($result.ModuleVersion -eq '1.0.0' -and $result.DomainReferences -eq 2 -and $result.DomainDetailsCollected -eq 2) 'Sample forest/domain counts agree'
+Assert-Forest ($result.ModuleVersion -eq '2.0.0' -and $result.DomainReferences -eq 2 -and $result.DomainDetailsCollected -eq 2) 'Sample forest/domain counts agree'
 Assert-Forest ($result.QueriesCollected -eq 6 -and $p.meta.expectedQueries -eq 6) 'Query denominator is two forest queries plus two per domain'
 Assert-Forest ($p.meta.connectionDomain -eq 'corp.example.test' -and $p.meta.forest -eq 'example.test') 'Connection domain and forest scope remain distinct'
 Assert-Forest ($p.data.fsmo.Count -eq 8) 'Forest and domain FSMO assignments are separate'
 Assert-Forest ($p.data.levels.Count -eq 3 -and $p.data.hierarchy[1].'Parent domain' -eq 'example.test') 'Functional levels and hierarchy are captured'
+Assert-Forest (@($p.data.servers.Name | Sort-Object -Unique).Count -eq $p.data.servers.Count -and @($p.data.servers | Where-Object{$_.'Reference count' -gt 1}).Count -gt 0) 'GC and replica references deduplicate with source counts intact'
+Assert-Forest (@($p.data.servers | Where-Object{$_.Name -like '*.corp.example.test' -and $_.Domain -eq 'corp.example.test'}).Count -gt 0) 'Forest-wide GC evidence does not override server domain'
 Assert-Forest ($p.data.suffixes.Count -eq 2) 'Additional UPN and SPN lists are retained'
 Assert-Forest ($p.data.contexts.Count -eq 6 -and $p.data.partitions.Count -eq 5) 'Hosted contexts and forest partition references remain separate'
 Assert-Forest ($p.data.containers.Count -eq 12 -and $p.data.policies.Count -eq 2) 'Default containers and default domain policies are retained'
@@ -26,6 +28,19 @@ Assert-Forest ($html.Contains('>JP</span>') -and $html.Contains('Forest &amp; Do
 foreach($f in @('Helpers.ps1','Export.ps1')){. (Join-Path (Join-Path $root 'Private/Sites') $f)}
 foreach($f in @('Collector.ps1','Model.ps1')){. (Join-Path (Join-Path $root 'Private/Forest') $f)}
 function Fixture {Get-Content -LiteralPath (Join-Path $root 'Assets/Forest.sample.json') -Raw|ConvertFrom-Json}
+$relationshipFixture=Fixture
+foreach($domainQuery in @($relationshipFixture.envelopes | Where-Object{$_.Key -like 'domain:*'})){
+    $domainQuery.Records[0].Domain.ParentDomain=$null
+    $domainQuery.Records[0].Domain.ChildDomains=@()
+}
+$crossRefs=@($relationshipFixture.envelopes[1].Records | Where-Object{$_.dnsRoot -in $relationshipFixture.context.Domains -and $_.nCName -match '^DC='})
+$rootRef=@($crossRefs|Where-Object{$_.dnsRoot -eq 'example.test'})[0]
+$childRef=@($crossRefs|Where-Object{$_.dnsRoot -eq 'corp.example.test'})[0]
+$withoutEvidence=ConvertTo-PSIForestModel $relationshipFixture.context $relationshipFixture.envelopes
+Assert-Forest ($null -eq $withoutEvidence.Data.hierarchy[1].'Parent domain') 'DNS suffix alone does not imply a forest parent'
+$childRef | Add-Member -NotePropertyName trustParent -NotePropertyValue $rootRef.DistinguishedName
+$withEvidence=ConvertTo-PSIForestModel $relationshipFixture.context $relationshipFixture.envelopes
+Assert-Forest ($withEvidence.Data.hierarchy[1].'Parent domain' -eq 'example.test' -and $withEvidence.Data.hierarchy[1].'Relationship source' -eq 'Configuration crossRef trustParent') 'Explicit Configuration relationship fills missing ADWS parent'
 $fixture=Fixture;$fixture.envelopes[2].Status='Failed';$fixture.envelopes[2].ErrorMessage='Synthetic domain access denial'
 $partial=ConvertTo-PSIForestModel $fixture.context $fixture.envelopes
 Assert-Forest ($partial.Data.domains.Count -eq 2 -and $partial.DomainDetailsCollected -eq 1) 'Failed domain remains visible from forest membership reference'

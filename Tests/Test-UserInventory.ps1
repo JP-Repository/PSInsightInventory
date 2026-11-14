@@ -17,6 +17,15 @@ foreach($key in $p.sections.PSObject.Properties.Name){Assert-User (@(Import-Csv 
 foreach($f in @('Helpers.ps1','Export.ps1')){. (Join-Path $root ('Private/Sites/'+$f))}
 foreach($f in @('Helpers.ps1','Collector.ps1')){. (Join-Path $root ('Private/Users/'+$f))}
 function Fixture {Get-Content (Join-Path $root 'Assets/Users.sample.json') -Raw|ConvertFrom-Json}
+$nullableModel = & {
+ function ConvertTo-Json($InputObject,[switch]$Compress){
+  if($null -ne $InputObject){Microsoft.PowerShell.Utility\ConvertTo-Json -InputObject $InputObject -Compress:$Compress}
+ }
+ $fixture=Fixture
+ ConvertTo-PSIUserModel $fixture.context $fixture.envelopes
+}
+Assert-User (@($nullableModel.Data.departments | Where-Object Name -eq 'Unknown / not returned').Count -eq 1 -and
+ @($nullableModel.Data.departments | Where-Object Name -eq 'Empty reported value').Count -eq 1) 'Missing and empty departments stay distinct when the JSON serializer returns nothing for null'
 $fx=Fixture;$fx.envelopes[0].Status='Failed';$m=ConvertTo-PSIUserModel $fx.context $fx.envelopes
 Assert-User ($m.Data.users.Count -eq 0 -and -not $m.Coverage.departments -and $m.Data.collection[0].Status -eq 'Failed') 'Failure does not become empty success'
 $fx=Fixture;$fx.envelopes[0].Records=@();$m=ConvertTo-PSIUserModel $fx.context $fx.envelopes

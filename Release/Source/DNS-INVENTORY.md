@@ -5,8 +5,8 @@
 ```powershell
 Import-Module .\PSInsightInventory\PSInsightInventory.psd1 -Force
 Invoke-ADDnsInventory -Demo -Open
-Invoke-ADDnsInventory -Domain ad.example.test -Open
-Invoke-ADDnsInventory -Domain ad.example.test -ComputerName dc01.example.test -Open
+Invoke-ADDnsInventory -Domain child.example.test -Open
+Invoke-ADDnsInventory -Domain child.example.test -ComputerName DEMO-DC01 -Open
 ```
 
 ## Included data

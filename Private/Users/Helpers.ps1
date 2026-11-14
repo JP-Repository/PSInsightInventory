@@ -31,7 +31,8 @@ function ConvertTo-PSIUserModel($Context,[object[]]$Envelopes){
    if($null -ne $source.PrimaryGroup -and [string]$source.Sid -match '^S-1-5-21-\d+-\d+-\d+-\d+$'){$primarySid=([string]$source.Sid -replace '-\d+$','')+'-'+[string]$source.PrimaryGroup}
    [void]$data.primaryGroups.Add([pscustomobject]@{Name=$source.Name;'User ID'=$id;'User SID'=$source.Sid;'Primary group RID'=$source.PrimaryGroup;'Derived primary group SID'=$primarySid})
    foreach($dimension in @(@('departments','Department',$source.Department),@('companies','Company',$source.Company),@('locations','Location DN',$location),@('statuses','Enabled',$source.Enabled))){
-    $k=$dimension[0];$field=$dimension[1];$value=$dimension[2];$key=ConvertTo-Json -InputObject $value -Compress
+    $k=$dimension[0];$field=$dimension[1];$value=$dimension[2]
+    $key=if($null -eq $value){'null'}else{ConvertTo-Json -InputObject $value -Compress}
     if(-not $summaries[$k].ContainsKey($key)){$row=[ordered]@{Name=if($null -eq $value){'Unknown / not returned'}elseif($value -is [string] -and $value.Length -eq 0){'Empty reported value'}else{[string]$value}};$row[$field]=$value;$row['Users observed']=0;$summaries[$k][$key]=[pscustomobject]$row}
     $summaries[$k][$key].'Users observed'++
    }

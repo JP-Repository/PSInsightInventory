@@ -1,938 +1,751 @@
 ﻿<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>PSInsightInventory · Forest & Domains</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PSInsightInventory</title>
 <style>
-:root{--bg:#f3f6f8;--surface:#fff;--text:#172d3b;--muted:#637784;--line:#e2e9ed;--soft:#f8fafb;--accent:#087e80;--tint:#e5f4f1;--sidebar:#122c3b;--shadow:0 3px 14px #17384b06;--amber:#8d6112;--amberbg:#fff4d9;--radius:12px;color-scheme:light}
-:root[data-theme=dark]{--bg:#13202a;--surface:#1b2c38;--text:#e4eff4;--muted:#a5b8c4;--line:#314450;--soft:#203440;--accent:#79d6c6;--tint:#23443f;--sidebar:#0d202b;--shadow:none;--amber:#f1d295;--amberbg:#483c22;color-scheme:dark}
-[hidden]{display:none!important}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 'Segoe UI',Arial,sans-serif}button,input,select{font:inherit;color:inherit}button,a,summary{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;opacity:.4}a{color:var(--accent)}:focus-visible{outline:3px solid #60bfb2;outline-offset:3px}svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}button{border:0}.shell{display:grid;grid-template-columns:238px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--sidebar);color:#d5e3ea;position:sticky;top:0;height:100vh;padding:25px 15px 15px;display:flex;flex-direction:column;overflow:auto}.brand{display:flex;gap:10px;align-items:center;padding:0 9px 23px;color:#fff;font-size:14px;font-weight:650;letter-spacing:-.3px}.brandmark{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#56c6b3;color:#122c3b}.brand small{display:block;color:#9bb4c1;font-size:10px;letter-spacing:1.6px;font-weight:500;margin-top:1px}.group-label{font-size:9px;letter-spacing:1.5px;font-weight:700;color:#8da6b4;text-transform:uppercase;padding:13px 12px 4px}.navbtn{background:none;color:#bdced8;border-radius:7px;width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:8px 11px;font-size:12px;min-height:33px;margin:1px 0}.navbtn svg{width:16px;height:16px;color:#95b1bf}.navbtn:hover{background:#ffffff0c;color:#fff}.navbtn.active{background:#2a514f;color:#d5fff3}.navbtn.active svg{color:#8de0cc}.navcount{margin-left:auto;font-size:10px;color:#9bbac4}.navbtn.active .navcount{color:#b5e1d4}.sidefoot{margin-top:auto;padding:20px 11px 0;font-size:10px;color:#93adba}.sidefoot b{display:block;color:#c5d7de;font-size:11px;margin-bottom:3px}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#6dd3b3;margin-right:5px}.workspace{min-width:0}.topbar{height:67px;border-bottom:1px solid var(--line);background:var(--surface);display:flex;gap:12px;align-items:center;padding:0 34px}.crumb{font-size:12px;color:var(--muted)}.crumb b{color:var(--text);font-weight:600}.crumb span{margin:0 9px;color:#a1afb7}.spacer{flex:1}.pill{display:inline-flex;align-items:center;gap:5px;border-radius:5px;padding:4px 8px;background:var(--tint);color:var(--accent);font-size:10px;font-weight:650;white-space:nowrap}.pill.amber{background:var(--amberbg);color:var(--amber)}.iconbtn{width:33px;height:33px;display:inline-grid;place-items:center;background:var(--soft);border:1px solid var(--line);border-radius:7px}.topmeta{font-size:11px;color:var(--muted)}main{max-width:1700px;margin:auto;padding:29px 34px 20px}.pagehead{display:flex;align-items:flex-start;gap:15px;margin-bottom:22px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:1.6px;color:var(--accent);text-transform:uppercase;margin-bottom:6px}h1{font-size:28px;font-weight:650;letter-spacing:-.8px;line-height:1.2;margin:0 0 7px}p{margin:0;color:var(--muted)}.subtitle{font-size:12px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:7px;min-height:35px;padding:7px 12px;font-size:11px;font-weight:600;white-space:nowrap}.btn svg{width:15px;height:15px}.btn:hover{background:var(--soft)}.btn.primary{background:var(--accent);border-color:var(--accent);color:white}:root[data-theme=dark] .btn.primary{color:#0d2427}.notice{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--muted);background:var(--surface);border:1px dashed #bbcdd0;padding:10px 13px;border-radius:7px;margin-bottom:20px}.notice svg{width:15px;height:15px;color:var(--accent)}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}.metric{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:17px 18px;text-align:left;box-shadow:var(--shadow);color:var(--text)}button.metric:hover{border-color:var(--accent)}.metrichead{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:11px}.metrichead svg{color:var(--accent);background:var(--tint);width:27px;height:27px;padding:5px;border-radius:7px}.metricvalue{display:flex;align-items:baseline;gap:9px;margin-top:8px}.metricvalue strong{font-size:31px;line-height:1.1;font-weight:650;letter-spacing:-1px}.metricvalue small{font-size:10px;color:var(--muted)}.metricfoot{font-size:10px;color:var(--muted);margin-top:9px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0;overflow:hidden}.panelhead{padding:17px 19px 12px;display:flex;gap:10px;align-items:center}h2{font-size:13px;line-height:1.4;font-weight:650;margin:0}.panelhead p{font-size:10px;margin-top:3px}.overviewgrid{display:grid;grid-template-columns:1.1fr 1fr .9fr;gap:16px;margin-bottom:22px}.dist{padding:2px 19px 19px}.barrow{display:grid;grid-template-columns:125px 1fr 24px;align-items:center;gap:10px;margin:13px 0 0;font-size:10px}.track{background:var(--soft);height:7px;border-radius:9px;overflow:hidden}.fill{height:100%;border-radius:9px;background:#399f96}.barrow:nth-child(2) .fill{background:#6e9fc1}.barrow:nth-child(3) .fill{background:#b3c6d0}.barrow b{text-align:right}.coverage{display:flex;align-items:center;gap:18px;padding:3px 19px 20px}.ring{width:86px;height:86px;border-radius:50%;background:conic-gradient(#399f96 0deg var(--angle),var(--line) var(--angle) 360deg);display:grid;place-items:center;flex-shrink:0}.ringin{width:68px;height:68px;background:var(--surface);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}.ringin b{font-size:21px;letter-spacing:-.5px}.ringin small{font-size:8px;color:var(--muted)}.legend{font-size:10px;color:var(--muted)}.legend div{margin:6px 0}.legend b{color:var(--text);margin-right:4px}.legend a{display:block;margin-top:8px;font-size:10px}.toolbar{display:flex;align-items:center;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--soft);flex-wrap:wrap}.searchbox{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-width:230px;max-width:340px;flex:1}.searchbox svg{width:15px;height:15px;color:var(--muted)}.searchbox input{width:100%;min-width:0;border:0;background:transparent;outline:0;font-size:11px}.toolbar select{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:7px 24px 7px 9px;font-size:11px;max-width:180px}.textbtn{background:transparent;color:var(--accent);font-size:10px;padding:6px}.columnmenu{position:relative}.columnmenu summary{list-style:none}.columnmenu summary::-webkit-details-marker{display:none}.columnoptions{position:absolute;z-index:8;right:0;top:40px;background:var(--surface);border:1px solid var(--line);box-shadow:0 10px 35px #0002;width:220px;padding:12px;border-radius:9px;max-height:350px;overflow:auto}.columnoptions label{display:flex;gap:7px;align-items:center;font-size:11px;padding:5px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px;white-space:nowrap}th{text-align:left;font-size:9px;letter-spacing:.5px;color:var(--muted);font-weight:600;background:var(--soft);border-bottom:1px solid var(--line);padding:11px 16px}th button{font-size:inherit;letter-spacing:inherit;text-transform:uppercase;font-weight:inherit;display:flex;align-items:center;gap:5px;background:none;padding:0;color:inherit}td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--text);max-width:440px;overflow:hidden;text-overflow:ellipsis}tbody tr:hover{background:var(--soft)}tbody tr:last-child td{border-bottom:0}.dclink{display:flex;align-items:center;gap:9px;color:var(--accent);background:none;padding:0;font-size:11px;font-weight:600}.servericon{display:grid;place-items:center;border-radius:6px;background:var(--tint);color:var(--accent);width:28px;height:28px}.servericon svg{width:15px;height:15px}.domaincell{font-size:10px;color:var(--muted)}.tag{display:inline-block;padding:3px 7px;border-radius:5px;background:var(--soft);color:var(--muted);font-size:9px}.tag.teal{background:var(--tint);color:var(--accent)}.tag.amber{background:var(--amberbg);color:var(--amber)}.tfoot{display:flex;align-items:center;gap:7px;padding:12px 18px;border-top:1px solid var(--line);font-size:10px;color:var(--muted)}.tfoot .btn{min-height:27px;padding:3px 8px;font-size:10px}.empty{padding:42px;text-align:center;color:var(--muted)}.empty b{display:block;margin-bottom:5px;color:var(--text)}.footer{display:flex;gap:15px;align-items:center;padding:18px 0 0;font-size:9px;color:var(--muted);flex-wrap:wrap}.footer span:last-child{margin-left:auto}.detailhero{display:flex;align-items:center;gap:17px;margin:15px 0 22px}.detailhero .servericon{width:60px;height:60px;border-radius:13px}.detailhero .servericon svg{width:30px;height:30px}.detailhero h1{font-size:26px}.detailtabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:20px;overflow:auto}.detailtabs button{background:none;padding:11px 13px;font-size:11px;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent}.detailtabs button.active{color:var(--accent);border-color:var(--accent);font-weight:650}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.props{display:grid;grid-template-columns:150px 1fr;gap:11px;padding:16px 19px;margin:0;font-size:11px}.props dt{color:var(--muted)}.props dd{margin:0;overflow-wrap:anywhere}.detailsection{margin-bottom:18px}.detailsection table{white-space:normal}.detailsection td{overflow-wrap:anywhere}.detailnote{padding:13px 18px;font-size:11px;color:var(--amber);background:var(--amberbg);border-radius:7px;margin-bottom:18px}.mobilemenu{display:none}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--sidebar);color:white;padding:10px 20px;border-radius:8px;box-shadow:0 6px 25px #0003;font-size:12px;z-index:30}.toast:empty{display:none}.skip{position:absolute;top:-80px;left:260px;z-index:50;background:var(--surface);padding:10px}.skip:focus{top:5px}noscript table{white-space:normal}noscript th,noscript td{padding:10px}
-.categorycoverage{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding:7px 18px;font-size:10px;color:var(--muted)}@media(min-height:1000px){.navbtn{padding-top:10px;padding-bottom:10px}.group-label{padding-top:20px}}
-@media(max-width:1250px){main{padding:24px}.topbar{padding:0 24px}.overviewgrid{grid-template-columns:1fr 1fr}.overviewgrid>.panel:last-child{grid-column:1/-1}.coverage{padding-top:6px}.topmeta{display:none}.cards{gap:10px}.metric{padding:14px}}
-@media(max-width:900px){.shell{grid-template-columns:200px minmax(0,1fr)}.sidebar{padding-left:9px;padding-right:9px}.brand{font-size:12px;gap:8px;padding-left:4px;padding-right:4px}.navbtn{font-size:11px}.overviewgrid{grid-template-columns:1fr}.overviewgrid>.panel:last-child{grid-column:auto}.cards{grid-template-columns:1fr 1fr}.pagehead{flex-wrap:wrap}.detailgrid{grid-template-columns:1fr}.crumb{font-size:10px}.topbar{padding:0 18px}main{padding:22px 18px}.barrow{grid-template-columns:125px 1fr 24px}}
-@media(max-width:650px){.shell{display:block}.sidebar{display:none;position:fixed;width:235px;z-index:20}.shell.menuopen .sidebar{display:flex;box-shadow:10px 0 40px #0005}.mobilemenu{display:inline-grid}.topbar{height:58px;gap:8px;padding:0 14px}.crumb{flex:1}.topbar>.spacer{display:none}.topbar>.pill{display:none}main{padding:20px 14px}h1{font-size:24px}.pagehead{gap:10px}.pagehead .spacer{display:none}.pagehead>.btn{margin-left:auto}.notice{align-items:flex-start}.toolbar{padding:11px;gap:7px}.searchbox{min-width:100%;max-width:none}.toolbar select{max-width:calc(50% - 5px);flex:1}.toolbar .spacer{display:none}.metricvalue strong{font-size:27px}.metrichead{font-size:10px}.metricfoot{font-size:9px}.detailtabs button{padding:10px}.props{grid-template-columns:115px 1fr}.footer span:last-child{margin-left:0}.detailhero{gap:12px}.detailhero h1{font-size:23px}.tfoot{flex-wrap:wrap}.columnoptions{right:auto;left:0}}
-@media print{.sidebar,.topbar,.toolbar,.btn,.detailtabs,.notice,.tfoot,.toast{display:none!important}.shell{display:block}body{background:white;color:#111}main{padding:0}.cards{break-inside:avoid}.panel{box-shadow:none;overflow:visible}.tablewrap{overflow:visible}table{white-space:normal}td{max-width:none}.footer{display:block}}
+:root{--bg:#f3f6f8;--paper:#fff;--ink:#172f3e;--muted:#687d8c;--line:#e0e8ed;--teal:#087e80;--tealsoft:#e5f3f1;--nav:#142e3d;--amber:#996518;--ambersoft:#fff6e6;--shadow:0 3px 12px #213d4d04;--blue:#739dbd}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.5 'Segoe UI',Arial,sans-serif}button,input,select{font:inherit;color:inherit}button,a,summary{touch-action:manipulation}button{cursor:pointer}button{border:0}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #86c8c1;outline-offset:3px}a{color:var(--teal)}button:disabled{opacity:.35;cursor:default}[hidden]{display:none!important}svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}.side{background:var(--nav);color:#c0d0da;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:27px 15px 18px;overflow:auto}.brand{display:flex;gap:10px;padding:0 9px 26px;align-items:center;color:white;font-size:14px;font-weight:650;letter-spacing:-.25px}.jp{display:grid;place-items:center;width:33px;height:35px;background:#9177db;color:#fff;border-radius:9px;font-size:15px;font-weight:750;flex:none}.brand small{display:block;font-size:9px;letter-spacing:2px;font-weight:500;color:#a2b9c6;margin-top:3px}.navlabel{font-size:9px;font-weight:700;letter-spacing:1.6px;color:#8fa9b8;margin:22px 12px 9px}.navitem{display:flex;align-items:center;width:100%;gap:11px;background:none;color:#bed0db;border-radius:7px;padding:10px 12px;margin:3px 0;text-align:left;font-size:12px}.navitem:hover{background:#ffffff0b}.navitem.active{background:#2a5351;color:#e0fff7}.navitem.active svg{color:#88d2c5}.count{margin-left:auto;color:#93adba;font-size:10px}.sidebottom{margin-top:auto;padding:25px 12px 0;font-size:10px;color:#96aebb}.sidebottom b{display:block;color:#d1e4ec;margin-bottom:4px;font-weight:600}.dot{width:6px;height:6px;border-radius:50%;display:inline-block;background:#72c5b5;margin-right:5px}.workspace{min-width:0}.top{height:66px;display:flex;align-items:center;gap:14px;background:var(--paper);border-bottom:1px solid var(--line);padding:0 32px}.crumb{font-size:12px;color:var(--muted)}.crumb b{color:var(--ink);font-weight:600}.crumb span{margin:0 12px;color:#a5b1ba}.grow{flex:1}.badge{font-size:9px;font-weight:700;letter-spacing:.4px;border-radius:5px;background:var(--tealsoft);color:var(--teal);padding:5px 8px;white-space:nowrap}.badge.preview{background:#edf1f6;color:#63788d}.date{font-size:10px;color:var(--muted)}.btn{border:1px solid var(--line);background:var(--paper);border-radius:7px;padding:8px 12px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:600;min-height:35px;white-space:nowrap}.btn:hover{background:var(--bg)}.btn.primary{background:var(--teal);border-color:var(--teal);color:white}.btn svg{width:15px;height:15px}.iconbtn{padding:8px;min-width:34px}.mobile{display:none}main{padding:27px 32px 24px;max-width:1720px;margin:auto}.report-switch{display:inline-flex;background:#e8eef2;padding:3px;border-radius:8px;gap:3px;margin-bottom:23px}.report-switch button{padding:7px 15px;border-radius:6px;background:none;font-size:11px;color:var(--muted);font-weight:600}.report-switch .selected{background:var(--paper);color:var(--ink);box-shadow:0 1px 4px #152d3d13}.heading{display:flex;align-items:flex-start;gap:15px;margin-bottom:18px}.eyebrow{font-size:9px;letter-spacing:1.8px;color:var(--teal);font-weight:750;margin-bottom:7px}h1{font-size:28px;letter-spacing:-.8px;line-height:1.2;font-weight:650;margin:0 0 7px}.sub{font-size:12px;color:var(--muted);margin:0}h2{font-size:13px;margin:0;font-weight:650}p{margin:0}.scope{display:flex;align-items:center;gap:14px;margin-bottom:19px;font-size:10px;color:var(--muted);flex-wrap:wrap}.scope b{font-weight:600;color:var(--ink)}.scope .sep{height:12px;width:1px;background:var(--line)}.notice{display:flex;gap:12px;align-items:center;border:1px solid #edddbf;background:var(--ambersoft);border-radius:8px;padding:12px 14px;margin-bottom:18px;color:var(--amber);font-size:11px}.notice svg{width:19px;height:19px}.notice b{display:block;font-size:12px;font-weight:650;margin-bottom:2px}.notice .textlink{color:var(--amber);white-space:nowrap;font-weight:600}.notice.good{background:var(--tealsoft);border-color:#cbe2dc;color:var(--teal)}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.metric{background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:17px 18px;box-shadow:var(--shadow);text-align:left}.metric:hover{border-color:#b8d6d0}.metrichead{display:flex;gap:10px;align-items:center;font-size:11px;color:var(--muted);justify-content:space-between}.tileicon{width:27px;height:27px;border-radius:7px;display:grid;place-items:center;background:var(--tealsoft);color:var(--teal)}.tileicon svg{width:16px;height:16px}.value{display:flex;gap:8px;align-items:baseline;margin:7px 0}.value strong{font-size:31px;font-weight:650;line-height:1.1;letter-spacing:-1px}.value span{font-size:10px;color:var(--muted)}.metric small{font-size:10px;color:var(--muted)}.panels{display:grid;grid-template-columns:1fr 1fr .96fr;gap:16px;margin-bottom:20px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:11px;box-shadow:var(--shadow);min-width:0;overflow:hidden}.panelhead{padding:17px 18px 10px;display:flex;gap:10px;align-items:center}.panelhead p{font-size:10px;color:var(--muted);margin-top:3px}.bars{padding:0 18px 16px}.barrow{display:grid;grid-template-columns:98px minmax(20px,1fr) 35px;gap:12px;align-items:center;font-size:10px;margin-top:13px}.barrow b{text-align:right;font-size:10px}.track{height:7px;background:var(--bg);border-radius:10px;overflow:hidden}.fill{height:100%;border-radius:10px;background:#389e95}.barrow:nth-child(2) .fill{background:var(--blue)}.barrow:nth-child(3) .fill{background:#a9c0ca}.legendnote{font-size:9px;color:var(--muted);padding:0 18px 14px}.coverage{display:flex;gap:16px;align-items:center;padding:6px 18px 14px}.ring{height:90px;width:90px;display:grid;place-items:center;border-radius:50%;background:conic-gradient(#399f96 var(--angle),#f1e2c7 0);flex:none}.ringinside{width:73px;height:73px;background:var(--paper);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}.ringinside b{font-size:24px;letter-spacing:-.8px}.ringinside small{font-size:8px;color:var(--muted)}.coveragelegend{font-size:10px;color:var(--muted)}.coveragelegend p{margin:4px 0}.coveragelegend b{color:var(--ink);margin-right:5px}.textlink{background:none;color:var(--teal);padding:0;font-size:10px;text-decoration:underline;text-underline-offset:3px}.minigrid{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-bottom:20px}.compact{display:flex;gap:18px;align-items:center;padding:15px 18px}.compact div{flex:1}.compact h2{font-size:12px}.compact p{font-size:10px;color:var(--muted);margin-top:3px}.compact .num{font-size:21px;font-weight:650;color:var(--ink);flex:none}.compact .num span{font-size:10px;color:var(--muted);font-weight:400}.sectionhead{padding:17px 18px 12px;display:flex;gap:10px;align-items:center}.sectionhead p{font-size:10px;color:var(--muted);margin-top:4px}.tag{font-size:9px;background:var(--bg);color:var(--muted);border-radius:4px;padding:4px 7px;display:inline-block;white-space:nowrap}.tag.teal{background:var(--tealsoft);color:var(--teal)}.tag.amber{background:var(--ambersoft);color:var(--amber)}.toolbar{display:flex;gap:8px;align-items:center;padding:12px 18px;background:#f8fafb;border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap}.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:7px 10px;flex:1;min-width:190px;max-width:300px}.search svg{width:15px;height:15px;color:var(--muted)}input[type=search]{width:100%;border:0;outline:0;background:none;font-size:11px}select{padding:8px 24px 8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-size:10px;max-width:180px}.reset{background:none;color:var(--teal);font-size:10px;padding:6px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;text-align:left;font-size:11px}th{font-size:9px;letter-spacing:.5px;color:var(--muted);background:#f8fafb;text-transform:uppercase;font-weight:650;border-bottom:1px solid var(--line);padding:11px 16px}th button{background:none;padding:0;text-transform:inherit;letter-spacing:inherit;font-size:inherit;color:inherit;font-weight:inherit}td{padding:13px 16px;border-bottom:1px solid var(--line)}tbody tr:hover{background:#f9fbfc}tbody tr:last-child td{border-bottom:0}.groupname{display:flex;align-items:center;gap:9px;background:none;padding:0;color:var(--teal);font-weight:600;font-size:11px}.objicon{display:grid;place-items:center;width:27px;height:27px;border-radius:6px;background:var(--tealsoft);color:var(--teal);flex:none}.objicon svg{width:15px;height:15px}.faint{font-size:10px;color:var(--muted)}.tablefoot{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--muted);padding:11px 18px;border-top:1px solid var(--line)}.tablefoot .btn{font-size:10px;min-height:27px;padding:4px 9px}.bottom{display:flex;align-items:center;gap:15px;padding-top:18px;font-size:9px;color:var(--muted);flex-wrap:wrap}.bottom .grow{min-width:5px}.columns{position:relative}.columns summary{list-style:none;cursor:pointer}.columnlist{position:absolute;right:0;top:40px;z-index:5;background:var(--paper);border:1px solid var(--line);box-shadow:0 10px 30px #142e3d1c;border-radius:8px;width:190px;padding:10px}.columnlist label{display:flex;gap:8px;padding:6px;font-size:11px}.help{position:fixed;bottom:16px;right:18px;z-index:9}.help summary{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:9px 12px;list-style:none;color:var(--teal);font-size:11px;font-weight:650;cursor:pointer;box-shadow:var(--shadow)}.helpcard{position:absolute;bottom:45px;right:0;width:300px;border:1px solid var(--line);border-radius:10px;background:var(--paper);box-shadow:0 10px 50px #102a3d22;padding:20px;font-size:12px}.helpcard p{margin:8px 0;color:var(--muted)}.helpcard a{display:block;margin-top:9px}.veil{position:fixed;inset:0;background:#122d3e44;z-index:20;display:flex;justify-content:flex-end}.drawer{width:500px;max-width:100%;background:var(--paper);height:100%;overflow:auto;box-shadow:-10px 0 40px #122d3e22;padding:27px}.drawerhead{display:flex;align-items:center;gap:10px;margin-bottom:25px}.drawer h2{font-size:23px;letter-spacing:-.5px}.drawer .meta{margin:7px 0 20px;font-size:11px;color:var(--muted)}.props{display:grid;grid-template-columns:140px 1fr;font-size:12px;gap:15px;margin:23px 0}.props dt{color:var(--muted)}.props dd{margin:0;overflow-wrap:anywhere}.drawer h3{font-size:12px;margin:22px 0 10px}.drawer .notice{align-items:flex-start}.tree{padding:3px 18px 15px;font-size:11px}.treerow{display:flex;gap:8px;align-items:center;margin:11px 0}.treerow.child{margin-left:16px;border-left:1px solid var(--line);padding-left:15px}.treerow small{margin-left:auto;color:var(--muted);font-size:9px}.toast{position:fixed;bottom:23px;left:50%;transform:translateX(-50%);padding:11px 18px;background:var(--nav);color:white;border-radius:8px;font-size:12px;z-index:30}.empty{text-align:center;padding:35px;color:var(--muted)}.scenario{font-size:10px}.dark{--bg:#12212b;--paper:#1c2e3a;--ink:#e3eff4;--muted:#a4b6c2;--line:#314652;--teal:#73cebf;--tealsoft:#21463f;--ambersoft:#3a3327;--amber:#e3c184}.dark .toolbar,.dark th{background:#20333f}.dark .report-switch{background:#223744}.dark tbody tr:hover{background:#233946}.dark .btn.primary{color:#102831}.dark .ring{background:conic-gradient(#72c7b5 var(--angle),#4d4839 0)}.dark .badge.preview{background:#2c4150;color:#bccbd5}
+@media(min-width:1600px){main{padding-top:33px}.metric{padding:20px}.panels{margin-bottom:24px}.barrow{margin-top:18px}}
+@media(max-width:1150px){.shell{grid-template-columns:205px minmax(0,1fr)}main{padding:24px}.top{padding:0 24px}.panels{grid-template-columns:1fr 1fr}.panels>.panel:last-child{grid-column:1/-1}.date{display:none}.metric{padding:14px}.barrow{grid-template-columns:95px 1fr 30px}.brand{font-size:12px}}
+@media(max-width:760px){.shell{display:block}.side{display:none;position:fixed;z-index:15;width:230px}.menuopen .side{display:flex}.mobile{display:inline-flex}.top{padding:0 16px;gap:8px;height:58px}.top .badge.preview{display:none}.crumb{font-size:10px}.crumb span{margin:0 5px}main{padding:20px 16px}.cards{grid-template-columns:1fr 1fr;gap:10px}.panels,.minigrid{grid-template-columns:1fr}.panels>.panel:last-child{grid-column:auto}.heading{flex-wrap:wrap}h1{font-size:25px}.heading>.grow{display:none}.heading>.btn{margin-left:auto}.scope{gap:8px}.toolbar{padding:11px}.search{min-width:100%;max-width:none}.toolbar select{flex:1;max-width:calc(50% - 5px)}.toolbar .grow{display:none}.value strong{font-size:28px}.metrichead{font-size:10px}.notice{align-items:flex-start}.notice .grow{display:none}.notice .textlink{margin-left:auto}.report-switch{margin-bottom:20px}.bottom{padding-right:80px}.drawer{padding:20px}.help{right:12px;bottom:12px}}
+@media print{.side,.top,.toolbar,.help,.report-switch,.btn,.scenario,.bottom,.veil{display:none!important}.shell{display:block}main{padding:0}.panel,.metric{break-inside:avoid;box-shadow:none}.tablewrap{overflow:visible}body{background:white}}
+.panel.directory{overflow:visible}
+.navitem{display:grid;grid-template-columns:18px minmax(0,1fr) auto;column-gap:10px}
+.navitem>svg{width:18px;height:18px}
+.navitem-label{min-width:0;overflow-wrap:break-word}
+.navitem>.count{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.top{position:sticky;top:0;z-index:8}
+.scope span{overflow-wrap:anywhere}
+.heading>div,.metric,.compact>div,.notice>div{min-width:0;overflow-wrap:anywhere}
+.drawer h2{overflow-wrap:anywhere}
+.tablewrap td{max-width:340px;overflow:hidden;text-overflow:ellipsis}
+.groupname{max-width:100%;text-align:left}
+.groupname>span:last-child{overflow:hidden;text-overflow:ellipsis}
+.subhead{font-size:11px;color:var(--muted);padding:0 18px 10px}
+.drawer .tablewrap td{max-width:220px}
+.method{margin-top:17px;padding:13px 16px;color:var(--muted);font-size:11px}
+.method summary{cursor:pointer;color:var(--ink);font-weight:600}
+.method p{margin-top:8px}
+.exports{position:relative}
+.exports>summary{cursor:pointer;list-style:none}
+.exports .columnlist{width:230px;z-index:12}
+.exports a{display:block;padding:7px;font-size:12px}
+.notice.neutral{background:var(--paper);color:var(--muted);border-color:var(--line)}
+.barrow>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ring{background:conic-gradient(#399f96 var(--angle),var(--line) 0)}
+td a{white-space:nowrap}
+@media(max-width:760px){.top{position:static}.help{bottom:8px}.exports .columnlist{right:0}.tablefoot{flex-wrap:wrap}.barrow{grid-template-columns:100px 1fr 40px}}
+
+
 /* JP monogram styling reused from PSInsightExpl 0.6.0. */
 .brandmark{width:31px;height:33px;border-radius:8px;background:#9177db;color:white;display:grid;place-items:center;position:relative;font-size:22px;flex:none;font-size:15px;font-weight:750;letter-spacing:-.7px;line-height:1}
 @media(max-width:720px){.brandmark{width:30px;height:32px}}
 
-</style></head><body>
-<noscript><h1>JP | PSInsightInventory - Forest &amp; Domain Inventory</h1><p>SAMPLE DATA. Fictional forest. No infrastructure was contacted.</p><p>Scope: Forest-wide metadata and member domains</p><h2>Forest</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Root domain</th><th>Functional level</th><th>Domain references</th><th>Schema master</th><th>Domain naming master</th><th>Application partitions</th><th>Sites</th></tr></thead><tbody><tr><td>example.test</td><td>example.test</td><td>Windows2016Forest</td><td>2</td><td>dc01.example.test</td><td>dc01.example.test</td><td>DC=ForestDnsZones,DC=example,DC=test</td><td>North-Hub; East-Office</td></tr></tbody></table></div><h2>Domains</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Query status</th><th>Source DC</th><th>NetBIOS name</th><th>Functional level</th><th>Parent domain</th><th>Children</th><th>SID</th><th>GUID</th><th>DN</th><th>Last logon replication interval</th></tr></thead><tbody><tr><td>example.test</td><td>Succeeded</td><td>dc01.example.test</td><td>EXAMPLE</td><td>Windows2016Domain</td><td></td><td>corp.example.test</td><td>S-1-5-21-111-222-333</td><td>00000000-0000-0000-0000-000000000001</td><td>DC=example,DC=test</td><td></td></tr><tr><td>corp.example.test</td><td>Succeeded</td><td>dc01.corp.example.test</td><td>CORP</td><td>Windows2016Domain</td><td>example.test</td><td></td><td>S-1-5-21-111-222-334</td><td>00000000-0000-0000-0000-000000000002</td><td>DC=corp,DC=example,DC=test</td><td></td></tr></tbody></table></div><h2>Domain hierarchy</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Forest root</th><th>Parent domain</th><th>Children</th><th>Query status</th><th>DN</th></tr></thead><tbody><tr><td>example.test</td><td>True</td><td></td><td>corp.example.test</td><td>Succeeded</td><td>DC=example,DC=test</td></tr><tr><td>corp.example.test</td><td>False</td><td>example.test</td><td></td><td>Succeeded</td><td>DC=corp,DC=example,DC=test</td></tr></tbody></table></div><h2>Functional levels</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Scope</th><th>Functional level</th><th>Query status</th></tr></thead><tbody><tr><td>example.test</td><td>Forest</td><td>Windows2016Forest</td><td>Succeeded</td></tr><tr><td>example.test</td><td>Domain</td><td>Windows2016Domain</td><td>Succeeded</td></tr><tr><td>corp.example.test</td><td>Domain</td><td>Windows2016Domain</td><td>Succeeded</td></tr></tbody></table></div><h2>FSMO owners</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Scope</th><th>Domain / forest</th><th>Role</th><th>Owner</th><th>Query status</th></tr></thead><tbody><tr><td>example.test / SchemaMaster</td><td>Forest</td><td>example.test</td><td>SchemaMaster</td><td>dc01.example.test</td><td>Succeeded</td></tr><tr><td>example.test / DomainNamingMaster</td><td>Forest</td><td>example.test</td><td>DomainNamingMaster</td><td>dc01.example.test</td><td>Succeeded</td></tr><tr><td>example.test / PDCEmulator</td><td>Domain</td><td>example.test</td><td>PDCEmulator</td><td>dc01.example.test</td><td>Succeeded</td></tr><tr><td>example.test / RIDMaster</td><td>Domain</td><td>example.test</td><td>RIDMaster</td><td>dc01.example.test</td><td>Succeeded</td></tr><tr><td>example.test / InfrastructureMaster</td><td>Domain</td><td>example.test</td><td>InfrastructureMaster</td><td>dc01.example.test</td><td>Succeeded</td></tr><tr><td>corp.example.test / PDCEmulator</td><td>Domain</td><td>corp.example.test</td><td>PDCEmulator</td><td>dc01.corp.example.test</td><td>Succeeded</td></tr><tr><td>corp.example.test / RIDMaster</td><td>Domain</td><td>corp.example.test</td><td>RIDMaster</td><td>dc01.corp.example.test</td><td>Succeeded</td></tr><tr><td>corp.example.test / InfrastructureMaster</td><td>Domain</td><td>corp.example.test</td><td>InfrastructureMaster</td><td>dc01.corp.example.test</td><td>Succeeded</td></tr></tbody></table></div><h2>Configured suffixes</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Type</th><th>Forest</th></tr></thead><tbody><tr><td>example.org</td><td>Configured UPN suffix</td><td>example.test</td></tr><tr><td>services.example.org</td><td>Configured SPN suffix</td><td>example.test</td></tr></tbody></table></div><h2>Partition references</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Naming context</th><th>DNS root</th><th>NetBIOS name</th><th>Enabled</th><th>System flags raw</th><th>Writable replica DNs</th><th>Read-only replica DNs</th><th>DN</th></tr></thead><tbody><tr><td>Partition-1</td><td>CN=Configuration,DC=example,DC=test</td><td></td><td></td><td>True</td><td>1</td><td></td><td></td><td>CN=Partition-1,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr><tr><td>Partition-2</td><td>CN=Schema,CN=Configuration,DC=example,DC=test</td><td></td><td></td><td>True</td><td>1</td><td></td><td></td><td>CN=Partition-2,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr><tr><td>Partition-3</td><td>DC=example,DC=test</td><td>example.test</td><td>EXAMPLE</td><td>True</td><td>3</td><td></td><td></td><td>CN=Partition-3,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr><tr><td>Partition-4</td><td>DC=corp,DC=example,DC=test</td><td>corp.example.test</td><td>CORP</td><td>True</td><td>3</td><td></td><td></td><td>CN=Partition-4,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr><tr><td>Partition-5</td><td>DC=ForestDnsZones,DC=example,DC=test</td><td></td><td></td><td>True</td><td>1</td><td></td><td></td><td>CN=Partition-5,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr></tbody></table></div><h2>Hosted naming contexts</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Source DC</th><th>Connection domain</th><th>Observation scope</th></tr></thead><tbody><tr><td>DC=corp,DC=example,DC=test</td><td>dc01.corp.example.test</td><td>corp.example.test</td><td>Naming contexts hosted by this observed DC only</td></tr><tr><td>CN=Configuration,DC=example,DC=test</td><td>dc01.corp.example.test</td><td>corp.example.test</td><td>Naming contexts hosted by this observed DC only</td></tr><tr><td>CN=Schema,CN=Configuration,DC=example,DC=test</td><td>dc01.corp.example.test</td><td>corp.example.test</td><td>Naming contexts hosted by this observed DC only</td></tr><tr><td>DC=example,DC=test</td><td>dc01.example.test</td><td>example.test</td><td>Naming contexts hosted by this observed DC only</td></tr><tr><td>CN=Configuration,DC=example,DC=test</td><td>dc01.example.test</td><td>example.test</td><td>Naming contexts hosted by this observed DC only</td></tr><tr><td>CN=Schema,CN=Configuration,DC=example,DC=test</td><td>dc01.example.test</td><td>example.test</td><td>Naming contexts hosted by this observed DC only</td></tr></tbody></table></div><h2>Default containers</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Domain</th><th>Container property</th><th>DN</th></tr></thead><tbody><tr><td>example.test / ComputersContainer</td><td>example.test</td><td>ComputersContainer</td><td>CN=Computers,DC=example,DC=test</td></tr><tr><td>example.test / UsersContainer</td><td>example.test</td><td>UsersContainer</td><td>CN=Users,DC=example,DC=test</td></tr><tr><td>example.test / DomainControllersContainer</td><td>example.test</td><td>DomainControllersContainer</td><td>OU=Domain Controllers,DC=example,DC=test</td></tr><tr><td>example.test / DeletedObjectsContainer</td><td>example.test</td><td>DeletedObjectsContainer</td><td>CN=Deleted Objects,DC=example,DC=test</td></tr><tr><td>example.test / LostAndFoundContainer</td><td>example.test</td><td>LostAndFoundContainer</td><td>CN=LostAndFound,DC=example,DC=test</td></tr><tr><td>example.test / SystemsContainer</td><td>example.test</td><td>SystemsContainer</td><td>CN=System,DC=example,DC=test</td></tr><tr><td>corp.example.test / ComputersContainer</td><td>corp.example.test</td><td>ComputersContainer</td><td>CN=Computers,DC=corp,DC=example,DC=test</td></tr><tr><td>corp.example.test / UsersContainer</td><td>corp.example.test</td><td>UsersContainer</td><td>CN=Users,DC=corp,DC=example,DC=test</td></tr><tr><td>corp.example.test / DomainControllersContainer</td><td>corp.example.test</td><td>DomainControllersContainer</td><td>OU=Domain Controllers,DC=corp,DC=example,DC=test</td></tr><tr><td>corp.example.test / DeletedObjectsContainer</td><td>corp.example.test</td><td>DeletedObjectsContainer</td><td>CN=Deleted Objects,DC=corp,DC=example,DC=test</td></tr><tr><td>corp.example.test / LostAndFoundContainer</td><td>corp.example.test</td><td>LostAndFoundContainer</td><td>CN=LostAndFound,DC=corp,DC=example,DC=test</td></tr><tr><td>corp.example.test / SystemsContainer</td><td>corp.example.test</td><td>SystemsContainer</td><td>CN=System,DC=corp,DC=example,DC=test</td></tr></tbody></table></div><h2>Directory server references</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Domain / forest</th><th>Source property</th></tr></thead><tbody><tr><td>dc01.example.test</td><td>example.test</td><td>Get-ADForest.GlobalCatalogs</td></tr><tr><td>dc01.corp.example.test</td><td>example.test</td><td>Get-ADForest.GlobalCatalogs</td></tr><tr><td>dc01.example.test</td><td>example.test</td><td>Get-ADDomain.ReplicaDirectoryServers</td></tr><tr><td>dc01.corp.example.test</td><td>corp.example.test</td><td>Get-ADDomain.ReplicaDirectoryServers</td></tr></tbody></table></div><h2>Default domain password policies</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Query status</th><th>Source DC</th><th>Minimum length</th><th>Password history</th><th>Complexity</th><th>Reversible encryption</th><th>Minimum age</th><th>Maximum age</th><th>Lockout threshold</th><th>Lockout duration</th><th>Lockout observation window</th><th>DN</th></tr></thead><tbody><tr><td>example.test</td><td>Succeeded</td><td>dc01.example.test</td><td>14</td><td>24</td><td>True</td><td>False</td><td>1.00:00:00</td><td>42.00:00:00</td><td>5</td><td>00:30:00</td><td>00:30:00</td><td>DC=example,DC=test</td></tr><tr><td>corp.example.test</td><td>Succeeded</td><td>dc01.corp.example.test</td><td>14</td><td>24</td><td>True</td><td>False</td><td>1.00:00:00</td><td>42.00:00:00</td><td>5</td><td>00:30:00</td><td>00:30:00</td><td>DC=corp,DC=example,DC=test</td></tr></tbody></table></div><h2>Collection ledger</h2><div style="overflow:auto"><table><thead><tr><th>Name</th><th>Target</th><th>Source DC</th><th>Status</th><th>Record count</th><th>Method</th><th>Collected at</th><th>Duration ms</th><th>Error ID</th><th>Message</th></tr></thead><tbody><tr><td>forest</td><td>example.test</td><td>dc01.corp.example.test</td><td>Succeeded</td><td>1</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr><tr><td>partitions</td><td>example.test</td><td>dc01.corp.example.test</td><td>Succeeded</td><td>5</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr><tr><td>domain:example.test</td><td>example.test</td><td>dc01.example.test</td><td>Succeeded</td><td>1</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr><tr><td>policy:example.test</td><td>example.test</td><td>dc01.example.test</td><td>Succeeded</td><td>1</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr><tr><td>domain:corp.example.test</td><td>corp.example.test</td><td>dc01.corp.example.test</td><td>Succeeded</td><td>1</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr><tr><td>policy:corp.example.test</td><td>corp.example.test</td><td>dc01.corp.example.test</td><td>Succeeded</td><td>1</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr></tbody></table></div></noscript>
-<div class="shell" id="shell" hidden><a class="skip" href="#main">Skip to inventory</a><aside class="sidebar" aria-label="Inventory navigation"><div class="brand"><span class="brandmark" id="brandicon" aria-hidden="true">JP</span><div>PSInsightInventory<small>DIRECTORY INVENTORY</small></div></div><nav id="nav"></nav><div class="sidefoot"><b><span class="dot"></span>Offline snapshot</b><span id="scopefoot"></span></div></aside><div class="workspace"><header class="topbar"><button class="iconbtn mobilemenu" id="menu" aria-label="Toggle navigation" aria-expanded="false"></button><div class="crumb">Forest inventory <span>/</span> <b id="crumb">Overview</b></div><div class="spacer"></div><span class="topmeta" id="generated"></span><span class="pill" id="sourcebadge"></span><button class="iconbtn" id="theme" aria-label="Switch to dark theme"></button></header><main id="main" tabindex="-1"></main></div></div><div class="toast" role="status" id="toast"></div>
-<script id="snapshot" type="application/json">{
-  "meta": {
-    "moduleName": "PSInsightInventory",
-    "version": "1.0.0",
-    "inventoryId": "ADForest",
-    "title": "Forest \u0026 Domain Inventory",
-    "run": "bbe9ca95",
-    "dataSource": "Sample",
-    "scope": "Forest-wide metadata and member domains",
-    "forest": "example.test",
-    "connectionDomain": "corp.example.test",
-    "sourceDC": "dc01.corp.example.test",
-    "configurationNC": "CN=Configuration,DC=example,DC=test",
-    "started": "2026-10-30T13:07:59.6368860+05:30",
-    "generated": "2026-10-30T13:07:59.6807110+05:30",
-    "generatedDisplay": "30 Oct 2026, 13:07:59 +05:30",
-    "timeZone": "Asia/Calcutta",
-    "expectedQueries": 6,
-    "domainCount": 2,
-    "domainDetailsCollected": 2,
-    "policiesCollected": 2,
-    "notice": "SAMPLE DATA. Fictional forest. No infrastructure was contacted.",
-    "limitations": [
-      "Functional levels and role owners are configuration values, not compatibility or health assessments.",
-      "Forest membership references remain visible even when a member-domain query fails; unavailable values remain unknown.",
-      "Hosted naming contexts are observed on the selected DCs; partition references are read separately from Configuration.",
-      "Only configured additional UPN/SPN suffix lists are shown; they are not a census of suffixes used by accounts.",
-      "Default domain password policies are inventory only. Fine-grained policies and user-effective password policies are not evaluated.",
-      "Successful reads cannot prove ACL-filtered attribute/object visibility. Server references do not prove endpoint availability.",
-      "No WinRM, object changes, trust enumeration, password/hash retrieval or email is performed."
-    ],
-    "timeoutSeconds": null
-  },
-  "sections": {
-    "forest": [
-      "Forest",
-      [
-        "Name",
-        "Root domain",
-        "Functional level",
-        "Domain references",
-        "Schema master",
-        "Domain naming master",
-        "Application partitions",
-        "Sites"
-      ]
-    ],
-    "domains": [
-      "Domains",
-      [
-        "Name",
-        "Query status",
-        "Source DC",
-        "NetBIOS name",
-        "Functional level",
-        "Parent domain",
-        "Children",
-        "SID",
-        "GUID",
-        "DN",
-        "Last logon replication interval"
-      ]
-    ],
-    "hierarchy": [
-      "Domain hierarchy",
-      [
-        "Name",
-        "Forest root",
-        "Parent domain",
-        "Children",
-        "Query status",
-        "DN"
-      ]
-    ],
-    "levels": [
-      "Functional levels",
-      [
-        "Name",
-        "Scope",
-        "Functional level",
-        "Query status"
-      ]
-    ],
-    "fsmo": [
-      "FSMO owners",
-      [
-        "Name",
-        "Scope",
-        "Domain / forest",
-        "Role",
-        "Owner",
-        "Query status"
-      ]
-    ],
-    "suffixes": [
-      "Configured suffixes",
-      [
-        "Name",
-        "Type",
-        "Forest"
-      ]
-    ],
-    "partitions": [
-      "Partition references",
-      [
-        "Name",
-        "Naming context",
-        "DNS root",
-        "NetBIOS name",
-        "Enabled",
-        "System flags raw",
-        "Writable replica DNs",
-        "Read-only replica DNs",
-        "DN"
-      ]
-    ],
-    "contexts": [
-      "Hosted naming contexts",
-      [
-        "Name",
-        "Source DC",
-        "Connection domain",
-        "Observation scope"
-      ]
-    ],
-    "containers": [
-      "Default containers",
-      [
-        "Name",
-        "Domain",
-        "Container property",
-        "DN"
-      ]
-    ],
-    "servers": [
-      "Directory server references",
-      [
-        "Name",
-        "Domain / forest",
-        "Source property"
-      ]
-    ],
-    "policies": [
-      "Default domain password policies",
-      [
-        "Name",
-        "Query status",
-        "Source DC",
-        "Minimum length",
-        "Password history",
-        "Complexity",
-        "Reversible encryption",
-        "Minimum age",
-        "Maximum age",
-        "Lockout threshold",
-        "Lockout duration",
-        "Lockout observation window",
-        "DN"
-      ]
-    ],
-    "collection": [
-      "Collection ledger",
-      [
-        "Name",
-        "Target",
-        "Source DC",
-        "Status",
-        "Record count",
-        "Method",
-        "Collected at",
-        "Duration ms",
-        "Error ID",
-        "Message"
-      ]
-    ]
-  },
-  "data": {
-    "forest": [
-      {
-        "Name": "example.test",
-        "Root domain": "example.test",
-        "Functional level": "Windows2016Forest",
-        "Domain references": 2,
-        "Schema master": "dc01.example.test",
-        "Domain naming master": "dc01.example.test",
-        "Application partitions": "DC=ForestDnsZones,DC=example,DC=test",
-        "Sites": "North-Hub; East-Office"
-      }
-    ],
-    "domains": [
-      {
-        "Name": "example.test",
-        "Query status": "Succeeded",
-        "Source DC": "dc01.example.test",
-        "NetBIOS name": "EXAMPLE",
-        "Functional level": "Windows2016Domain",
-        "Parent domain": null,
-        "Children": "corp.example.test",
-        "SID": "S-1-5-21-111-222-333",
-        "GUID": "00000000-0000-0000-0000-000000000001",
-        "DN": "DC=example,DC=test",
-        "Last logon replication interval": null
-      },
-      {
-        "Name": "corp.example.test",
-        "Query status": "Succeeded",
-        "Source DC": "dc01.corp.example.test",
-        "NetBIOS name": "CORP",
-        "Functional level": "Windows2016Domain",
-        "Parent domain": "example.test",
-        "Children": "",
-        "SID": "S-1-5-21-111-222-334",
-        "GUID": "00000000-0000-0000-0000-000000000002",
-        "DN": "DC=corp,DC=example,DC=test",
-        "Last logon replication interval": null
-      }
-    ],
-    "hierarchy": [
-      {
-        "Name": "example.test",
-        "Forest root": true,
-        "Parent domain": null,
-        "Children": "corp.example.test",
-        "Query status": "Succeeded",
-        "DN": "DC=example,DC=test"
-      },
-      {
-        "Name": "corp.example.test",
-        "Forest root": false,
-        "Parent domain": "example.test",
-        "Children": "",
-        "Query status": "Succeeded",
-        "DN": "DC=corp,DC=example,DC=test"
-      }
-    ],
-    "levels": [
-      {
-        "Name": "example.test",
-        "Scope": "Forest",
-        "Functional level": "Windows2016Forest",
-        "Query status": "Succeeded"
-      },
-      {
-        "Name": "example.test",
-        "Scope": "Domain",
-        "Functional level": "Windows2016Domain",
-        "Query status": "Succeeded"
-      },
-      {
-        "Name": "corp.example.test",
-        "Scope": "Domain",
-        "Functional level": "Windows2016Domain",
-        "Query status": "Succeeded"
-      }
-    ],
-    "fsmo": [
-      {
-        "Name": "example.test / SchemaMaster",
-        "Scope": "Forest",
-        "Domain / forest": "example.test",
-        "Role": "SchemaMaster",
-        "Owner": "dc01.example.test",
-        "Query status": "Succeeded"
-      },
-      {
-        "Name": "example.test / DomainNamingMaster",
-        "Scope": "Forest",
-        "Domain / forest": "example.test",
-        "Role": "DomainNamingMaster",
-        "Owner": "dc01.example.test",
-        "Query status": "Succeeded"
-      },
-      {
-        "Name": "example.test / PDCEmulator",
-        "Scope": "Domain",
-        "Domain / forest": "example.test",
-        "Role": "PDCEmulator",
-        "Owner": "dc01.example.test",
-        "Query status": "Succeeded"
-      },
-      {
-        "Name": "example.test / RIDMaster",
-        "Scope": "Domain",
-        "Domain / forest": "example.test",
-        "Role": "RIDMaster",
-        "Owner": "dc01.example.test",
-        "Query status": "Succeeded"
-      },
-      {
-        "Name": "example.test / InfrastructureMaster",
-        "Scope": "Domain",
-        "Domain / forest": "example.test",
-        "Role": "InfrastructureMaster",
-        "Owner": "dc01.example.test",
-        "Query status": "Succeeded"
-      },
-      {
-        "Name": "corp.example.test / PDCEmulator",
-        "Scope": "Domain",
-        "Domain / forest": "corp.example.test",
-        "Role": "PDCEmulator",
-        "Owner": "dc01.corp.example.test",
-        "Query status": "Succeeded"
-      },
-      {
-        "Name": "corp.example.test / RIDMaster",
-        "Scope": "Domain",
-        "Domain / forest": "corp.example.test",
-        "Role": "RIDMaster",
-        "Owner": "dc01.corp.example.test",
-        "Query status": "Succeeded"
-      },
-      {
-        "Name": "corp.example.test / InfrastructureMaster",
-        "Scope": "Domain",
-        "Domain / forest": "corp.example.test",
-        "Role": "InfrastructureMaster",
-        "Owner": "dc01.corp.example.test",
-        "Query status": "Succeeded"
-      }
-    ],
-    "suffixes": [
-      {
-        "Name": "example.org",
-        "Type": "Configured UPN suffix",
-        "Forest": "example.test"
-      },
-      {
-        "Name": "services.example.org",
-        "Type": "Configured SPN suffix",
-        "Forest": "example.test"
-      }
-    ],
-    "partitions": [
-      {
-        "Name": "Partition-1",
-        "Naming context": "CN=Configuration,DC=example,DC=test",
-        "DNS root": null,
-        "NetBIOS name": null,
-        "Enabled": true,
-        "System flags raw": "1",
-        "Writable replica DNs": "",
-        "Read-only replica DNs": "",
-        "DN": "CN=Partition-1,CN=Partitions,CN=Configuration,DC=example,DC=test"
-      },
-      {
-        "Name": "Partition-2",
-        "Naming context": "CN=Schema,CN=Configuration,DC=example,DC=test",
-        "DNS root": null,
-        "NetBIOS name": null,
-        "Enabled": true,
-        "System flags raw": "1",
-        "Writable replica DNs": "",
-        "Read-only replica DNs": "",
-        "DN": "CN=Partition-2,CN=Partitions,CN=Configuration,DC=example,DC=test"
-      },
-      {
-        "Name": "Partition-3",
-        "Naming context": "DC=example,DC=test",
-        "DNS root": "example.test",
-        "NetBIOS name": "EXAMPLE",
-        "Enabled": true,
-        "System flags raw": "3",
-        "Writable replica DNs": "",
-        "Read-only replica DNs": "",
-        "DN": "CN=Partition-3,CN=Partitions,CN=Configuration,DC=example,DC=test"
-      },
-      {
-        "Name": "Partition-4",
-        "Naming context": "DC=corp,DC=example,DC=test",
-        "DNS root": "corp.example.test",
-        "NetBIOS name": "CORP",
-        "Enabled": true,
-        "System flags raw": "3",
-        "Writable replica DNs": "",
-        "Read-only replica DNs": "",
-        "DN": "CN=Partition-4,CN=Partitions,CN=Configuration,DC=example,DC=test"
-      },
-      {
-        "Name": "Partition-5",
-        "Naming context": "DC=ForestDnsZones,DC=example,DC=test",
-        "DNS root": null,
-        "NetBIOS name": null,
-        "Enabled": true,
-        "System flags raw": "1",
-        "Writable replica DNs": "",
-        "Read-only replica DNs": "",
-        "DN": "CN=Partition-5,CN=Partitions,CN=Configuration,DC=example,DC=test"
-      }
-    ],
-    "contexts": [
-      {
-        "Name": "DC=corp,DC=example,DC=test",
-        "Source DC": "dc01.corp.example.test",
-        "Connection domain": "corp.example.test",
-        "Observation scope": "Naming contexts hosted by this observed DC only"
-      },
-      {
-        "Name": "CN=Configuration,DC=example,DC=test",
-        "Source DC": "dc01.corp.example.test",
-        "Connection domain": "corp.example.test",
-        "Observation scope": "Naming contexts hosted by this observed DC only"
-      },
-      {
-        "Name": "CN=Schema,CN=Configuration,DC=example,DC=test",
-        "Source DC": "dc01.corp.example.test",
-        "Connection domain": "corp.example.test",
-        "Observation scope": "Naming contexts hosted by this observed DC only"
-      },
-      {
-        "Name": "DC=example,DC=test",
-        "Source DC": "dc01.example.test",
-        "Connection domain": "example.test",
-        "Observation scope": "Naming contexts hosted by this observed DC only"
-      },
-      {
-        "Name": "CN=Configuration,DC=example,DC=test",
-        "Source DC": "dc01.example.test",
-        "Connection domain": "example.test",
-        "Observation scope": "Naming contexts hosted by this observed DC only"
-      },
-      {
-        "Name": "CN=Schema,CN=Configuration,DC=example,DC=test",
-        "Source DC": "dc01.example.test",
-        "Connection domain": "example.test",
-        "Observation scope": "Naming contexts hosted by this observed DC only"
-      }
-    ],
-    "containers": [
-      {
-        "Name": "example.test / ComputersContainer",
-        "Domain": "example.test",
-        "Container property": "ComputersContainer",
-        "DN": "CN=Computers,DC=example,DC=test"
-      },
-      {
-        "Name": "example.test / UsersContainer",
-        "Domain": "example.test",
-        "Container property": "UsersContainer",
-        "DN": "CN=Users,DC=example,DC=test"
-      },
-      {
-        "Name": "example.test / DomainControllersContainer",
-        "Domain": "example.test",
-        "Container property": "DomainControllersContainer",
-        "DN": "OU=Domain Controllers,DC=example,DC=test"
-      },
-      {
-        "Name": "example.test / DeletedObjectsContainer",
-        "Domain": "example.test",
-        "Container property": "DeletedObjectsContainer",
-        "DN": "CN=Deleted Objects,DC=example,DC=test"
-      },
-      {
-        "Name": "example.test / LostAndFoundContainer",
-        "Domain": "example.test",
-        "Container property": "LostAndFoundContainer",
-        "DN": "CN=LostAndFound,DC=example,DC=test"
-      },
-      {
-        "Name": "example.test / SystemsContainer",
-        "Domain": "example.test",
-        "Container property": "SystemsContainer",
-        "DN": "CN=System,DC=example,DC=test"
-      },
-      {
-        "Name": "corp.example.test / ComputersContainer",
-        "Domain": "corp.example.test",
-        "Container property": "ComputersContainer",
-        "DN": "CN=Computers,DC=corp,DC=example,DC=test"
-      },
-      {
-        "Name": "corp.example.test / UsersContainer",
-        "Domain": "corp.example.test",
-        "Container property": "UsersContainer",
-        "DN": "CN=Users,DC=corp,DC=example,DC=test"
-      },
-      {
-        "Name": "corp.example.test / DomainControllersContainer",
-        "Domain": "corp.example.test",
-        "Container property": "DomainControllersContainer",
-        "DN": "OU=Domain Controllers,DC=corp,DC=example,DC=test"
-      },
-      {
-        "Name": "corp.example.test / DeletedObjectsContainer",
-        "Domain": "corp.example.test",
-        "Container property": "DeletedObjectsContainer",
-        "DN": "CN=Deleted Objects,DC=corp,DC=example,DC=test"
-      },
-      {
-        "Name": "corp.example.test / LostAndFoundContainer",
-        "Domain": "corp.example.test",
-        "Container property": "LostAndFoundContainer",
-        "DN": "CN=LostAndFound,DC=corp,DC=example,DC=test"
-      },
-      {
-        "Name": "corp.example.test / SystemsContainer",
-        "Domain": "corp.example.test",
-        "Container property": "SystemsContainer",
-        "DN": "CN=System,DC=corp,DC=example,DC=test"
-      }
-    ],
-    "servers": [
-      {
-        "Name": "dc01.example.test",
-        "Domain / forest": "example.test",
-        "Source property": "Get-ADForest.GlobalCatalogs"
-      },
-      {
-        "Name": "dc01.corp.example.test",
-        "Domain / forest": "example.test",
-        "Source property": "Get-ADForest.GlobalCatalogs"
-      },
-      {
-        "Name": "dc01.example.test",
-        "Domain / forest": "example.test",
-        "Source property": "Get-ADDomain.ReplicaDirectoryServers"
-      },
-      {
-        "Name": "dc01.corp.example.test",
-        "Domain / forest": "corp.example.test",
-        "Source property": "Get-ADDomain.ReplicaDirectoryServers"
-      }
-    ],
-    "policies": [
-      {
-        "Name": "example.test",
-        "Query status": "Succeeded",
-        "Source DC": "dc01.example.test",
-        "Minimum length": "14",
-        "Password history": "24",
-        "Complexity": true,
-        "Reversible encryption": false,
-        "Minimum age": "1.00:00:00",
-        "Maximum age": "42.00:00:00",
-        "Lockout threshold": "5",
-        "Lockout duration": "00:30:00",
-        "Lockout observation window": "00:30:00",
-        "DN": "DC=example,DC=test"
-      },
-      {
-        "Name": "corp.example.test",
-        "Query status": "Succeeded",
-        "Source DC": "dc01.corp.example.test",
-        "Minimum length": "14",
-        "Password history": "24",
-        "Complexity": true,
-        "Reversible encryption": false,
-        "Minimum age": "1.00:00:00",
-        "Maximum age": "42.00:00:00",
-        "Lockout threshold": "5",
-        "Lockout duration": "00:30:00",
-        "Lockout observation window": "00:30:00",
-        "DN": "DC=corp,DC=example,DC=test"
-      }
-    ],
-    "collection": [
-      {
-        "Name": "forest",
-        "Target": "example.test",
-        "Source DC": "dc01.corp.example.test",
-        "Status": "Succeeded",
-        "Record count": 1,
-        "Method": "Synthetic fixture",
-        "Collected at": "2026-10-29T15:30:00+05:30",
-        "Duration ms": 0,
-        "Error ID": null,
-        "Message": "Read completed; returned values are configuration inventory."
-      },
-      {
-        "Name": "partitions",
-        "Target": "example.test",
-        "Source DC": "dc01.corp.example.test",
-        "Status": "Succeeded",
-        "Record count": 5,
-        "Method": "Synthetic fixture",
-        "Collected at": "2026-10-29T15:30:00+05:30",
-        "Duration ms": 0,
-        "Error ID": null,
-        "Message": "Read completed; returned values are configuration inventory."
-      },
-      {
-        "Name": "domain:example.test",
-        "Target": "example.test",
-        "Source DC": "dc01.example.test",
-        "Status": "Succeeded",
-        "Record count": 1,
-        "Method": "Synthetic fixture",
-        "Collected at": "2026-10-29T15:30:00+05:30",
-        "Duration ms": 0,
-        "Error ID": null,
-        "Message": "Read completed; returned values are configuration inventory."
-      },
-      {
-        "Name": "policy:example.test",
-        "Target": "example.test",
-        "Source DC": "dc01.example.test",
-        "Status": "Succeeded",
-        "Record count": 1,
-        "Method": "Synthetic fixture",
-        "Collected at": "2026-10-29T15:30:00+05:30",
-        "Duration ms": 0,
-        "Error ID": null,
-        "Message": "Read completed; returned values are configuration inventory."
-      },
-      {
-        "Name": "domain:corp.example.test",
-        "Target": "corp.example.test",
-        "Source DC": "dc01.corp.example.test",
-        "Status": "Succeeded",
-        "Record count": 1,
-        "Method": "Synthetic fixture",
-        "Collected at": "2026-10-29T15:30:00+05:30",
-        "Duration ms": 0,
-        "Error ID": null,
-        "Message": "Read completed; returned values are configuration inventory."
-      },
-      {
-        "Name": "policy:corp.example.test",
-        "Target": "corp.example.test",
-        "Source DC": "dc01.corp.example.test",
-        "Status": "Succeeded",
-        "Record count": 1,
-        "Method": "Synthetic fixture",
-        "Collected at": "2026-10-29T15:30:00+05:30",
-        "Duration ms": 0,
-        "Error ID": null,
-        "Message": "Read completed; returned values are configuration inventory."
-      }
-    ]
-  },
-  "coverage": {
-    "forest": true,
-    "domains": true,
-    "hierarchy": true,
-    "levels": true,
-    "fsmo": true,
-    "suffixes": true,
-    "partitions": true,
-    "contexts": true,
-    "containers": true,
-    "servers": true,
-    "policies": true,
-    "collection": true
-  },
-  "raw": {
-    "domain:corp.example.test": [
-      {
-        "Domain": {
-          "DNSRoot": "corp.example.test",
-          "Name": "CORP",
-          "NetBIOSName": "CORP",
-          "DomainSID": "S-1-5-21-111-222-334",
-          "ObjectGUID": "00000000-0000-0000-0000-000000000002",
-          "DistinguishedName": "DC=corp,DC=example,DC=test",
-          "Forest": "example.test",
-          "DomainMode": "Windows2016Domain",
-          "ParentDomain": "example.test",
-          "ChildDomains": [],
-          "PDCEmulator": "dc01.corp.example.test",
-          "RIDMaster": "dc01.corp.example.test",
-          "InfrastructureMaster": "dc01.corp.example.test",
-          "ComputersContainer": "CN=Computers,DC=corp,DC=example,DC=test",
-          "UsersContainer": "CN=Users,DC=corp,DC=example,DC=test",
-          "DomainControllersContainer": "OU=Domain Controllers,DC=corp,DC=example,DC=test",
-          "DeletedObjectsContainer": "CN=Deleted Objects,DC=corp,DC=example,DC=test",
-          "LostAndFoundContainer": "CN=LostAndFound,DC=corp,DC=example,DC=test",
-          "SystemsContainer": "CN=System,DC=corp,DC=example,DC=test",
-          "AllowedDNSSuffixes": [],
-          "ReplicaDirectoryServers": [
-            "dc01.corp.example.test"
-          ],
-          "ReadOnlyReplicaDirectoryServers": [],
-          "LastLogonReplicationInterval": null
-        },
-        "Root": {
-          "dnsHostName": "dc01.corp.example.test",
-          "configurationNamingContext": "CN=Configuration,DC=example,DC=test",
-          "schemaNamingContext": "CN=Schema,CN=Configuration,DC=example,DC=test",
-          "defaultNamingContext": "DC=corp,DC=example,DC=test",
-          "rootDomainNamingContext": "DC=example,DC=test",
-          "namingContexts": [
-            "DC=corp,DC=example,DC=test",
-            "CN=Configuration,DC=example,DC=test",
-            "CN=Schema,CN=Configuration,DC=example,DC=test"
-          ]
-        }
-      }
-    ],
-    "policy:corp.example.test": [
-      {
-        "DistinguishedName": "DC=corp,DC=example,DC=test",
-        "ComplexityEnabled": true,
-        "ReversibleEncryptionEnabled": false,
-        "MinPasswordLength": "14",
-        "PasswordHistoryCount": "24",
-        "MinPasswordAge": "1.00:00:00",
-        "MaxPasswordAge": "42.00:00:00",
-        "LockoutThreshold": "5",
-        "LockoutDuration": "00:30:00",
-        "LockoutObservationWindow": "00:30:00"
-      }
-    ],
-    "policy:example.test": [
-      {
-        "DistinguishedName": "DC=example,DC=test",
-        "ComplexityEnabled": true,
-        "ReversibleEncryptionEnabled": false,
-        "MinPasswordLength": "14",
-        "PasswordHistoryCount": "24",
-        "MinPasswordAge": "1.00:00:00",
-        "MaxPasswordAge": "42.00:00:00",
-        "LockoutThreshold": "5",
-        "LockoutDuration": "00:30:00",
-        "LockoutObservationWindow": "00:30:00"
-      }
-    ],
-    "partitions": [
-      {
-        "Name": "Partition-1",
-        "DistinguishedName": "CN=Partition-1,CN=Partitions,CN=Configuration,DC=example,DC=test",
-        "nCName": "CN=Configuration,DC=example,DC=test",
-        "dnsRoot": null,
-        "nETBIOSName": null,
-        "systemFlags": "1",
-        "enabled": true,
-        "msDS-NC-Replica-Locations": [],
-        "msDS-NC-RO-Replica-Locations": []
-      },
-      {
-        "Name": "Partition-2",
-        "DistinguishedName": "CN=Partition-2,CN=Partitions,CN=Configuration,DC=example,DC=test",
-        "nCName": "CN=Schema,CN=Configuration,DC=example,DC=test",
-        "dnsRoot": null,
-        "nETBIOSName": null,
-        "systemFlags": "1",
-        "enabled": true,
-        "msDS-NC-Replica-Locations": [],
-        "msDS-NC-RO-Replica-Locations": []
-      },
-      {
-        "Name": "Partition-3",
-        "DistinguishedName": "CN=Partition-3,CN=Partitions,CN=Configuration,DC=example,DC=test",
-        "nCName": "DC=example,DC=test",
-        "dnsRoot": "example.test",
-        "nETBIOSName": "EXAMPLE",
-        "systemFlags": "3",
-        "enabled": true,
-        "msDS-NC-Replica-Locations": [],
-        "msDS-NC-RO-Replica-Locations": []
-      },
-      {
-        "Name": "Partition-4",
-        "DistinguishedName": "CN=Partition-4,CN=Partitions,CN=Configuration,DC=example,DC=test",
-        "nCName": "DC=corp,DC=example,DC=test",
-        "dnsRoot": "corp.example.test",
-        "nETBIOSName": "CORP",
-        "systemFlags": "3",
-        "enabled": true,
-        "msDS-NC-Replica-Locations": [],
-        "msDS-NC-RO-Replica-Locations": []
-      },
-      {
-        "Name": "Partition-5",
-        "DistinguishedName": "CN=Partition-5,CN=Partitions,CN=Configuration,DC=example,DC=test",
-        "nCName": "DC=ForestDnsZones,DC=example,DC=test",
-        "dnsRoot": null,
-        "nETBIOSName": null,
-        "systemFlags": "1",
-        "enabled": true,
-        "msDS-NC-Replica-Locations": [],
-        "msDS-NC-RO-Replica-Locations": []
-      }
-    ],
-    "forest": [
-      {
-        "Name": "example.test",
-        "RootDomain": "example.test",
-        "ForestMode": "Windows2016Forest",
-        "Domains": [
-          "example.test",
-          "corp.example.test"
-        ],
-        "UPNSuffixes": [
-          "example.org"
-        ],
-        "SPNSuffixes": [
-          "services.example.org"
-        ],
-        "SchemaMaster": "dc01.example.test",
-        "DomainNamingMaster": "dc01.example.test",
-        "GlobalCatalogs": [
-          "dc01.example.test",
-          "dc01.corp.example.test"
-        ],
-        "ApplicationPartitions": [
-          "DC=ForestDnsZones,DC=example,DC=test"
-        ],
-        "Sites": [
-          "North-Hub",
-          "East-Office"
-        ]
-      }
-    ],
-    "domain:example.test": [
-      {
-        "Domain": {
-          "DNSRoot": "example.test",
-          "Name": "EXAMPLE",
-          "NetBIOSName": "EXAMPLE",
-          "DomainSID": "S-1-5-21-111-222-333",
-          "ObjectGUID": "00000000-0000-0000-0000-000000000001",
-          "DistinguishedName": "DC=example,DC=test",
-          "Forest": "example.test",
-          "DomainMode": "Windows2016Domain",
-          "ParentDomain": null,
-          "ChildDomains": [
-            "corp.example.test"
-          ],
-          "PDCEmulator": "dc01.example.test",
-          "RIDMaster": "dc01.example.test",
-          "InfrastructureMaster": "dc01.example.test",
-          "ComputersContainer": "CN=Computers,DC=example,DC=test",
-          "UsersContainer": "CN=Users,DC=example,DC=test",
-          "DomainControllersContainer": "OU=Domain Controllers,DC=example,DC=test",
-          "DeletedObjectsContainer": "CN=Deleted Objects,DC=example,DC=test",
-          "LostAndFoundContainer": "CN=LostAndFound,DC=example,DC=test",
-          "SystemsContainer": "CN=System,DC=example,DC=test",
-          "AllowedDNSSuffixes": [],
-          "ReplicaDirectoryServers": [
-            "dc01.example.test"
-          ],
-          "ReadOnlyReplicaDirectoryServers": [],
-          "LastLogonReplicationInterval": null
-        },
-        "Root": {
-          "dnsHostName": "dc01.example.test",
-          "configurationNamingContext": "CN=Configuration,DC=example,DC=test",
-          "schemaNamingContext": "CN=Schema,CN=Configuration,DC=example,DC=test",
-          "defaultNamingContext": "DC=example,DC=test",
-          "rootDomainNamingContext": "DC=example,DC=test",
-          "namingContexts": [
-            "DC=example,DC=test",
-            "CN=Configuration,DC=example,DC=test",
-            "CN=Schema,CN=Configuration,DC=example,DC=test"
-          ]
-        }
-      }
-    ]
-  }
-}</script>
-<script>
-
-'use strict';
-const P=JSON.parse(document.getElementById('snapshot').textContent),D=P.data,S=P.sections,M=P.meta,C=P.coverage;
-const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const state={key:'domains',overview:true,query:'',mode:'',page:1,size:10,sort:'Name',desc:false,detail:null,hidden:{}};
-const icons={grid:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',search:'M10 3a7 7 0 1 0 0 14a7 7 0 1 0 0-14M15 15l6 6',menu:'M4 6h16M4 12h16M4 18h16',moon:'M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11',sun:'M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2',download:'M12 3v12M7 10l5 5 5-5M4 16v5h16v-5',info:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18M12 11v6M12 7h.01'};
-const icon=k=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${icons[k]||icons.grid}"/></svg>`;
-function available(k){return !!C[k];}
-function count(k){return available(k)?D[k].length:'Unknown';}
-function nav(){const items=[['overview','Inventory overview'],...Object.entries(S).map(([k,v])=>[k,v[0]])];$('#nav').innerHTML='<div class="group-label">Forest configuration</div>'+items.map(([k,l])=>`<button class="navbtn ${(!state.detail&&(k==='overview'?state.overview:!state.overview&&state.key===k))?'active':''}" data-section="${k}">${icon('grid')}<span>${esc(l)}</span><span class="navcount">${k==='overview'?'':count(k)}</span></button>`).join('');}
-function fmt(v){return v===null||v===undefined?'<span class="tag">Unknown / not returned</span>':v===true?'<span class="tag teal">Yes</span>':v===false?'<span class="tag">No</span>':esc(v);}
-function footer(){return `<footer class="footer"><span>JP · PSInsightInventory ${esc(M.version)}</span><span>Run ${esc(M.run)}</span><span>${esc(M.generatedDisplay)} · ${esc(M.dataSource)} · Forest-wide</span></footer>`;}
-function rows(){let r=D[state.key].map((record,index)=>({record,index})).filter(({record:r})=>(!state.query||Object.values(r).some(v=>String(v??'').toLowerCase().includes(state.query.toLowerCase())))&&(!state.mode||(state.mode==='empty'?r['DC objects']===0:state.mode==='unassigned'?String(r.Assignment).startsWith('Unassigned'):state.mode==='gaps'?r.Status!=='Succeeded':true)));return r.sort((a,b)=>String(a.record[state.sort]??'').localeCompare(String(b.record[state.sort]??''),undefined,{numeric:true})*(state.desc?-1:1));}
-function cell(c,v,k,index){if(c==='Name'&&k!=='collection')return `<button class="dclink" data-object="${k}:${index}">${esc(v)} →</button>`;if(c==='Status')return `<span class="tag ${v==='Succeeded'?'teal':'amber'}">${esc(v)}</span>`;return `<span title="${esc(v??'Not set or not returned')}">${fmt(v)}</span>`;}
-function table(k,list,sortable=false){const cols=S[k][1].filter(c=>!sortable||!(state.hidden[k]||[]).includes(c));return `<div class="tablewrap"><table><thead><tr>${cols.map(c=>`<th>${sortable?`<button data-sort="${esc(c)}">${esc(c)} ${state.sort===c?state.desc?'↓':'↑':'↕'}</button>`:esc(c)}</th>`).join('')}</tr></thead><tbody>${list.map(({record:r,index:i})=>`<tr>${cols.map(c=>`<td>${cell(c,r[c],k,i)}</td>`).join('')}</tr>`).join('')}</tbody></table>${list.length?'':`<div class="empty"><b>${available(k)?'No matching records':'Collection unavailable or incomplete'}</b>${available(k)?'Zero rows can be valid. Review filters and Collection.':'A failed query does not establish that no objects exist.'}</div>`}</div>`;}
-function grid(){const all=rows(),pages=Math.max(1,Math.ceil(all.length/state.size));state.page=Math.min(state.page,pages);const start=(state.page-1)*state.size;return table(state.key,all.slice(start,start+state.size),true)+`<div class="tfoot"><span role="status">${all.length?start+1:0}–${Math.min(start+state.size,all.length)} of ${all.length} rows</span><span class="spacer"></span><span>Page ${state.page} of ${pages}</span><button class="btn" data-action="prev" ${state.page===1?'disabled':''}>Previous</button><button class="btn" data-action="next" ${state.page===pages?'disabled':''}>Next</button></div>`;}
-function cards(){const success=D.collection.filter(r=>r.Status==='Succeeded').length;return `<div class="cards">${[['Forest domains',M.domainCount,'Membership references from forest discovery','domains'],['Domain details collected',M.domainDetailsCollected+'/'+M.domainCount,'Uncollected domains retain unknown values','domains'],['Configured UPN suffixes',C.suffixes?D.suffixes.filter(r=>r.Type==='Configured UPN suffix').length:'Unknown','Additional configured suffix values only','suffixes'],['Queries collected',success+'/'+M.expectedQueries,'Independent outcomes across forest and domains','collection']].map(([l,n,note,k])=>`<button class="metric" data-section="${k}"><span class="metrichead">${l}${icon('grid')}</span><span class="metricvalue"><strong>${n}</strong></span><div class="metricfoot">${note}</div></button>`).join('')}</div>`;}
-function controls(){return `<div class="toolbar"><label class="searchbox">${icon('search')}<input id="query" type="search" aria-label="Search inventory" placeholder="Search ${esc(S[state.key][0].toLowerCase())}…" value="${esc(state.query)}"></label>${['sites','subnets','collection'].includes(state.key)?`<select id="mode" aria-label="Filter records"><option value="">All records</option><option value="${state.key==='sites'?'empty':state.key==='subnets'?'unassigned':'gaps'}" ${state.mode?'selected':''}>${state.key==='sites'?'Without DC objects':state.key==='subnets'?'Unassigned values':'Unavailable queries'}</option></select>`:''}<button class="textbtn" data-action="reset">Reset</button><span class="spacer"></span><details class="columnmenu"><summary class="btn">Columns</summary><div class="columnoptions">${S[state.key][1].map((c,i)=>`<label><input type="checkbox" data-col="${esc(c)}" ${!(state.hidden[state.key]||[]).includes(c)?'checked':''} ${i===0?'disabled':''}>${esc(c)}</label>`).join('')}</div></details><button class="btn" data-action="csv">${icon('download')}Filtered CSV</button></div>`;}
-function scheduleView(s){if(!s||s['Parse status']!=='Parsed')return `<div class="detailnote">${esc(s?.Summary||'No schedule evidence available.')}</div>`;const masks=s['Hourly masks UTC'],days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];return `<section class="panel detailsection"><div class="panelhead"><div><h2>Stored weekly schedule · UTC</h2><p>${esc(s.Summary)} Each cell is one UTC hour; intensity shows permitted quarter count.</p></div></div><div class="tablewrap"><table><thead><tr><th>UTC</th>${Array.from({length:24},(_,i)=>`<th>${String(i).padStart(2,'0')}</th>`).join('')}</tr></thead><tbody>${days.map((d,i)=>`<tr><th>${d}</th>${Array.from({length:24},(_,h)=>{const n=parseInt(masks[i*24+h],16),q=[1,2,4,8].filter(b=>n&b).length;return `<td style="padding:8px;text-align:center;background:color-mix(in srgb,var(--accent) ${q*19}%,var(--surface))" title="${d} ${h}:00 UTC · ${q}/4 quarters allowed · raw mask 0x${n.toString(16)}">${q}/4</td>`;}).join('')}</tr>`).join('')}</tbody></table></div><div class="dist"><p style="font-size:10px">Stored schedule only. Transport ignore-schedule settings and combined paths can change effective behavior. Raw masks are retained without converting them to local time.</p></div></section>`;}
-const sameDN=(a,b)=>String(a??'').toLowerCase()===String(b??'').toLowerCase();
-function related(k,predicate){const list=D[k].map((r,index)=>({record:r,index})).filter(x=>predicate(x.record));return `<section class="panel detailsection"><div class="panelhead"><h2>${esc(S[k][0])}</h2><span class="spacer"></span><span class="tag">${list.length} observed rows</span></div>${table(k,list)}</section>`;}
-function detail(){const {key:k,index:i}=state.detail,r=D[k][i];$('#crumb').textContent=r.Name;let content=`<button class="textbtn" data-action="back">← Back to ${esc(S[state.key][0])}</button><div class="detailhero"><span class="brandmark">JP</span><div><div class="eyebrow">${esc(S[k][0])} / Configuration</div><h1>${esc(r.Name)}</h1><p class="subtitle">${esc(M.forest)} · Forest-wide inventory</p></div></div><section class="panel detailsection"><div class="panelhead"><h2>Object properties</h2></div><dl class="props">${S[k][1].map(c=>`<dt>${esc(c)}</dt><dd>${fmt(r[c])}</dd>`).join('')}</dl></section>`;
- if(k==='domains'){content+=related('fsmo',x=>x['Domain / forest']===r.Name)+related('containers',x=>x.Domain===r.Name)+related('policies',x=>x.Name===r.Name)+related('servers',x=>x['Domain / forest']===r.Name);}
- if(k==='sites'){const linkDNs=new Set(D.linkMembers.filter(x=>sameDN(x['Site DN'],r.DN)).map(x=>x['Link DN'].toLowerCase()));content+=related('servers',x=>x.Site===r.Name)+related('subnets',x=>sameDN(x['Site DN'],r.DN))+related('links',x=>linkDNs.has(x.DN.toLowerCase()))+related('settings',x=>sameDN(x['Site DN'],r.DN));}
- if(k==='links')content+=related('linkMembers',x=>sameDN(x['Link DN'],r.DN))+scheduleView(D.schedules.find(x=>sameDN(x.DN,r.DN)));
- if(k==='bridges')content+=related('bridgeMembers',x=>sameDN(x['Bridge DN'],r.DN));
- if(k==='schedules')content+=scheduleView(r);
- $('#main').innerHTML=content+footer();}
-function render(){nav();if(state.detail){detail();return;}$('#crumb').textContent=state.overview?'Forest & Domains':S[state.key][0];const success=D.collection.filter(r=>r.Status==='Succeeded').length;$('#main').innerHTML=`<div class="pagehead"><div><div class="eyebrow">Forest / Configuration inventory</div><h1>${state.overview?'Forest & Domain Inventory':esc(S[state.key][0])}</h1><p class="subtitle">Forest identity, domain hierarchy and configuration · fixed snapshot</p></div><span class="spacer"></span><button class="btn primary" data-action="json">${icon('download')}Export snapshot</button></div><div class="notice">${icon('info')}<span><b>${esc(M.dataSource)} · Forest-wide scope.</b> ${esc(M.notice)} ${success}/${M.expectedQueries} queries collected. Counts describe returned directory objects, not service health.</span></div>${state.overview?cards()+`<section class="panel" style="margin-bottom:20px"><div class="panelhead"><h2>Collection scope</h2></div><dl class="props">${[['Forest',M.forest],['Connection domain',M.connectionDomain],['Source DC',M.sourceDC],['Configuration partition',M.configurationNC]].map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl></section>`:''}<section class="panel"><div class="panelhead"><div><h2>${esc(S[state.key][0])}</h2><p>${state.key==='collection'?'Independent forest and member-domain queries; failures retain unknown values.':state.key==='servers'?'Directory server and NTDS objects; no endpoint availability probe.':'Select an object name for its properties and related records.'}</p></div><span class="spacer"></span><span class="tag ${available(state.key)?'':'amber'}">${available(state.key)?'Source collected':'Source unavailable / partial'}</span></div>${controls()}<div id="gridbody">${grid()}</div></section><section class="panel" style="margin-top:20px"><div class="panelhead"><h2>Interpretation</h2></div><div class="dist"><ul style="font-size:11px;color:var(--muted)">${M.limitations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></section>${footer()}`;}
-function navigate(k,mode=''){state.key=k==='overview'?'domains':k;state.overview=k==='overview';state.query='';state.mode=mode;state.page=1;state.sort='Name';state.desc=false;state.detail=null;$('#shell').classList.remove('menuopen');$('#menu').setAttribute('aria-expanded','false');render();window.scrollTo(0,0);}
-function download(name,text,type){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);$('#toast').textContent='Exported '+name;setTimeout(()=>$('#toast').textContent='',3000);}
-function csvText(list,cols){const q=v=>'"'+String(/^[=+@\-\t\r\n]/.test(String(v??''))?"'"+v:v??'').replace(/"/g,'""')+'"';return '\ufeff'+[cols.map(q).join(','),...list.map(({record:r})=>cols.map(c=>q(r[c])).join(','))].join('\r\n');}
-document.addEventListener('click',e=>{const t=e.target.closest('[data-section],[data-object],[data-action],[data-sort]');if(!t)return;if(t.dataset.section){navigate(t.dataset.section,t.dataset.mode||'');return;}if(t.dataset.object){const [key,index]=t.dataset.object.split(':');state.detail={key,index:Number(index)};render();window.scrollTo(0,0);return;}if(t.dataset.sort){state.desc=state.sort===t.dataset.sort?!state.desc:false;state.sort=t.dataset.sort;$('#gridbody').innerHTML=grid();return;}switch(t.dataset.action){case'back':state.detail=null;render();break;case'reset':state.query='';state.mode='';state.page=1;render();break;case'prev':state.page--;$('#gridbody').innerHTML=grid();break;case'next':state.page++;$('#gridbody').innerHTML=grid();break;case'csv':download('Forest-'+state.key+'-filtered.csv',csvText(rows(),S[state.key][1]),'text/csv;charset=utf-8');break;case'json':download('Forest-And-Domains-Snapshot.json',JSON.stringify(P,null,2),'application/json');break;}});
-document.addEventListener('input',e=>{if(e.target.id==='query'){state.query=e.target.value;state.page=1;$('#gridbody').innerHTML=grid();}});
-document.addEventListener('change',e=>{if(e.target.id==='mode'){state.mode=e.target.value;state.page=1;$('#gridbody').innerHTML=grid();}if(e.target.dataset.col){const c=e.target.dataset.col;state.hidden[state.key]=e.target.checked?(state.hidden[state.key]||[]).filter(x=>x!==c):[...(state.hidden[state.key]||[]),c];$('#gridbody').innerHTML=grid();}});
-$('#theme').innerHTML=icon('moon');$('#theme').onclick=()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';$('#theme').innerHTML=icon(dark?'sun':'moon');$('#theme').setAttribute('aria-label','Switch to '+(dark?'light':'dark')+' theme');};
-$('#menu').innerHTML=icon('menu');$('#menu').onclick=()=>{const on=$('#shell').classList.toggle('menuopen');$('#menu').setAttribute('aria-expanded',String(on));};document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#shell').classList.remove('menuopen');$('#menu').setAttribute('aria-expanded','false');document.querySelectorAll('details[open]').forEach(x=>x.open=false);}});
-$('#scopefoot').textContent=M.forest+' · forest-wide · v'+M.version;$('#generated').textContent=M.generatedDisplay;$('#sourcebadge').textContent=M.dataSource==='Sample'?'SAMPLE DATA':'LIVE SNAPSHOT';$('#shell').hidden=false;render();
-
-
-</script><style>
-.psi-help-about{position:fixed;right:18px;bottom:18px;z-index:40;color:var(--text);font:12px/1.5 'Segoe UI',Arial,sans-serif}
-.psi-help-about>summary{list-style:none;cursor:pointer;border:1px solid var(--line);border-radius:7px;background:var(--surface);box-shadow:var(--shadow);color:var(--accent);font-weight:650;padding:8px 12px}
-.psi-help-about>summary::-webkit-details-marker{display:none}
-.psi-help-about[open]>summary{border-radius:7px 7px 0 0}
-.psi-help-about section{position:absolute;right:0;bottom:100%;width:min(360px,calc(100vw - 28px));border:1px solid var(--line);border-radius:9px 9px 0 9px;background:var(--surface);box-shadow:0 12px 40px #0003;padding:18px}
-.psi-help-about h2{margin:0 0 4px;font-size:16px}.psi-help-about p{margin:0 0 12px;color:var(--muted)}
-.psi-help-about dl{margin:0}.psi-help-about dl div{display:grid;grid-template-columns:96px 1fr;gap:8px;padding:6px 0;border-top:1px solid var(--line)}
-.psi-help-about dt{color:var(--muted)}.psi-help-about dd{margin:0;overflow-wrap:anywhere}.psi-help-about a{color:var(--accent)}
-.psi-help-about .psi-license{margin:12px 0 0;font-size:10px}
-@media(max-width:650px){.psi-help-about{right:12px;bottom:12px}.psi-help-about section{width:calc(100vw - 24px)}}
-@media print{.psi-help-about{display:none!important}}
+.metric,.heading,.scope>*{min-width:0}.sub,.scope{overflow-wrap:anywhere}@media(max-width:760px){.top .date,.top .badge{display:none}.metric{min-width:0}.metric small{overflow-wrap:anywhere}}
+@media(max-width:420px){.cards{grid-template-columns:1fr}}
 </style>
-<details class="psi-help-about" id="psi-help-about">
-  <summary>Help &amp; About</summary>
-  <section aria-label="Help and About">
-    <h2>PSInsightInventory 1.0.0</h2>
-    <p>Read-only Active Directory inventory with offline JP-branded reporting.</p>
-    <dl>
-      <div><dt>Author</dt><dd><a href="https://www.linkedin.com/in/jonathan-preetham" target="_blank" rel="noopener noreferrer">Jonathan Preetham</a></dd></div>
-      <div><dt>Repository</dt><dd><a href="https://github.com/JP-Repository/PSInsightInventory" target="_blank" rel="noopener noreferrer">GitHub repository</a></dd></div>
-      <div><dt>Support</dt><dd><a href="mailto:Jonathan.Preetham@outlook.com">Jonathan.Preetham@outlook.com</a></dd></div>
-      <div><dt>Documentation</dt><dd><a href="https://github.com/JP-Repository/PSInsightInventory" target="_blank" rel="noopener noreferrer">Project documentation</a></dd></div>
-    </dl>
-    <p class="psi-license">Copyright © 2026 Jonathan Preetham · MIT License</p>
-  </section>
-</details>
-</body></html>
+</head>
+<body>
+<noscript><main><h1>JP | PSInsightInventory - Forest &amp; Domain Inventory</h1><p>SAMPLE DATA. Fictional forest. No infrastructure was contacted.</p><p>Scope: Forest-wide metadata and member domains | Version: 2.0.0 | Run: 8df98b4b | Generated: 11 Nov 2026, 21:09:01 +05:30</p><p>Open in a browser with JavaScript to explore the inventory. The CSV and JSON files beside this report contain the full export.</p><h2>Forest (1 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Root domain</th><th scope="col">Functional level</th><th scope="col">Domain references</th><th scope="col">Site count</th><th scope="col">Application partition count</th><th scope="col">Schema master</th><th scope="col">Domain naming master</th><th scope="col">Application partitions</th><th scope="col">Sites</th></tr></thead><tbody><tr><td>example.test</td><td>example.test</td><td>Windows2016Forest</td><td>2</td><td>2</td><td>1</td><td>dc01.example.test</td><td>dc01.example.test</td><td>DC=ForestDnsZones,DC=example,DC=test</td><td>North-Hub; East-Office</td></tr></tbody></table></div><h2>Domains (2 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Query status</th><th scope="col">Source DC</th><th scope="col">NetBIOS name</th><th scope="col">Functional level</th><th scope="col">Parent domain</th><th scope="col">Children</th><th scope="col">SID</th><th scope="col">GUID</th><th scope="col">DN</th><th scope="col">Last logon replication interval</th></tr></thead><tbody><tr><td>example.test</td><td>Succeeded</td><td>dc01.example.test</td><td>EXAMPLE</td><td>Windows2016Domain</td><td></td><td>corp.example.test</td><td>S-1-5-21-111-222-333</td><td>00000000-0000-0000-0000-000000000001</td><td>DC=example,DC=test</td><td></td></tr><tr><td>corp.example.test</td><td>Succeeded</td><td>dc01.corp.example.test</td><td>CORP</td><td>Windows2016Domain</td><td>example.test</td><td></td><td>S-1-5-21-111-222-334</td><td>00000000-0000-0000-0000-000000000002</td><td>DC=corp,DC=example,DC=test</td><td></td></tr></tbody></table></div><h2>Domain hierarchy (2 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Forest root</th><th scope="col">Parent domain</th><th scope="col">Children</th><th scope="col">Query status</th><th scope="col">DN</th><th scope="col">Relationship source</th></tr></thead><tbody><tr><td>example.test</td><td>True</td><td></td><td>corp.example.test</td><td>Succeeded</td><td>DC=example,DC=test</td><td>Forest root</td></tr><tr><td>corp.example.test</td><td>False</td><td>example.test</td><td></td><td>Succeeded</td><td>DC=corp,DC=example,DC=test</td><td>Get-ADDomain.ParentDomain</td></tr></tbody></table></div><h2>Functional levels (3 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Scope</th><th scope="col">Functional level</th><th scope="col">Query status</th></tr></thead><tbody><tr><td>example.test</td><td>Forest</td><td>Windows2016Forest</td><td>Succeeded</td></tr><tr><td>example.test</td><td>Domain</td><td>Windows2016Domain</td><td>Succeeded</td></tr><tr><td>corp.example.test</td><td>Domain</td><td>Windows2016Domain</td><td>Succeeded</td></tr></tbody></table></div><h2>FSMO owners (8 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Scope</th><th scope="col">Domain / forest</th><th scope="col">Role</th><th scope="col">Owner</th><th scope="col">Query status</th></tr></thead><tbody><tr><td>example.test / SchemaMaster</td><td>Forest</td><td>example.test</td><td>SchemaMaster</td><td>dc01.example.test</td><td>Succeeded</td></tr><tr><td>example.test / DomainNamingMaster</td><td>Forest</td><td>example.test</td><td>DomainNamingMaster</td><td>dc01.example.test</td><td>Succeeded</td></tr><tr><td>example.test / PDCEmulator</td><td>Domain</td><td>example.test</td><td>PDCEmulator</td><td>dc01.example.test</td><td>Succeeded</td></tr><tr><td>example.test / RIDMaster</td><td>Domain</td><td>example.test</td><td>RIDMaster</td><td>dc01.example.test</td><td>Succeeded</td></tr><tr><td>example.test / InfrastructureMaster</td><td>Domain</td><td>example.test</td><td>InfrastructureMaster</td><td>dc01.example.test</td><td>Succeeded</td></tr></tbody></table></div><h2>Configured suffixes (2 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Type</th><th scope="col">Forest</th></tr></thead><tbody><tr><td>example.org</td><td>Configured UPN suffix</td><td>example.test</td></tr><tr><td>services.example.org</td><td>Configured SPN suffix</td><td>example.test</td></tr></tbody></table></div><h2>Partition references (5 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Naming context</th><th scope="col">DNS root</th><th scope="col">NetBIOS name</th><th scope="col">Enabled</th><th scope="col">System flags raw</th><th scope="col">Writable replica DNs</th><th scope="col">Read-only replica DNs</th><th scope="col">DN</th></tr></thead><tbody><tr><td>Partition-1</td><td>CN=Configuration,DC=example,DC=test</td><td></td><td></td><td>True</td><td>1</td><td></td><td></td><td>CN=Partition-1,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr><tr><td>Partition-2</td><td>CN=Schema,CN=Configuration,DC=example,DC=test</td><td></td><td></td><td>True</td><td>1</td><td></td><td></td><td>CN=Partition-2,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr><tr><td>Partition-3</td><td>DC=example,DC=test</td><td>example.test</td><td>EXAMPLE</td><td>True</td><td>3</td><td></td><td></td><td>CN=Partition-3,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr><tr><td>Partition-4</td><td>DC=corp,DC=example,DC=test</td><td>corp.example.test</td><td>CORP</td><td>True</td><td>3</td><td></td><td></td><td>CN=Partition-4,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr><tr><td>Partition-5</td><td>DC=ForestDnsZones,DC=example,DC=test</td><td></td><td></td><td>True</td><td>1</td><td></td><td></td><td>CN=Partition-5,CN=Partitions,CN=Configuration,DC=example,DC=test</td></tr></tbody></table></div><h2>Hosted naming contexts (6 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Source DC</th><th scope="col">Connection domain</th><th scope="col">Observation scope</th></tr></thead><tbody><tr><td>DC=corp,DC=example,DC=test</td><td>dc01.corp.example.test</td><td>corp.example.test</td><td>Naming contexts hosted by this observed DC only</td></tr><tr><td>CN=Configuration,DC=example,DC=test</td><td>dc01.corp.example.test</td><td>corp.example.test</td><td>Naming contexts hosted by this observed DC only</td></tr><tr><td>CN=Schema,CN=Configuration,DC=example,DC=test</td><td>dc01.corp.example.test</td><td>corp.example.test</td><td>Naming contexts hosted by this observed DC only</td></tr><tr><td>DC=example,DC=test</td><td>dc01.example.test</td><td>example.test</td><td>Naming contexts hosted by this observed DC only</td></tr><tr><td>CN=Configuration,DC=example,DC=test</td><td>dc01.example.test</td><td>example.test</td><td>Naming contexts hosted by this observed DC only</td></tr></tbody></table></div><h2>Default containers (12 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Domain</th><th scope="col">Container property</th><th scope="col">DN</th></tr></thead><tbody><tr><td>example.test / ComputersContainer</td><td>example.test</td><td>ComputersContainer</td><td>CN=Computers,DC=example,DC=test</td></tr><tr><td>example.test / UsersContainer</td><td>example.test</td><td>UsersContainer</td><td>CN=Users,DC=example,DC=test</td></tr><tr><td>example.test / DomainControllersContainer</td><td>example.test</td><td>DomainControllersContainer</td><td>OU=Domain Controllers,DC=example,DC=test</td></tr><tr><td>example.test / DeletedObjectsContainer</td><td>example.test</td><td>DeletedObjectsContainer</td><td>CN=Deleted Objects,DC=example,DC=test</td></tr><tr><td>example.test / LostAndFoundContainer</td><td>example.test</td><td>LostAndFoundContainer</td><td>CN=LostAndFound,DC=example,DC=test</td></tr></tbody></table></div><h2>Unique directory servers (2 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Domain</th><th scope="col">Directory roles</th><th scope="col">Reference sources</th><th scope="col">Reference count</th></tr></thead><tbody><tr><td>dc01.example.test</td><td>example.test</td><td>Global Catalog; Writable DC</td><td>Get-ADForest.GlobalCatalogs; Get-ADDomain.ReplicaDirectoryServers</td><td>2</td></tr><tr><td>dc01.corp.example.test</td><td>corp.example.test</td><td>Global Catalog; Writable DC</td><td>Get-ADForest.GlobalCatalogs; Get-ADDomain.ReplicaDirectoryServers</td><td>2</td></tr></tbody></table></div><h2>Default domain password policies (2 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Query status</th><th scope="col">Source DC</th><th scope="col">Minimum length</th><th scope="col">Password history</th><th scope="col">Complexity</th><th scope="col">Reversible encryption</th><th scope="col">Minimum age</th><th scope="col">Maximum age</th><th scope="col">Lockout threshold</th><th scope="col">Lockout duration</th><th scope="col">Lockout observation window</th><th scope="col">DN</th></tr></thead><tbody><tr><td>example.test</td><td>Succeeded</td><td>dc01.example.test</td><td>14</td><td>24</td><td>True</td><td>False</td><td>1.00:00:00</td><td>42.00:00:00</td><td>5</td><td>00:30:00</td><td>00:30:00</td><td>DC=example,DC=test</td></tr><tr><td>corp.example.test</td><td>Succeeded</td><td>dc01.corp.example.test</td><td>14</td><td>24</td><td>True</td><td>False</td><td>1.00:00:00</td><td>42.00:00:00</td><td>5</td><td>00:30:00</td><td>00:30:00</td><td>DC=corp,DC=example,DC=test</td></tr></tbody></table></div><h2>Collection ledger (6 observed)</h2><div class="tablewrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Target</th><th scope="col">Source DC</th><th scope="col">Status</th><th scope="col">Record count</th><th scope="col">Method</th><th scope="col">Collected at</th><th scope="col">Duration ms</th><th scope="col">Error ID</th><th scope="col">Message</th></tr></thead><tbody><tr><td>forest</td><td>example.test</td><td>dc01.corp.example.test</td><td>Succeeded</td><td>1</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr><tr><td>partitions</td><td>example.test</td><td>dc01.corp.example.test</td><td>Succeeded</td><td>5</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr><tr><td>domain:example.test</td><td>example.test</td><td>dc01.example.test</td><td>Succeeded</td><td>1</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr><tr><td>policy:example.test</td><td>example.test</td><td>dc01.example.test</td><td>Succeeded</td><td>1</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr><tr><td>domain:corp.example.test</td><td>corp.example.test</td><td>dc01.corp.example.test</td><td>Succeeded</td><td>1</td><td>Synthetic fixture</td><td>10/29/2026 15:30:00</td><td>0</td><td></td><td>Read completed; returned values are configuration inventory.</td></tr></tbody></table></div></main></noscript>
+<div class="shell" id="shell" hidden>
+  <aside class="side">
+    <div class="brand"><span class="jp brandmark" id="brandicon" aria-hidden="true">JP</span><div>PSInsightInventory<small>DIRECTORY INVENTORY</small></div></div>
+    <nav id="nav" aria-label="Report sections"></nav>
+    <div class="sidebottom"><b><span class="dot"></span>Offline inventory snapshot</b><span id="sideScope"></span></div>
+  </aside>
+  <div class="workspace">
+    <header class="top">
+      <button class="btn iconbtn mobile" id="menubtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="crumb">Directory inventory <span>/</span> <b id="crumb">Overview</b></div>
+      <span class="grow"></span><span class="date" id="generated"></span><span class="badge" id="source"></span>
+      <button class="btn iconbtn" id="theme" aria-label="Switch to dark theme">◐</button>
+    </header>
+    <main id="main" tabindex="-1"></main>
+  </div>
+</div>
+<details class="help" id="help"><summary>Help &amp; About</summary><div class="helpcard">
+  <h2>PSInsightInventory <span id="version"></span></h2>
+  <p><a href="https://www.linkedin.com/in/jonathan-preetham" target="_blank" rel="noopener noreferrer">Jonathan Preetham ↗</a> · MIT License</p>
+  <p>Read-only Active Directory inventory. Coverage describes evidence availability.</p>
+  <a href="https://github.com/JP-Repository/PSInsightInventory" target="_blank" rel="noopener noreferrer">Repository &amp; documentation ↗</a>
+  <a href="mailto:Jonathan.Preetham@outlook.com">Help &amp; support ↗</a>
+</div></details>
+<div class="veil" id="veil" hidden><section class="drawer" role="dialog" aria-modal="true" aria-labelledby="detailTitle" id="drawer"></section></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script id="snapshot" type="application/json">{"meta":{"moduleName":"PSInsightInventory","version":"2.0.0","inventoryId":"ADForest","title":"Forest \u0026 Domain Inventory","run":"8df98b4b","dataSource":"Sample","scope":"Forest-wide metadata and member domains","forest":"example.test","connectionDomain":"corp.example.test","sourceDC":"dc01.corp.example.test","configurationNC":"CN=Configuration,DC=example,DC=test","started":"2026-11-11T21:09:00.8526765+05:30","generated":"2026-11-11T21:09:01.0368043+05:30","generatedDisplay":"11 Nov 2026, 21:09:01 +05:30","timeZone":"Asia/Kolkata","expectedQueries":6,"domainCount":2,"domainDetailsCollected":2,"policiesCollected":2,"notice":"SAMPLE DATA. Fictional forest. No infrastructure was contacted.","limitations":["Functional levels and role owners are configuration values, not compatibility or health assessments.","Forest membership references remain visible even when a member-domain query fails; unavailable values remain unknown.","Hosted naming contexts are observed on the selected DCs; partition references are read separately from Configuration.","Only configured additional UPN/SPN suffix lists are shown; they are not a census of suffixes used by accounts.","Default domain password policies are inventory only. Fine-grained policies and user-effective password policies are not evaluated.","Successful reads cannot prove ACL-filtered attribute/object visibility. Server references do not prove endpoint availability.","No WinRM, object changes, trust enumeration, password/hash retrieval or email is performed."],"timeoutSeconds":null},"sections":{"forest":["Forest",["Name","Root domain","Functional level","Domain references","Site count","Application partition count","Schema master","Domain naming master","Application partitions","Sites"]],"domains":["Domains",["Name","Query status","Source DC","NetBIOS name","Functional level","Parent domain","Children","SID","GUID","DN","Last logon replication interval"]],"hierarchy":["Domain hierarchy",["Name","Forest root","Parent domain","Children","Query status","DN","Relationship source"]],"levels":["Functional levels",["Name","Scope","Functional level","Query status"]],"fsmo":["FSMO owners",["Name","Scope","Domain / forest","Role","Owner","Query status"]],"suffixes":["Configured suffixes",["Name","Type","Forest"]],"partitions":["Partition references",["Name","Naming context","DNS root","NetBIOS name","Enabled","System flags raw","Writable replica DNs","Read-only replica DNs","DN"]],"contexts":["Hosted naming contexts",["Name","Source DC","Connection domain","Observation scope"]],"containers":["Default containers",["Name","Domain","Container property","DN"]],"servers":["Unique directory servers",["Name","Domain","Directory roles","Reference sources","Reference count"]],"policies":["Default domain password policies",["Name","Query status","Source DC","Minimum length","Password history","Complexity","Reversible encryption","Minimum age","Maximum age","Lockout threshold","Lockout duration","Lockout observation window","DN"]],"collection":["Collection ledger",["Name","Target","Source DC","Status","Record count","Method","Collected at","Duration ms","Error ID","Message"]]},"data":{"forest":[{"Name":"example.test","Root domain":"example.test","Functional level":"Windows2016Forest","Domain references":2,"Site count":2,"Application partition count":1,"Schema master":"dc01.example.test","Domain naming master":"dc01.example.test","Application partitions":"DC=ForestDnsZones,DC=example,DC=test","Sites":"North-Hub; East-Office"}],"domains":[{"Name":"example.test","Query status":"Succeeded","Source DC":"dc01.example.test","NetBIOS name":"EXAMPLE","Functional level":"Windows2016Domain","Parent domain":null,"Children":"corp.example.test","SID":"S-1-5-21-111-222-333","GUID":"00000000-0000-0000-0000-000000000001","DN":"DC=example,DC=test","Last logon replication interval":null},{"Name":"corp.example.test","Query status":"Succeeded","Source DC":"dc01.corp.example.test","NetBIOS name":"CORP","Functional level":"Windows2016Domain","Parent domain":"example.test","Children":"","SID":"S-1-5-21-111-222-334","GUID":"00000000-0000-0000-0000-000000000002","DN":"DC=corp,DC=example,DC=test","Last logon replication interval":null}],"hierarchy":[{"Name":"example.test","Forest root":true,"Parent domain":null,"Children":"corp.example.test","Query status":"Succeeded","DN":"DC=example,DC=test","Relationship source":"Forest root"},{"Name":"corp.example.test","Forest root":false,"Parent domain":"example.test","Children":"","Query status":"Succeeded","DN":"DC=corp,DC=example,DC=test","Relationship source":"Get-ADDomain.ParentDomain"}],"levels":[{"Name":"example.test","Scope":"Forest","Functional level":"Windows2016Forest","Query status":"Succeeded"},{"Name":"example.test","Scope":"Domain","Functional level":"Windows2016Domain","Query status":"Succeeded"},{"Name":"corp.example.test","Scope":"Domain","Functional level":"Windows2016Domain","Query status":"Succeeded"}],"fsmo":[{"Name":"example.test / SchemaMaster","Scope":"Forest","Domain / forest":"example.test","Role":"SchemaMaster","Owner":"dc01.example.test","Query status":"Succeeded"},{"Name":"example.test / DomainNamingMaster","Scope":"Forest","Domain / forest":"example.test","Role":"DomainNamingMaster","Owner":"dc01.example.test","Query status":"Succeeded"},{"Name":"example.test / PDCEmulator","Scope":"Domain","Domain / forest":"example.test","Role":"PDCEmulator","Owner":"dc01.example.test","Query status":"Succeeded"},{"Name":"example.test / RIDMaster","Scope":"Domain","Domain / forest":"example.test","Role":"RIDMaster","Owner":"dc01.example.test","Query status":"Succeeded"},{"Name":"example.test / InfrastructureMaster","Scope":"Domain","Domain / forest":"example.test","Role":"InfrastructureMaster","Owner":"dc01.example.test","Query status":"Succeeded"},{"Name":"corp.example.test / PDCEmulator","Scope":"Domain","Domain / forest":"corp.example.test","Role":"PDCEmulator","Owner":"dc01.corp.example.test","Query status":"Succeeded"},{"Name":"corp.example.test / RIDMaster","Scope":"Domain","Domain / forest":"corp.example.test","Role":"RIDMaster","Owner":"dc01.corp.example.test","Query status":"Succeeded"},{"Name":"corp.example.test / InfrastructureMaster","Scope":"Domain","Domain / forest":"corp.example.test","Role":"InfrastructureMaster","Owner":"dc01.corp.example.test","Query status":"Succeeded"}],"suffixes":[{"Name":"example.org","Type":"Configured UPN suffix","Forest":"example.test"},{"Name":"services.example.org","Type":"Configured SPN suffix","Forest":"example.test"}],"partitions":[{"Name":"Partition-1","Naming context":"CN=Configuration,DC=example,DC=test","DNS root":null,"NetBIOS name":null,"Enabled":true,"System flags raw":"1","Writable replica DNs":"","Read-only replica DNs":"","DN":"CN=Partition-1,CN=Partitions,CN=Configuration,DC=example,DC=test"},{"Name":"Partition-2","Naming context":"CN=Schema,CN=Configuration,DC=example,DC=test","DNS root":null,"NetBIOS name":null,"Enabled":true,"System flags raw":"1","Writable replica DNs":"","Read-only replica DNs":"","DN":"CN=Partition-2,CN=Partitions,CN=Configuration,DC=example,DC=test"},{"Name":"Partition-3","Naming context":"DC=example,DC=test","DNS root":"example.test","NetBIOS name":"EXAMPLE","Enabled":true,"System flags raw":"3","Writable replica DNs":"","Read-only replica DNs":"","DN":"CN=Partition-3,CN=Partitions,CN=Configuration,DC=example,DC=test"},{"Name":"Partition-4","Naming context":"DC=corp,DC=example,DC=test","DNS root":"corp.example.test","NetBIOS name":"CORP","Enabled":true,"System flags raw":"3","Writable replica DNs":"","Read-only replica DNs":"","DN":"CN=Partition-4,CN=Partitions,CN=Configuration,DC=example,DC=test"},{"Name":"Partition-5","Naming context":"DC=ForestDnsZones,DC=example,DC=test","DNS root":null,"NetBIOS name":null,"Enabled":true,"System flags raw":"1","Writable replica DNs":"","Read-only replica DNs":"","DN":"CN=Partition-5,CN=Partitions,CN=Configuration,DC=example,DC=test"}],"contexts":[{"Name":"DC=corp,DC=example,DC=test","Source DC":"dc01.corp.example.test","Connection domain":"corp.example.test","Observation scope":"Naming contexts hosted by this observed DC only"},{"Name":"CN=Configuration,DC=example,DC=test","Source DC":"dc01.corp.example.test","Connection domain":"corp.example.test","Observation scope":"Naming contexts hosted by this observed DC only"},{"Name":"CN=Schema,CN=Configuration,DC=example,DC=test","Source DC":"dc01.corp.example.test","Connection domain":"corp.example.test","Observation scope":"Naming contexts hosted by this observed DC only"},{"Name":"DC=example,DC=test","Source DC":"dc01.example.test","Connection domain":"example.test","Observation scope":"Naming contexts hosted by this observed DC only"},{"Name":"CN=Configuration,DC=example,DC=test","Source DC":"dc01.example.test","Connection domain":"example.test","Observation scope":"Naming contexts hosted by this observed DC only"},{"Name":"CN=Schema,CN=Configuration,DC=example,DC=test","Source DC":"dc01.example.test","Connection domain":"example.test","Observation scope":"Naming contexts hosted by this observed DC only"}],"containers":[{"Name":"example.test / ComputersContainer","Domain":"example.test","Container property":"ComputersContainer","DN":"CN=Computers,DC=example,DC=test"},{"Name":"example.test / UsersContainer","Domain":"example.test","Container property":"UsersContainer","DN":"CN=Users,DC=example,DC=test"},{"Name":"example.test / DomainControllersContainer","Domain":"example.test","Container property":"DomainControllersContainer","DN":"OU=Domain Controllers,DC=example,DC=test"},{"Name":"example.test / DeletedObjectsContainer","Domain":"example.test","Container property":"DeletedObjectsContainer","DN":"CN=Deleted Objects,DC=example,DC=test"},{"Name":"example.test / LostAndFoundContainer","Domain":"example.test","Container property":"LostAndFoundContainer","DN":"CN=LostAndFound,DC=example,DC=test"},{"Name":"example.test / SystemsContainer","Domain":"example.test","Container property":"SystemsContainer","DN":"CN=System,DC=example,DC=test"},{"Name":"corp.example.test / ComputersContainer","Domain":"corp.example.test","Container property":"ComputersContainer","DN":"CN=Computers,DC=corp,DC=example,DC=test"},{"Name":"corp.example.test / UsersContainer","Domain":"corp.example.test","Container property":"UsersContainer","DN":"CN=Users,DC=corp,DC=example,DC=test"},{"Name":"corp.example.test / DomainControllersContainer","Domain":"corp.example.test","Container property":"DomainControllersContainer","DN":"OU=Domain Controllers,DC=corp,DC=example,DC=test"},{"Name":"corp.example.test / DeletedObjectsContainer","Domain":"corp.example.test","Container property":"DeletedObjectsContainer","DN":"CN=Deleted Objects,DC=corp,DC=example,DC=test"},{"Name":"corp.example.test / LostAndFoundContainer","Domain":"corp.example.test","Container property":"LostAndFoundContainer","DN":"CN=LostAndFound,DC=corp,DC=example,DC=test"},{"Name":"corp.example.test / SystemsContainer","Domain":"corp.example.test","Container property":"SystemsContainer","DN":"CN=System,DC=corp,DC=example,DC=test"}],"servers":[{"Name":"dc01.example.test","Domain":"example.test","Directory roles":"Global Catalog; Writable DC","Reference sources":"Get-ADForest.GlobalCatalogs; Get-ADDomain.ReplicaDirectoryServers","Reference count":2},{"Name":"dc01.corp.example.test","Domain":"corp.example.test","Directory roles":"Global Catalog; Writable DC","Reference sources":"Get-ADForest.GlobalCatalogs; Get-ADDomain.ReplicaDirectoryServers","Reference count":2}],"policies":[{"Name":"example.test","Query status":"Succeeded","Source DC":"dc01.example.test","Minimum length":"14","Password history":"24","Complexity":true,"Reversible encryption":false,"Minimum age":"1.00:00:00","Maximum age":"42.00:00:00","Lockout threshold":"5","Lockout duration":"00:30:00","Lockout observation window":"00:30:00","DN":"DC=example,DC=test"},{"Name":"corp.example.test","Query status":"Succeeded","Source DC":"dc01.corp.example.test","Minimum length":"14","Password history":"24","Complexity":true,"Reversible encryption":false,"Minimum age":"1.00:00:00","Maximum age":"42.00:00:00","Lockout threshold":"5","Lockout duration":"00:30:00","Lockout observation window":"00:30:00","DN":"DC=corp,DC=example,DC=test"}],"collection":[{"Name":"forest","Target":"example.test","Source DC":"dc01.corp.example.test","Status":"Succeeded","Record count":1,"Method":"Synthetic fixture","Collected at":"2026-10-29T15:30:00+05:30","Duration ms":0,"Error ID":null,"Message":"Read completed; returned values are configuration inventory."},{"Name":"partitions","Target":"example.test","Source DC":"dc01.corp.example.test","Status":"Succeeded","Record count":5,"Method":"Synthetic fixture","Collected at":"2026-10-29T15:30:00+05:30","Duration ms":0,"Error ID":null,"Message":"Read completed; returned values are configuration inventory."},{"Name":"domain:example.test","Target":"example.test","Source DC":"dc01.example.test","Status":"Succeeded","Record count":1,"Method":"Synthetic fixture","Collected at":"2026-10-29T15:30:00+05:30","Duration ms":0,"Error ID":null,"Message":"Read completed; returned values are configuration inventory."},{"Name":"policy:example.test","Target":"example.test","Source DC":"dc01.example.test","Status":"Succeeded","Record count":1,"Method":"Synthetic fixture","Collected at":"2026-10-29T15:30:00+05:30","Duration ms":0,"Error ID":null,"Message":"Read completed; returned values are configuration inventory."},{"Name":"domain:corp.example.test","Target":"corp.example.test","Source DC":"dc01.corp.example.test","Status":"Succeeded","Record count":1,"Method":"Synthetic fixture","Collected at":"2026-10-29T15:30:00+05:30","Duration ms":0,"Error ID":null,"Message":"Read completed; returned values are configuration inventory."},{"Name":"policy:corp.example.test","Target":"corp.example.test","Source DC":"dc01.corp.example.test","Status":"Succeeded","Record count":1,"Method":"Synthetic fixture","Collected at":"2026-10-29T15:30:00+05:30","Duration ms":0,"Error ID":null,"Message":"Read completed; returned values are configuration inventory."}]},"coverage":{"forest":true,"domains":true,"hierarchy":true,"levels":true,"fsmo":true,"suffixes":true,"partitions":true,"contexts":true,"containers":true,"servers":true,"policies":true,"collection":true},"reportBaseName":"Forest-And-Domains"}</script>
+<script>'use strict';
+
+(() => {
+  const payload = JSON.parse(document.getElementById('snapshot').textContent);
+  const {meta, sections, data, coverage = {}} = payload;
+  const collection = data.collection || [];
+  const $ = selector => document.querySelector(selector);
+  const escape = value => String(value ?? '').replace(/[&<>"']/g, char =>
+    ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'})[char]);
+  const number = value => Number.isFinite(value) ? value.toLocaleString() : 'Unknown';
+  const text = value => value == null ? 'Unknown' : value === true ? 'Yes' : value === false ? 'No' : String(value);
+  const rows = key => data[key] || [];
+  const status = row => row.Status || row.Outcome || 'Unknown';
+  const sample = meta.dataSource === 'Sample';
+  const paths = {
+    grid:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',
+    list:'M8 5h12M8 12h12M8 19h12M3 5h1M3 12h1M3 19h1',
+    shield:'M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6',
+    server:'M4 3h16v7H4zM4 14h16v7H4zM7 6h.01M7 17h.01M11 6h6M11 17h6',
+    globe:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18M3 12h18M12 3c-5 5-5 13 0 18M12 3c5 5 5 13 0 18',
+    folder:'M3 6h7l2 3h9v12H3zM3 6V3h7l2 3',
+    link:'M8 16l8-8M9 6l2-2a5 5 0 0 1 7 7l-2 2M15 18l-2 2a5 5 0 0 1-7-7l2-2',
+    users:'M8 4a3 3 0 1 1 0 6a3 3 0 0 1 0-6M2 21v-4c0-5 12-5 12 0v4M16 4a3 3 0 0 1 0 6M18 14c3 0 4 2 4 4v3',
+    person:'M12 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8M4 21v-2a8 5 0 0 1 16 0v2',
+    forest:'M3 17l4-6h-2l4-6 4 6h-2l4 6H3zM9 17v4m6-7 3-6 4 8h-5m1 0v5',
+    hierarchy:'M9 3h6v5H9zM3 16h6v5H3zM15 16h6v5h-6zM12 8v4M6 16v-4h12v4',
+    layers:'M3 8l9-5 9 5-9 5-9-5zM3 12l9 5 9-5M3 16l9 5 9-5',
+    crown:'M3 6l4 4 5-6 5 6 4-4-2 12H5L3 6zM6 21h12',
+    text:'M4 5h16M12 5v14m-4 0h8M4 5v3m16-3v3',
+    partitions:'M3 4h18v16H3zM3 10h18M9 10v10m6-10v10',
+    database:'M4 6a8 3 0 1 0 16 0 8 3 0 1 0-16 0zm0 0v12a8 3 0 0 0 16 0V6M4 12a8 3 0 0 0 16 0',
+    lock:'M5 10h14v11H5zM8 10V7a4 4 0 1 1 8 0v3m-4 5v2',
+    member:'M9 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6M3 20v-2a6 4 0 0 1 9-4m5-1v8m-4-4h8',
+    nested:'M3 3h13v13H3zM8 8h13v13H8z',
+    parent:'M12 20V4m-5 5 5-5 5 5M5 20h14',
+    identity:'M3 5h18v14H3zM8 9a2 2 0 1 0 0 4 2 2 0 1 0 0-4zm-3 8a3 2 0 0 1 6 0m3-7h4m-4 4h4',
+    chip:'M6 6h12v12H6zM9 9h6v6H9zM9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3',
+    monitor:'M3 4h18v12H3zm9 12v4m-5 0h10',
+    network:'M9 3h6v6H9zM3 16h5v5H3zM16 16h5v5h-5zM12 9v4m-7 3v-3h14v3',
+    forward:'M3 12h17m-6-6 6 6-6 6',
+    split:'M4 18h4a4 4 0 0 0 4-4v-4a4 4 0 0 1 4-4h4m-3-3 3 3-3 3M12 14a4 4 0 0 0 4 4h4m-3-3 3 3-3 3',
+    sync:'M20 10a8 8 0 0 0-14-4L3 9m0-5v5h5m-4 5a8 8 0 0 0 14 4l3-3m0 5v-5h-5',
+    certificate:'M5 3h14v13H5zM8 7h8m-8 4h5m2 5 2 5 2-2 2 1-2-5',
+    share:'M4 5h7l2 3h7v10H4zM9 13h7m-3-3 3 3-3 3',
+    pin:'M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 0 1 16 0zM12 7a3 3 0 1 0 0 6 3 3 0 1 0 0-6',
+    calendar:'M4 6h16v15H4zM4 10h16M8 3v5m8-5v5m-8 7h2m4 0h2',
+    sliders:'M4 6h16M4 12h16M4 18h16M8 4v4m8 2v4m-6 2v4',
+    document:'M5 3h10l4 4v14H5zM15 3v5h4M8 12h8m-8 4h8',
+    filter:'M3 4h18l-7 8v6l-4 2v-8z',
+    key:'M8 4a4 4 0 1 0 0 8 4 4 0 1 0 0-8zm3 7 9 9m-5-4 2-2m0 4 2-2',
+    count:'M8 3 6 21m12-18-2 18M3 9h18M2 15h18',
+    flag:'M5 21V4m0 1h14l-3 4 3 4H5',
+    company:'M4 21V7l8-4 8 4v14zM8 9h1m6 0h1m-8 4h1m6 0h1m-5 8v-4h2v4',
+    status:'M3 12h4l3-7 4 14 3-7h4',
+    history:'M4 11a8 8 0 1 1 2 7M4 5v6h6m2-4v5l3 2',
+    evidence:'M7 4h10v17H4V4h3zm1-1h8v4H8zM7 12l2 2 4-4m-6 7h7',
+    warning:'M12 3L2 21h20L12 3zM12 9v5M12 17h.01',
+    check:'M5 12l4 4L20 5', close:'M6 6l12 12M6 18L18 6',
+    clock:'M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18M12 7v6l4 2',
+    search:'M10 3a7 7 0 1 0 0 14a7 7 0 0 0 0-14M15 15l6 6',
+    download:'M12 3v12M7 10l5 5 5-5M4 17v4h16v-4',
+    columns:'M3 4h18v16H3zM9 4v16M15 4v16',
+    moon:'M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11',
+    sun:'M12 8a4 4 0 1 0 0 8a4 4 0 0 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2'
+  };
+  const icon = name => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + (paths[name] || paths.list) + '"/></svg>';
+
+  const sectionIcons = {
+    overview:'grid', collection:'clock', objectQueries:'evidence', zoneQueries:'evidence',
+    dcs:'server', servers:'server', system:'chip', disks:'database', paths:'folder', network:'network',
+    roles:'crown', role:'shield', time:'clock', certificates:'certificate', shares:'share',
+    sites:'pin', subnets:'network', links:'link', linkMembers:'member', bridges:'hierarchy',
+    bridgeMembers:'nested', transports:'forward', schedules:'calendar', settings:'sliders',
+    forest:'forest', domains:'globe', hierarchy:'hierarchy', levels:'layers', fsmo:'crown',
+    suffixes:'text', partitions:'partitions', contexts:'database', containers:'folder', policies:'lock',
+    trusts:'shield', directions:'split', partners:'link', connections:'sync',
+    client:'monitor', forwarders:'forward', conditional:'split', recursion:'sync', scavenging:'history',
+    rootHints:'hierarchy', zones:'globe', aging:'clock', delegations:'share', nameServers:'server',
+    nsAddresses:'identity', scopes:'layers', gpos:'document', versions:'history', permissions:'key',
+    wmiFilters:'filter', wmiReferences:'link', ous:'folder', counts:'count', inheritance:'hierarchy',
+    computers:'monitor', osSummary:'layers', locations:'pin', spns:'key', delegation:'share',
+    groups:'users', members:'member', nested:'nested', parents:'parent',
+    users:'person', flags:'flag', memberships:'member', primaryGroups:'users',
+    departments:'hierarchy', companies:'company', statuses:'status'
+  };
+
+  function sectionIcon(key) {
+    return meta.inventoryId === 'ADGroup' && key === 'objectQueries' ? 'identity' : sectionIcons[key];
+  }
+
+  const layouts = {
+    ADInfrastructure: {
+      main:'dcs', icon:'server', subtitle:'Browse domain controllers and the configuration collected for each server.',
+      cards:[['Domain controllers','dcs'],['AD sites','dcs','Site'],['Operating systems','dcs','OS']],
+      charts:[['Operating systems','dcs','OS'],['Controllers by site','dcs','Site']],
+      filters:{dcs:['Site','OS','Inventory'],zones:['Type','AD integrated']},
+      nav:{'Domain controllers':['dcs','roles'],'System & storage':['system','disks','paths'],'Network & DNS':['network','forwarders','zones','conditional'],'Sites & replication':['subnets','partners','connections'],'Services & security':['time','certificates','shares']}
+    },
+    ADSitesAndServices: {
+      main:'sites', icon:'globe', subtitle:'Explore sites, subnet assignments, transport links and directory server objects.',
+      cards:[['AD sites','sites'],['Subnet records','subnets'],['Directory server objects','servers']],
+      charts:[['Servers by site','servers','Site'],['Subnet assignments','subnets','Assignment']],
+      filters:{subnets:['Assignment','Site'],servers:['Site','NTDS object present'],links:['Transport']},
+      nav:{'Topology':['sites','subnets','servers'],'Transport & schedules':['links','linkMembers','bridges','bridgeMembers','settings','transports','schedules']}
+    },
+    ADForest: {
+      main:'domains', icon:'globe', subtitle:'See your forest structure, directory server references, and role assignments.',
+      cards:[['Forest domains','domains'],['Unique directory servers','servers'],['Observed FSMO owners','fsmo','Owner']],
+      charts:[['Domain hierarchy','hierarchy'],['Directory servers by domain','servers','Domain']],
+      filters:{domains:['Functional level','Query status'],fsmo:['Scope','Role']},
+      nav:{'Forest & domains':['forest','domains','hierarchy','levels','fsmo','servers'],'Configuration':['suffixes','partitions','contexts','containers','policies']}
+    },
+    ADTrusts: {
+      main:'trusts', icon:'link', subtitle:'Browse trust objects, reported directions, partner references and trust settings.',
+      cards:[['Trust objects observed','trusts'],['Partner references','partners'],['Domains in scope','domains']],
+      charts:[['Trust directions','trusts','Direction'],['Trust objects by domain','trusts','Observed domain']],
+      filters:{trusts:['Observed domain','Direction'],settings:['Observed domain','Selective authentication reported']},
+      nav:{'Trust inventory':['trusts','partners','domains'],'Trust configuration':['directions','settings']}
+    },
+    ADDns: {
+      main:'dcs', icon:'server', subtitle:'Review DNS roles, client resolver settings, forwarding and zone observations by controller.',
+      cards:[['Controllers in scope','dcs'],['Zone observations','zones'],['Name server records','nameServers']],
+      charts:[['Zone types','zones','Type'],['Zone observations by server','zones','Server']],
+      filters:{dcs:['Site','Inventory'],zones:['Server','Type','AD integrated'],nameServers:['Server','Zone']},
+      nav:{'DNS servers':['dcs','role','client'],'Forwarding & server settings':['forwarders','conditional','recursion','scavenging','rootHints'],'Zones & name servers':['zones','aging','delegations','nameServers','nsAddresses','scopes']}
+    },
+    ADGroupPolicy: {
+      main:'gpos', icon:'shield', subtitle:'Explore Group Policy objects, stored links, settings structure and reported permissions.',
+      cards:[['GPOs observed','gpos'],['Stored links','links'],['Reported permissions','permissions']],
+      charts:[['GPO status','gpos','Status'],['Links by container type','links','Container type']],
+      filters:{gpos:['Status'],links:['Container type','Link enabled','Enforced'],permissions:['Permission']},
+      nav:{'Group Policy':['gpos','links','containers','permissions'],'Policy details':['versions','settings','wmiFilters','wmiReferences']}
+    },
+    ADOrganizationalUnit: {
+      main:'ous', icon:'folder', subtitle:'Browse OU structure, object counts, stored policy links and delegation records.',
+      cards:[['Organizational units','ous'],['Stored GPO links','links'],['Delegation entries','delegations']],
+      charts:[['Direct users by OU','counts','Name','Direct users'],['Direct computers by OU','counts','Name','Direct computers']],
+      filters:{inheritance:['Block GPO inheritance'],delegations:['Access type','Inherited']},
+      nav:{'OU inventory':['ous','counts'],'Policy & delegation':['links','inheritance','delegations']}
+    },
+    ADComputer: {
+      main:'computers', icon:'server', subtitle:'Browse directory computer objects, reported operating systems and account configuration.',
+      cards:[['Computer objects','computers'],['Directory locations','locations'],['SPN records','spns']],
+      charts:[['Reported OS family','computers','OS family'],['Reported server releases','computers','Server release']],
+      filters:{computers:['OS family','OS reported','Server release','Version reported','Build reported','Enabled','DC role reported','Location DN']},
+      nav:{'Computer inventory':['computers','osSummary','locations'],'Account configuration':['spns','delegation']}
+    },
+    ADGroup: {
+      main:'groups', icon:'users', subtitle:'Group properties, direct member links and collection coverage in one view.',
+      cards:[['Directory groups','groups'],['Observed direct member links','members'],['Observed empty member lists','groups','empty']],
+      charts:[['Group categories','groups','Category'],['Group scopes','groups','Scope']],
+      filters:{groups:['Category','Scope','Membership status'],members:['Member type','Resolution status']},
+      nav:{'Group inventory':['groups','members','nested','parents']}
+    },
+    ADUser: {
+      main:'users', icon:'users', subtitle:'Browse directory users, organization summaries, account flags and group references.',
+      cards:[['User objects','users'],['Observed group links','memberships'],['Department values','departments']],
+      charts:[['Account status','users','Enabled'],['Users by department','departments','Department','Users observed']],
+      filters:{users:['Enabled','Department','Company','Location DN'],flags:['Password never expires','Password not required']},
+      nav:{'User inventory':['users','departments','companies','locations','statuses'],'Account configuration':['flags','memberships','primaryGroups']}
+    }
+  };
+
+  const layout = layouts[meta.inventoryId] || {main:Object.keys(sections)[0],cards:[],charts:[],filters:{},nav:{}};
+  const groupReport = meta.inventoryId === 'ADGroup';
+  const state = {key:'overview', query:'', filters:{}, page:1, size:12, sort:null, descending:false, hidden:new Map(), relation:null, onlyGaps:false, onlyEmpty:false};
+  let previousFocus;
+  let toastTimer;
+  let searchTimer;
+  const indices = new Map();
+  const collectionBasis = groupReport
+    ? rows('groups').map(group => group['Membership status'] || 'Unknown')
+    : collection.map(status);
+  const successful = collectionBasis.filter(value => value === 'Succeeded').length;
+  const skipped = collectionBasis.filter(value => value === 'NotApplicable').length;
+  const denominator = collectionBasis.length - skipped;
+  const gaps = denominator - successful;
+  const metadataUnavailable = groupReport && collection.some(row => row.Name === 'Group enumeration' && status(row) !== 'Succeeded');
+  const percent = denominator ? successful / denominator * 100 : null;
+  const coverageLabel = groupReport ? 'Membership coverage' : 'Collection coverage';
+  const basisLabel = groupReport ? 'group member lists' : 'applicable queries';
+
+  function sectionName(key) { return sections[key]?.[0] || key; }
+  function activeKey() { return state.key === 'overview' ? layout.main : state.key; }
+  function pill(value) {
+    const tone = /^(Succeeded|Complete|Yes)$/i.test(value) ? 'teal' :
+      /^(TimedOut|Failed|Partial|NotAttempted|Unknown|Denied)$/i.test(value) ? 'amber' : '';
+    return '<span class="tag ' + tone + '">' + escape(value === 'TimedOut' ? 'Timed out' : value === 'NotApplicable' ? 'Not applicable' : value === 'NotAttempted' ? 'Not attempted' : value) + '</span>';
+  }
+
+  function renderNav() {
+    const nav = {...layout.nav};
+    const known = new Set(Object.values(nav).flat());
+    nav['Collection evidence'] = Object.keys(sections).filter(key => !known.has(key));
+    let html = '<div class="navlabel">WORKSPACE</div>' + navButton('overview','Inventory overview');
+    for (const [label, keys] of Object.entries(nav)) {
+      const available = keys.filter(key => sections[key]);
+      if (!available.length) continue;
+      html += '<div class="navlabel">' + escape(label.toUpperCase()) + '</div>';
+      html += available.map(key => navButton(key,sectionName(key))).join('');
+    }
+    html += '<div class="navlabel">REPORT</div><button class="navitem" data-action="help">' + icon('shield') + '<span class="navitem-label">Help &amp; About</span></button>';
+    $('#nav').innerHTML = html;
+  }
+
+  function navButton(key, label) {
+    const count = key === 'overview' ? '' : '<span class="count">' + number(rows(key).length) + '</span>';
+    const active = key === state.key;
+    return '<button class="navitem ' + (active ? 'active' : '') + '" data-section="' + escape(key) +
+      '"' + (active ? ' aria-current="page"' : '') + '>' + icon(sectionIcon(key)) + '<span class="navitem-label">' + escape(label) + '</span>' + count + '</button>';
+  }
+
+  function metric(label, value, note, key, symbol, filter = '') {
+    return '<button class="metric" data-section="' + escape(key) + '" data-quick="' + filter + '">' +
+      '<span class="metrichead">' + escape(label) + '<span class="tileicon">' + icon(symbol) + '</span></span>' +
+      '<span class="value"><strong>' + escape(value) + '</strong></span><small>' + escape(note) + '</small></button>';
+  }
+
+  function metricCards() {
+    const cards = layout.cards.map(([label,key,field], i) => {
+      const values = rows(key);
+      let count = values.length;
+      let note = 'Observed records';
+      if (field === 'empty') {
+        count = values.filter(row => row['Membership status'] === 'Succeeded' && row['Direct linked members'] === 0).length;
+        note = 'Among ' + number(successful) + ' collected group lists';
+      } else if (field) {
+        count = new Set(values.map(row => row[field]).filter(value => value != null && value !== '').map(value => String(value).toLowerCase())).size;
+        note = 'Distinct returned values';
+      }
+      if (key === 'members' && gaps) note = 'Partial coverage · collected groups only';
+      if (!count && coverage[key] === false) count = null;
+      return metric(label, number(count), note, key, [layout.icon,'link','folder'][i], field === 'empty' ? 'empty' : '');
+    });
+    cards.push(metric(coverageLabel, percent === null ? '—' : number(successful) + '/' + number(denominator),
+      denominator ? number(gaps) + ' unavailable · ' + basisLabel : 'No applicable evidence returned', 'collection','clock'));
+    return '<div class="cards">' + cards.join('') + '</div>';
+  }
+
+  function bars(title, key, field, weight) {
+    const counts = new Map();
+    for (const row of rows(key)) {
+      const value = row[field];
+      const label = value == null ? 'Unknown' : value === '' ? 'Not set' :
+        field === 'Enabled' && typeof value === 'boolean' ? (value ? 'Enabled' : 'Disabled') : text(value);
+      const amount = weight ? row[weight] : 1;
+      if (!Number.isFinite(amount)) continue;
+      counts.set(label, (counts.get(label) || 0) + amount);
+    }
+    const top = [...counts].sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0,5);
+    const max = Math.max(1,...top.map(item => item[1]));
+    return '<section class="panel"><div class="panelhead"><div><h2>' + escape(title) + '</h2><p>' +
+      escape(sectionName(key)) + (counts.size > 5 ? ' · top 5 of ' + number(counts.size) : '') + '</p></div></div>' +
+      '<div class="bars">' + (top.length ? top.map(([label,n]) =>
+        '<div class="barrow"><span title="' + escape(label) + '">' + escape(label) + '</span><div class="track"><div class="fill" style="width:' +
+        (n / max * 100) + '%"></div></div><b>' + number(n) + '</b></div>').join('') : '<p class="faint">No values collected for this summary.</p>') +
+      '</div></section>';
+  }
+
+  function hierarchy() {
+    const domains = rows('hierarchy');
+    const lookup = new Map(domains.map(row => [String(row.Name).toLowerCase(),row]));
+    function depth(row) {
+      const visited = new Set([String(row.Name).toLowerCase()]);
+      let parent = String(row['Parent domain'] || '').toLowerCase();
+      let level = 0;
+      while (lookup.has(parent) && !visited.has(parent)) {
+        visited.add(parent); level++;
+        parent = String(lookup.get(parent)['Parent domain'] || '').toLowerCase();
+      }
+      return level;
+    }
+    const sorted = [...domains].sort((a,b) => Number(b['Forest root']) - Number(a['Forest root']) || depth(a) - depth(b) || a.Name.localeCompare(b.Name));
+    return '<section class="panel"><div class="panelhead"><div><h2>Domain hierarchy</h2><p>Parent relationships recorded in the snapshot</p></div></div><div class="tree">' +
+      sorted.slice(0,6).map(row => '<div class="treerow ' + (depth(row) ? 'child' : '') + '">' + icon('globe') +
+        '<span title="' + escape(row.Name) + '">' + escape(row.Name) + '</span><small>' +
+        escape(row['Forest root'] ? 'Forest root' : row['Parent domain'] ? 'Parent: ' + row['Parent domain'] : 'Parent not reported') + '</small></div>').join('') +
+      (sorted.length > 6 ? '<button class="textlink" data-section="hierarchy">View all domains →</button>' : '') + '</div></section>';
+  }
+
+  function coveragePanel() {
+    const displayPercent = percent === null ? '—' : percent.toLocaleString(undefined,{maximumFractionDigits:1}) + '%';
+    return '<section class="panel"><div class="panelhead"><div><h2>' + coverageLabel + '</h2><p>Completed ' + basisLabel + ' / applicable total</p></div></div>' +
+      '<div class="coverage"><div class="ring" style="--angle:' + ((percent || 0) * 3.6) + 'deg"><div class="ringinside"><b>' +
+      displayPercent + '</b><small>COLLECTED</small></div></div><div class="coveragelegend"><p><b>' + number(successful) +
+      '</b> collected</p><p><b>' + number(gaps) + '</b> unavailable' + (skipped ? ' · ' + number(skipped) + ' not applicable' : '') +
+      '</p><button class="textlink" data-section="collection">View collection ledger →</button></div></div>' +
+      (groupReport ? '<p class="legendnote">Direct member lists · excludes metadata and primary groups</p>' : '') + '</section>';
+  }
+
+  function overview() {
+    const charts = layout.charts.map(([title,key,field,weight]) => field ? bars(title,key,field,weight) : hierarchy());
+    let summary = '';
+    if (meta.inventoryId === 'ADForest') {
+      const forest = rows('forest')[0];
+      const gcs = rows('servers').filter(row => String(row['Directory roles'] || '').includes('Global Catalog')).length;
+      const roles = rows('fsmo').filter(row => row.Owner).length;
+      summary = '<div class="minigrid"><section class="panel compact"><span class="tileicon">' + icon('globe') +
+        '</span><div><h2>Forest configuration</h2><p>Functional level: ' + escape(text(forest?.['Functional level'])) +
+        '</p></div><span class="num">' + number(forest?.['Site count']) + '<span> sites</span></span></section>' +
+        '<section class="panel compact"><span class="tileicon">' + icon('server') +
+        '</span><div><h2>Directory roles</h2><p>' + number(roles) + ' of ' + number(rows('fsmo').length) +
+        ' FSMO assignments returned.</p></div><span class="num">' + number(gcs) + '<span> GCs observed</span></span></section></div>';
+    } else if (groupReport) {
+      const groups = rows('groups');
+      const managed = groups.filter(row => row['Managed by']).length;
+      const locations = new Set(groups.map(row => row['Location DN']).filter(Boolean)).size;
+      summary = '<div class="minigrid"><section class="panel compact"><span class="tileicon">' + icon('users') +
+        '</span><div><h2>Managed-by references</h2><p>Directory references recorded on group objects.</p></div><span class="num">' + number(managed) +
+        '<span> / ' + number(groups.length) + '</span></span></section><section class="panel compact"><span class="tileicon">' + icon('folder') +
+        '</span><div><h2>Directory locations</h2><p>Distinct parent locations of observed groups.</p></div><span class="num">' + number(locations) + '</span></section></div>';
+    }
+    return metricCards() + '<div class="panels">' + charts.join('') + coveragePanel() + '</div>' + summary;
+  }
+
+  function coverageNotice() {
+    const incomplete = gaps > 0 || metadataUnavailable;
+    const title = metadataUnavailable ? 'Group enumeration unavailable' : incomplete
+      ? coverageLabel + ' is incomplete · ' + number(successful) + ' of ' + number(denominator) + ' collected'
+      : denominator ? 'All applicable ' + (groupReport ? 'member lists' : 'queries') + ' collected' : 'No applicable collection evidence';
+    let message = meta.notice || '';
+    if (gaps && groupReport) message = number(gaps) + ' group lists are unavailable. Direct membership totals cover collected groups only.';
+    if (gaps && !groupReport) message = number(gaps) + ' applicable queries did not complete successfully. See collection evidence for details.';
+    if (sample && !message.includes('SAMPLE DATA')) message = 'Fictional sample. ' + message;
+    return '<div class="notice ' + (incomplete ? '' : denominator ? 'good' : 'neutral') + '">' +
+      icon(incomplete ? 'warning' : denominator ? 'check' : 'list') + '<div><b>' + escape(title) + '</b>' + escape(message) +
+      '</div><span class="grow"></span>' + (incomplete ? '<button class="textlink" data-section="collection" data-quick="gaps">Review gaps →</button>' : '') + '</div>';
+  }
+
+  const preferredColumns = {
+    ADGroup:{groups:['Name','Category','Scope','Location DN','Direct linked members','Membership status'],members:['Member name','Group','Member type','Resolution status']},
+    ADForest:{domains:['Name','NetBIOS name','Functional level','Parent domain','Query status'],servers:['Name','Domain','Directory roles','Reference count'],partitions:['Name','DNS root','Enabled']},
+    ADUser:{users:['Name','SAM account name','UPN','Department','Enabled']},
+    ADComputer:{computers:['Name','DNS hostname','OS reported','OS family','Server release','Enabled']},
+    ADInfrastructure:{dcs:['Name','Site','IPv4','OS','GC','Inventory']},
+    ADDns:{dcs:['Name','Site','Zones observed','Inventory']}
+  };
+
+  function visibleColumns(key) {
+    if (!state.hidden.has(key)) {
+      const all = sections[key][1];
+      const defaults = preferredColumns[meta.inventoryId]?.[key] ||
+        all.filter((col,index) => index === 0 || !/(?:^DN$| DN$| ID$| SID$|^GUID$| raw$|base64)/i.test(col)).slice(0,7);
+      const keep = new Set(defaults.filter(col => all.includes(col)));
+      if (!keep.size) keep.add(all[0]);
+      state.hidden.set(key,new Set(all.filter(col => !keep.has(col))));
+    }
+    return sections[key][1].filter(col => !state.hidden.get(key).has(col));
+  }
+
+  function filterFields(key) {
+    const schema = sections[key][1];
+    const requested = key === 'collection' ? ['Status','Outcome'] : layout.filters[key] || ['Status','Query status','Type'];
+    return requested.filter(col => schema.includes(col) && rows(key).some(row => row[col] != null));
+  }
+
+  function matching(key) {
+    if (!indices.has(key)) indices.set(key,rows(key).map((row,index) => ({row,index})));
+    const query = state.query.trim().toLowerCase();
+    const filtered = indices.get(key).filter(({row}) => {
+      if (state.onlyGaps && ['Succeeded','NotApplicable'].includes(status(row))) return false;
+      if (state.onlyEmpty && (row['Membership status'] !== 'Succeeded' || row['Direct linked members'] !== 0)) return false;
+      if (state.relation && !state.relation.match(row)) return false;
+      for (const [column,value] of Object.entries(state.filters)) {
+        if (text(row[column]) !== value) return false;
+      }
+      return !query || Object.values(row).some(value => text(value).toLowerCase().includes(query));
+    });
+    if (state.sort) filtered.sort((a,b) => {
+      const x = a.row[state.sort], y = b.row[state.sort];
+      if (x == null || y == null) return Number(x == null) - Number(y == null);
+      const difference = typeof x === 'number' && typeof y === 'number' ? x - y : collator.compare(text(x),text(y));
+      return difference * (state.descending ? -1 : 1);
+    });
+    return filtered;
+  }
+  const collator = new Intl.Collator(undefined,{numeric:true,sensitivity:'base'});
+
+  function controls(key) {
+    const shown = visibleColumns(key);
+    const filterHtml = filterFields(key).map(column => {
+      const values = [...new Set(rows(key).map(row => text(row[column])))].sort(collator.compare);
+      return '<select data-filter="' + escape(column) + '" aria-label="Filter by ' + escape(column) + '">' +
+        '<option value="all">All · ' + escape(column) + '</option>' + values.map(value =>
+          '<option value="v:' + escape(value) + '"' + (state.filters[column] === value ? ' selected' : '') + '>' +
+          escape(value === '' ? 'Not set' : value) + '</option>').join('') + '</select>';
+    }).join('');
+    const columns = sections[key][1].map(col =>
+      '<label><input type="checkbox" data-column="' + escape(col) + '"' + (shown.includes(col) ? ' checked' : '') +
+      '> ' + escape(col) + '</label>').join('');
+    return '<div class="toolbar"><label class="search">' + icon('search') + '<input type="search" id="query" aria-label="Search records" placeholder="Search records…" value="' +
+      escape(state.query) + '"></label>' + filterHtml + '<button class="reset" data-action="reset">Reset</button><span class="grow"></span>' +
+      '<details class="columns"><summary class="btn">' + icon('columns') + 'Columns</summary><div class="columnlist">' + columns + '</div></details>' +
+      '<button class="btn" data-action="csv">' + icon('download') + 'Filtered CSV</button></div>';
+  }
+
+  function shortLocation(value) {
+    return String(value || '').match(/^(?:OU|CN)=((?:\\.|[^,])+)/i)?.[1]?.replace(/\\,/g,',') || text(value);
+  }
+
+  function grid(key) {
+    const filtered = matching(key);
+    const cols = visibleColumns(key);
+    const pages = Math.max(1,Math.ceil(filtered.length/state.size));
+    state.page = Math.min(state.page,pages);
+    const offset = (state.page-1)*state.size;
+    const th = cols.map(col => '<th scope="col"' + (state.sort === col ? ' aria-sort="' +
+      (state.descending ? 'descending' : 'ascending') + '"' : '') + '><button data-sort="' + escape(col) + '">' +
+      escape(col === 'Location DN' && key === 'groups' ? 'Location' : col) + ' ' +
+      (state.sort === col ? (state.descending ? '↓' : '↑') : '↕') + '</button></th>').join('');
+    const body = filtered.slice(offset,offset+state.size).map(({row,index}) => '<tr>' + cols.map((col,i) => {
+      const value = row[col];
+      const display = col === 'Location DN' && key === 'groups' ? shortLocation(value) : text(value);
+      if (i === 0) return '<td><button class="groupname" data-object="' + index + '" data-key="' + escape(key) +
+        '" title="' + escape(display) + '"><span class="objicon">' + icon(sectionIcon(key)) +
+        '</span><span>' + escape(display) + '</span></button></td>';
+      if (/(?:status|outcome|inventory)$/i.test(col) || typeof value === 'boolean') return '<td>' + pill(display) + '</td>';
+      return '<td title="' + escape(text(value)) + '">' + escape(display) + '</td>';
+    }).join('') + '</tr>').join('');
+    const empty = coverage[key] === false && !rows(key).length ? 'Collection unavailable. See the collection ledger.' : 'No matching records.';
+    return '<div class="tablewrap"><table><thead><tr>' + th + '</tr></thead><tbody>' + body + '</tbody></table>' +
+      (filtered.length ? '' : '<div class="empty">' + empty + '</div>') + '</div><div class="tablefoot"><span role="status">' +
+      number(filtered.length ? offset+1 : 0) + '–' + number(Math.min(offset+state.size,filtered.length)) + ' of ' + number(filtered.length) +
+      ' records</span><span class="grow"></span><label>Rows <select id="pagesize" aria-label="Rows per page">' +
+      [12,25,50,100].map(n => '<option' + (state.size === n ? ' selected' : '') + '>' + n + '</option>').join('') + '</select></label>' +
+      '<span>Page ' + number(state.page) + ' of ' + number(pages) + '</span><button class="btn" data-action="prev"' +
+      (state.page === 1 ? ' disabled' : '') + '>Previous</button><button class="btn" data-action="next"' +
+      (state.page === pages ? ' disabled' : '') + '>Next</button></div>';
+  }
+
+  function reportActions() {
+    return '<details class="exports"><summary class="btn primary">' + icon('download') + 'Export snapshot</summary><div class="columnlist">' +
+      '<button class="btn" data-action="json">Download report JSON</button>' +
+      '<a href="' + encodeURIComponent(payload.reportBaseName || 'Inventory') + '.json" download>Full JSON beside this report</a>' +
+      '<a href="CSV/' + encodeURIComponent(activeKey()) + '.csv" download>Full section CSV beside this report</a></div></details>';
+  }
+
+  function render() {
+    const key = activeKey();
+    const isOverview = state.key === 'overview';
+    const title = isOverview ? meta.title : sectionName(key);
+    renderNav();
+    $('#crumb').textContent = isOverview ? 'Overview' : title;
+    const scope = meta.connectionDomain || meta.domain || meta.forest || meta.scope;
+    const context = '<div class="scope"><span><b>Scope</b> ' + escape(meta.scope) + '</span><span class="sep"></span><span>' +
+      escape(scope === meta.scope ? (meta.source || 'Directory inventory') : scope) + '</span>' +
+      (meta.sourceDC ? '<span class="sep"></span><span><b>Source</b> ' + escape(meta.sourceDC) + '</span>' : '') + '</div>';
+    const note = state.relation ? 'Related records · ' + state.relation.label :
+      state.onlyGaps ? 'Showing unsuccessful applicable queries' :
+      state.onlyEmpty ? 'Showing collected groups with zero direct member links' :
+      key === 'collection' ? 'Query status and evidence availability' : 'Select a record to open its properties and related evidence.';
+    const limitations = Array.isArray(meta.limitations) ? meta.limitations : [];
+    $('#main').innerHTML = '<div class="heading"><div><div class="eyebrow">DIRECTORY / INVENTORY</div><h1>' + escape(title) +
+      '</h1><p class="sub">' + escape(layout.subtitle || meta.scope) + '</p></div><span class="grow"></span>' + reportActions() + '</div>' +
+      context + coverageNotice() + (isOverview ? overview() : '') +
+      '<section class="panel directory"><div class="sectionhead"><div><h2>' + escape(sectionName(key)) + '</h2><p>' +
+      escape(note) + '</p></div><span class="grow"></span><span class="tag ' + (coverage[key] === false ? 'amber' : '') + '">' +
+      number(rows(key).length) + ' observed' + (coverage[key] === false ? ' · partial or unavailable' : '') +
+      '</span></div>' + controls(key) + '<div id="tablearea">' + grid(key) + '</div></section>' +
+      (limitations.length ? '<details class="panel method"><summary>Collection scope &amp; interpretation</summary>' +
+        limitations.map(line => '<p>' + escape(line) + '</p>').join('') + '</details>' : '') +
+      '<footer class="bottom"><span>JP · PSInsightInventory ' + escape(meta.version) + '</span><span>Run ' + escape(meta.run) +
+      '</span><span class="grow"></span><span>' + escape(meta.generatedDisplay || meta.generated) + '</span></footer>';
+  }
+
+  function related(key,row) {
+    const relations = [];
+    const add = (target,column,value) => {
+      if (!sections[target] || value == null || value === '') return;
+      const folded = String(value).toLowerCase();
+      const match = item => item[column] != null && String(item[column]).toLowerCase() === folded;
+      const count = rows(target).filter(match).length;
+      if (count) relations.push({target,match,count});
+    };
+    const groupId = row['Group ID'];
+    if (key === 'groups') {
+      add('members','Group ID',groupId);
+      add('nested','Parent group ID',groupId);
+      add('parents','Group ID',groupId);
+      add('collection','Target',row.DN);
+    } else if (key === 'dcs') {
+      for (const target of Object.keys(sections)) if (target !== key) add(target,meta.inventoryId === 'ADDns' ? 'Server' : 'Name',row.Name);
+    } else if (key === 'domains' && meta.inventoryId === 'ADForest') {
+      add('servers','Domain',row.Name); add('fsmo','Domain / forest',row.Name); add('policies','Name',row.Name); add('containers','Domain',row.Name);
+    } else if (key === 'sites') {
+      add('servers','Site',row.Name); add('subnets','Site',row.Name); add('linkMembers','Site',row.Name); add('settings','Site',row.Name);
+    } else if (key === 'links' && meta.inventoryId === 'ADSitesAndServices') {
+      add('linkMembers','Link DN',row.DN); add('schedules','DN',row.DN);
+    } else if (key === 'bridges') {
+      add('bridgeMembers','Bridge DN',row.DN);
+    } else if (key === 'containers' && meta.inventoryId === 'ADGroupPolicy') {
+      add('links','Container DN',row.DN);
+    } else if (key === 'wmiFilters') {
+      add('wmiReferences','Filter ID',row['Filter ID']);
+    } else if (meta.inventoryId === 'ADUser' && ['departments','companies','locations','statuses'].includes(key)) {
+      const field = {departments:'Department',companies:'Company',locations:'Location DN',statuses:'Enabled'}[key];
+      const match = item => item[field] === row[field];
+      const count = rows('users').filter(match).length;
+      if (count) relations.push({target:'users',match,count});
+    } else if (key === 'osSummary' && meta.inventoryId === 'ADComputer') {
+      const columns = ['OS family','OS reported','Server release','Version reported','Build reported'];
+      const match = item => columns.every(column => item[column] === row[column]);
+      const count = rows('computers').filter(match).length;
+      if (count) relations.push({target:'computers',match,count});
+    } else {
+      for (const id of ['Computer ID','User ID','OU ID','GPO ID']) {
+        if (row[id]) for (const target of Object.keys(sections)) if (target !== key && sections[target][1].includes(id)) add(target,id,row[id]);
+      }
+    }
+    return relations;
+  }
+
+  let currentDetail = null;
+  function openDetail(key,index) {
+    const row = rows(key)[index];
+    if (!row || !sections[key]) return;
+    if ($('#veil').hidden) previousFocus = document.activeElement;
+    const relations = related(key,row);
+    currentDetail = {key,index,relations,label:row.Name || sectionName(key)};
+    $('#drawer').innerHTML = '<div class="drawerhead"><span class="tileicon">' + icon(sectionIcon(key)) +
+      '</span><span class="eyebrow" style="margin:0">' + escape(sectionName(key).toUpperCase()) + '</span><span class="grow"></span>' +
+      '<button class="btn iconbtn" data-action="close" aria-label="Close details">' + icon('close') + '</button></div><h2 id="detailTitle">' +
+      escape(row.Name || sectionName(key)) + '</h2>' +
+      '<dl class="props">' + sections[key][1].map(col => '<dt>' + escape(col) + '</dt><dd>' + escape(text(row[col])) + '</dd>').join('') + '</dl>' +
+      (relations.length ? '<h3>Related records</h3>' + relations.map(({target,count},i) =>
+        '<p class="meta"><button class="textlink" data-related="' + i + '">' + escape(sectionName(target)) + ' · ' + number(count) + ' →</button></p>').join('') : '') +
+      schedule(row);
+    $('#veil').hidden = false;
+    $('#shell').inert = true;
+    $('#help').inert = true;
+    document.body.style.overflow = 'hidden';
+    $('#drawer [data-action="close"]').focus();
+  }
+
+  function schedule(row) {
+    const masks = row['Hourly masks UTC'];
+    if (row['Parse status'] !== 'Parsed' || typeof masks !== 'string' || !/^[0-9a-f]{168}$/i.test(masks)) return '';
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    return '<h3>Stored weekly schedule · UTC</h3><div class="tablewrap"><table><thead><tr><th>Day</th>' +
+      Array.from({length:24},(_,i) => '<th>' + String(i).padStart(2,'0') + '</th>').join('') +
+      '</tr></thead><tbody>' + days.map((day,d) => '<tr><th>' + day + '</th>' +
+        Array.from({length:24},(_,h) => {
+          const count = [1,2,4,8].filter(bit => (parseInt(masks[d*24+h],16) & bit)).length;
+          return '<td class="' + (count ? 'tag teal' : '') + '">' + count + '/4</td>';
+        }).join('') + '</tr>').join('') + '</tbody></table></div>';
+  }
+
+  function closeDetail() {
+    if ($('#veil').hidden) return;
+    $('#veil').hidden = true;
+    $('#shell').inert = false;
+    $('#help').inert = false;
+    document.body.style.overflow = '';
+    currentDetail = null;
+    if (previousFocus?.isConnected) previousFocus.focus();
+  }
+
+  function navigate(key,quick = '',relation = null) {
+    if (key !== 'overview' && !sections[key]) return;
+    clearTimeout(searchTimer);
+    closeDetail();
+    Object.assign(state,{key,query:'',filters:{},page:1,sort:null,descending:false,relation,onlyGaps:quick === 'gaps',onlyEmpty:quick === 'empty'});
+    $('#shell').classList.remove('menuopen');
+    $('#menubtn').setAttribute('aria-expanded','false');
+    render();
+    $('#main').focus();
+    window.scrollTo(0,0);
+  }
+
+  function download(name,value,type) {
+    const url = URL.createObjectURL(new Blob([value],{type}));
+    const link = document.createElement('a');
+    link.href = url; link.download = name;
+    document.body.append(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(url),1500);
+    clearTimeout(toastTimer);
+    $('#toast').textContent = 'Exported ' + name;
+    $('#toast').hidden = false;
+    toastTimer = setTimeout(() => { $('#toast').hidden = true; },2500);
+  }
+
+  function csv() {
+    const key = activeKey(), cols = sections[key][1];
+    const quote = value => {
+      const cell = String(value ?? '');
+      const safe = typeof value === 'string' && /^[=+@\-\t\r\n]/.test(cell) ? "'" + cell : cell;
+      return '"' + safe.replace(/"/g,'""') + '"';
+    };
+    const content = [cols.map(quote).join(','),...matching(key).map(({row}) => cols.map(col => quote(row[col])).join(','))];
+    download((payload.reportBaseName || 'Inventory') + '-' + key + '-filtered.csv','\ufeff' + content.join('\r\n'),'text/csv;charset=utf-8');
+  }
+
+  const refresh = () => { $('#tablearea').innerHTML = grid(activeKey()); };
+  document.addEventListener('click',event => {
+    const button = event.target.closest('button');
+    if (!button) return;
+    const d = button.dataset;
+    if (d.section) { navigate(d.section,d.quick); return; }
+    if (d.object !== undefined) { openDetail(d.key,Number(d.object)); return; }
+    if (d.related !== undefined && currentDetail) {
+      const relation = currentDetail.relations[Number(d.related)];
+      navigate(relation.target,'',{match:relation.match,label:currentDetail.label});
+      return;
+    }
+    if (d.sort) {
+      state.descending = state.sort === d.sort && !state.descending;
+      state.sort = d.sort; state.page = 1; refresh();
+      return;
+    }
+    switch (d.action) {
+      case 'close': closeDetail(); break;
+      case 'help': $('#help').open = !$('#help').open; if ($('#help').open) $('#help summary').focus(); break;
+      case 'reset': navigate(state.key); break;
+      case 'prev': state.page--; refresh(); break;
+      case 'next': state.page++; refresh(); break;
+      case 'csv': csv(); break;
+      case 'json': download((payload.reportBaseName || 'Inventory') + '-Report.json',JSON.stringify(payload),'application/json'); break;
+    }
+  });
+  document.addEventListener('input',event => {
+    if (event.target.id === 'query') {
+      state.query = event.target.value;
+      state.page = 1;
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(refresh,120);
+    }
+  });
+  document.addEventListener('change',event => {
+    const target = event.target, d = target.dataset;
+    if (d.filter) {
+      if (target.value === 'all') delete state.filters[d.filter];
+      else state.filters[d.filter] = target.value.slice(2);
+      state.page = 1; refresh();
+    }
+    if (target.id === 'pagesize') { state.size = Number(target.value); state.page = 1; refresh(); }
+    if (d.column) {
+      const key = activeKey(), hidden = state.hidden.get(key);
+      if (!target.checked && visibleColumns(key).length === 1) { target.checked = true; return; }
+      if (target.checked) hidden.delete(d.column); else hidden.add(d.column);
+      refresh();
+    }
+  });
+  document.addEventListener('keydown',event => {
+    if (event.key === 'Escape') {
+      closeDetail();
+      $('#help').open = false;
+      $('#shell').classList.remove('menuopen');
+      $('#menubtn').setAttribute('aria-expanded','false');
+    }
+    if (event.key === 'Tab' && !$('#veil').hidden) {
+      const items = [...$('#drawer').querySelectorAll('button,a[href]')];
+      if (event.shiftKey && document.activeElement === items[0]) { event.preventDefault(); items.at(-1).focus(); }
+      else if (!event.shiftKey && document.activeElement === items.at(-1)) { event.preventDefault(); items[0].focus(); }
+    }
+  });
+  $('#veil').onclick = event => { if (event.target === $('#veil')) closeDetail(); };
+  $('#menubtn').onclick = () => $('#menubtn').setAttribute('aria-expanded',String($('#shell').classList.toggle('menuopen')));
+  $('#theme').innerHTML = icon('moon');
+  $('#theme').onclick = () => {
+    const dark = document.body.classList.toggle('dark');
+    $('#theme').innerHTML = icon(dark ? 'sun' : 'moon');
+    $('#theme').setAttribute('aria-label',dark ? 'Switch to light theme' : 'Switch to dark theme');
+  };
+  document.title = meta.title + ' · PSInsightInventory';
+  $('#version').textContent = meta.version;
+  $('#source').textContent = sample ? 'SAMPLE DATA' : 'LIVE SNAPSHOT';
+  $('#generated').textContent = meta.generatedDisplay || meta.generated;
+  $('#sideScope').textContent = (meta.connectionDomain || meta.domain || meta.forest || meta.scope) + ' · v' + meta.version;
+  render();
+  $('#shell').hidden = false;
+})();
+</script>
+</body>
+</html>

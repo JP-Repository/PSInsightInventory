@@ -3,7 +3,7 @@
 ```powershell
 Import-Module .\PSInsightInventory\PSInsightInventory.psd1 -Force
 Invoke-ADSitesAndServicesInventory -Demo -Open
-Invoke-ADSitesAndServicesInventory -Domain ad.example.test -Open
+Invoke-ADSitesAndServicesInventory -Domain child.example.test -Open
 ```
 
 `-SampleData` and `-Demo` are equivalent. Sample mode uses deterministic fictional fixtures and does not query infrastructure.

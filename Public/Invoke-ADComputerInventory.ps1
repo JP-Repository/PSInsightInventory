@@ -22,7 +22,7 @@ Open the generated HTML locally.
 .EXAMPLE
 Invoke-ADComputerInventory -Demo -Open
 .EXAMPLE
-Invoke-ADComputerInventory -Domain ad.example.test -Open
+Invoke-ADComputerInventory -Domain child.example.test -Open
 .EXAMPLE
 Invoke-ADComputerInventory -Domain example.test -TimeoutSeconds 900 -OutputPath C:\Temp\Reports -Open
 #>

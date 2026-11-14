@@ -1,12 +1,33 @@
-# Version 1.0.0 — 30 October 2026
+# Version 2.0.0 — 12 November 2026
 
-- Prepared the existing ten-inventory module for its first public release without adding collectors or changing collection scope.
-- Reconciled module, catalog, result, snapshot, help, and validation version references at 1.0.0.
-- Added public-release installation, prerequisite, command, demo, output, permission, limitation, and troubleshooting documentation.
-- Added an allowlisted release builder and ignore rules that keep tests, examples, generated reports/logs, local credentials, and publishing artifacts out of the module package.
-- Replaced organization-like documentation examples with reserved `example.test` names.
-- Added PowerShell Gallery release metadata and HTML Help & About links for the author, repository, support, and documentation.
-- Retained Windows PowerShell 5.1 targeting, MIT licensing, read-only behavior, JP branding, console banner/progress, and `-Quiet`.
+- Introduced one shared interactive offline dashboard across all ten existing inventories, with focused tables, light and dark themes, filters, record details and browser CSV/JSON exports.
+- Added section-specific icons, compact embedded data and bounded static previews while retaining JP branding and self-contained reports.
+- Improved controller progress and completion summaries, group membership collection, forest relationship evidence and preservation of partial results.
+- Fixed user summary generation when directory attributes are missing and the PowerShell JSON serializer produces no value for null.
+- Added date-only run folder, report, snapshot and log names; same-day reruns use numbered run folders so earlier output is retained.
+- Kept author, repository, documentation and support details in HTML Help & About; the console banner retains module, author and MIT identification without links.
+
+Versions 1.1.0 through 1.1.3 below record internal development milestones and were not published to PowerShell Gallery.
+
+# Version 1.1.3
+
+- Fixed an undefined variable that stopped live infrastructure inventory before domain controller discovery.
+
+# Version 1.1.2
+
+- Tested a repository URL in the shared console banner during development; the 2.0.0 release keeps links in HTML Help & About instead.
+- Infrastructure and DNS progress bars show finished controller workers against the selected controller count. Their final summaries distinguish complete and partial controller inventories.
+
+# Version 1.1.1
+
+- Added section-specific icons to the sidebar, tables and detail panels across all ten inventory reports. Fixed sidebar alignment for wrapped labels and counts.
+
+# Version 1.1.0 — 9 November 2026
+
+- Shared dashboard across all ten commands with collection coverage, focused tables, light and dark themes, filters, record details and offline exports.
+- Group membership starts with paged LDAP range retrieval and one scoped identity catalog scan. Unavailable lists retain unknown counts.
+- Forest inventory deduplicates server references and displays parent relationships supported by directory evidence.
+- Compact embedded data and bounded static previews reduce HTML size. All ten examples were regenerated.
 
 # Version 0.12.0 — 30 October 2026
 

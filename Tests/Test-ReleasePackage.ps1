@@ -23,26 +23,28 @@ Assert-Release (Test-Path -LiteralPath $build.ChecksumFile) 'Builder creates ZIP
 
 $manifestPath = Join-Path $build.ModuleStage 'PSInsightInventory.psd1'
 $manifest = Test-ModuleManifest -Path $manifestPath -ErrorAction Stop
-Assert-Release ($manifest.Name -eq 'PSInsightInventory' -and $manifest.Version -eq [version]'1.0.0') 'Staged manifest identifies 1.0.0'
+Assert-Release ($manifest.Name -eq 'PSInsightInventory' -and $manifest.Version -eq [version]'2.0.0') 'Staged manifest identifies 2.0.0'
 Assert-Release ($manifest.PowerShellVersion -eq [version]'5.1' -and $manifest.Author -eq 'Jonathan Preetham') 'Staged manifest retains target and author'
 Assert-Release ([string]$manifest.PrivateData.PSData.ProjectUri -eq 'https://github.com/JP-Repository/PSInsightInventory') 'Staged manifest identifies repository'
 Assert-Release ([string]$manifest.HelpInfoUri -eq 'https://github.com/JP-Repository/PSInsightInventory') 'Staged manifest identifies documentation'
+Assert-Release ([string]$manifest.PrivateData.PSData.LicenseUri -eq 'https://opensource.org/license/mit') 'Staged manifest identifies MIT license'
+Assert-Release (-not [string]::IsNullOrWhiteSpace([string]$manifest.PrivateData.PSData.ReleaseNotes)) 'Staged manifest includes release notes'
 
 Import-Module $manifestPath -Force -ErrorAction Stop
 $commands = @(Get-Command -Module PSInsightInventory)
 $catalog = @(Get-PSInsightInventory)
 Assert-Release ($commands.Count -eq 11 -and $catalog.Count -eq 10) 'Staged module exports catalog plus ten inventories'
-Assert-Release (@($catalog | Where-Object { $_.Version -ne '1.0.0' }).Count -eq 0) 'Catalog versions are reconciled'
+Assert-Release (@($catalog | Where-Object { $_.Version -ne '2.0.0' }).Count -eq 0) 'Catalog versions are reconciled'
 
 $demoOutput = Join-Path $OutputPath 'Demos'
 foreach ($command in $catalog.Command) {
     $result = & $command -Demo -Quiet -OutputPath $demoOutput
     $html = Get-Content -LiteralPath $result.HtmlReport -Raw
-    $hasAbout = $html.Contains('id="psi-help-about"') -and
+    $hasAbout = $html.Contains('id="help"') -and
         $html.Contains('href="https://www.linkedin.com/in/jonathan-preetham"') -and
         $html.Contains('href="https://github.com/JP-Repository/PSInsightInventory"') -and
         $html.Contains('href="mailto:Jonathan.Preetham@outlook.com"') -and
-        $html.Contains('>Project documentation</a>')
+        $html.Contains('>Repository &amp; documentation ↗</a>')
     Assert-Release $hasAbout ("HTML Help & About links: $command")
 }
 
@@ -63,7 +65,7 @@ $sourceBadFiles = @(Get-ChildItem -LiteralPath $build.SourceStage -Recurse -File
 Assert-Release ($sourceBadFiles.Count -eq 0) 'GitHub source stage excludes logs, test output, packages, and sensitive file types'
 
 $text = ($packagedFiles | Where-Object { $_.Extension -in @('.css', '.html', '.json', '.md', '.ps1', '.psd1', '.psm1', '.txt') } | ForEach-Object { Get-Content -LiteralPath $_.FullName -Raw }) -join "`n"
-Assert-Release ($text -notmatch '(?i)cabot-corp|MDC-NTB|ATLANTA-NTB|/workspace/scratch|BEGIN (?:RSA |OPENSSH |EC |DSA )?PRIVATE KEY') 'Package has no known internal examples, build paths, or private keys'
+Assert-Release ($text -notmatch '(?i)internal\.example|INTERNAL-DC|/workspace/scratch|BEGIN (?:RSA |OPENSSH |EC |DSA )?PRIVATE KEY') 'Package has no internal examples, build paths, or private keys'
 
 $actualHash = (Get-FileHash -LiteralPath $build.GitHubZip -Algorithm SHA256).Hash.ToLowerInvariant()
 $recordedHash = ((Get-Content -LiteralPath $build.ChecksumFile -Raw).Trim() -split '\s+')[0]

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PSInsightInventory</title>
+<style>
+/*DASHBOARD_CSS*/
+/*JP_BRAND_CSS*/
+</style>
+</head>
+<body>
+<noscript><main><!--FALLBACK--></main></noscript>
+<div class="shell" id="shell" hidden>
+  <aside class="side">
+    <div class="brand"><span class="jp brandmark" id="brandicon" aria-hidden="true">JP</span><div>PSInsightInventory<small>DIRECTORY INVENTORY</small></div></div>
+    <nav id="nav" aria-label="Report sections"></nav>
+    <div class="sidebottom"><b><span class="dot"></span>Offline inventory snapshot</b><span id="sideScope"></span></div>
+  </aside>
+  <div class="workspace">
+    <header class="top">
+      <button class="btn iconbtn mobile" id="menubtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="crumb">Directory inventory <span>/</span> <b id="crumb">Overview</b></div>
+      <span class="grow"></span><span class="date" id="generated"></span><span class="badge" id="source"></span>
+      <button class="btn iconbtn" id="theme" aria-label="Switch to dark theme">◐</button>
+    </header>
+    <main id="main" tabindex="-1"></main>
+  </div>
+</div>
+<details class="help" id="help"><summary>Help &amp; About</summary><div class="helpcard">
+  <h2>PSInsightInventory <span id="version"></span></h2>
+  <p><a href="https://www.linkedin.com/in/jonathan-preetham" target="_blank" rel="noopener noreferrer">Jonathan Preetham ↗</a> · MIT License</p>
+  <p>Read-only Active Directory inventory. Coverage describes evidence availability.</p>
+  <a href="https://github.com/JP-Repository/PSInsightInventory" target="_blank" rel="noopener noreferrer">Repository &amp; documentation ↗</a>
+  <a href="mailto:Jonathan.Preetham@outlook.com">Help &amp; support ↗</a>
+</div></details>
+<div class="veil" id="veil" hidden><section class="drawer" role="dialog" aria-modal="true" aria-labelledby="detailTitle" id="drawer"></section></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script id="snapshot" type="application/json">/*DATA*/</script>
+<script>/*DASHBOARD_JS*/</script>
+</body>
+</html>

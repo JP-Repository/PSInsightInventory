@@ -36,16 +36,19 @@ Collect directory categories only. Remote categories remain NotAttempted and inv
 Use WinRM HTTPS with normal certificate validation. Does not disable certificate checks.
 .PARAMETER Port
 Optional WinRM port. Defaults to 5985 for HTTP or 5986 with -UseSSL when omitted.
+.PARAMETER Quiet
+Suppress the console banner, heartbeat, progress and completion display.
+Warnings/errors and structured report output are retained.
 .PARAMETER Open
 Open the generated HTML using the local default application after export.
 .EXAMPLE
 Invoke-ADInfrastructureInventory -SampleData -OutputPath C:\Temp\Reports -Open
 .EXAMPLE
-Invoke-ADInfrastructureInventory -Domain ad.example.test -Open
+Invoke-ADInfrastructureInventory -Domain child.example.test -Open
 .EXAMPLE
-Invoke-ADInfrastructureInventory -Domain example.test -ComputerName dc01.example.test -SkipRemote
+Invoke-ADInfrastructureInventory -Domain example.test -ComputerName DEMO-DC01 -SkipRemote
 .NOTES
-PSInsightInventory 1.0.0. Target: Windows PowerShell 5.1. No health verdict, email or remediation.
+PSInsightInventory 0.1.0. Target: Windows PowerShell 5.1. No health verdict, email or remediation.
 #>
 [CmdletBinding(DefaultParameterSetName='Live')]
 param(

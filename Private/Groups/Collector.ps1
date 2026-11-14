@@ -21,25 +21,42 @@
  $watch.Stop()
  [pscustomobject]@{Kind='Section';Key='groups';Status=if($null -ne $errorRecord){'Failed'}else{'Succeeded'};Records=$catalog.ToArray();CollectedAt=[datetimeoffset]::Now.ToString('o');DurationMs=$watch.ElapsedMilliseconds;ErrorId=if($null -ne $errorRecord){$errorRecord.FullyQualifiedErrorId}else{''};ErrorMessage=if($null -ne $errorRecord){$errorRecord.Exception.Message}else{'Selected-domain group metadata collected.'}}
  if($null -ne $errorRecord){return}
+ if(-not $catalog.Count){return}
+ if($ShowProgress){[pscustomobject]@{Kind='Progress';Stage='Reading initial LDAP member ranges';Target=$server}}
+ $ranges=@{}
+ $rangeError=$null
+ try{$ranges=Get-PSIGroupFirstRanges $server $domainDN}catch{$rangeError=$_.Exception.Message}
+ # Resolve the selected-domain object catalog once. The previous implementation
+ # performed one Get-ADObject call per unique member and exhausted its overall
+ # budget in large domains.
  $cache=@{}
+ foreach($g in $catalog){$cache[$g.DN]=[pscustomobject]@{DN=$g.DN;Name=$g.Name;Id=$g.Id;Sid=$g.Sid;Type='group';Resolution='Succeeded';Message='Resolved from selected-domain group catalog.'}}
+ if($ShowProgress){[pscustomobject]@{Kind='Progress';Stage='Indexing directory member identities';Target=$server}}
+ $catalogComplete=$false;$catalogError=$null
+ try{
+  Get-ADObject -LDAPFilter '(|(objectClass=user)(objectClass=group)(objectClass=foreignSecurityPrincipal))' -SearchBase $domainDN -SearchScope Subtree -Properties objectSid -Server $server -ErrorAction Stop|ForEach-Object{
+   $dn=[string]$_.DistinguishedName
+   if($dn -and (Get-PSIGroupDomainDN $dn) -ieq $domainDN -and -not $cache.ContainsKey($dn)){$cache[$dn]=[pscustomobject]@{DN=$dn;Name=$_.Name;Id=([guid]$_.ObjectGUID).ToString();Sid=if($null -ne (Get-PSIGroupValue $_ 'objectSid')){[string]$_.objectSid}else{$null};Type=[string]$_.ObjectClass;Resolution='Succeeded';Message='Resolved from one pinned selected-domain catalog scan.'}}
+  }
+  $catalogComplete=$true
+ }catch{$catalogError=$_.Exception.Message}
  foreach($g in $catalog){
   if($ShowProgress){[pscustomobject]@{Kind='Progress';Stage='Reading group membership';Target=$g.Name}}
   $watch=[diagnostics.stopwatch]::StartNew();$rows=New-Object collections.ArrayList;$lookups=New-Object collections.ArrayList;$status='Succeeded';$errorId='';$message='Direct member attribute references captured; primary-group membership is excluded.'
   try{
-   $members=@(Get-PSIGroupMemberDNs $server $g.DN)
+   $members=@(Get-PSIGroupMemberDNs $server $g.DN $ranges[$g.DN])
+   if($rangeError){$message+=' Used a per-group range read because the bulk LDAP query was unavailable.'}
    foreach($memberDN in $members){
     if(-not $cache.ContainsKey($memberDN)){
      $resolved=[pscustomobject]@{DN=$memberDN;Name=$null;Id=$null;Sid=$null;Type='Unknown';Resolution='NotAttempted';Message='Reference outside selected naming context; not dereferenced.'}
-     if($groupByDN.ContainsKey($memberDN)){$known=$groupByDN[$memberDN];$resolved.Name=$known.Name;$resolved.Id=$known.Id;$resolved.Sid=$known.Sid;$resolved.Type='group';$resolved.Resolution='Succeeded';$resolved.Message='Resolved from selected-domain group catalog.'}
-     elseif((Get-PSIGroupDomainDN $memberDN) -ieq $domainDN){
-      try{$o=Get-ADObject -Identity $memberDN -Properties objectSid -Server $server -ErrorAction Stop
-       if([string]$o.DistinguishedName -ine $memberDN){throw 'Member lookup returned a different DN.'}
-       $resolved.Name=$o.Name;$resolved.Id=([guid]$o.ObjectGUID).ToString();$resolved.Sid=if($null -ne (Get-PSIGroupValue $o 'objectSid')){[string]$o.objectSid}else{$null};$resolved.Type=[string]$o.ObjectClass;$resolved.Resolution='Succeeded';$resolved.Message='Resolved through pinned selected-domain DC.'
-      }catch{$resolved.Resolution='Failed';$resolved.Message=$_.Exception.Message}
+     if((Get-PSIGroupDomainDN $memberDN) -ieq $domainDN){
+      $resolved.Resolution='Failed'
+      $resolved.Message=if($catalogComplete){'Local reference absent from the returned identity catalog.'}else{'Identity catalog incomplete: '+$catalogError}
      }
      $cache[$memberDN]=$resolved
     }
-    $resolved=$cache[$memberDN];[void]$rows.Add($resolved);[void]$lookups.Add([pscustomobject]@{Target=$memberDN;Status=$resolved.Resolution;Message=$resolved.Message})
+    $resolved=$cache[$memberDN];[void]$rows.Add($resolved)
+    if($resolved.Resolution -ne 'Succeeded'){[void]$lookups.Add([pscustomobject]@{Target=$memberDN;Status=$resolved.Resolution;Message=$resolved.Message})}
    }
   }catch{$status='Failed';$rows.Clear();$lookups.Clear();$message=$_.Exception.Message;$errorId=$_.FullyQualifiedErrorId}
   $watch.Stop()
